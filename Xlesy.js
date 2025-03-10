@@ -1753,7 +1753,75 @@ case 'join': {
         if (res.data == 500) return m.reply('Grup Penuh❗')
     }
 }
-break
+break 
+const fs = require("fs");
+const path = "./autorejoin.json"; // File untuk menyimpan status fitur
+
+// Cek apakah file ada, jika tidak buat
+if (!fs.existsSync(path)) {
+    fs.writeFileSync(path, JSON.stringify({}, null, 2));
+}
+
+// Load data auto-rejoin
+let autoRejoin = JSON.parse(fs.readFileSync(path));
+
+// Simpan perubahan ke file
+function saveAutoRejoin() {
+    fs.writeFileSync(path, JSON.stringify(autoRejoin, null, 2));
+}
+
+// Fitur Auto-Rejoin Anggota yang Keluar
+Xlesy.ev.on("group-participants.update", async (update) => {
+    try {
+        let { id, participants, action } = update;
+        if (action === "remove") {
+            if (autoRejoin[id]) {
+                for (let user of participants) {
+                    await delay(2000); // Delay 2 detik agar tidak terdeteksi spam
+                    await Xlesy.groupParticipantsUpdate(id, [user], "add");
+                }
+            }
+        }
+    } catch (error) {
+        console.log("Error auto-rejoin:", error);
+    }
+});
+
+// Command untuk mengaktifkan/mematikan auto-rejoin
+Xlesy.on("chat-update", async (m) => {
+    if (!m.message) return;
+    let msg = m.message.conversation || m.message.extendedTextMessage?.text;
+    let sender = m.key.participant || m.key.remoteJid;
+    let groupMetadata = m.isGroup ? await Xlesy.groupMetadata(m.key.remoteJid) : {};
+    let isAdmin = groupMetadata.participants?.find(p => p.id === sender)?.admin;
+
+    if (!msg) return;
+
+    if (msg.startsWith("!autorejoin")) {
+        if (!m.isGroup) return Xlesy.sendMessage(m.key.remoteJid, { text: "Fitur ini hanya untuk grup!" });
+        if (!isAdmin) return Xlesy.sendMessage(m.key.remoteJid, { text: "Hanya admin grup yang bisa menggunakan perintah ini!" });
+
+        let args = msg.split(" ");
+        if (args.length < 2) return Xlesy.sendMessage(m.key.remoteJid, { text: "Gunakan perintah *!autorejoin on/off*" });
+
+        if (args[1] === "on") {
+            autoRejoin[m.key.remoteJid] = true;
+            saveAutoRejoin();
+            Xlesy.sendMessage(m.key.remoteJid, { text: "✅ Auto-rejoin diaktifkan!" });
+        } else if (args[1] === "off") {
+            delete autoRejoin[m.key.remoteJid];
+            saveAutoRejoin();
+            Xlesy.sendMessage(m.key.remoteJid, { text: "❌ Auto-rejoin dimatikan!" });
+        } else {
+            Xlesy.sendMessage(m.key.remoteJid, { text: "Gunakan *!autorejoin on* untuk mengaktifkan atau *!autorejoin off* untuk menonaktifkan." });
+        }
+    }
+});
+
+// Fungsi delay
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+								   }
 case 'leaveid':
     if (!isOwner) return m.reply("❌ *Hanya Owner yang bisa menggunakan perintah ini!*");
     if (!args[0]) return m.reply("⚠️ *Masukkan ID grup yang ingin ditinggalkan!*");
