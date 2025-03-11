@@ -1859,24 +1859,33 @@ case 'leaveid':
         await Xlesy.sendMessage(m.sender, { text: `❌ Terjadi kesalahan!\n\nError: ${err}` }, { quoted: fkontak1 });
     }
     break
-			case 'listgc': {
-				if (!isCreator) return m.reply(mess.owner)
-				let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-				let teks = `● *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
-				if (anu.length === 0) return m.reply(teks)
-				for (let i of anu) {
-					let metadata;
-					try {
-						metadata = store.groupMetadata[i]
-					} catch (e) {
-						metadata = (store.groupMetadata[i] = await Xlesy.groupMetadata(i).catch(e => ({})))
-					}
-					teks += metadata?.subject ? `${setv} *Nama :* ${metadata.subject}\n${setv} *Admin :* ${metadata.owner ? `@${metadata.owner.split('@')[0]}` : '-' }\n${setv} *ID :* ${metadata.id}\n${setv} *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n${setv} *Member :* ${metadata.participants.length}\n\n=====================\n\n` : ''
-				}
-				await m.reply(teks,
-				{ quoted: fkontak1 })
-			}
-			break
+case 'listgc': {
+    if (!isCreator) return m.reply(mess.owner)
+    let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+    let teks = `● *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
+    if (anu.length === 0) return m.reply(teks)
+    
+    for (let i of anu) {
+        let metadata;
+        try {
+            metadata = store.groupMetadata[i]
+        } catch (e) {
+            metadata = (store.groupMetadata[i] = await Xlesy.groupMetadata(i).catch(() => ({})))
+        }
+        
+        if (metadata?.subject) {
+            teks += `${setv} *Nama :* ${metadata.subject}\n`
+            teks += `${setv} *Admin :* ${metadata.owner ? `@${metadata.owner.split('@')[0]}` : '-' }\n`
+            teks += `${setv} *ID :* ${metadata.id}\n`
+            teks += `${setv} *Dibuat :* ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n`
+            teks += `${setv} *Member :* ${metadata.participants.length}\n`
+            teks += `\n=====================\n\n`
+        }
+    }
+    
+    await m.reply(teks, { quoted: fkontak1 })
+}
+break
 			case 'creategc': case 'buatgc': {
 				if (!isCreator) return m.reply(mess.owner)
 				if (!text) return m.reply(`Example:\n${prefix + command} *Nama Gc*`, { quoted: fkontak1 })
