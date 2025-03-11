@@ -2929,7 +2929,7 @@ break
 			break
 			case 'ssweb': {
 				if (!isPremium) return m.reply(mess.prem)
-				if (!text) return m.reply(`Example: ${prefix + command} https://github.com/Gxyenn/Gxyenn`, { quoted: fkontak1 })
+				if (!text) return m.reply(`Example: ${prefix + command} https://gxyenn-site.vercel.app/`, { quoted: fkontak1 })
 				try {
 					let anu = 'https://' + text.replace(/^https?:\/\//, '')
 					await m.reply({ image: { url: 'https://image.thum.io/get/width/1900/crop/1000/fullpage/' + anu }, caption: 'Done' })
@@ -3109,6 +3109,20 @@ async function igStalk(username) {
 				}
 			}
 			break
+			case 'bratanime': {
+    if (!text) return reply('Masukkan teks yang ingin ditampilkan di papan!', { quoted: fkontak1 })
+    try {
+        let apiUrl = `https://api.agungny.my.id/api/animbrat?q=${encodeURIComponent(text)}`
+        let response = await axios.get(apiUrl, { responseType: 'arraybuffer' })
+        let imageBuffer = Buffer.from(response.data, 'utf-8')
+        
+        Xlesy.sendMessage(from, { image: imageBuffer, caption: `Brat Anime dengan teks: ${text}` }, { quoted: fkontak1 })
+    } catch (error) {
+        console.log(error)
+        m.reply('Terjadi kesalahan saat mengambil gambar!')
+    }
+    }
+    break
 			case 'brat': {
 			    await Xlesy.sendMessage(m.chat, { react: { text: '🕑', key: m.key } })
 				if (!isLimit) return m.reply(mess.limit)
@@ -5034,6 +5048,9 @@ break
 │ ${setv} ${prefix}tts (textnya)
 │ ${setv} ${prefix}toqr (textnya)
 │ ${setv} ${prefix}ssweb (url)
+│ ${setv} ${prefix}breatanime (teks)
+│ ${setv} ${prefix}brat (teks)
+│ ${setv} ${prefix}bratvid (teks)
 │ ${setv} ${prefix}sticker (send/reply img)
 │ ${setv} ${prefix}colong (reply stiker)
 │ ${setv} ${prefix}smeme (send/reply img)
@@ -5227,6 +5244,9 @@ break
 │ ${setv} ${prefix}listpc
 │ ${setv} ${prefix}listgcbot
 │ ${setv} ${prefix}listgc
+│ ${setv} ${prefix}replay (pesannya)
+│ ${setv} ${prefix}replay1 (pesannya)
+│ ${setv} ${prefix}notif
 │ ${setv} ${prefix}creategc
 │ ${setv} ${prefix}addprem
 │ ${setv} ${prefix}delprem
@@ -5515,6 +5535,9 @@ case 'toolsmenu': {
 │ ${setv} ${prefix}toqr (textnya)
 │ ${setv} ${prefix}ssweb (url)
 │ ${setv} ${prefix}sticker (send/reply img)
+│ ${setv} ${prefix}breatanime (teks)
+│ ${setv} ${prefix}brat (teks)
+│ ${setv} ${prefix}bratvid (teks)
 │ ${setv} ${prefix}colong (reply stiker)
 │ ${setv} ${prefix}smeme (send/reply img)
 │ ${setv} ${prefix}emojimix 🙃+💀
@@ -5833,6 +5856,9 @@ case 'ownermenu': {
 │ ${setv} ${prefix}listpc
 │ ${setv} ${prefix}listgcbot
 │ ${setv} ${prefix}listgc
+│ ${setv} ${prefix}replay (pesannya)
+│ ${setv} ${prefix}replay1 (pesannya)
+│ ${setv} ${prefix}notif
 │ ${setv} ${prefix}creategc
 │ ${setv} ${prefix}addprem
 │ ${setv} ${prefix}delprem
