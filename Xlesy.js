@@ -3119,19 +3119,24 @@ async function igStalk(username) {
 			}
 			break
 			case 'bratanime': {
-    if (!text) return reply('Masukkan teks yang ingin ditampilkan di papan!', { quoted: fkontak1 })
-    try {
-        let apiUrl = `https://api.agungny.my.id/api/animbrat?q=${encodeURIComponent(text)}`
-        let response = await axios.get(apiUrl, { responseType: 'arraybuffer' })
-        let imageBuffer = Buffer.from(response.data, 'utf-8')
-        
-        Xlesy.sendMessage(from, { image: imageBuffer, caption: `Brat Anime dengan teks: ${text}` }, { quoted: fkontak1 })
-    } catch (error) {
-        console.log(error)
-        m.reply('Terjadi kesalahan saat mengambil gambar!')
-    }
-    }
-    break
+			    await Xlesy.sendMessage(m.chat, { react: { text: '🕑', key: m.key } })
+				if (!isLimit) return m.reply(mess.limit)
+				if (!text && (!m.quoted || !m.quoted.text)) return m.reply(`Kirim/reply pesan *${prefix + command}* Teksnya`, { quoted: fkontak1 })
+				try {
+					await Xlesy.sendAsSticker(m.chat, 'https://api.agungny.my.id/api/animbrat?q=' + encodeURIComponent(text || m.quoted.text), m)
+					setLimit(m, db)
+				} catch (e) {
+					try {
+						await Xlesy.sendAsSticker(m.chat, 'https://mannoffc-x.hf.space/brat?q=' + encodeURIComponent(text || m.quoted.text), m)
+						setLimit(m, db)
+					} catch (e) {
+						m.reply('Server Brat Sedang Offline!',
+										{ quoted: fkontak1 })
+					}
+				}
+				    await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+			}
+			break
 			case 'brat': {
 			    await Xlesy.sendMessage(m.chat, { react: { text: '🕑', key: m.key } })
 				if (!isLimit) return m.reply(mess.limit)
