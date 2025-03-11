@@ -2185,50 +2185,6 @@ case 'sc': case 'script': {
 break;
 			
 			// Group Menu/
-			const fs = require("fs");
-const path = "./autorejoin.json"; // File untuk menyimpan status fitur
-
-// Cek apakah file ada, jika tidak buat
-if (!fs.existsSync(path)) {
-    fs.writeFileSync(path, JSON.stringify({}, null, 2));
-}
-
-// Load data auto-rejoin
-let autoRejoin = JSON.parse(fs.readFileSync(path));
-
-// Simpan perubahan ke file
-function saveAutoRejoin() {
-    fs.writeFileSync(path, JSON.stringify(autoRejoin, null, 2));
-}
-
-// Event untuk mendeteksi peserta yang keluar dari grup
-Xlesy.ev.on("group-participants.update", async (update) => {
-    try {
-        let { id, participants, action } = update;
-        if (action === "remove" && autoRejoin[id]) {
-            for (let user of participants) {
-                await delay(2000); // Delay 2 detik agar tidak terdeteksi spam
-                await Xlesy.groupParticipantsUpdate(id, [user], "add");
-            }
-        }
-    } catch (error) {
-        console.log("Error auto-rejoin:", error);
-    }
-});
-
-// Struktur case untuk command
-Xlesy.on("chat-update", async (m) => {
-    if (!m.message) return;
-    let msg = m.message.conversation || m.message.extendedTextMessage?.text;
-    let sender = m.key.participant || m.key.remoteJid;
-    let isGroup = m.key.remoteJid.endsWith("@g.us");
-    let groupMetadata = isGroup ? await Xlesy.groupMetadata(m.key.remoteJid) : {};
-    let isAdmin = groupMetadata.participants?.find(p => p.id === sender)?.admin;
-
-    if (!msg) return;
-    let args = msg.split(" ");
-    let command = args[0].toLowerCase();
-        
 			case 'add': {
 				if (!m.isGroup) return m.reply(mess.group)
 				if (!m.isAdmin) return m.reply(mess.admin)
