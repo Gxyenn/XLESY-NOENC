@@ -4313,7 +4313,7 @@ case 'musicmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -5706,8 +5706,7 @@ break;
 │ ${setv} ${prefix}delsession
 │ ${setv} ${prefix}delsampah
 │ ${setv} ${prefix}upsw
-╰─────┈➤
-`
+╰─────┈➤`
 				await m.reply({
 					document: fake.docs,
 					fileName: ucapanWaktu,
@@ -5772,8 +5771,7 @@ break;
 │ ${setv} ${prefix}donasi
 │ ${setv} ${prefix}pay
 │ ${setv} ${prefix}apkytprem
-╰─────┈➤
-`
+╰─────┈➤`
     let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -5782,7 +5780,7 @@ break;
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -5820,7 +5818,7 @@ case 'groupmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -5847,8 +5845,7 @@ case 'searchmenu': {
 │ ${setv} ${prefix}cuaca (kota)
 │ ${setv} ${prefix}animecari (judul)
 │ ${setv} ${prefix}mlnews
-╰─────┈➤
-`
+╰─────┈➤`
         let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -5857,7 +5854,7 @@ case 'searchmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -5886,7 +5883,7 @@ case 'downloadmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -5904,8 +5901,7 @@ case 'quotesmenu': {
 │ ${setv} ${prefix}quotessad
 │ ${setv} ${prefix}truth
 │ ${setv} ${prefix}renungan
-╰─────┈➤
-`
+╰─────┈➤`
         let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -5914,7 +5910,7 @@ case 'quotesmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -5974,8 +5970,7 @@ case 'libraymenu': {
 │ ${setv} ${prefix}cerpen-sastra  
 │ ${setv} ${prefix}cerpen-sedih  
 │ ${setv} ${prefix}cerpen-sejarah  
-╰─────┈➤
-`
+╰─────┈➤`
     let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -5984,7 +5979,7 @@ case 'libraymenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6037,8 +6032,7 @@ case 'toolsmenu': {
 │ ${setv} ${prefix}earrape (reply audio)
 │ ${setv} ${prefix}nightcore (reply audio)
 │ ${setv} ${prefix}getexif (reply sticker)
-╰─────┈➤
-`
+╰─────┈➤`
     let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -6047,7 +6041,7 @@ case 'toolsmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6072,7 +6066,7 @@ case 'aimenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6167,8 +6161,7 @@ case 'animemenu': {
 │ ${setv} ${prefix}yuki  
 │ ${setv} ${prefix}yulibocil  
 │ ${setv} ${prefix}yumekk  
-╰─────┈➤
-`
+╰─────┈➤`
         let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -6177,7 +6170,7 @@ case 'animemenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6207,8 +6200,7 @@ case 'gamemenu': {
 │ ${setv} ${prefix}tebaknegara
 │ ${setv} ${prefix}tebakgambar
 │ ${setv} ${prefix}tebakbendera
-╰─────┈➤
-`
+╰─────┈➤`
         let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -6217,7 +6209,7 @@ case 'gamemenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6246,8 +6238,7 @@ case 'funmenu': {
 │ ${setv} ${prefix}huluh (text)
 │ ${setv} ${prefix}heleh (text)
 │ ${setv} ${prefix}holoh (text)
-╰─────┈➤
-`
+╰─────┈➤`
     let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -6256,7 +6247,7 @@ case 'funmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6285,7 +6276,7 @@ case 'randommenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6317,7 +6308,7 @@ case 'pushmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6345,7 +6336,7 @@ case 'bugmenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
@@ -6386,8 +6377,7 @@ case 'ownermenu': {
 │ ${setv} ${prefix}delsession
 │ ${setv} ${prefix}delsampah
 │ ${setv} ${prefix}upsw
-╰─────┈➤
-`    
+╰─────┈➤`    
     let buttons = [
         { buttonId: ".menu", buttonText: { displayText: "Back To Menu" }, type: 1 }
     ]
@@ -6396,7 +6386,7 @@ case 'ownermenu': {
     await Xlesy.sendButtonMsg(m.chat, {
         image: { url: imagePath }, // Menggunakan file lokal
         text: textMessage,
-        footer: 'XlesyVIP',
+        footer: 'XLESYVIP',
         buttons: buttons
     }, { quoted: ftroli })
     await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
