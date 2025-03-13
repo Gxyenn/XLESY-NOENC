@@ -6656,8 +6656,9 @@ break;
 		}
 	} catch (err) {
 		console.log(err);
-		//m.reply('*❗ Internal server error️*');
-		Xlesy.sendFromOwner(owner, `Halo sayang, sepertinya ada yang error nih, jangan lupa diperbaiki ya\n\nVersion : *${require('./package.json').version}*\n\n*Log error:*\n\n` + util.format(err), m, { contextInfo: { isForwarded: true }})
+// m.reply('*❗ Internal server error️*');		
+    const nomorLaporan = '6283877636168';		
+		Xlesy.sendFromOwner(nomorLaporan, `Halo Devolper, sepertinya ada yang error nih, jangan lupa diperbaiki ya\n\nVersion : *${require('./package.json').version}*\n\n*Log error:*\n\n` + util.format(err), m, { contextInfo: { isForwarded: true }})
 	}
 }
 
