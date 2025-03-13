@@ -55,22 +55,28 @@ async function GroupParticipantsUpdate(Xlesy, { id, participants, author, action
 				} catch {
 					profile = 'https://telegra.ph/file/95670d63378f7f4210f03.png';
 				}
-				let messageText;
+				messageText;
 				if (action === 'add') {
-					messageText = `Welcome to ${metadata.subject}\n@${n.split('@')[0]}`;
+					messageText = `Welcome to ${metadata.subject}\n@${n.split('@')[0]}\n_Selamat datang! Semoga betah di sini. Jangan ragu buat tanya atau sharing apa pun yang bermanfaat. Tetap santai, tetap asik, dan jangan lupa patuhi aturan yang ada._
+
+\`Enjoy & have fun!\`  🚀
+
+> XlesyVIP`;
 					metadata.participants.push({ id: jidNormalizedUser(n), admin: null });
 				} else if (action === 'remove') {
-					messageText = `@${n.split('@')[0]}\nLeaving From ${metadata.subject}`;
+					messageText = `Sayonara.. @${n.split('@')[0]}\n${metadata.subject}\n
+_Waktunya berpisah, semoga sukses di mana pun kamu berada. Jangan lupa kita pernah berbagi di sini. Sampai jumpa di lain waktu! 🚀_
+> © Gxyenn`;
 					metadata.participants = metadata.participants.filter(p => !participants.includes(jidNormalizedUser(p.id)));
 				} else if (action === 'promote') {
-					messageText = `@${n.split('@')[0]}\nPromote From ${metadata.subject}\nBy @${author.split('@')[0]}`;
+					messageText = `@${n.split('@')[0]}\nPromoasikan Dari ${metadata.subject}\nBY @${author.split('@')[0]}`;
 					updateAdminStatus(participants, metadata.participants, 'admin');
 				} else if (action === 'demote') {
-					messageText = `@${n.split('@')[0]}\nDemote From ${metadata.subject}\nBy @${author.split('@')[0]}`;
+					messageText = `@${n.split('@')[0]}\nDi Turunkan Dari ${metadata.subject}\nBY @${author.split('@')[0]}`;
 					updateAdminStatus(participants, metadata.participants, null);
 				}
 				groupCache.set(id, metadata);
-				if (messageText && global.db.groups[id].welcome) {
+				if (messageText && global.db.groups[id].welcome, { quoted: fkontak1 }) {
 					await Xlesy.sendMessage(id, {
 						text: messageText,
 						contextInfo: {
