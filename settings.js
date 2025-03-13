@@ -3,23 +3,26 @@
 
 const fs = require('fs');
 const chalk = require('chalk');
+const XlesySet = require('./XlesySet'); // Import konfigurasi dari XlesySet.js
 
 //~~~~~~~~~~~~< GLOBAL SETTINGS >~~~~~~~~~~~~\\
 
-global.owner = ['6283877636168'] //['628','628'] 2 owner
-global.packname = 'Xlesy'
-global.author = 'Gxyenn'
-global.botname = 'XlesyBot'
-global.listprefix = ['.']
-global.listv = [,'✿','✧','❀','々']
+// Data bot
+global.author = XlesySet.author;
+global.packname = XlesySet.packname;
+global.botname = XlesySet.botname;
+global.owner = XlesySet.owner;
+global.listprefix = XlesySet.listprefix;
+global.listv = XlesySet.listv;
+global.number_bot = XlesySet.number_bot;
 global.tempatDB = 'database.json'
 global.pairing_code = true
-global.number_bot = '' // Kalo pake panel bisa masukin nomer di sini, jika belum ambil session. Format : '628xx'
-//no payment 
-global.dana = ['083877636168']
-global.gopay = ['083877636168']
-global.ovo = ['kosong']
-global.pulsa = ['083877636168']
+
+// Data pembayaran
+global.dana = XlesySet.dana;
+global.gopay = XlesySet.gopay;
+global.ovo = XlesySet.ovo;
+global.pulsa = XlesySet.pulsa;
 
 global.fake = {
 	anonim: 'https://telegra.ph/file/95670d63378f7f4210f03.png',
