@@ -2789,7 +2789,7 @@ function formatRupiah(angka) {
 			break
 			case 'totalfitur': {
 				const total = ((fs.readFileSync('./Xlesy.js').toString()).match(/case '/g) || []).length
-				m.reply(`Konichiwa *${m.pushName ? m.pushName : 'Unknown'}!*\nSaat Ini Xlesy Memiliki/Total fitur : ${total}`, { quoted: fkontak1 })
+				m.reply(`Konichiwa *${m.pushName ? m.pushName : 'Unknown'}!*\nSaat Ini Xlesy Memiliki/Total fitur : ${total}`, { quoted: fkontak1 })			
 			}
 			break
 			case 'daily': case 'claim': {
