@@ -9,6 +9,7 @@ const XlesySet = require('./XlesySet'); // Import konfigurasi dari XlesySet.js
 
 // Data bot
 global.author = XlesySet.author;
+global.namestore = XlesySet.namestore;
 global.packname = XlesySet.packname;
 global.botname = XlesySet.botname;
 global.owner = XlesySet.owner;
@@ -23,6 +24,7 @@ global.dana = XlesySet.dana;
 global.gopay = XlesySet.gopay;
 global.ovo = XlesySet.ovo;
 global.pulsa = XlesySet.pulsa;
+global.qris = XlesySet.qris;
 
 global.fake = {
 	anonim: 'https://telegra.ph/file/95670d63378f7f4210f03.png',

