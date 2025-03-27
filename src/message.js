@@ -80,7 +80,7 @@ async function GroupParticipantsUpdate(Xlesy, { id, participants, author, action
 								mediaType: 1,
 								previewType: 0,
 								thumbnailUrl: profile,
-								renderLargerThumbnail: true,
+								renderLargerThumbnail: false,
 								sourceUrl: global.my.ch
 							}
 						}
