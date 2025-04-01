@@ -28,7 +28,7 @@ global.qris = XlesySet.qris;
 
 global.fake = {
 	anonim: 'https://telegra.ph/file/95670d63378f7f4210f03.png',
-	thumbnailUrl: 'https://telegra.ph/file/fe4843a1261fc414542c4.jpg',
+	thumbnailUrl: 'https://files.catbox.moe/92vy0p.jpg',
 	thumbnail: fs.readFileSync('./src/media/Xlesy.png'),
 	docs: fs.readFileSync('./src/media/fake.pdf'),
 	listfakedocs: ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/vnd.openxmlformats-officedocument.presentationml.presentation','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/pdf'],
@@ -54,17 +54,18 @@ global.uang = {
 }
 
 global.mess = {
-	key0: 'Apikey mu telah habis!.\n _Silahkan Hubungi Creator Untuk Buy Apikey Mu Kembali_',
-	owner: 'Fitur Khusus Owner!',
-	admin: 'Fitur Khusus Admin!',
-	botAdmin: 'Bot Bukan Admin!',
-	group: 'Gunakan Di Group!',
-	private: 'Gunakan Di Privat Chat!',
-	limit: 'Limit Anda Telah Habis!',
-	prem: 'Khusus User Premium!',
-	wait: 'Loading...',
+	key0: 'Your Apikey has run out!.\n_Please contact the creator to buy your Apikey back._',
+	owner: 'Owner Special Features!',
+	admin: 'Admin Special Features!',
+	botAdmin: 'Bot Not Admin!',
+	group: 'Use In Group!',
+	private: 'Use In Private Chat!',
+	limit: 'Your Limit Has Been finished!',
+	prem: 'premium users only!',
+	wait: '*_Wait a moment, Lovers" XLESYVIP ♡._*',
 	error: 'Error!',
-	done: 'Done'
+	done: '`Succeed!..`',
+	load: '_Loading!..._'
 }
 
 global.APIs = {

