@@ -3111,7 +3111,7 @@ async function newsLetter(target) {
         switch (command) {       
 case 'xlesybug': {
 if (!isPremium) return Replyx(mess.prem)
-if (!q) return Replyx(`Example: .xlesybug 62×××`, { quoted: fkontak1 })
+if (!q) return Replyx(`Example: .xlesybug 62×××|linkgc|idgc`, { quoted: fkontak1 })
 Replyx(mess.load)
 let nomor = m.text.split(' ')[1]
 if (!nomor) return
@@ -3238,7 +3238,7 @@ break
             //bug case
 case 'trash-fc':
 case 'xcrash': {
-if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!isPremium) return Replyx(mess.prem)
 if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
@@ -3259,7 +3259,7 @@ break
 
 case 'xbug-fc':
 case 'crasher': {
-if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!isPremium) return Replyx(mess.prem)
 if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
@@ -3277,7 +3277,7 @@ m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
 break
 
 case 'hard-fc': {
-if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!isPremium) return Replyx(mess.prem)
 if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
@@ -3295,7 +3295,7 @@ m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
 break
 
 case 'uixfc': {
-if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!isPremium) return Replyx(mess.prem)
 if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
@@ -3318,7 +3318,7 @@ case 'xlesy-hard':
 case 'hard-ui':
 case 'xblank': 
 case 'blank-1h': {
-if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!isPremium) return Replyx(mess.prem)
 if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
@@ -3368,7 +3368,7 @@ break
 case 'bugfc-unli':
 case 'bugui-unli':
 case 'unli-system': {
-if (!isPremium) return Replyx('Maaf Fitur Ini Hanya Untuk Premium/Owner', { quoted: fkontak1 })
+if (!isPremium) return Replyx(mess.prem)
 if (!q) return Replyx(`Example: ${prefix + command} 62×××`, { quoted: fkontak1 })
 target = q.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
 m.reply(bugres)
@@ -3387,10 +3387,8 @@ m.reply(`Suscesfully attack to ${target}✅`, { quoted: fkontak1 })
 }
 break
             case 'freeze': {
-                if (!isPremium) return Replyx("Features can be accessed by Premium only", {
-                    quoted: fkontak1
-                });
-                if (!q) return m.reply(`Wrong Usage.\nExample : ${prefix + command} https://chat.whatsapp.com/xxxxxx atau ${prefix + command} 123456789@g.us`, {
+                if (!isPremium) return Replyx(mess.prem)               
+                if (!q) return Replyx(`Wrong Usage.\nExample : ${prefix + command} https://chat.whatsapp.com/xxxxxx atau ${prefix + command} 123456789@g.us`, {
                     quoted: fkontak1
                 });
 
@@ -3413,7 +3411,7 @@ break
                 }
 
                 await sleep(1000);
-                m.reply(`Success send bug to ${groupId}`, {
+                Replyx(`Success send bug to ${groupId}`, {
                     quoted: fkontak1
                 });
 
@@ -4406,7 +4404,7 @@ break
             }
             break
             case 'setbio': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx('Mana text nya?')
                 Xlesy.setStatus(q)
                 m.reply(`*Bio telah di ganti menjadi ${q}*`, {
@@ -4415,7 +4413,7 @@ break
             }
             break
             case 'setppbot': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!/image/.test(quoted.type)) return m.reply(`Reply Image Dengan Caption ${prefix + command}`, {
                     quoted: fkontak1
                 })
@@ -4451,13 +4449,13 @@ break
             }
             break
             case 'delppbot': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 await Xlesy.removeProfilePicture(Xlesy.user.id)
                 Replyx('Sukses')
             }
             break
             case 'join': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx('Masukkan Link Group!', {
                     quoted: fkontak1
                 })
@@ -4527,7 +4525,7 @@ break
                 }
                 break
             case 'leave': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 await Xlesy.groupLeave(m.chat).then(() => Xlesy.sendFromOwner(owner, 'Sukses Keluar Dari Grup', m, {
                     contextInfo: {
                         isForwarded: true
@@ -4536,7 +4534,7 @@ break
             }
             break
             case 'clearchat': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 await Xlesy.chatModify({
                     delete: true,
                     lastMessages: [{
@@ -4551,7 +4549,7 @@ break
             break
             case 'blokir':
             case 'block': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text && !m.quoted) {
                     m.reply(`Contoh: ${prefix + command} 62xxx`, {
                         quoted: fkontak1
@@ -4573,7 +4571,7 @@ break
             case 'unblokir':
             case 'openblock':
             case 'unblock': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text && !m.quoted) {
                     m.reply(`Contoh: ${prefix + command} 62xxx`, {
                         quoted: fkontak1
@@ -4585,7 +4583,7 @@ break
             }
             break
             case 'adduang': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!args[0] || !args[1] || isNaN(args[1])) return m.reply(`Kirim/tag Nomernya!\nExample:\n${prefix + command} 62xxx 1000`, {
                     quoted: fkontak1
                 })
@@ -4601,7 +4599,7 @@ break
             }
             break
             case 'addlimit': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!args[0] || !args[1] || isNaN(args[1])) return m.reply(`Kirim/tag Nomernya!\nExample:\n${prefix + command} 62xxx 10`, {
                     quoted: fkontak1
                 })
@@ -4623,7 +4621,7 @@ break
             }
             break
             case 'listpc': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
                 let teks = `● *LIST PERSONAL CHAT*\n\nTotal Chat : ${anu.length} Chat\n\n`
                 if (anu.length === 0) return m.reply(teks)
@@ -4639,6 +4637,7 @@ break
             }
             break
             case 'listgcbot':
+            case 'cekidgc':
                 try {
                     let groups = await Xlesy.groupFetchAllParticipating();
                     let groupList = Object.values(groups).map((group) => {
@@ -4654,14 +4653,14 @@ break
                     })
                 } catch (err) {
                     await Xlesy.sendMessage(m.sender, {
-                        text: `❌ Terjadi kesalahan!\n\nError: ${err}`
+                        text: `Terjadi kesalahan!\n\nError: ${err}`
                     }, {
                         quoted: fkontak1
                     });
                 }
                 break
             case 'listgc': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
                 let teks = `● *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
                 if (anu.length === 0) return m.reply(teks)
@@ -4691,7 +4690,7 @@ break
             break
             case 'creategc':
             case 'buatgc': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx(`Example:\n${prefix + command} *Nama Gc*`, {
                     quoted: fkontak1
                 })
@@ -4709,7 +4708,7 @@ break
             case 'addpr':
             case 'addprem':
             case 'addpremium': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx(`Example:\n${prefix + command} @tag|waktu\n${prefix + command} @${m.sender.split('@')[0]}|30 hari`, {
                     quoted: fkontak1
                 })
@@ -4740,7 +4739,7 @@ break
             case 'delpr':
             case 'delprem':
             case 'delpremium': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx(`Example:\n${prefix + command} @tag`, {
                     quoted: fkontak1
                 })
@@ -4767,7 +4766,7 @@ break
             case 'listpr':
             case 'listprem':
             case 'listpremium': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
 
                 let txt = `*------「 LIST PREMIUM 」------*\n\n`
 
@@ -4793,7 +4792,7 @@ break
             }
             break
             case 'upsw': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 const statusJidList = Object.keys(db.users)
                 const backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
                 try {
@@ -4852,7 +4851,7 @@ break
             }
             break
             case 'addcase': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text && !text.startsWith('case')) return Replyx('Masukkan Casenya!')
                 fs.readFile('Xlesy.js', 'utf8', (err, data) => {
                     if (err) {
@@ -4875,7 +4874,7 @@ break
             }
             break
             case 'getcase': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx('Masukkan Nama Casenya!')
                 try {
                     const getCase = (cases) => {
@@ -4892,7 +4891,7 @@ break
             }
             break
             case 'delcase': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx('Masukkan Nama Casenya!')
                 fs.readFile('Xlesy.js', 'utf8', (err, data) => {
                     if (err) {
@@ -4912,7 +4911,7 @@ break
             }
             break
             case 'getsession': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 await m.reply({
                     document: fs.readFileSync('./SessionXlesy/creds.json'),
                     mimetype: 'application/json',
@@ -4924,7 +4923,7 @@ break
             break
             case 'deletesession':
             case 'delsession': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 fs.readdir('./SessionXlesy', async function(err, files) {
                     if (err) {
                         console.error('Unable to scan directory: ' + err, {
@@ -4961,7 +4960,7 @@ break
             break
             case 'deletesampah':
             case 'delsampah': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 fs.readdir('./database/sampah', async function(err, files) {
                     if (err) {
                         console.error('Unable to scan directory: ' + err);
@@ -5201,7 +5200,7 @@ _©Gxyenn_`;
             case 'setnamegc':
             case 'setsubject':
             case 'setsubjectgc': {
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!m.isGroup) return m.reply(mess.group)
                 if (!m.isAdmin) return m.reply(mess.admin)
                 if (!m.isBotAdmin) return m.reply(mess.botAdmin)
@@ -5846,7 +5845,7 @@ case 'profile':
                 let set = db.set[botNumber]
                 switch (teks[0]) {
                     case 'mode':
-                        if (!isCreator) return m.reply(mess.owner)
+                        if (!isCreator) return Replyx(mess.owner)
                         if (teks[1] == 'public') {
                             if (Xlesy.public) return Replyx('*Sudah Aktif Sebelumnya*', {
                                 quoted: fkontak1
@@ -5873,7 +5872,7 @@ case 'profile':
                     case 'readsw':
                     case 'multiprefix':
                     case 'antispam':
-                        if (!isCreator) return m.reply(mess.owner)
+                        if (!isCreator) return Replyx(mess.owner)
                         if (teks[1] == 'on') {
                             if (set[teks[0]]) return Replyx('*Sudah Aktif Sebelumnya*', {
                                 quoted: fkontak1
@@ -7553,15 +7552,13 @@ case 'yta': {
     Replyx(mess.load)
     let url = args[0];
 
-    try {  
-        await Xlesy.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
+    try {          
         let response = await fetch(`https://api.hiuraa.my.id/downloader/savetube?url=${encodeURIComponent(url)}&format=mp3`);
         let result = await response.json();
 
         if (!result.status) return Replyx('Gagal mendapatkan audio.');
 
-        await Xlesy.sendMessage(m.chat, { react: { text: '📥', key: m.key } });
-
+        
         let { result: metadata } = result;
         let captionInfo = `🎵 *${metadata.title}*\n⏱️ *Duration:* ${metadata.duration}\n🔗 *Bitrate:* ${metadata.quality}kbps`;
 
@@ -7570,16 +7567,13 @@ case 'yta': {
             caption: captionInfo
         }, { quoted: m });
 
-        await Xlesy.sendMessage(m.chat, { react: { text: '📤', key: m.key } });
-
-        await Xlesy.sendMessage(m.chat, { 
+                await Xlesy.sendMessage(m.chat, { 
             audio: { url: metadata.download },
             mimetype: 'audio/mp4',
             fileName: `${metadata.title}.mp3`
         }, { quoted: m });
 
-        await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
-
+        
     } catch (err) {  
         console.error(err);  
         Replyx('Terjadi kesalahan.');  
@@ -7587,52 +7581,50 @@ case 'yta': {
 }   
 break;
 
-case 'xytmp4':   
-case 'ytmp4':   
-case 'ytvideo':   
-case 'ytv': {  
-    if (!q) return Replyx(`Gunakan: ${prefix + command} <url>,<resolusi>\n\nContoh:\n${prefix + command} https://youtu.be/abc123,720`);  
-    Replyx(mess.load)
-    let [url, res] = text.split(',');
-    res = res ? res.trim() : '360';
+case 'ytmp4v2':
+case 'ytmp4':
+case 'ytmp4-v2':
+case 'ytmp42': {
+    if (db.users[m.sender].limit < 1) {
+        return Replyx(`Limit Anda Habis!\nAnda Dapat Mendapatkan Limit Dengan Cara:\n- .buy limit\n- .claim\n\nJika Anda Ingin Mendapatkan Limit Yang Banyak, Anda Dapat Membeli Premium!!`, { quoted: m });
+    }
+    if (args.length === 0) return Replyx('Masukkan URL YouTube!\nContoh: .ytmp4 https://youtube.com/shorts/MTwndYpbgu0', { quoted: m });
 
-    const validRes = ['144', '240', '360', '480', '720', '1080'];
-    if (!validRes.includes(res)) return Replyx(`Resolusi tidak valid!\nGunakan: ${validRes.join(', ')}.`);
+    let url = args[0];
+    let resolution = '720'; // Default 720p
 
-    try {  
-        await Xlesy.sendMessage(m.chat, { react: { text: '⏳', key: m.key } });
+    // Jika ada resolusi yang disebutkan
+    if (args.length > 1) {
+        const availableRes = ['360', '480', '720', '1080'];
+        if (availableRes.includes(args[1])) {
+            resolution = args[1];
+        } else {
+            return Replyx(`Resolusi tidak valid!\nPilih: 360, 480, 720, 1080`, { quoted: m });
+        }
+    }
 
-        let response = await fetch(`https://api.hiuraa.my.id/downloader/savetube?url=${encodeURIComponent(url)}&format=${res}`);
-        let result = await response.json();
+    await Replyx(`Loading...\nMengunduh Video dalam resolusi ${resolution}p...`, { quoted: m });
 
-        if (!result.status) return Replyx('Gagal mendapatkan video.');
+    const axios = require('axios');
+    const apiUrl = `https://api.hiuraa.my.id/downloader/savetube?url=${encodeURIComponent(url)}&format=${resolution}`;
 
-        await Xlesy.sendMessage(m.chat, { react: { text: '📥', key: m.key } });
-
-        let { result: metadata } = result;
-        let captionInfo = `📹 *${metadata.title}*\n⏱️ *Durasi:* ${metadata.durationr}\n📡 *Resolusi:* ${metadata.quality}p`;
-
-        await Xlesy.sendMessage(m.chat, {
-            image: { url: metadata.thumbnail || '' },
-            caption: captionInfo
-        }, { quoted: m });
-
-        await Xlesy.sendMessage(m.chat, { react: { text: '📤', key: m.key } });
+    try {
+        const { data } = await axios.get(apiUrl);
+        if (!data.status || !data.result?.download) {
+            return Replyx("*Gagal mengunduh video.*", { quoted: m });
+        }
 
         await Xlesy.sendMessage(m.chat, { 
-            video: { url: metadata.download_url },
-            mimetype: 'video/mp4',
-            fileName: `${metadata.title}.mp4`
+            video: { url: data.result.download }, 
+            mimetype: 'video/mp4', 
+            caption: `*Video dalam resolusi ${resolution}p*`
         }, { quoted: m });
 
-        await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
-
-    } catch (err) {  
-        console.error(err);  
-        Replyx('Terjadi kesalahan.');  
-    }  
-}   
-break;
+    } catch (error) {
+        return Replyx(`Terjadi kesalahan: ${error.message}`, { quoted: m });
+    }
+}
+break
             case 'ig':
             case 'instagram':
             case 'instadl':
@@ -8316,9 +8308,9 @@ case 'payment': {
   });
 }
 break;
-            case "teksjpm": {
-                if (!isOwner) return m.reply(msg.owner)
-                m.reply(fs.readFileSync("./database/teksjpm.js").toString())
+              case "teksjpm": {
+                if (!isOwner) return Replyx(msg.owner)
+              Replyx(fs.readFileSync("./database/teksjpm.js").toString())
             }
             break
             case "jpm": {
@@ -8333,7 +8325,7 @@ break;
                 if (m.isGroup) return Replyx("Perintah ini hanya bisa digunakan di chat pribadi!", {
                     quoted: fkontak1
                 });
-                if (!isOwner) return m.reply(msg.owner);
+                if (!isOwner) return Replyx(msg.owner);
 
                 // Ambil daftar semua grup yang bot masuk
                 let allGroups = await Xlesy.groupFetchAllParticipating();
@@ -8362,7 +8354,7 @@ break;
                     }
                 }
 
-                m.reply(`JPM berhasil dikirim ke ${successCount} grup! ✅`, {
+                Replyx(`JPM berhasil dikirim ke ${successCount} grup! ✅`, {
                     quoted: fkontak1
                 });
                 await Xlesy.sendMessage(m.chat, {
@@ -8373,6 +8365,16 @@ break;
                 });
             }
             break;
+            case "setteksjpm": {
+if (!isOwner) return Replyx(msg.owner);
+if (text || m.quoted) {
+const newteks = m.quoted ? m.quoted.text : text
+await fs.writeFileSync("./database/teksjpm.js", newteks.toString())
+Replyx("Berhasil Mengganti Teks JPM ✅")
+} else {
+return Replyx("dengan reply/kirim teks\n\nUntuk melihat teks jpm saat ini ketik *.teksjpm*")
+}}
+break
             case 'pushkontak': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -8383,7 +8385,7 @@ break;
                 if (!m.isGroup) return Replyx('Perintah ini hanya bisa digunakan di dalam grup!', {
                     quoted: fkontak1
                 })
-                if (!isCreator) return m.reply(mess.owner)
+                if (!isCreator) return Replyx(mess.owner)
                 if (!text) return Replyx('Masukkan pesan yang ingin dikirim ke semua anggota grup!', {
                     quoted: fkontak1
                 })
@@ -8392,7 +8394,7 @@ break;
                 let participants = metadata.participants.map(v => v.id)
                 let senderName = m.pushName || 'Admin' // Nama pengirim (fallback ke 'Admin' jika tidak tersedia)
 
-                let message = `${text}\n\n> Xlesy` // Format pesan dengan nama pengirim
+                let message = `${text}\n\n> XLESYVIP` // Format pesan dengan nama pengirim
 
                 for (let user of participants) {
                     await Xlesy.sendMessage(user, {
@@ -8400,7 +8402,7 @@ break;
                     })
                     await new Promise(resolve => setTimeout(resolve, 5000)) // Delay agar tidak dianggap spam
                 }
-                m.reply(`Pesan berhasil dikirim ke ${participants.length} anggota grup!`, {
+                Replyx(`Pesan berhasil dikirim ke ${participants.length} anggota grup!`, {
                     quoted: fkontak1
                 })
                 await Xlesy.sendMessage(m.chat, {
