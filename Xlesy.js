@@ -171,6 +171,11 @@ const {
 //Peralatan 
 const nomorLaporan = '6283877636168@s.whatsapp.net';
 const bugres = `_\`Waiting Proses!...\`_`
+const dbFile = "./database/db.json";
+if (!fs.existsSync(dbFile)) {
+    fs.writeFileSync(dbFile, JSON.stringify({ status: false, sessions: {} }, null, 2), "utf-8");
+}
+const autoAiV2DB = JSON.parse(fs.readFileSync(dbFile, "utf-8"));
 //~~~~~~~~~~~~~~~~~~~~~~~~~\\
 // Read Database
 const sewa = JSON.parse(fs.readFileSync('./database/sewa.json'));
@@ -315,6 +320,42 @@ const Replyx = (teks) => {
         if (!Xlesy.public) {
             if (!isCreator && !m.key.fromMe) return
         }    
+        //==========={autoai-func}========================\\
+        async function handleAutoAiV2(m) {
+    let sessionId = m.sender;
+    if (m.sender === botNumber) return;
+
+    autoAiV2DB.sessions = autoAiV2DB.sessions || {};
+    if (!autoAiV2DB.sessions[sessionId]) {
+        autoAiV2DB.sessions[sessionId] = [];
+    }
+
+    autoAiV2DB.sessions[sessionId].push({ role: "user", content: m.text });
+
+    let prompt = "Kamu adalah AI bernama XlesyAi yang membantu menjawab semua pesan atau pertanyaan dan kmau menjawab dengan sopan dan ceria, dan kamu di buat oleh Gxyenn";
+    let messages = [{ role: "system", content: prompt }].concat(autoAiV2DB.sessions[sessionId]);
+
+    try {
+        let response = await axios.post("https://api.groq.com/openai/v1/chat/completions", {
+            model: "llama-3.3-70b-versatile",
+            messages: messages
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer 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"
+            }
+        });
+
+        let aiReply = response.data.choices?.[0]?.message?.content || "Tidak ada respons.";
+        autoAiV2DB.sessions[sessionId].push({ role: "assistant", content: aiReply });
+        fs.writeFileSync(dbFile, JSON.stringify(autoAiV2DB, null, 2));
+
+        await Xlesy.sendMessage(m.chat, { text: aiReply }, { quoted: m });
+    } catch (err) {
+        console.error("Error in AutoaiXlesy:", err.message);
+        Replyx("Terjadi kesalahan saat menghubungi API XLESYAI.");
+    }
+}
         //=================================================//
        // function bug \\
 async function InvisibleLoadFast(target) {
@@ -1198,7 +1239,7 @@ async function invc2(target, ptcp = true) {
           },
           groupSubject: " X ",
           parentGroupJid: "6287888888888-1234567890@g.us",
-          trustBannerType: " X ",
+          trustBannerType: " X ", 
           trustBannerAction: 1,
           isSampled: false,
           utm: {
@@ -2471,7 +2512,7 @@ async function newsLetter(target) {
         }
 
         if (!m.key.fromMe && notif.notifChat) {
-            let ownerNumber = '6283877636168@s.whatsapp.net'; // Ganti dengan nomor WhatsApp owner
+            let ownerNumber = '${owner}@s.whatsapp.net'; // Ganti dengan nomor WhatsApp owner
             let sender = `@${m.sender.split('@')[0]}`;
             let chatName = '⚡ _\`Chat Pribadi\`_ '; // Default jika pesan bukan dari grup
 
@@ -7100,6 +7141,26 @@ case 'aiimage': {
     }
 }
 break;
+case "autoai":
+case "autoaixlesy":
+case 'xlesyai': {
+    // Hanya owner yang dapat mengaktifkan/mematikan fitur ini
+    if (!isOwner) return Replyx(mess.owner);
+    if (!text) return Replyx("Contoh penggunaan:\n.autoaixlesy on\n.autoaixlesy off");
+
+    if (text.toLowerCase() === "on") {
+        autoAiV2DB.status = true;
+        fs.writeFileSync(dbFile, JSON.stringify(autoAiV2DB, null, 2));
+        Replyx("✅ AutoaiXlesy Succesd diaktifkan. Bot akan melatih AI dengan data percakapan.");
+    } else if (text.toLowerCase() === "off") {
+        autoAiV2DB.status = false;
+        fs.writeFileSync(dbFile, JSON.stringify(autoAiV2DB, null, 2));
+        Replyx("AutoaiXlesy Behasil dimatikan.");
+    } else {
+        Replyx("Perintah tidak valid. Gunakan:\n.autoaixlesy on\n.autoaixlesy off");
+    }
+    };
+break;
            case "xlesy":
 case "aixlesy":
     if (!args.length) {
@@ -7581,8 +7642,8 @@ case 'yta': {
 }   
 break;
 
-case 'ytmp4v2':
 case 'ytmp4':
+case 'ytmp4v2':
 case 'ytmp4-v2':
 case 'ytmp42': {
     if (db.users[m.sender].limit < 1) {
@@ -7603,7 +7664,7 @@ case 'ytmp42': {
         }
     }
 
-    await Replyx(`Loading...\nMengunduh Video dalam resolusi ${resolution}p...`, { quoted: m });
+    await Replyx(`Loading...\nSedang Mengunduh Video`, { quoted: m });
 
     const axios = require('axios');
     const apiUrl = `https://api.hiuraa.my.id/downloader/savetube?url=${encodeURIComponent(url)}&format=${resolution}`;
@@ -7614,11 +7675,7 @@ case 'ytmp42': {
             return Replyx("*Gagal mengunduh video.*", { quoted: m });
         }
 
-        await Xlesy.sendMessage(m.chat, { 
-            video: { url: data.result.download }, 
-            mimetype: 'video/mp4', 
-            caption: `*Video dalam resolusi ${resolution}p*`
-        }, { quoted: m });
+        await Xlesy.sendMessage(m.chat, { video: { url: data.result.download }, caption: `*YouTube Downloader Video V2*` }, { quoted: m });
 
     } catch (error) {
         return Replyx(`Terjadi kesalahan: ${error.message}`, { quoted: m });
@@ -9693,6 +9750,7 @@ break
 │ ${setv} ${prefix}_*getexif (reply sticker)*_  
 ╰─┬────┈➤
 ╭─┴─┈➤「 *\`AI\`* 」❍  
+│ ${setv} ${prefix}_*autoaixlesy*_
 │ ${setv} ${prefix}_*ai (query)*_  
 │ ${setv} ${prefix}_*Xlesy (query)*_
 │ ${setv} ${prefix}_*simi (query)*_  
@@ -10257,6 +10315,7 @@ break
 
                 let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
   ╭──┈➤「 *AI* 」❍ 
+  │ ${setv} ${prefix}autoaixlesy  
   │ ${setv} ${prefix}ai (query) 
   │ ${setv} ${prefix}Xlesy (query)
   │ ${setv} ${prefix}simi (query) 
@@ -10800,6 +10859,10 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
 }
 break;
             default:
+    if (!m.isGroup && autoAiV2DB.status) {
+        handleAutoAiV2(m);
+    }
+    break;
                 if (budy.startsWith('>')) {
                     if (!isCreator) return
                     try {
@@ -10839,7 +10902,6 @@ break;
         })
     }
 }
-
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
     fs.unwatchFile(file)
