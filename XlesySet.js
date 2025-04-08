@@ -6,7 +6,7 @@ const XlesySet = {
     botname: 'XlesyBot',
     listprefix: ['.'],
     listv: ['❀','✿','⚘','々'],
-    number_bot: "6283176591376", // Kalo pake panel bisa masukin nomor di sini, jika belum ambil session. Format: '628xx'
+    number_bot: "", // Kalo pake panel bisa masukin nomor di sini, jika belum ambil session. Format: '628xx'
     dana: ['083877636168'],
     gopay: ['083877636168'],
     ovo: ['kosong'],
