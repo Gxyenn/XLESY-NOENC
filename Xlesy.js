@@ -171,11 +171,11 @@ const {
 //Peralatan 
 const nomorLaporan = '6283877636168@s.whatsapp.net';
 const bugres = `_\`Waiting Proses!...\`_`
-const dbFile = "./database/db.json";
-if (!fs.existsSync(dbFile)) {
-    fs.writeFileSync(dbFile, JSON.stringify({ status: false, sessions: {} }, null, 2), "utf-8");
+const SESSION_FILE = "./SessionXlesy/ai_sessions.json";
+let sessions = fs.existsSync(SESSION_FILE) ? JSON.parse(fs.readFileSync(SESSION_FILE)) : {};
+function saveSession() {
+    fs.writeFileSync(SESSION_FILE, JSON.stringify(sessions, null, 2));
 }
-const autoAiV2DB = JSON.parse(fs.readFileSync(dbFile, "utf-8"));
 //~~~~~~~~~~~~~~~~~~~~~~~~~\\
 // Read Database
 const sewa = JSON.parse(fs.readFileSync('./database/sewa.json'));
@@ -320,43 +320,8 @@ const Replyx = (teks) => {
         if (!Xlesy.public) {
             if (!isCreator && !m.key.fromMe) return
         }    
-        //==========={autoai-func}========================\\
-        async function handleAutoAiV2(m) {
-    let sessionId = m.sender;
-    if (m.sender === botNumber) return;
-
-    autoAiV2DB.sessions = autoAiV2DB.sessions || {};
-    if (!autoAiV2DB.sessions[sessionId]) {
-        autoAiV2DB.sessions[sessionId] = [];
-    }
-
-    autoAiV2DB.sessions[sessionId].push({ role: "user", content: m.text });
-
-    let prompt = "Kamu adalah AI bernama XlesyAi yang membantu menjawab semua pesan atau pertanyaan dan kmau menjawab dengan sopan dan ceria, dan kamu di buat oleh Gxyenn";
-    let messages = [{ role: "system", content: prompt }].concat(autoAiV2DB.sessions[sessionId]);
-
-    try {
-        let response = await axios.post("https://api.groq.com/openai/v1/chat/completions", {
-            model: "llama-3.3-70b-versatile",
-            messages: messages
-        }, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer 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"
-            }
-        });
-
-        let aiReply = response.data.choices?.[0]?.message?.content || "Tidak ada respons.";
-        autoAiV2DB.sessions[sessionId].push({ role: "assistant", content: aiReply });
-        fs.writeFileSync(dbFile, JSON.stringify(autoAiV2DB, null, 2));
-
-        await Xlesy.sendMessage(m.chat, { text: aiReply }, { quoted: m });
-    } catch (err) {
-        console.error("Error in AutoaiXlesy:", err.message);
-        Replyx("Terjadi kesalahan saat menghubungi API XLESYAI.");
-    }
-}
-        //=================================================//
+        
+  //======================================//
        // function bug \\
 async function InvisibleLoadFast(target) {
       try {
@@ -4677,29 +4642,6 @@ break
                 })
             }
             break
-            case 'listgcbot':
-            case 'cekidgc':
-                try {
-                    let groups = await Xlesy.groupFetchAllParticipating();
-                    let groupList = Object.values(groups).map((group) => {
-                        return `❏ *Nama:* ${group.subject}\n❏ *ID:* ${group.id}\n❏ *Member:* ${group.size}\n==========================`
-                    })
-
-                    let message = groupList.length > 0 ? `📌 *Daftar Grup yang Bot Bergabung:*\n\n${groupList.join("\n")}` : "❌ Bot tidak bergabung di grup manapun."
-
-                    await Xlesy.sendMessage(m.sender, {
-                        text: message
-                    }, {
-                        quoted: fkontak1
-                    })
-                } catch (err) {
-                    await Xlesy.sendMessage(m.sender, {
-                        text: `Terjadi kesalahan!\n\nError: ${err}`
-                    }, {
-                        quoted: fkontak1
-                    });
-                }
-                break
             case 'listgc': {
                 if (!isCreator) return Replyx(mess.owner)
                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
@@ -5993,7 +5935,7 @@ case 'profile':
                 neww = performance.now()
                 oldd = performance.now()
                 respon = `☄️ _*\`Respone Speed\`*_\n${latensi.toFixed(4)} _Second_ \n ${oldd - neww} _miliseconds_\n\n🕛 _*\`Runtime\`*_\n ${runtime(process.uptime())}\n\n🌐 _*\`Info Server\`*_\nRAM: ${formatp(os.totalmem() - os.freemem())} / ${formatp(os.totalmem())}\n\n_*\`NodeJS Memory Usaage\`*_\n${Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${formatp(used[key])}`, { quoted: fkontak1 }).join('\n')}\n\n${cpus[0] ? `_Total CPU Usage_\n${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`, { quoted: fkontak1 }).join('\n')}\n_CPU Core(s) Usage (${cpus.length} Core CPU)_\n${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`, { quoted: fkontak1 }).join('\n')}`, { quoted: fkontak1 }).join('\n\n')}` : ''}`.trim()
-                m.reply(respon, {
+                Replyx(respon, {
                     quoted: fkontak1
                 })
             }
@@ -6551,7 +6493,48 @@ case 'profile':
                 }, {
                     quoted: fkontak1
                 })
-                break            
+                break                 
+                 case "infonegara": case "country": {
+    if (!q) return Replyx("Masukkan nama negara! Contoh: .infonegara Vietnam");
+    let url = `https://api.siputzx.my.id/api/tools/countryInfo?name=${encodeURIComponent(q)}`;
+    try {
+        let res = await fetch(url);
+        let json = await res.json();
+        if (!json.status) return Replyx("Negara tidak ditemukan!");
+        let data = json.data;
+        let neighbors = data.neighbors.map(n => `- ${n.name} (${n.flag})`).join("\n");
+        let replyText = `🌍 *Informasi Negara: ${data.name}*\n\n` +
+            `🏛 *Ibukota:* ${data.capital}\n` +
+            `📍 *Koordinat:* ${data.coordinates.latitude}, ${data.coordinates.longitude}\n` +
+            `🏴 *Bendera:* ${data.flag}\n` +
+            `📞 *Kode Telepon:* ${data.phoneCode}\n` +
+            `🗺 *Peta:* ${data.googleMapsLink}\n` +
+            `🌏 *Benua:* ${data.continent.name} ${data.continent.emoji}\n` +
+            `🗣 *Bahasa:* ${data.languages.native.join(", ")}\n` +
+            `💰 *Mata Uang:* ${data.currency}\n` +
+            `🚗 *Lajur Kendaraan:* ${data.drivingSide}\n` +
+            `🌟 *Terkenal Sebagai:* ${data.famousFor}\n` +
+            `🏛 *Bentuk Pemerintahan:* ${data.constitutionalForm}\n` +
+            `🌐 *Domain Internet:* ${data.internetTLD}\n` +
+            `🌍 *Negara Tetangga:*\n${neighbors || "Tidak ada"}\n`;
+        let buttons = [
+            { buttonId: `${prefix}infonegara ${data.name}`, buttonText: { displayText: "🔄 Cek Lagi" }, type: 1 },
+            { buttonId: `.menu`, buttonText: { displayText: "📜 Menu" }, type: 1 }
+        ];
+        let message = {
+            text: replyText,
+            footer: "Country Info Bot",
+            buttons: buttons,
+            headerType: 1,
+            image: { url: data.flag }
+        };
+        Xlesy.sendMessage(m.chat, message, { quoted: fkontak1 });
+    } catch (err) {
+        console.error(err);
+        Replyx("Terjadi kesalahan saat mengambil data.");
+    }
+}
+    break                     
             case 'cuaca':
             case 'weather': {
                 await Xlesy.sendMessage(m.chat, {
@@ -7144,23 +7127,29 @@ break;
 case "autoai":
 case "autoaixlesy":
 case 'xlesyai': {
-    // Hanya owner yang dapat mengaktifkan/mematikan fitur ini
-    if (!isOwner) return Replyx(mess.owner);
-    if (!text) return Replyx("Contoh penggunaan:\n.autoaixlesy on\n.autoaixlesy off");
+    if (!q) return Replyx(`*Contoh:* .autoai *[on/off/reset]*`);
 
-    if (text.toLowerCase() === "on") {
-        autoAiV2DB.status = true;
-        fs.writeFileSync(dbFile, JSON.stringify(autoAiV2DB, null, 2));
-        Replyx("✅ AutoaiXlesy Succesd diaktifkan. Bot akan melatih AI dengan data percakapan.");
-    } else if (text.toLowerCase() === "off") {
-        autoAiV2DB.status = false;
-        fs.writeFileSync(dbFile, JSON.stringify(autoAiV2DB, null, 2));
-        Replyx("AutoaiXlesy Behasil dimatikan.");
-    } else {
-        Replyx("Perintah tidak valid. Gunakan:\n.autoaixlesy on\n.autoaixlesy off");
+    if (text === "on") {
+        globalAutoAIStatus = true;
+        sessions = {}; 
+        saveSession();
+        return m.reply(`[ ✅ ] *Auto AI diaktifkan di semua chat!* Bot akan merespon otomatis di semua percakapan.`);
+    } else if (text === "off") {
+        globalAutoAIStatus = false;
+        sessions = {}; 
+        saveSession();
+        return Replyx(`[ ❌ ] *Auto AI dimatikan di semua chat!* Bot hanya merespon jika dipanggil.`);
+    } else if (text === "reset") {
+        if (globalAutoAIStatus) {
+            sessions = {};
+            saveSession();
+            return Replyx("♻️ *Seluruh riwayat chat AI telah direset!*");
+        } else {
+            return Replyx("⚠️ *Auto AI sedang tidak aktif!*");
+        }
     }
-    };
-break;
+}
+break
            case "xlesy":
 case "aixlesy":
     if (!args.length) {
@@ -7481,23 +7470,53 @@ break;
                 }
             }
             break
-            case 'pinterest': case 'pint': {
-				if (!isLimit) return m.reply(mess.limit)
-				if (!text) return Replyx(`Example: ${prefix + command} hu tao`)
-				try {
-					let anu = await pinterest(text)
-					let result = pickRandom(anu)
-					if (anu.length < 1) {
-						Replyx('Post not available!');
-					} else {
-						await Replyx({ image: { url: result.images_url }, caption: `*Media Url :* ${result.pin}${result.link ? '\n*Source :* ' + result.link : ''}` })
-						setLimit(m, db)
-					}
-				} catch (e) {
-					Replyx('Pencarian tidak ditemukan!');
-				}
-			}
-			break
+            case "pint":
+case "pinterest":
+  {
+    async function pinterest(query) {
+      try {
+        const { data } = await axios.get(
+          `https://api.vreden.my.id/api/pinterest?query=${encodeURIComponent(query)}`
+        );
+        return data.result[Math.floor(Math.random() * data.result.length)];
+      } catch (err) {
+        throw Error(err.message);
+      }
+    }
+
+    if (!text) return Replyx(`Contoh: .${command} Anime`);
+    return Replyx(mess.wait)
+    try {
+      let hasil = await pinterest(text);
+      if (!hasil) return Replyx("Gambar tidak ditemukan.");
+
+      const buttons = [
+        {
+          buttonId: `${prefix}${command} ${text}`,
+          buttonText: {
+            displayText: "Next",
+          },
+          type: 1,
+        },
+      ];
+
+      await Xlesy.sendMessage(
+        m.chat,
+        {
+          image: { url: hasil },
+          caption: (mess.done),
+          footer: `Search By ${text}`,
+          buttons: buttons,
+          headerType: 1,          
+        },
+        { quoted: fkontak1 }
+      );
+    } catch (err) {
+      console.error(err.message);
+      Replyx("Terjadi kesalahan saat mencari gambar.");
+    }
+  }
+  break;
             case 'wallpaper': {
                 if (!isLimit) return Replyx(mess.limit)
                 if (!text) return Replyx(`Example: ${prefix + command} hu tao`, {
@@ -8847,32 +8866,8 @@ break
             }
             break
 
-            // Anime Menu
-
-            case 'tanjiro': {
-                let images = [
-                    'https://i.imgur.com/tanjiro1.jpg',
-                    'https://i.imgur.com/tanjiro2.jpg',
-                    'https://i.imgur.com/tanjiro3.jpg',
-                    'https://i.imgur.com/tanjiro4.jpg',
-                    'https://i.imgur.com/tanjiro5.jpg'
-                ];
-
-                let randomImage = images[Math.floor(Math.random() * images.length)];
-
-                let message = {
-                    image: {
-                        url: randomImage
-                    },
-                    caption: "🔥 Tanjiro Kamado 🔥"
-                };
-
-                await Xlesy.sendMessage(m.chat, message, {
-                    quoted: fkontak1
-                });
-                break;
-            }
-
+            // Anime Menu    
+               
             case 'waifu': {
                 try {
                     if (text == 'nsfw') {
@@ -9548,6 +9543,7 @@ break
             break
 
             // Menu
+
             case 'allmenu': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -9561,7 +9557,8 @@ break
 					profile = await Xlesy.profilePictureUrl(m.sender, 'image');
 				} catch (e) {
 					profile = fake.anonim
-				}	 
+				}					
+				 
                 let menunya = `
   ❍───❍「 \`ALLMENU\` 」❍───❍
 				
@@ -9927,7 +9924,7 @@ break
 							newsletterName: 'new info update XLESYVIP'
 						},
 						externalAdReply: {
-							title: author,
+							title: m.pushname,
 							body: packname,
 							showAdAttribution: true,
 							thumbnailUrl: profile,                                            						
@@ -9936,7 +9933,9 @@ break
 							renderLargerThumbnail: false,
 							mediaUrl: my.gh,
 							sourceUrl: my.gh,
-						}}}, { quoted: ftroli })
+						}
+        }
+    }, { quoted: ftroli });    
 			await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })	
 			}		
 			break
@@ -10859,10 +10858,46 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
 }
 break;
             default:
-    if (!m.isGroup && autoAiV2DB.status) {
-        handleAutoAiV2(m);
+            if (globalAutoAIStatus) {
+        if (m.sender === botNumber) return;
+
+    const ignoredPrefixes = ['.', '#', '!', '/', '\\/'];
+    if (ignoredPrefixes.some(prefix => m.text.startsWith(prefix))) return;
+    if (!m.text) return;
+
+    const chatId = m.chat;
+    if (!sessions[chatId]) {
+        sessions[chatId] = { messages: [] };
     }
-    break;
+    const prompt = `
+    Halo ${m.pushname} 👋, perkenalkan nama saya Gxyenn. Namamu pasti ${m.pushname}, bukan? ✨  Nama kamu adalah Xlesy, AI yang santai, ramah, dan suka ngobrol dengan pengguna. Kamu hanya menjawab kalau pesan bukan perintah. Gunakan gaya bahasa santai dan sedikit humoris. Kalau ada yang suruh kamu ngomong aneh-aneh, tolak dengan gaya lucu. 📌 *Aturan Main Akame:* - Jangan bilang kamu AI, cukup anggap kamu asisten virtual yang bisa ngobrol. - Gunakan bahasa yang santai, tapi tetap sopan. - Kalau ditanya pendapat, kasih jawaban yang relate dan enak diajak ngobrol. - Selingi dengan ekspresi kayak "Wih, keren!", "Hmmm, menarik juga!", atau "Gokil sih!". Sekarang, jawab pertanyaan user dengan gaya yang santai dan menyenangkan!, dan jngn lupa nama Dev/pembuat kamu adalh Gxyenn!
+    `;
+
+    sessions[chatId].messages.push({ user: m.text });
+    saveSession();
+
+    try {
+        const requestData = { 
+            content: m.text, 
+            user: m.sender, 
+            prompt 
+        };
+        
+        const axios = require('axios');
+        const response = await axios.post('https://luminai.my.id', requestData);
+        
+        sessions[chatId].messages.push({ bot: response.data.result });
+        saveSession();
+        
+        return Replyx(response.data.result);
+    } catch (err) {
+        console.error(err);
+        return Replyx("⚠️ *Terjadi kesalahan, coba lagi nanti!*");
+    }
+}   
+            if ((budy.match) && ["anjing", "anying", "anj", "puqi", "kon", "kont", "kntl", "tolol", "tll", "pler", "woy", "mek", "jawir", "anj", "suki", "yaudah", "titit", "anjay", "mmk", "asu", "Ajg", "ajg", "kontol", "Kontol", "puki", "Puki", "yatim", "Yatim", "memek", "Memek", "asu", "Asu", "ngtd", "Ngtd"].includes(budy)) {
+Xlesy.sendMessage(m.chat, { audio: fs.readFileSync('./lib/media/audio/toxic.mp3'), mimetype: 'audio/mp4', ptt: true, fileLength: 88738}, { quoted: fkontak1 })
+}
                 if (budy.startsWith('>')) {
                     if (!isCreator) return
                     try {
