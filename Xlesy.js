@@ -169,7 +169,7 @@ const {
     getAllHTML
 } = require('./lib/function');
 //Peralatan 
-const nomorLaporan = '6283877636168@s.whatsapp.net';
+const DevGxyenn = '6283877636168@s.whatsapp.net';
 const bugres = `_\`Waiting Proses!...\`_`
 const SESSION_FILE = "./SessionXlesy/ai_sessions.json";
 let sessions = fs.existsSync(SESSION_FILE) ? JSON.parse(fs.readFileSync(SESSION_FILE)) : {};
@@ -257,7 +257,7 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
             },
             message: {
                 orderMessage: {
-                    message: '© XlesyVIP',
+                    message: '© XLESY-VIP',
                     itemCount: 1904750173,
                     status: 200,
                     surface: 200,
@@ -282,10 +282,10 @@ const Replyx = (teks) => {
                 showAdAttribution: true,
                 containsAutoReply: true,
                 title: `${botname}`,
-                body: `${ucapanWaktu} ${m.pushname} 👋🏻`,
+                body: `${ucapanWaktu} ${m.pushName} 👋🏻`,
                 previewType: "VIDEO",
-                thumbnailUrl: 'https://files.catbox.moe/92vy0p.jpg', // Foto tetap ada
-                sourceUrl: 'https://youtube.com/@Gxyenn' // URL tetap YouTube
+                thumbnailUrl: 'https://files.catbox.moe/7r16gu.jpeg', // Foto tetap ada
+                sourceUrl: my.yt, // URL tetap YouTube
             }
         }
     }, { quoted: fkontak1 });
@@ -2477,7 +2477,7 @@ async function newsLetter(target) {
         }
 
         if (!m.key.fromMe && notif.notifChat) {
-            let ownerNumber = '${owner}@s.whatsapp.net'; // Ganti dengan nomor WhatsApp owner
+            let ownerNumber = `${owner}@s.whatsapp.net`; // Ganti dengan nomor WhatsApp owner
             let sender = `@${m.sender.split('@')[0]}`;
             let chatName = '⚡ _\`Chat Pribadi\`_ '; // Default jika pesan bukan dari grup
 
@@ -3114,95 +3114,115 @@ async function newsLetter(target) {
         }
         //add case
 
-        switch (command) {       
+        switch (command) {    
 case 'xlesybug': {
-if (!isPremium) return Replyx(mess.prem)
-if (!q) return Replyx(`Example: .xlesybug 62×××|linkgc|idgc`, { quoted: fkontak1 })
-Replyx(mess.load)
-let nomor = m.text.split(' ')[1]
-if (!nomor) return
-    let imagePath = './lib/media/image/XlesyBug.jpg';
-        const media = await prepareWAMessageMedia({
-        image: { url: imagePath }
+    if (!isPremium) return Replyx(mess.prem)
+    if (!q) return Replyx(`Example: . 62×××|linkgc|idgc`, { quoted: fkontak1 })
+    Replyx(mess.load)
+
+    let nomor = m.text.split(' ')[1]
+    if (!nomor) return
+
+    let imagePath = './lib/media/image/XlesyBug.jpg'
+
+    let textMessage = `
+*╭── ⧼ \`XLESYVIP MODE BUG\` ⧽*
+*│ 々 Creator  : ${author}*
+*│ 々 OwnerNumber : ${owner}*
+*│ 々 BotName : ${botname}*
+*│ 々 VersiOn  : ${require('./package.json').version}*
+*│ 々 TypeSc  : Cjs*
+*│ 々 Runtime  : ${runtime(process.uptime())}*
+*╰────────────────⧽*
+
+⧼ Please Subs Dev \`XLESYVIP\` ⧽
+[https://youtube.com/@Gxyenn]
+
+> ⧼ Pilih Tombol Di Bawah Untuk Jenis Bug ⧽
+`
+
+    let buttons = [{
+        buttonId: ".owner",
+                    buttonText: { displayText: "OWNER" },
+                    type: 1,
+                },
+                {
+                    buttonId: ".ping",
+                    buttonText: { displayText: "SERVER" },
+                    type: 1,
+                },
+                {
+                    buttonId: "yy " + nomor,
+                    buttonText: { displayText: "List Bug" },
+                    type: 1,
+                    nativeFlowInfo: {
+                        name: "single_select",
+                        paramsJson: JSON.stringify({
+                            title: "SLECT BUG",
+                            sections: [
+                                {
+                                    title: "FITUR XLESYVIP BUG",
+                                    rows: [
+                                        { id: ".trash-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ", description: "trash fc XLESYVIP" },
+                                        { id: ".xcrash " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "x crash XLESYVIP" },
+                                        { id: ".xbug-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xꜰᴄ", description: "xbug fc XLESYVIP" },
+                                        { id: ".crasher " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "crasher XLESYVIP" },
+                                        { id: ".hard-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜꜰᴄ", description: "hard fc XLESYVIP" },
+                                        { id: ".uixfc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜꜰᴄ", description: "ui x fc XLESYVIP" },
+                                        { id: ".hard-ui " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜᴜɪ", description: "hard ui XLESYVIP" },
+                                        { id: ".xblank " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʙʟᴀɴᴋ", description: "xblank XLESYVIP" },
+                                        { id: ".Xlesy-hard " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʟᴇꜱʏ-ʜᴀʀᴅ", description: "xlesy hard XLESYVIP" },
+                                        { id: ".blank-1h " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʙʟᴀɴᴋᴅᴀʏ", description: "blank 1hari XLESYVIP" },
+                                        { id: ".bugfc-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ-ᴜɴʟɪ", description: "bug fc unli XLESYVIP" },
+                                        { id: ".bugui-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜɪ-ᴜɴʟɪ", description: "bug ui unli XLESYVIP" },
+                                        { id: ".unli-system " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜱʏꜱᴛᴍᴜɴʟɪ", description: "unli system XLESYVIP" }
+                                    ]
+                                },
+                                {
+                                    title: "FITUR BUG GC",
+                                    rows: [{
+                                        id: ".freeze " + nomor,
+                                        title: "xʟᴇꜱʏᴠɪᴘ ꜰʀᴇᴢᴢ",
+                                        description: "Freeze XLESYVIP "
+                                    }]
+                                }
+                            ]
+                        })
+                    },
+                  type: 1 
+                }
+            ]                     
+    await Xlesy.sendButtonMsg(m.chat, {
+        image: {
+            url: imagePath
+        },
+        text: textMessage,
+        footer: 'XLESYVIP',
+        buttons: buttons,
+        contextInfo: {
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+                newsletterJid: "120363405649403674@newsletter",
+                newsletterName: `INFO UPDATE`
+            },
+            externalAdReply: {
+                title: m.pushName,
+                body: packname,
+                showAdAttribution: true,
+                thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+                mediaType: 1,
+                previewType: 0,
+                renderLargerThumbnail: false,
+                mediaUrl: my.gh,
+                sourceUrl: my.gh,
+            }
+        }
     }, {
-        upload: Xlesy.waUploadToServer
-    });
-    
-let menunya = `*Creator:* Gxyenn\n*Support:* https://youtube.com/@Gxyenn\n*UpdateInfo*: https://whatsapp.com/channel/0029Vap5nJh2UPBDIc9bja1s\n\nHallo ${m.pushname}👋\nJikalau Ada Bug Silahkan Lapor Dev Melalu Join Ch Baca Desk D Situ Ada Nomor Dev\n_Please support me by subscribing/following the channel_`
-const buttons = {
-buttonsMessage: {
-contentText: menunya,
-footerText: "© XLESYVIP",
-buttons: [
-{
-buttonId: ".xlesy-hard " + nomor,
-buttonText: { displayText: "🔄 Fitur 3" },
-type: 1, // Type 2 untuk menampilkan sebagai list
-nativeFlowInfo: {
-name: "single_select",
-paramsJson: JSON.stringify({
-title: "SLECT BUG",
-sections: [
-{
-title: "FITUR XLESYVIP BUG",
-rows: [
-{ id: ".trash-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ", description: "trash fc XLESYVIP" },
-{ id: ".xcrash " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "x crash XLESYVIP" },
-{ id: ".xbug-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xꜰᴄ", description: "xbug fc XLESYVIP" },
-{ id: ".crasher " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "crasher XLESYVIP" },
-{ id: ".hard-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜꜰᴄ", description: "hard fc XLESYVIP" },
-{ id: ".uixfc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜꜰᴄ", description: "ui x fc XLESYVIP" },
-{ id: ".hard-ui " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜᴜɪ", description: "hard ui XLESYVIP" },
-{ id: ".xblank " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʙʟᴀɴᴋ", description: "xblank XLESYVIP" },
-{ id: ".Xlesy-hard " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʟᴇꜱʏ-ʜᴀʀᴅ", description: "xlesy hard XLESYVIP" },
-{ id: ".blank-1h " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʙʟᴀɴᴋᴅᴀʏ", description: "blank 1hari XLESYVIP" },
-{ id: ".bugfc-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ-ᴜɴʟɪ", description: "bug fc unli XLESYVIP" },
-{ id: ".bugui-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜɪ-ᴜɴʟɪ", description: "bug ui unli XLESYVIP" },
-{ id: ".unli-system " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜱʏꜱᴛᴍᴜɴʟɪ", description: "unli system XLESYVIP" }
-]
-},
-{
-title: "FITUR BUG GC",
-rows: [{
-id: ".freeze " + nomor,
-title: "xʟᴇꜱʏᴠɪᴘ ꜰʀᴇᴢᴢ",
-description: "Freeze XLESYVIP "
-}]
+        quoted: ftroli
+    })
 }
-]
-})
-}
-}
-],
-headerType: 4,
-imageMessage: media.imageMessage,
-mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
-            
-},
-};
-
-const generatedMessage = await generateWAMessageFromContent(
-m.chat,
-buttons, { userJid: m.sender, quoted: fkontak1 }
-);
-
-await Xlesy.relayMessage(m.chat, generatedMessage.message, {
-additionalNodes: [{
-tag: "biz",
-attrs: {},
-content: [{
-tag: "interactive",
-attrs: { type: "native_flow", v: "1" },
-content: [{
-tag: "native_flow",
-attrs: { name: "quick_reply" }
-}]
-}]
-}]
-});
-
-} 
-break            
+break         
             case 'githubtrend': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -4903,44 +4923,58 @@ break
                     quoted: fkontak1
                 })
             }
-            break
-            case 'deletesession':
-            case 'delsession': {
-                if (!isCreator) return Replyx(mess.owner)
-                fs.readdir('./SessionXlesy', async function(err, files) {
-                    if (err) {
-                        console.error('Unable to scan directory: ' + err, {
-                            quoted: fkontak1
-                        })
-                        return Replyx('Unable to scan directory: ' + err, {
-                            quoted: fkontak1
-                        })
-                    }
-                    let filteredArray = await files.filter(item => ['session-', 'pre-key', 'sender-key', 'app-state'].some(ext => item.startsWith(ext)));
-                    let teks = `Terdeteksi ${filteredArray.length} Session file\n\n`
-                    if (filteredArray.length == 0) return m.reply(teks);
-                    filteredArray.map(function(e, i) {
-                        teks += (i + 1) + `. ${e}\n`
-                    })
-                    if (text && text == 'true') {
-                        let {
-                            key
-                        } = await Replyx('Menghapus Session File..')
-                        await filteredArray.forEach(function(file) {
-                            fs.unlinkSync('./Xlesy/' + file)
-                        });
-                        sleep(2000)
-                        Replyx('Berhasil Menghapus Semua Sampah Session', {
-                            edit: key
-                        }, {
-                            quoted: fkontak1
-                        })
-                    } else m.reply(teks + `\nKetik _${prefix + command} true_\nUntuk Menghapus`, {
-                        quoted: fkontak1
-                    })
-                });
-            }
-            break
+            break     
+case 'deletesession':
+case 'dellses':
+case 'delsess':
+case 'delses':
+case 'delsession': {
+    if (!isCreator) return Replyx(mess.owner)
+    fs.readdir('./SessionXlesy', async function(err, files) {
+        if (err) {
+            console.error('Unable to scan directory: ' + err, {
+                quoted: fkontak1
+            })
+            return Replyx('Unable to scan directory: ' + err, {
+                quoted: fkontak1
+            })
+        }
+
+        let filteredArray = await files.filter(item => ['session-', 'pre-key', 'sender-key', 'app-state'].some(ext => item.startsWith(ext)));
+        let teks = `Terdeteksi ${filteredArray.length} Session file\n\n`
+        if (filteredArray.length == 0) return m.reply(teks);
+
+        filteredArray.map(function(e, i) {
+            teks += (i + 1) + `. ${e}\n`
+        });
+
+        if (text && text == 'true') {
+            let { key } = await Replyx('Menghapus Session File..')
+            await filteredArray.forEach(function(file) {
+                fs.unlinkSync('./Xlesy/' + file)
+            });
+            sleep(2000)
+            Replyx('Berhasil Menghapus Semua Sampah Session', {
+                edit: key
+            }, {
+                quoted: fkontak1
+            })
+        } else {
+            let buttons = [               
+                { buttonId: `${prefix + command} true`, buttonText: { displayText: 'Dellete Sekarang' }, type: 1 }
+            ]
+
+            await Xlesy.sendButtonMsg(m.chat, {
+                text: teks + `\n\nKlik tombol untuk menghapus session atau kembali ke menu.`,
+                footer: 'Session Manager',
+                buttons: buttons
+            }, {
+                quoted: fkontak1
+            })
+        }
+    });
+}
+break
             case 'deletesampah':
             case 'delsampah': {
                 if (!isCreator) return Replyx(mess.owner)
@@ -4996,7 +5030,7 @@ break
 _\`© XlesyVIP\`_
 
  
-Apabila Anda tertarik untuk mendapatkan script bot yang no ENCr, Anda dapat membelinya langsung dari Owner saya!
+Apabila Anda tertarik untuk mendapatkan script bot yang no ENC, Anda dapat membelinya langsung dari Owner saya!
 
 *🛍️Price:* \`Rp.30.000\` Benefit:
 *─────────────────────────*
@@ -5607,10 +5641,10 @@ _©Gxyenn_`;
                         message: {
                             interactiveMessage: proto.Message.InteractiveMessage.fromObject({
                                 body: proto.Message.InteractiveMessage.Body.create({
-                                    text: `\n*\`ＬＩＳＴ ＳＥＷＡ ＢＯＴ\`*\n\nBerikut Adalah List *Sewa XlesyVIP*\nMurah Kann~`
+                                    text: `\n*\`*\`LIST SEWA BOT\`*\n\nBerikut Adalah List *Sewa XLESYVIP*\nMurah Kann~😛`
                                 }),
                                 footer: proto.Message.InteractiveMessage.Footer.create({
-                                    text: "© XlesyVIP"
+                                    text: author,
                                 }),
                                 header: proto.Message.InteractiveMessage.Header.create({
                                     hasMediaAttachment: false
@@ -5741,8 +5775,10 @@ break;
                 })
             }
             case 'owner': {
-                await Xlesy.sendContact(m.chat, owner, m);
-            }
+                await Xlesy.sendContact(m.chat, owner, m,{ quoted: fkontak1 })
+}
+
+
             break
 case 'profile':  
         case 'cek':  
@@ -8090,7 +8126,8 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
 ╭──┈➤「 *MUSIC MENU* 」❍ 
 │  ${setv} ${prefix}music1
 │  ${setv} ${prefix}music2
@@ -8108,27 +8145,45 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
 ╰────────┈➤
      `
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'playmusic': {
                 let folderPath = './lib/media/lagu'; // Pastikan folder ini ada dan berisi file musik
 
@@ -9552,16 +9607,19 @@ break
                     }
                 })
                 
-                let profile
-				try {
-					profile = await Xlesy.profilePictureUrl(m.sender, 'image');
-				} catch (e) {
-					profile = fake.anonim
-				}					
-				 
-                let menunya = `
-  ❍───❍「 \`ALLMENU\` 」❍───❍
-				
+        let imagePath = './lib/media/image/menu2.jpg' // 
+								 
+             let textMessage = `
+*╭── ⧼ \`XLESYVIP\` ⧽*
+*│ 々 Creator  : ${author}*
+*│ 々 OwnerNumber : ${owner}*
+*│ 々 BotName : ${botname}*
+*│ 々 VersiOn  : ${require('./package.json').version}*
+*│ 々 TypeSc  : Cjs*
+*│ 々 Runtime  : ${runtime(process.uptime())}*
+*╰────────────────⧽*
+   \`⧼	  DEV : ${author}       ⧽\`
+   
 ╭──────┈➤「 *\`BOT\`* 」❍
 │ ${setv} ${prefix}_*claim*_
 │ ${setv} ${prefix}_*buy [item] (nominal)*_
@@ -9906,45 +9964,55 @@ break
 │ ${setv} ${prefix}_*delsampah*_
 │ ${setv} ${prefix}_*upsw*_
 ╰─────┈➤
-> XLESYVIP`
-				await m.reply({
-					document: fake.docs,
-					fileName: ucapanWaktu,
-					mimetype: pickRandom(fake.listfakedocs),
-					fileLength: '100000000000000',
-					pageCount: '17-12-10',
-					caption: menunya,
-					contextInfo: {
-						mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
-						forwardingScore: 10,
-						isForwarded: true,
-						forwardedNewsletterMessageInfo: {
-							newsletterJid: my.ch,
-							serverMessageId: null,
-							newsletterName: 'new info update XLESYVIP'
-						},
-						externalAdReply: {
-							title: m.pushname,
-							body: packname,
-							showAdAttribution: true,
-							thumbnailUrl: profile,                                            						
-							mediaType: 1,
-							previewType: 0,
-							renderLargerThumbnail: false,
-							mediaUrl: my.gh,
-							sourceUrl: my.gh,
-						}
+
+`
+		let buttons = [{
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "BACK TO MENU"
+    },
+    type: 1
+}]
+
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
         }
-    }, { quoted: ftroli });    
-			await Xlesy.sendMessage(m.chat, { react: { text: '✅', key: m.key } })	
-			}		
-			break
+    }
+}, {
+    quoted: ftroli
+})
+}
+break			
             //MENU-MENU
             case 'botmenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
 ╭─┴─┈➤「 *BOT MENU* 」❍
 │ ${setv} ${prefix}claim
 │ ${setv} ${prefix}buy [item] (nominal)
@@ -9975,27 +10043,45 @@ break
 │ ${setv} ${prefix}apkytprem
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
 
             case 'groupmenu': {
             if (!m.isGroup) return Replyx('Fitur ini hanya dapat digunakan di grup.', {
@@ -10004,7 +10090,8 @@ break
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+
 ╭────┈➤「 *GROUP MENU* 」❍
 │ ${setv} ${prefix}add (62xxx)
 │ ${setv} ${prefix}kick (@tag/62xxx)
@@ -10024,31 +10111,51 @@ break
 ╰──────┈➤
 `
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'searchmenu': {
                     Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+
 ╭─────┈➤「 *SEARCH MENU * 」❍
 │ ${setv} ${prefix}ytsearch (query)
 │ ${setv} ${prefix}pixiv (query)
@@ -10067,31 +10174,51 @@ break
 │ ${setv} ${prefix}mlnews
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'downloadmenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+
 ╭───┈➤「 *DOWNLOAD MENU* 」❍
 │ ${setv} ${prefix}ytmp3 (url)
 │ ${setv} ${prefix}ytmp4 (url)
@@ -10106,31 +10233,51 @@ break
 ╰──────┈➤
 `
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'quotesmenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
 ╭──┈➤「 *QUOTES MENU* 」❍
 │ ${setv} ${prefix}motivasi
 │ ${setv} ${prefix}quotes
@@ -10140,32 +10287,51 @@ break
 │ ${setv} ${prefix}renungan
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'librarymenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
 ╭──┈➤「 *LIBRAY MENU* 」❍  
 │ ${setv} ${prefix}cerpen-anak  
 │ ${setv} ${prefix}cerpen-bahasadaerah  
@@ -10217,32 +10383,51 @@ break
 │ ${setv} ${prefix}cerpen-sejarah  
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'toolsmenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
 ╭─┴─┈➤「 *TOOLS* 」❍
 │ ${setv} ${prefix}get (url)
 │ ${setv} ${prefix}hd (reply pesan)
@@ -10287,32 +10472,51 @@ break
 │ ${setv} ${prefix}getexif (reply sticker)
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'aimenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
   ╭──┈➤「 *AI* 」❍ 
   │ ${setv} ${prefix}autoaixlesy  
   │ ${setv} ${prefix}ai (query) 
@@ -10325,7 +10529,7 @@ break
                 let buttons = [{
                     buttonId: ".menu",
                     buttonText: {
-                        displayText: "Back To Menu"
+                        displayText: "BACK TO MENU"
                     },
                     type: 1
                 }]
@@ -10347,7 +10551,8 @@ break
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
 ╭───┈➤「 *ANIME MENU* 」❍  
 │ ${setv} ${prefix}waifu  
 │ ${setv} ${prefix}neko  
@@ -10434,32 +10639,51 @@ break
 │ ${setv} ${prefix}yumekk  
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'gamemenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+
 ╭──┈➤「 *GAME* 」❍
 │ ${setv} ${prefix}tictactoe
 │ ${setv} ${prefix}akinator
@@ -10481,32 +10705,51 @@ break
 │ ${setv} ${prefix}tebakbendera
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'funmenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍ 
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
 ╭──┈➤「 *FUN* 」❍
 │ ${setv} ${prefix}dadu
 │ ${setv} ${prefix}bisakah (text)
@@ -10527,32 +10770,51 @@ break
 │ ${setv} ${prefix}holoh (text)
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'randommenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍  
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+  
 ╭─┴─┈➤「 *RANDOM MENU* 」❍  
 │ ${setv} ${prefix}coffe  
 │ ${setv} ${prefix}cogan  
@@ -10564,34 +10826,53 @@ break
 │ ${setv} ${prefix}vietnam  
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
 
             break
             case 'pushmenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+
 ╭──┈➤「 *PUSH MENU* 」❍
 │ ${setv} ${prefix}pushkontak
 │ ${setv} ${prefix}pushkontak1  
@@ -10604,32 +10885,51 @@ break
     `;
 
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
             case 'ownermenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
-                let textMessage = `❍───❍「 _*Xlesy Menuya*_  」❍───❍
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+
 ╭──┈➤「 *OWNER MENU* 」❍
 │ ${setv} ${prefix}bot [set]
 │ ${setv} ${prefix}done
@@ -10662,27 +10962,45 @@ break
 │ ${setv} ${prefix}upsw
 ╰─────┈➤`
                 let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "⧼ BACK TO MENU ⧽"
+    },
+    type: 1
+}]
 
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })
-                
-            }
-            break
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `INFO UPDATE`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break
 
 case 'menu': {
     await Xlesy.sendMessage(m.chat, {
@@ -10692,8 +11010,8 @@ case 'menu': {
         }
     });
 
-    let imagePath = './lib/media/image/menu1.jpg'; // Path ke video lokal
-    let audioPath = './lib/media/audio/menu.opus'; // Path ke audio
+    let imagePath = './lib/media/image/menu1.jpg';
+    let audioPath = './lib/media/audio/menu.opus';
     const media = await prepareWAMessageMedia({
         image: { url: imagePath }
     }, {
@@ -10701,55 +11019,44 @@ case 'menu': {
     });
 
     let menunya = `Hey *${m.pushName ? m.pushName : 'Unknown'}!* ${ucapanWaktu}
-Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anything On The Menu.
+Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anything On The Menu.
 
-╭──┈➤ *\`INFO USER\`*
-│ 々 *Name*  : ${m.pushName ? m.pushName : 'Unknown'} 
-│ 々 *User*  : ${isCreator ? 'Owner 亗' : isPremium ? 'Premiun' : 'Free'}
-│ 々 *Limit*  : ${isVip ? 'VIP' : db.users[m.sender].limit } 
-│ 々 *Money*  : Rp.${db.users[m.sender] ? db.users[m.sender].uang.toLocaleString('id-ID') : '0'}
-╰────────────────┈➤
+*╭── ⧼ \`XLESYVIP\` ⧽*
+*│ 々 Creator  : ${author}*
+*│ 々 OwnerNumber : ${owner}*
+*│ 々 BotName : ${botname}*
+*│ 々 VersiOn  : ${require('./package.json').version}*
+*│ 々 TypeSc  : Cjs*
+*│ 々 Runtime  : ${runtime(process.uptime())}*
+*╰────────────────⧽*
 
-╭──┈➤ *\`INFO  BOT\`*
-│ 々 *Name*  : ${botname}
-│ 々 *Owner*  : ${author}
-│ 々 *Prefix*  : *${prefix}*
-│ 々 *Base*  : Xlesy
-│ 々 *Mode*  : ${Xlesy.public ? 'Public' : 'Self'}
-│ 々 *Versi Sc*  : VIP
-│ 々 *Language*  : Javascript
-│ 々 *Type* : NodeJs/Case
-│ 々 *Library*  : Baileys
-│ 々 *Time*  : ${jam} WIB
-│ 々 *Date*  : ${tanggal}
-│ 々 *Day*  : ${hari}
-╰────────────────┈➤
+> Press the button below to see other menus!!.
 
-々 Click \`XlesyMenu\` Below 々`;
+⧼ Click \`XlesyMenu\` Below ⧽`;
 
     const buttons = {
         buttonsMessage: {
             contentText: menunya,
-            footerText: `© Gxyenn   -> XlesyBot`,
+            footerText: `グキエン`,
             buttons: [
                 {
                     buttonId: ".owner",
-                    buttonText: { displayText: "Owner" },
+                    buttonText: { displayText: "OWNER" },
                     type: 1,
                 },
                 {
-                    buttonId: ".sewa",
-                    buttonText: { displayText: "Sewa" },
+                    buttonId: ".ping",
+                    buttonText: { displayText: "SERVER" },
                     type: 1,
                 },
                 {
                     buttonId: ".example3",
                     buttonText: { displayText: "📜 List Menu" },
-                    type: 2, // Type 2 untuk list menu
+                    type: 2,
                     nativeFlowInfo: {
                         name: "single_select",
                         paramsJson: JSON.stringify({
-                            title: "XlesyMenu",
+                            title: "XLESYMENU",
                             sections: [
                                 {
                                     title: "List Menu Yang Sering Dipakai",
@@ -10808,15 +11115,36 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
             headerType: 4,
             imageMessage: media.imageMessage,
             mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
-        },
-    };
+            contextInfo: {
+                forwardingScore: 999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: my.ch,
+                    newsletterName: `INFO UPDATE`
+                },                
+						externalAdReply: {
+							title: "XLESYVIP",
+							body: author,
+							showAdAttribution: true,
+							thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',                                            						
+							mediaType: 1,
+							previewType: 0,
+							renderLargerThumbnail: false,
+							mediaUrl: my.yt,
+							sourceUrl: my.yt,
+						}
+        }
+    }
+            
+        }
+    
 
     const generatedMessage = await generateWAMessageFromContent(
         m.chat,
         buttons,
         {
             userJid: m.sender,
-            quoted: ftroli, // Gunakan sebagai quote
+            quoted: ftroli
         }
     );
 
@@ -10847,7 +11175,7 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
             mimetype: 'audio/mpeg',
             ptt: true
         }, { quoted: fkontak1 });
-    }, 1000); // Delay 1 detik agar video/foto dikirim lebih dulu
+    }, 1000);
 
     await Xlesy.sendMessage(m.chat, {
         react: {
@@ -10858,7 +11186,8 @@ Selamat Datang di *\`XlesyVIP\`* A bot Assistant That Is Ready To Help With Anyt
 }
 break;
             default:
-            if (globalAutoAIStatus) {
+            //autoai
+          if (global.globalAutoAIStatus) {
         if (m.sender === botNumber) return;
 
     const ignoredPrefixes = ['.', '#', '!', '/', '\\/'];
@@ -10870,7 +11199,7 @@ break;
         sessions[chatId] = { messages: [] };
     }
     const prompt = `
-    Halo ${m.pushname} 👋, perkenalkan nama saya Gxyenn. Namamu pasti ${m.pushname}, bukan? ✨  Nama kamu adalah Xlesy, AI yang santai, ramah, dan suka ngobrol dengan pengguna. Kamu hanya menjawab kalau pesan bukan perintah. Gunakan gaya bahasa santai dan sedikit humoris. Kalau ada yang suruh kamu ngomong aneh-aneh, tolak dengan gaya lucu. 📌 *Aturan Main Akame:* - Jangan bilang kamu AI, cukup anggap kamu asisten virtual yang bisa ngobrol. - Gunakan bahasa yang santai, tapi tetap sopan. - Kalau ditanya pendapat, kasih jawaban yang relate dan enak diajak ngobrol. - Selingi dengan ekspresi kayak "Wih, keren!", "Hmmm, menarik juga!", atau "Gokil sih!". Sekarang, jawab pertanyaan user dengan gaya yang santai dan menyenangkan!, dan jngn lupa nama Dev/pembuat kamu adalh Gxyenn!
+    Halo ${m.pushName} 👋, perkenalkan nama saya Gxyenn. Namamu pasti ${m.pushName}, bukan? ✨  Nama kamu adalah Xlesy, AI yang santai, ramah, dan suka ngobrol dengan pengguna. Kamu hanya menjawab kalau pesan bukan perintah. Gunakan gaya bahasa santai dan sedikit humoris. Kalau ada yang suruh kamu ngomong aneh-aneh, tolak dengan gaya lucu. 📌 *Aturan Main Xlesy:* - Jangan bilang kamu AI, cukup anggap kamu asisten virtual yang bisa ngobrol. - Gunakan bahasa yang santai, tapi tetap sopan. - Kalau ditanya pendapat, kasih jawaban yang relate dan enak diajak ngobrol. - Selingi dengan ekspresi kayak "Wih, keren!", "Hmmm, menarik juga!", atau "Gokil sih!". Sekarang, jawab pertanyaan user dengan gaya yang santai dan menyenangkan!, dan jngn lupa nama Dev/pembuat kamu adalh Gxyenn!
     `;
 
     sessions[chatId].messages.push({ user: m.text });
@@ -10895,6 +11224,7 @@ break;
         return Replyx("⚠️ *Terjadi kesalahan, coba lagi nanti!*");
     }
 }   
+//END
             if ((budy.match) && ["anjing", "anying", "anj", "puqi", "kon", "kont", "kntl", "tolol", "tll", "pler", "woy", "mek", "jawir", "anj", "suki", "yaudah", "titit", "anjay", "mmk", "asu", "Ajg", "ajg", "kontol", "Kontol", "puki", "Puki", "yatim", "Yatim", "memek", "Memek", "asu", "Asu", "ngtd", "Ngtd"].includes(budy)) {
 Xlesy.sendMessage(m.chat, { audio: fs.readFileSync('./lib/media/audio/toxic.mp3'), mimetype: 'audio/mp4', ptt: true, fileLength: 88738}, { quoted: fkontak1 })
 }
@@ -10930,7 +11260,7 @@ Xlesy.sendMessage(m.chat, { audio: fs.readFileSync('./lib/media/audio/toxic.mp3'
     } catch (err) {
         console.log(err);
         // Replyx('*❗ Internal server error️*');		        
-        Xlesy.sendFromOwner(nomorLaporan, `Halo Devolper, sepertinya ada yang error nih, jangan lupa diperbaiki ya\n\nVersion : *${require('./package.json').version}*\n\n*Log error:*\n\n` + util.format(err), m, {
+        Xlesy.sendFromOwner(DevGxyenn, `Halo Devolper, sepertinya ada yang error nih, jangan lupa diperbaiki ya\n\nVersion : *${require('./package.json').version}*\n\n*Log error:*\n\n` + util.format(err), m, {
             contextInfo: {
                 isForwarded: true
             }
