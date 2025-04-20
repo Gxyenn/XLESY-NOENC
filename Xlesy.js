@@ -4580,42 +4580,31 @@ break
                 })
             }
             break
-            case 'setppbot': {
-                if (!isCreator) return Replyx(mess.owner)
-                if (!/image/.test(quoted.type)) return m.reply(`Reply Image Dengan Caption ${prefix + command}`, {
-                    quoted: fkontak1
-                })
-                let media = await Xlesy.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
-                if (text.length > 0) {
-                    let {
-                        img
-                    } = await generateProfilePicture(media)
-                    await Xlesy.query({
-                        tag: 'iq',
-                        attrs: {
-                            to: '@s.whatsapp.net',
-                            type: 'set',
-                            xmlns: 'w:profile:picture'
-                        },
-                        content: [{
-                            tag: 'picture',
-                            attrs: {
-                                type: 'image'
-                            },
-                            content: img
-                        }]
-                    })
-                    await fs.unlinkSync(media)
-                    Replyx('Sukses')
-                } else {
-                    await Xlesy.updateProfilePicture(botNumber, {
-                        url: media
-                    })
-                    await fs.unlinkSync(media)
-                    Replyx('Sukses')
-                }
-            }
-            break
+           case 'setppbot': {
+				if (!isCreator) return Replyx(mess.owner)
+				if (!/image/.test(quoted.type)) return Replyx(`Reply Image Dengan Caption ${prefix + command}`)
+				Replyx(mess.load)
+				let media = await Xlesy.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
+				if (text.length > 0) {
+					let { img } = await generateProfilePicture(media)
+					await Xlesy.query({
+						tag: 'iq',
+						attrs: {
+							to: '@s.whatsapp.net',
+							type: 'set',
+							xmlns: 'w:profile:picture'
+						},
+						content: [{ tag: 'picture', attrs: { type: 'image' }, content: img }]
+					})
+					await fs.unlinkSync(media)
+					Replyx(mess.done)
+				} else {
+					await Xlesy.updateProfilePicture(botNumber, { url: media })
+					await fs.unlinkSync(media)
+					Replyx(mess.done)
+				}
+			}
+			break
             case 'delppbot': {
                 if (!isCreator) return Replyx(mess.owner)
                 await Xlesy.removeProfilePicture(Xlesy.user.id)
@@ -4644,7 +4633,7 @@ break
                         // Mengirim pesan ke grup setelah join
                         let groupMetadata = await Xlesy.groupMetadata(response)
                         let groupId = groupMetadata.id
-                        let welcomeMessage = `_Halo semua! Saya adalah bot yang siap membantu di grup ini. 🦖_`
+                        let welcomeMessage = `_Halo semua! Saya adalah bot yang Siap Membantu Group Ini!.. Owner Saya ${owner}_`
 
                         await Xlesy.sendMessage(groupId, {
                             text: welcomeMessage
@@ -5065,44 +5054,73 @@ break
                     quoted: fkontak1
                 })
             }
-            break     
-case 'deletesession':
-            case 'delsession': {
-                if (!isCreator) return Replyx(mess.owner)
-                fs.readdir('./SessionXlesy', async function(err, files) {
-                    if (err) {
-                        console.error('Unable to scan directory: ' + err, {
-                            quoted: fkontak1
-                        })
-                        return Replyx('Unable to scan directory: ' + err, {
-                            quoted: fkontak1
-                        })
+            break  
+            case 'delses':   
+    case 'deletesession':
+case 'delsession': {
+    if (!isCreator) return Replyx(mess.owner)
+
+    fs.readdir('./SessionXlesy', async function (err, files) {
+        if (err) {
+            console.error('Gagal membaca direktori: ' + err)
+            return Replyx('Maaf, tidak dapat mengakses folder session.')
+        }
+
+        let filteredArray = files.filter(item =>
+            ['session-', 'pre-key', 'sender-key', 'app-state'].some(ext => item.startsWith(ext))
+        )
+
+        let teks = `Ditemukan *${filteredArray.length}* file session yang tersimpan.\n\n`
+        if (filteredArray.length === 0) return Replyx(teks + 'Tidak ada file yang perlu dibersihkan.')
+
+        filteredArray.forEach((e, i) => {
+            teks += `• ${e}\n`
+        })
+
+        if (!text || text !== 'true') {
+            let buttons = [
+                {
+                    buttonId: `${prefix + command} true`,
+                    buttonText: { displayText: "Bersihkan Sekarang" },
+                    type: 1
+                }
+            ]
+
+            await Xlesy.sendButtonMsg(m.chat, {
+                text: teks + `\n\nKlik tombol di bawah untuk membersihkan file session.`,
+                footer: 'XlesyBot | Manajemen Session',
+                buttons: buttons,
+                contextInfo: {
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    externalAdReply: {
+                        title: m.pushName,
+                        body: packname,
+                        showAdAttribution: true,
+                        thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+                        mediaType: 1,
+                        previewType: 0,
+                        renderLargerThumbnail: false,
+                        mediaUrl: my.gh,
+                        sourceUrl: my.gh
                     }
-                    let filteredArray = await files.filter(item => ['session-', 'pre-key', 'sender-key', 'app-state'].some(ext => item.startsWith(ext)));
-                    let teks = `Terdeteksi ${filteredArray.length} Session file\n\n`
-                    if (filteredArray.length == 0) return m.reply(teks);
-                    filteredArray.map(function(e, i) {
-                        teks += (i + 1) + `. ${e}\n`
-                    })
-                    if (text && text == 'true') {
-                        let {
-                            key
-                        } = await Replyx('Menghapus Session File..')
-                        await filteredArray.forEach(function(file) {
-                            fs.unlinkSync('./Xlesy/' + file)
-                        });
-                        sleep(2000)
-                        Replyx('Berhasil Menghapus Semua Sampah Session', {
-                            edit: key
-                        }, {
-                            quoted: fkontak1
-                        })
-                    } else m.reply(teks + `\nKetik _${prefix + command} true_\nUntuk Menghapus`, {
-                        quoted: fkontak1
-                    })
-                });
-            }
-            break
+                }
+            }, { quoted: ftroli })
+            return
+        }
+
+        // Kalau user setuju membersihkan
+        Replyx('Sedang membersihkan file session...')
+        filteredArray.forEach(file => {
+            fs.unlinkSync('./SessionXlesy/' + file)
+        })
+
+        setTimeout(() => {
+            Replyx('Pembersihan selesai. Semua file session berhasil dihapus.')
+        }, 2000)
+    })
+}
+break
             case 'deletesampah':
             case 'delsampah': {
                 if (!isCreator) return Replyx(mess.owner)
