@@ -4123,202 +4123,344 @@ break
                 })
             }
             break
-            //anime		
-            case 'akira':
-            case 'akiyama':
-            case 'ana':
-            case 'art':
-            case 'asuna':
-            case 'ayuzawa':
-            case 'boruto':
-            case 'bts':
-            case 'chiho':
-            case 'chitoge':
-            case 'cosplay':
-            case 'cosplayloli':
-            case 'cosplaysagiri':
-            case 'cyber':
-            case 'deidara':
-            case 'doraemon':
-            case 'elaina':
-            case 'emilia':
-            case 'erza':
-            case 'exo':
-            case 'gamewallpaper':
-            case 'gremory':
-            case 'hacker':
-            case 'hestia':
-            case 'hinata':
-            case 'husbu':
-            case 'inori':
-            case 'islamic':
-            case 'isuzu':
-            case 'itachi':
-            case 'itori':
-            case 'jennie':
-            case 'jiso':
-            case 'justina':
-            case 'kaga':
-            case 'kagura':
-            case 'kakasih':
-            case 'kaori':
-            case 'cartoon':
-            case 'shortquote':
-            case 'keneki':
-            case 'kotori':
-            case 'kurumi':
-            case 'lisa':
-            case 'madara':
-            case 'megumin':
-            case 'mikasa':
-            case 'mikey':
-            case 'miku':
-            case 'minato':
-            case 'mountain':
-            case 'naruto':
-            case 'neko2':
-            case 'nekonime':
-            case 'nezuko':
-            case 'onepiece':
-            case 'pentol':
-            case 'pokemon':
-            case 'programming':
-            case 'randomnime':
-            case 'randomnime2':
-            case 'rize':
-            case 'rose':
-            case 'sagiri':
-            case 'sakura':
-            case 'sasuke':
-            case 'satanic':
-            case 'shina':
-            case 'shinka':
-            case 'shinomiya':
-            case 'shizuka':
-            case 'shota':
-            case 'space':
-            case 'technology':
-            case 'tejina':
-            case 'toukachan':
-            case 'tsunade':
-            case 'yotsuba':
-            case 'yuki':
-            case 'yulibocil':
-            case 'yumeko': {
-                Replyx(mess.wait)
-                let heyy
-                if (/akira/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/akira.json')
-                if (/akiyama/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/akiyama.json')
-                if (/ana/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/ana.json')
-                if (/art/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/art.json')
-                if (/asuna/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/asuna.json')
-                if (/ayuzawa/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/ayuzawa.json')
-                if (/boneka/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/boneka.json')
-                if (/boruto/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/boruto.json')
-                if (/bts/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/bts.json')
-                if (/cecan/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/cecan.json')
-                if (/chiho/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/chiho.json')
-                if (/chitoge/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/chitoge.json')
-                if (/cogan/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/cogan.json')
-                if (/cosplay/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/cosplay.json')
-                if (/cosplayloli/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/cosplayloli.json')
-                if (/cosplaysagiri/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/cosplaysagiri.json')
-                if (/cyber/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/cyber.json')
-                if (/deidara/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/deidara.json')
-                if (/doraemon/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/doraemon.json')
-                if (/eba/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/eba.json')
-                if (/elaina/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/elaina.json')
-                if (/emilia/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/emilia.json')
-                if (/erza/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/erza.json')
-                if (/exo/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/exo.json')
-                if (/femdom/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/femdom.json')
-                if (/freefire/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/freefire.json')
-                if (/gamewallpaper/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/gamewallpaper.json')
-                if (/glasses/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/glasses.json')
-                if (/gremory/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/gremory.json')
-                if (/hacker/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/hekel.json')
-                if (/hestia/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/hestia.json')
-                if (/husbu/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/husbu.json')
-                if (/inori/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/inori.json')
-                if (/islamic/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/islamic.json')
-                if (/isuzu/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/isuzu.json')
-                if (/itachi/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/itachi.json')
-                if (/itori/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/itori.json')
-                if (/jennie/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/jeni.json')
-                if (/jiso/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/jiso.json')
-                if (/justina/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/justina.json')
-                if (/kaga/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kaga.json')
-                if (/kagura/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kagura.json')
-                if (/kakasih/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kakasih.json')
-                if (/kaori/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kaori.json')
-                if (/cartoon/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kartun.json')
-                if (/shortquote/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/katakata.json')
-                if (/keneki/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/keneki.json')
-                if (/kotori/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kotori.json')
-                if (/kpop/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kpop.json')
-                if (/kucing/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kucing.json')
-                if (/kurumi/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/kurumi.json')
-                if (/lisa/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/lisa.json')
-                if (/loli/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/loli.json')
-                if (/madara/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/madara.json')
-                if (/megumin/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/megumin.json')
-                if (/mikasa/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/mikasa.json')
-                if (/mikey/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/mikey.json')
-                if (/miku/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/miku.json')
-                if (/minato/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/minato.json')
-                if (/mobile/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/mobil.json')
-                if (/motor/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/motor.json')
-                if (/mountain/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/mountain.json')
-                if (/naruto/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/naruto.json')
-                if (/neko/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/neko.json')
-                if (/neko2/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/neko2.json')
-                if (/nekonime/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/nekonime.json')
-                if (/nezuko/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/nezuko.json')
-                if (/onepiece/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/onepiece.json')
-                if (/pentol/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/pentol.json')
-                if (/pokemon/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/pokemon.json')
-                if (/profil/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/profil.json')
-                if (/progamming/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/programming.json')
-                if (/pubg/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/pubg.json')
-                if (/randblackpink/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/randblackpink.json')
-                if (/randomnime/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/randomnime.json')
-                if (/randomnime2/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/randomnime2.json')
-                if (/rize/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/rize.json')
-                if (/rose/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/rose.json')
-                if (/ryujin/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/ryujin.json')
-                if (/sagiri/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/sagiri.json')
-                if (/sakura/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/sakura.json')
-                if (/sasuke/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/sasuke.json')
-                if (/satanic/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/satanic.json')
-                if (/shina/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/shina.json')
-                if (/shinka/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/shinka.json')
-                if (/shinomiya/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/shinomiya.json')
-                if (/shizuka/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/shizuka.json')
-                if (/shota/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/shota.json')
-                if (/space/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/tatasurya.json')
-                if (/technology/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/technology.json')
-                if (/tejina/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/tejina.json')
-                if (/toukachan/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/toukachan.json')
-                if (/tsunade/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/tsunade.json')
-                if (/waifu/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/waifu.json')
-                if (/wallhp/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/wallhp.json')
-                if (/wallml/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/wallml.json')
-                if (/wallmlnime/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/wallnime.json')
-                if (/yotsuba/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/yotsuba.json')
-                if (/yuki/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/yuki.json')
-                if (/yulibocil/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/yulibocil.json')
-                if (/yumeko/.test(command)) heyy = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/master/yumeko.json')
-                let Anime = heyy[Math.floor(Math.random() * heyy.length)]
-                Xlesy.sendMessage(m.chat, {
-                    image: {
-                        url: Anime
-                    },
-                    caption: mess.done
-                }, {
-                    quoted: fkontak1
-                })
+            case 'animeawoo':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/awoo`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animemegumin':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/megumin`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animeshinobu':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/shinobu`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animehandhold':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/handhold`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animehighfive':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/highfive`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animecringe':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/cringe`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animedance':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/dance`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animehappy':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/happy`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animeglomp':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/glomp`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animesmug':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/smug`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animeblush':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/blush`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animewave':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/wave`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animesmile':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/smile`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animepoke':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/poke`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animewink':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/wink`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animebonk':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/bonk`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animebully':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/bully`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animeyeet':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/yeet`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animebite':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/bite`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animelick':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/lick`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animekill':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/kill`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animecry':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/cry`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animewlp':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/wallpaper`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animekiss':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/kiss`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animehug':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/hug`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+
+case 'couplepp': case 'ppcouple': {
+Replyx(mess.wait)
+let anucpp = await fetchJson('https://raw.githubusercontent.com/DGXeon/XeonMedia/main/couple.json')
+let random = anucpp[Math.floor(Math.random() * anucpp.length)]
+Xlesy.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
+Xlesy.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
             }
-            break
+	    break
+
+case 'animeneko':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://waifu.pics/api/sfw/neko`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animepat':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/pat`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animeslap':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/slap`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animecuddle':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/cuddle`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animewaifu':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/waifu`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animenom':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/nom`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animefoxgirl':{
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/foxgirl`)       
+            await Xlesy.sendMessage(m.chat, { image: { url:waifudd.data.url} , caption: mess.done}, { quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animetickle': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/tickle`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animegecg': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/gecg`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'dogwoof': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/woof`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case '8ballpool': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/8ball`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'goosebird': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/goose`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animefeed': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/feed`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'animeavatar': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/avatar`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'lizardpic': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/lizard`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
+case 'catmeow': {
+Replyx(mess.wait)
+ waifudd = await axios.get(`https://nekos.life/api/v2/img/meow`)     
+            await Xlesy.sendMessage(m.chat, {image: {url:waifudd.data.url}, caption: mess.done},{ quoted:m }).catch(err => {
+return('Error!')
+})
+}
+break
 
             case 'animecari': {
                 await Xlesy.sendMessage(m.chat, {
@@ -4925,56 +5067,42 @@ break
             }
             break     
 case 'deletesession':
-case 'dellses':
-case 'delsess':
-case 'delses':
-case 'delsession': {
-    if (!isCreator) return Replyx(mess.owner)
-    fs.readdir('./SessionXlesy', async function(err, files) {
-        if (err) {
-            console.error('Unable to scan directory: ' + err, {
-                quoted: fkontak1
-            })
-            return Replyx('Unable to scan directory: ' + err, {
-                quoted: fkontak1
-            })
-        }
-
-        let filteredArray = await files.filter(item => ['session-', 'pre-key', 'sender-key', 'app-state'].some(ext => item.startsWith(ext)));
-        let teks = `Terdeteksi ${filteredArray.length} Session file\n\n`
-        if (filteredArray.length == 0) return m.reply(teks);
-
-        filteredArray.map(function(e, i) {
-            teks += (i + 1) + `. ${e}\n`
-        });
-
-        if (text && text == 'true') {
-            let { key } = await Replyx('Menghapus Session File..')
-            await filteredArray.forEach(function(file) {
-                fs.unlinkSync('./Xlesy/' + file)
-            });
-            sleep(2000)
-            Replyx('Berhasil Menghapus Semua Sampah Session', {
-                edit: key
-            }, {
-                quoted: fkontak1
-            })
-        } else {
-            let buttons = [               
-                { buttonId: `${prefix + command} true`, buttonText: { displayText: 'Dellete Sekarang' }, type: 1 }
-            ]
-
-            await Xlesy.sendButtonMsg(m.chat, {
-                text: teks + `\n\nKlik tombol untuk menghapus session atau kembali ke menu.`,
-                footer: 'Session Manager',
-                buttons: buttons
-            }, {
-                quoted: fkontak1
-            })
-        }
-    });
-}
-break
+            case 'delsession': {
+                if (!isCreator) return Replyx(mess.owner)
+                fs.readdir('./SessionXlesy', async function(err, files) {
+                    if (err) {
+                        console.error('Unable to scan directory: ' + err, {
+                            quoted: fkontak1
+                        })
+                        return Replyx('Unable to scan directory: ' + err, {
+                            quoted: fkontak1
+                        })
+                    }
+                    let filteredArray = await files.filter(item => ['session-', 'pre-key', 'sender-key', 'app-state'].some(ext => item.startsWith(ext)));
+                    let teks = `Terdeteksi ${filteredArray.length} Session file\n\n`
+                    if (filteredArray.length == 0) return m.reply(teks);
+                    filteredArray.map(function(e, i) {
+                        teks += (i + 1) + `. ${e}\n`
+                    })
+                    if (text && text == 'true') {
+                        let {
+                            key
+                        } = await Replyx('Menghapus Session File..')
+                        await filteredArray.forEach(function(file) {
+                            fs.unlinkSync('./Xlesy/' + file)
+                        });
+                        sleep(2000)
+                        Replyx('Berhasil Menghapus Semua Sampah Session', {
+                            edit: key
+                        }, {
+                            quoted: fkontak1
+                        })
+                    } else m.reply(teks + `\nKetik _${prefix + command} true_\nUntuk Menghapus`, {
+                        quoted: fkontak1
+                    })
+                });
+            }
+            break
             case 'deletesampah':
             case 'delsampah': {
                 if (!isCreator) return Replyx(mess.owner)
@@ -6789,13 +6917,7 @@ case 'profile':
                     }
                 })
             }
-            break
-            await Xlesy.sendMessage(m.chat, {
-                react: {
-                    text: '🕑',
-                    key: m.key
-                }
-            })
+            break           
             case 'bratvid':
             case 'bratvideo': {
                 if (!isLimit) return Replyx(mess.limit)
@@ -8787,14 +8909,15 @@ break
             break
 
             // Random Menu
-            case 'mobil': {
+            case 'kucing': {
+            Replyx(mess.wait)
                 try {
-                    let anu = 'https://api.agungny.my.id/api/rmobil';
+                    let anu = 'https://api.siputzx.my.id/api/r/cats';
                     await Xlesy.sendMessage(m.chat, {
                         image: {
                             url: anu
                         },
-                        caption: 'DONE!'
+                        caption: mess.done,
                     }, {
                         quoted: fkontak1
                     });
@@ -8805,14 +8928,15 @@ break
                 }
             }
             break;
-            case 'cina': {
+            Replyx(mess.wait)
+            case 'cecantahiland': {
                 try {
-                    let anu = 'https://api.agungny.my.id/api/ccina';
+                    let anu = 'https://api.siputzx.my.id/api/r/cecan/thailand';
                     await Xlesy.sendMessage(m.chat, {
                         image: {
                             url: anu
                         },
-                        caption: 'DONE!'
+                        caption: mess.done,
                     }, {
                         quoted: fkontak1
                     });
@@ -8823,14 +8947,34 @@ break
                 }
             }
             break;
-            case 'vietnam': {
+            case 'cecanvietnam': {
+            Replyx(mess.wait)
                 try {
-                    let anu = 'https://api.agungny.my.id/api/cvietnam';
+                    let anu = 'https://api.siputzx.my.id/api/r/cecan/vietnam';
                     await Xlesy.sendMessage(m.chat, {
                         image: {
                             url: anu
                         },
-                        caption: 'DONE!'
+                        caption: mess.done,
+                    }, {
+                        quoted: fkontak1
+                    });
+                } catch (e) {
+                    Replyx('Terjadi kesalahan saat mengambil gambar', {
+                        quoted: fkontak1
+                    })
+                }
+            }
+            break;
+            case 'cecankorea': {
+            Replyx(mess.wait)
+                try {
+                    let anu = 'https://api.siputzx.my.id/api/r/cecan/korea';
+                    await Xlesy.sendMessage(m.chat, {
+                        image: {
+                            url: anu
+                        },
+                        caption: mess.done,
                     }, {
                         quoted: fkontak1
                     });
@@ -8841,14 +8985,15 @@ break
                 }
             }
             break;
-            case 'jepang': {
+            case 'cecanjapan': {
+            Replyx(mess.wait)
                 try {
-                    let anu = 'https://api.agungny.my.id/api/cjepang';
+                    let anu = 'https://api.siputzx.my.id/api/r/cecan/japan';
                     await Xlesy.sendMessage(m.chat, {
                         image: {
                             url: anu
                         },
-                        caption: 'DONE!'
+                        caption: mess.done,
                     }, {
                         quoted: fkontak1
                     });
@@ -8859,14 +9004,15 @@ break
                 }
             }
             break;
-            case 'korea': {
+             case 'cecancina': {
+             Replyx(mess.wait)
                 try {
-                    let anu = 'https://api.agungny.my.id/api/ckorea';
+                    let anu = 'https://api.siputzx.my.id/api/r/cecan/china';
                     await Xlesy.sendMessage(m.chat, {
                         image: {
                             url: anu
                         },
-                        caption: 'DONE!'
+                        caption: mess.done,
                     }, {
                         quoted: fkontak1
                     });
@@ -8877,37 +9023,39 @@ break
                 }
             }
             break;
-            case 'cecan': {
+            case 'cecanindo': {
+            Replyx(mess.wait)
                 try {
-                    let anu = 'https://api.agungny.my.id/api/cecan';
+                    let anu = 'https://api.siputzx.my.id/api/r/cecan/indonesia';
                     await Xlesy.sendMessage(m.chat, {
                         image: {
                             url: anu
                         },
-                        caption: 'DONE'
+                        caption: mess.done,
                     }, {
                         quoted: fkontak1
                     });
                 } catch (e) {
-                    Replyx('Terjadi kesalahan saat mengambil gambar!', {
+                    Replyx('terjadi keslhn saat saat mengambil gambar!', {
                         quoted: fkontak1
                     })
                 }
             }
             break;
-            case 'cogan': {
+            case 'bluearchive': {
+            Replyx(mess.wait)
                 try {
-                    let anu = 'https://api.agungny.my.id/api/cogan';
+                    let anu = 'https://api.siputzx.my.id/api/r/blue-archive';
                     await Xlesy.sendMessage(m.chat, {
                         image: {
                             url: anu
                         },
-                        caption: 'DONE'
+                        caption: mess.done,
                     }, {
                         quoted: fkontak1
                     });
                 } catch (e) {
-                    Replyx('Terjadi kesalahan saat mengambil gambar!', {
+                    Replyx('Terjadi Kesalahn Saat Mengambil Gambar!', {
                         quoted: fkontak1
                     })
                 }
@@ -8915,7 +9063,8 @@ break
             break;
             case 'coffe':
             case 'kopi': {
-                await Xlesy.sendFileUrl(m.chat, 'https://coffee.alexflipnote.dev/random', '☕ Random Coffe', m, {
+            Replyx(mess.wait)
+                await Xlesy.sendFileUrl(m.chat, 'https://coffee.alexflipnote.dev/random', mess.done, m, {
                     quoted: fkontak1
                 })
             }
@@ -8923,7 +9072,8 @@ break
 
             // Anime Menu    
                
-            case 'waifu': {
+            case 'waifu': {            
+            Replyx(mess.wait)
                 try {
                     if (text == 'nsfw') {
                         if (!isNsfw) return Replyx('Filter Nsfw Sedang Aktif!')
@@ -8941,6 +9091,7 @@ break
             }
             break
             case 'neko': {
+            Replyx(mess.wait)
                 try {
                     if (text == 'nsfw') {
                         if (!isNsfw) return Replyx('Filter Nsfw Sedang Aktif!')
@@ -9813,64 +9964,51 @@ break
 │ ${setv} ${prefix}_*aigen*_
 ╰─┬────┈➤  
 ╭─┴─┈➤「 *\`ANIME\`* 」❍  
-│ ${setv} ${prefix}_*waifu*_
-│ ${setv} ${prefix}_*neko*_
-│ ${setv} ${prefix}_*akira*_
-│ ${setv} ${prefix}_*akiyama*_
-│ ${setv} ${prefix}_*ana*_
-│ ${setv} ${prefix}_*art*_
-│ ${setv} ${prefix}_*asuna*_
-│ ${setv} ${prefix}_*ayuzawa*_
-│ ${setv} ${prefix}_*boruto*_
-│ ${setv} ${prefix}_*bts*_
-│ ${setv} ${prefix}_*chino*_
-│ ${setv} ${prefix}_*chitoge*_
-│ ${setv} ${prefix}_*cosplay*_
-│ ${setv} ${prefix}_*cosplayloli*_
-│ ${setv} ${prefix}_*cosplaysagiri*_
-│ ${setv} ${prefix}_*cyber*_
-│ ${setv} ${prefix}_*deidara*_
-│ ${setv} ${prefix}_*doraemon*_
-│ ${setv} ${prefix}_*elaina*_
-│ ${setv} ${prefix}_*emilia*_
-│ ${setv} ${prefix}_*erza*_
-│ ${setv} ${prefix}_*exo*_
-│ ${setv} ${prefix}_*gamewalpaper*_
-│ ${setv} ${prefix}_*gremoy*_
-│ ${setv} ${prefix}_*hacker*_
-│ ${setv} ${prefix}_*hestia*_
-│ ${setv} ${prefix}_*hinata*_
-│ ${setv} ${prefix}_*husbu*_
-│ ${setv} ${prefix}_*inori*_
-│ ${setv} ${prefix}_*islamic*_
-│ ${setv} ${prefix}_*isuzu*_
-│ ${setv} ${prefix}_*itachi*_
-│ ${setv} ${prefix}_*itori*_
-│ ${setv} ${prefix}_*jennie*_
-│ ${setv} ${prefix}_*jiso*_
-│ ${setv} ${prefix}_*justina*_
-│ ${setv} ${prefix}_*kaga*_
-│ ${setv} ${prefix}_*kagura*_
-│ ${setv} ${prefix}_*kakasih*_
-│ ${setv} ${prefix}_*kaori*_
-│ ${setv} ${prefix}_*cartoon*_
-│ ${setv} ${prefix}_*shortquete*_
-│ ${setv} ${prefix}_*kaneki*_
-│ ${setv} ${prefix}_*kotori*_
-│ ${setv} ${prefix}_*kurumi*_
-│ ${setv} ${prefix}_*lisa*_
-│ ${setv} ${prefix}_*madara*_
-│ ${setv} ${prefix}_*megumin*_
-│ ${setv} ${prefix}_*mikasa*_
-│ ${setv} ${prefix}_*mikey*_
-│ ${setv} ${prefix}_*miku*_
-│ ${setv} ${prefix}_*minato*_
-│ ${setv} ${prefix}_*mountain*_
-│ ${setv} ${prefix}_*naruto*_
-│ ${setv} ${prefix}_*neko2*_
-│ ${setv} ${prefix}_*nekoanime*_
-│ ${setv} ${prefix}_*nezuko*_
-╰─┬────┈➤
+│ ${setv} ${prefix}_*waifu*_  
+│ ${setv} ${prefix}_*neko*_  
+│ ${setv} ${prefix}_*animeawoo*_  
+│ ${setv} ${prefix}_*animemegumin*_  
+│ ${setv} ${prefix}_*animeshinobu*_  
+│ ${setv} ${prefix}_*animehandhold*_  
+│ ${setv} ${prefix}_*animehighfive*_  
+│ ${setv} ${prefix}_*animecringe*_  
+│ ${setv} ${prefix}_*animedance*_  
+│ ${setv} ${prefix}_*animehappy*_  
+│ ${setv} ${prefix}_*animeglomp*_  
+│ ${setv} ${prefix}_*animesmug*_  
+│ ${setv} ${prefix}_*animeblush*_  
+│ ${setv} ${prefix}_*animewave*_  
+│ ${setv} ${prefix}_*animesmile*_  
+│ ${setv} ${prefix}_*animepoke*_  
+│ ${setv} ${prefix}_*animewink*_  
+│ ${setv} ${prefix}_*animebonk*_  
+│ ${setv} ${prefix}_*animebully*_  
+│ ${setv} ${prefix}_*animeyeet*_  
+│ ${setv} ${prefix}_*animebite*_  
+│ ${setv} ${prefix}_*animelick*_  
+│ ${setv} ${prefix}_*animekill*_  
+│ ${setv} ${prefix}_*animecry*_  
+│ ${setv} ${prefix}_*animewlp*_  
+│ ${setv} ${prefix}_*animekiss*_  
+│ ${setv} ${prefix}_*animehug*_  
+│ ${setv} ${prefix}_*couplepp*_  
+│ ${setv} ${prefix}_*animeneko*_  
+│ ${setv} ${prefix}_*animepat*_  
+│ ${setv} ${prefix}_*animeslap*_  
+│ ${setv} ${prefix}_*animecuddle*_  
+│ ${setv} ${prefix}_*animewaifu*_  
+│ ${setv} ${prefix}_*animenom*_  
+│ ${setv} ${prefix}_*animefoxgirl*_  
+│ ${setv} ${prefix}_*animetickle*_  
+│ ${setv} ${prefix}_*animegecg*_  
+│ ${setv} ${prefix}_*dogwoof*_  
+│ ${setv} ${prefix}_*8ballpool*_  
+│ ${setv} ${prefix}_*goosebird*_  
+│ ${setv} ${prefix}_*animefeed*_  
+│ ${setv} ${prefix}_*animeavatar*_  
+│ ${setv} ${prefix}_*lizardpic*_  
+│ ${setv} ${prefix}_*catmeow*_
+╰─┬───┈➤ 
 ╭─┴─┈➤「 *\`MUSIC\`* 」❍  
 │ ${setv} ${prefix}_*music1*_
 │ ${setv} ${prefix}_*music2*_
@@ -9924,14 +10062,14 @@ break
 │ ${setv} ${prefix}_*holoh (text)*_
 ╰─┬────┈➤  
 ╭─┴─┈➤「 *\`RANDOM\`* 」❍  
-│ ${setv} ${prefix}_*coffe*_
-│ ${setv} ${prefix}_*cogan*_
-│ ${setv} ${prefix}_*cecan*_
-│ ${setv} ${prefix}_*jepang*_
-│ ${setv} ${prefix}_*korea*_
-│ ${setv} ${prefix}_*mobil*_
-│ ${setv} ${prefix}_*cina*_
-│ ${setv} ${prefix}_*vietnam*_
+│ ${setv} ${prefix}_*coffe*_ 
+│ ${setv} ${prefix}_*bluearchive*_
+│ ${setv} ${prefix}_*cecanindo*_  
+│ ${setv} ${prefix}_*cecancina*_
+│ ${setv} ${prefix}_*cecanjapan*_
+│ ${setv} ${prefix}_*cecankorea*_
+│ ${setv} ${prefix}_*cecantahiland*_
+│ ${setv} ${prefix}_*kucing*_
 ╰─┬────┈➤  
 ╭─┴─┈➤「 *\`OWNER\`* 」❍  
 │ ${setv} ${prefix}_*bot [set]*_
@@ -10556,87 +10694,48 @@ break
 ╭───┈➤「 *ANIME MENU* 」❍  
 │ ${setv} ${prefix}waifu  
 │ ${setv} ${prefix}neko  
-│ ${setv} ${prefix}akira  
-│ ${setv} ${prefix}akiyama  
-│ ${setv} ${prefix}ana  
-│ ${setv} ${prefix}art  
-│ ${setv} ${prefix}asuna  
-│ ${setv} ${prefix}ayuzawa  
-│ ${setv} ${prefix}boruto  
-│ ${setv} ${prefix}bts  
-│ ${setv} ${prefix}chino  
-│ ${setv} ${prefix}chitoge  
-│ ${setv} ${prefix}cosplay  
-│ ${setv} ${prefix}cosplayloli  
-│ ${setv} ${prefix}cosplaysagiri  
-│ ${setv} ${prefix}cyber  
-│ ${setv} ${prefix}deidara  
-│ ${setv} ${prefix}doraemon  
-│ ${setv} ${prefix}elaina  
-│ ${setv} ${prefix}emilia  
-│ ${setv} ${prefix}erza  
-│ ${setv} ${prefix}exo  
-│ ${setv} ${prefix}gamewalpaper  
-│ ${setv} ${prefix}gremoy  
-│ ${setv} ${prefix}hacker  
-│ ${setv} ${prefix}hestia  
-│ ${setv} ${prefix}hinata  
-│ ${setv} ${prefix}husbu  
-│ ${setv} ${prefix}inori  
-│ ${setv} ${prefix}islamic  
-│ ${setv} ${prefix}isuzu  
-│ ${setv} ${prefix}itachi  
-│ ${setv} ${prefix}itori  
-│ ${setv} ${prefix}jennie  
-│ ${setv} ${prefix}jiso  
-│ ${setv} ${prefix}justina  
-│ ${setv} ${prefix}kaga  
-│ ${setv} ${prefix}kagura  
-│ ${setv} ${prefix}kakasih  
-│ ${setv} ${prefix}kaori  
-│ ${setv} ${prefix}cartoon  
-│ ${setv} ${prefix}shortquete  
-│ ${setv} ${prefix}kaneki  
-│ ${setv} ${prefix}kotori  
-│ ${setv} ${prefix}kurumi  
-│ ${setv} ${prefix}lisa  
-│ ${setv} ${prefix}madara  
-│ ${setv} ${prefix}megumin  
-│ ${setv} ${prefix}mikasa  
-│ ${setv} ${prefix}mikey  
-│ ${setv} ${prefix}miku  
-│ ${setv} ${prefix}minato  
-│ ${setv} ${prefix}mountain  
-│ ${setv} ${prefix}naruto  
-│ ${setv} ${prefix}neko2  
-│ ${setv} ${prefix}nekoanime  
-│ ${setv} ${prefix}nezuko  
-│ ${setv} ${prefix}onepiece  
-│ ${setv} ${prefix}pentol  
-│ ${setv} ${prefix}pokemon  
-│ ${setv} ${prefix}progaming  
-│ ${setv} ${prefix}randomanime  
-│ ${setv} ${prefix}randomanime2  
-│ ${setv} ${prefix}rize  
-│ ${setv} ${prefix}rose  
-│ ${setv} ${prefix}sagiri  
-│ ${setv} ${prefix}sakura  
-│ ${setv} ${prefix}sasuke  
-│ ${setv} ${prefix}satanic  
-│ ${setv} ${prefix}shina  
-│ ${setv} ${prefix}shinka  
-│ ${setv} ${prefix}shinomiya  
-│ ${setv} ${prefix}ahizuka  
-│ ${setv} ${prefix}shota  
-│ ${setv} ${prefix}space  
-│ ${setv} ${prefix}tejina  
-│ ${setv} ${prefix}tecnology  
-│ ${setv} ${prefix}toukachan  
-│ ${setv} ${prefix}sunade  
-│ ${setv} ${prefix}yotsuba  
-│ ${setv} ${prefix}yuki  
-│ ${setv} ${prefix}yulibocil  
-│ ${setv} ${prefix}yumekk  
+│ ${setv} ${prefix}animeawoo  
+│ ${setv} ${prefix}animemegumin  
+│ ${setv} ${prefix}animeshinobu  
+│ ${setv} ${prefix}animehandhold  
+│ ${setv} ${prefix}animehighfive  
+│ ${setv} ${prefix}animecringe  
+│ ${setv} ${prefix}animedance  
+│ ${setv} ${prefix}animehappy  
+│ ${setv} ${prefix}animeglomp  
+│ ${setv} ${prefix}animesmug  
+│ ${setv} ${prefix}animeblush  
+│ ${setv} ${prefix}animewave  
+│ ${setv} ${prefix}animesmile  
+│ ${setv} ${prefix}animepoke  
+│ ${setv} ${prefix}animewink  
+│ ${setv} ${prefix}animebonk  
+│ ${setv} ${prefix}animebully  
+│ ${setv} ${prefix}animeyeet  
+│ ${setv} ${prefix}animebite  
+│ ${setv} ${prefix}animelick  
+│ ${setv} ${prefix}animekill  
+│ ${setv} ${prefix}animecry  
+│ ${setv} ${prefix}animewlp  
+│ ${setv} ${prefix}animekiss  
+│ ${setv} ${prefix}animehug  
+│ ${setv} ${prefix}couplepp  
+│ ${setv} ${prefix}animeneko  
+│ ${setv} ${prefix}animepat  
+│ ${setv} ${prefix}animeslap  
+│ ${setv} ${prefix}animecuddle  
+│ ${setv} ${prefix}animewaifu  
+│ ${setv} ${prefix}animenom  
+│ ${setv} ${prefix}animefoxgirl  
+│ ${setv} ${prefix}animetickle  
+│ ${setv} ${prefix}animegecg  
+│ ${setv} ${prefix}dogwoof  
+│ ${setv} ${prefix}8ballpool  
+│ ${setv} ${prefix}goosebird  
+│ ${setv} ${prefix}animefeed  
+│ ${setv} ${prefix}animeavatar  
+│ ${setv} ${prefix}lizardpic  
+│ ${setv} ${prefix}catmeow  
 ╰─────┈➤`
                 let buttons = [{
     buttonId: ".menu",
@@ -10809,7 +10908,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 })
 }
 break
-            case 'randommenu': {
+            case 'randomenu': {
                 Replyx(mess.wait)
                 let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
 
@@ -10817,13 +10916,13 @@ break
   
 ╭─┴─┈➤「 *RANDOM MENU* 」❍  
 │ ${setv} ${prefix}coffe  
-│ ${setv} ${prefix}cogan  
-│ ${setv} ${prefix}cecan  
-│ ${setv} ${prefix}jepang  
-│ ${setv} ${prefix}korea  
-│ ${setv} ${prefix}mobil  
-│ ${setv} ${prefix}cina  
-│ ${setv} ${prefix}vietnam  
+│ ${setv} ${prefix}bluearchive
+│ ${setv} ${prefix}cecanindo  
+│ ${setv} ${prefix}cecancina
+│ ${setv} ${prefix}cecanjapan 
+│ ${setv} ${prefix}cecankorea
+│ ${setv} ${prefix}cecantahiland 
+│ ${setv} ${prefix}kucing 
 ╰─────┈➤`
                 let buttons = [{
     buttonId: ".menu",
