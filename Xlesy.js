@@ -284,7 +284,7 @@ const Replyx = (teks) => {
                 title: `</>  𝗫𝗟𝗘𝗦𝗬𝗩𝗜𝗣`,
                 body: `${ucapanWaktu} ${m.pushName} 👋🏻`,
                 previewType: "VIDEO",
-                thumbnailUrl: 'https://f.uguu.se/BafoLrAE.jp',
+                thumbnailUrl: 'https://files.catbox.moe/1eirot.jpg',
                 sourceUrl: my.yt,
             }
         }
@@ -3213,7 +3213,7 @@ case 'bug': {
                 title: m.pushName,
                 body: packname,
                 showAdAttribution: true,
-                thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+                thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
                 mediaType: 1,
                 previewType: 0,
                 renderLargerThumbnail: false,
@@ -5044,7 +5044,7 @@ case 'delsession': {
                         title: m.pushName,
                         body: packname,
                         showAdAttribution: true,
-                        thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+                        thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: false,
@@ -5765,51 +5765,55 @@ _©Gxyenn_`;
             break
 case 'enc':
 case 'encrypt': {
-    if (!m.text.startsWith(prefix)) return; // Pastikan hanya bisa dijalankan dengan prefix 
-    if (!m.quoted) return Replyx('Example: dengan reply file .js');
-    if (mime !== "application/javascript") return Replyx('Example: dengan reply file .js', { quoted: fkontak1 });
+    if (!m.text.startsWith(prefix)) return;
+    if (!m.quoted) return Replyx(`Example: ${prefix + command} reply file .js`);
+    if (mime !== "application/javascript") return Replyx(`Example: ${prefix + command} (reply file .js)`, { quoted: fkontak1 });
 
     let media = await m.quoted.download();
-    let filename = m.quoted.message.documentMessage.fileName;
-    await fs.writeFileSync(`./database/sampah/@enc_${filename}`, media);
+    let filename = m.quoted.message?.documentMessage?.fileName || 'unknown.js';
 
+    fs.writeFileSync(`./database/sampah/@enc_${filename}`, media);
     await Replyx("Memproses encrypt code . . .", { quoted: fkontak1 });
 
-    await JsConfuser.obfuscate(await fs.readFileSync(`./database/sampah/@enc_${filename}`).toString(), {
-        target: "node",
-        preset: "high",
-        calculator: true,
-        compact: true,
-        hexadecimalNumbers: true,
-        controlFlowFlattening: 0.75,
-        deadCode: 0.2,
-        dispatcher: true,
-        duplicateLiteralsRemoval: 0.75,
-        flatten: true,
-        globalConcealing: true,
-        identifierGenerator: "randomized",
-        minify: true,
-        movedDeclarations: true,
-        objectExtraction: true,
-        opaquePredicates: 0.75,
-        renameVariables: true,
-        renameGlobals: true,
-        stack: true,
-        stringConcealing: true,
-        stringCompression: true,
-        stringEncoding: true,
-        stringSplitting: 0.75
-    }).then(async (obfuscated) => {
-        await fs.writeFileSync(`./database/sampah/@enc_${filename}`, obfuscated);
+    try {
+        let obfuscated = await JsConfuser.obfuscate(media.toString(), {
+            target: "node",
+            preset: "high",
+            calculator: true,
+            compact: true,
+            hexadecimalNumbers: true,
+            controlFlowFlattening: 0.75,
+            deadCode: 0.2,
+            dispatcher: true,
+            duplicateLiteralsRemoval: 0.75,
+            flatten: true,
+            globalConcealing: true,
+            identifierGenerator: "randomized",
+            minify: true,
+            movedDeclarations: true,
+            objectExtraction: true,
+            opaquePredicates: 0.75,
+            renameVariables: true,
+            renameGlobals: true,
+            stack: true,
+            stringConcealing: true,
+            stringCompression: true,
+            stringEncoding: true,
+            stringSplitting: 0.75
+        });
+
+        fs.writeFileSync(`./database/sampah/@enc_${filename}`, obfuscated);
         await Xlesy.sendMessage(m.chat, {
             document: fs.readFileSync(`./database/sampah/@enc_${filename}`),
             mimetype: "application/javascript",
             fileName: filename,
             caption: "Encrypt File Successfully ✅"
         }, { quoted: fkontak1 });
-    }).catch(e => Replyx("Error: " + e));
+    } catch (e) {
+        Replyx("Error: " + e);
+    }
 
-    await fs.unlinkSync(`./database/sampah/@enc_${filename}`);
+    fs.unlinkSync(`./database/sampah/@enc_${filename}`);
 }
 break;
             case "done": {
@@ -8555,7 +8559,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10313,7 +10317,7 @@ break
 		let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "BACK TO MENU"
+        displayText: "スクリプト更新情報"
     },
     type: 1
 }]
@@ -10337,7 +10341,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10412,7 +10416,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10480,7 +10484,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10543,7 +10547,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10602,7 +10606,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10656,7 +10660,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10752,7 +10756,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10841,7 +10845,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10872,7 +10876,7 @@ break
                 let buttons = [{
                     buttonId: ".menu",
                     buttonText: {
-                        displayText: "BACK TO MENU"
+                        displayText: "スクリプト更新情報"
                     },
                     type: 1
                 }]
@@ -10969,7 +10973,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11035,7 +11039,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11100,7 +11104,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11156,7 +11160,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11215,7 +11219,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11292,7 +11296,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
+            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11430,7 +11434,7 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
 							title: "XLESYVIP",
 							body: author,
 							showAdAttribution: true,
-							thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',                                            						
+							thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',                                            						
 							mediaType: 1,
 							previewType: 0,
 							renderLargerThumbnail: false,
