@@ -55,25 +55,25 @@ global.uang = {
 
 global.mess = {
 	key0: 'Your Apikey has run out!.\n_Please contact the creator to buy your Apikey back._',
-	owner: 'Owner Special Features!',
-	admin: 'Admin Special Features!',
-	botAdmin: 'Bot Not Admin!',
-	group: 'Use In Group!',
-	private: 'Use In Private Chat!',
-	limit: 'Your Limit Has Been finished!',
-	prem: 'premium users only!',
-	wait: '*_Wait a moment, Lovers" XLESYVIP ♡._*',
+	owner: '*</> ACCESS DITOLAK*\nOwner Special Features!',
+	admin: '*</> ACCESS DITOLAK*\nAdmin Special Features!',
+	botAdmin: '*</> ACCESS DITOLAK*\nBot Not Admin!',
+	group: '*</> ACCESS DITOLAK*\nUse In Group!',
+	private: '*</> ACCESS DITOLAK*\nUse In Private Chat!',
+	limit: '*</> ACCESS DITOLAK*\nYour Limit Has Been finished!',
+	prem: '*</> ACCESS DITOLAK*\npremium users only!',
+	wait: '**</> ACCESS ACCEPTED*\nWait a moment, Lovers" XLESYVIP ♡.*',
 	error: 'Error!',
-	done: '`Succeed!..`',
-	load: '_Loading!..._'
+	done: 'SUCCEED!.',
+	load: '*</> ACCESS ACCEPTED*\nLoading!...'
 }
 
 global.APIs = {
-  Xlesy: 'http://localhost:3000/api',
+  Xlesy: 'https://rest-api-gxyenn.vercel.app/',
 }
 
 global.APIKeys = {
-  'http://localhost:3000/api': 'Xlesy-awokawok', // API Key yang dihasilkan
+  'https://rest-api-gxyenn.vercel.app/': 'Xlesy-awokawok', // API Key yang dihasilkan
 }
 
 //~~~~~~~~~~~~~~~< PROCESS >~~~~~~~~~~~~~~~\\

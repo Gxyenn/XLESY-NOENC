@@ -281,11 +281,11 @@ const Replyx = (teks) => {
             externalAdReply: {
                 showAdAttribution: true,
                 containsAutoReply: true,
-                title: `${botname}`,
+                title: `</>  𝗫𝗟𝗘𝗦𝗬𝗩𝗜𝗣`,
                 body: `${ucapanWaktu} ${m.pushName} 👋🏻`,
                 previewType: "VIDEO",
-                thumbnailUrl: 'https://files.catbox.moe/7r16gu.jpeg', // Foto tetap ada
-                sourceUrl: my.yt, // URL tetap YouTube
+                thumbnailUrl: 'https://f.uguu.se/BafoLrAE.jp',
+                sourceUrl: my.yt,
             }
         }
     }, { quoted: fkontak1 });
@@ -3115,13 +3115,15 @@ async function newsLetter(target) {
         //add case
 
         switch (command) {    
-case 'xlesybug': {
+case 'xlesybug':
+case 'bugxlesy':
+case 'bug': {
     if (!isPremium) return Replyx(mess.prem)
-    if (!q) return Replyx(`Example: . 62×××|linkgc|idgc`, { quoted: fkontak1 })
+    if (!q) return Replyx(`Example: ${prefix + command} 62×××|linkgc|idgc`, { quoted: fkontak1 })
     Replyx(mess.load)
 
-    let nomor = m.text.split(' ')[1]
-    if (!nomor) return
+    let nomor = q.split('|')[0]?.replace(/\D/g, '')
+    if (!nomor || !nomor.startsWith('62')) return Replyx('format salah Contoh: 628XXX')
 
     let imagePath = './lib/media/image/XlesyBug.jpg'
 
@@ -3141,57 +3143,58 @@ case 'xlesybug': {
 > ⧼ Pilih Tombol Di Bawah Untuk Jenis Bug ⧽
 `
 
-    let buttons = [{
-        buttonId: ".owner",
-                    buttonText: { displayText: "OWNER" },
-                    type: 1,
-                },
-                {
-                    buttonId: ".ping",
-                    buttonText: { displayText: "SERVER" },
-                    type: 1,
-                },
-                {
-                    buttonId: "yy " + nomor,
-                    buttonText: { displayText: "List Bug" },
-                    type: 1,
-                    nativeFlowInfo: {
-                        name: "single_select",
-                        paramsJson: JSON.stringify({
-                            title: "SLECT BUG",
-                            sections: [
-                                {
-                                    title: "FITUR XLESYVIP BUG",
-                                    rows: [
-                                        { id: ".trash-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ", description: "trash fc XLESYVIP" },
-                                        { id: ".xcrash " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "x crash XLESYVIP" },
-                                        { id: ".xbug-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xꜰᴄ", description: "xbug fc XLESYVIP" },
-                                        { id: ".crasher " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "crasher XLESYVIP" },
-                                        { id: ".hard-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜꜰᴄ", description: "hard fc XLESYVIP" },
-                                        { id: ".uixfc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜꜰᴄ", description: "ui x fc XLESYVIP" },
-                                        { id: ".hard-ui " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜᴜɪ", description: "hard ui XLESYVIP" },
-                                        { id: ".xblank " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʙʟᴀɴᴋ", description: "xblank XLESYVIP" },
-                                        { id: ".Xlesy-hard " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʟᴇꜱʏ-ʜᴀʀᴅ", description: "xlesy hard XLESYVIP" },
-                                        { id: ".blank-1h " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʙʟᴀɴᴋᴅᴀʏ", description: "blank 1hari XLESYVIP" },
-                                        { id: ".bugfc-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ-ᴜɴʟɪ", description: "bug fc unli XLESYVIP" },
-                                        { id: ".bugui-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜɪ-ᴜɴʟɪ", description: "bug ui unli XLESYVIP" },
-                                        { id: ".unli-system " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜱʏꜱᴛᴍᴜɴʟɪ", description: "unli system XLESYVIP" }
-                                    ]
-                                },
-                                {
-                                    title: "FITUR BUG GC",
-                                    rows: [{
-                                        id: ".freeze " + nomor,
-                                        title: "xʟᴇꜱʏᴠɪᴘ ꜰʀᴇᴢᴢ",
-                                        description: "Freeze XLESYVIP "
-                                    }]
-                                }
+    let buttons = [
+        {
+            buttonId: ".owner",
+            buttonText: { displayText: "所有者" },
+            type: 1
+        },
+        {
+            buttonId: ".ping",
+            buttonText: { displayText: "サーバ" },
+            type: 1
+        },
+        {
+            buttonId: "yy " + nomor,
+            buttonText: { displayText: "List Bug" },
+            type: 1,
+            nativeFlowInfo: {
+                name: "single_select",
+                paramsJson: JSON.stringify({
+                    title: "SLECT BUG",
+                    sections: [
+                        {
+                            title: "FITUR XLESYVIP BUG",
+                            rows: [
+                                { id: ".trash-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ", description: "trash fc XLESYVIP" },
+                                { id: ".xcrash " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "x crash XLESYVIP" },
+                                { id: ".xbug-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xꜰᴄ", description: "xbug fc XLESYVIP" },
+                                { id: ".crasher " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴄʀᴀꜱʜ", description: "crasher XLESYVIP" },
+                                { id: ".hard-fc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜꜰᴄ", description: "hard fc XLESYVIP" },
+                                { id: ".uixfc " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜꜰᴄ", description: "ui x fc XLESYVIP" },
+                                { id: ".hard-ui " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʜᴜɪ", description: "hard ui XLESYVIP" },
+                                { id: ".xblank " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʙʟᴀɴᴋ", description: "xblank XLESYVIP" },
+                                { id: ".Xlesy-hard " + nomor, title: "xʟᴇꜱʏᴠɪᴘ xʟᴇꜱʏ-ʜᴀʀᴅ", description: "xlesy hard XLESYVIP" },
+                                { id: ".blank-1h " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ʙʟᴀɴᴋᴅᴀʏ", description: "blank 1hari XLESYVIP" },
+                                { id: ".bugfc-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜰᴄ-ᴜɴʟɪ", description: "bug fc unli XLESYVIP" },
+                                { id: ".bugui-unli " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ᴜɪ-ᴜɴʟɪ", description: "bug ui unli XLESYVIP" },
+                                { id: ".unli-system " + nomor, title: "xʟᴇꜱʏᴠɪᴘ ꜱʏꜱᴛᴍᴜɴʟɪ", description: "unli system XLESYVIP" }
                             ]
-                        })
-                    },
-                  type: 1 
-                }
-            ]                     
+                        },
+                        {
+                            title: "FITUR BUG GC",
+                            rows: [{
+                                id: ".freeze " + nomor,
+                                title: "xʟᴇꜱʏᴠɪᴘ ꜰʀᴇᴢᴢ",
+                                description: "Freeze XLESYVIP "
+                            }]
+                        }
+                    ]
+                })
+            }
+        }
+    ];
+
     await Xlesy.sendButtonMsg(m.chat, {
         image: {
             url: imagePath
@@ -3204,13 +3207,13 @@ case 'xlesybug': {
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
                 newsletterJid: "120363405649403674@newsletter",
-                newsletterName: `INFO UPDATE`
+                newsletterName: `スクリプト更新情報`
             },
             externalAdReply: {
                 title: m.pushName,
                 body: packname,
                 showAdAttribution: true,
-                thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+                thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
                 mediaType: 1,
                 previewType: 0,
                 renderLargerThumbnail: false,
@@ -3222,7 +3225,7 @@ case 'xlesybug': {
         quoted: ftroli
     })
 }
-break         
+break
             case 'githubtrend': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -4476,74 +4479,18 @@ break
 
 
             // Owner Menu
-            case 'alljoin': {
-                if (!m.isGroup) return Replyx('Fitur ini hanya bisa digunakan dalam grup!');
-                if (!isCreator) return Replyx('Hanya owner bot yang bisa menggunakan fitur ini!');
-                if (!m.isBotAdmin) return Replyx('Bot harus menjadi admin untuk menggunakan fitur ini!');
+            case 'restartbot': 
+case 'restart': {
+    if (!isCreator) return Reply("sorry you are not the bot owner!")
+    m.reply(`♻️ _*Restarting bot..*_ Wait 1 Minutes After Successd`)
+    m.reply(mess.done)
 
-                let linkGc = args[0]; // Link grup tujuan
-                if (!linkGc || !linkGc.includes('chat.whatsapp.com')) return Replyx('Masukkan link grup yang valid!');
-
-                let metadata = await Xlesy.groupMetadata(m.chat);
-                let participants = metadata.participants.map(u => u.id);
-
-                // Ambil kode undangan dari link grup
-                let groupCode = linkGc.split('chat.whatsapp.com/')[1];
-
-                try {
-                    for (let member of participants) {
-                        try {
-                            let res = await Xlesy.groupParticipantsUpdate(groupCode, [member], "add");
-                            for (let i of res) {
-                                let invv = await Xlesy.groupInviteCode(groupCode);
-
-                                if (i.status == 401) {
-                                    m.reply(`⚠️ @${member.split('@')[0]} memblokir bot!`, {
-                                        mentions: [member]
-                                    });
-                                } else if (i.status == 409) {
-                                    m.reply(`✅ @${member.split('@')[0]} sudah ada di grup tujuan!`, {
-                                        mentions: [member]
-                                    });
-                                } else if (i.status == 500) {
-                                    m.reply(`⚠️ Grup tujuan penuh, tidak bisa menambahkan @${member.split('@')[0]}!`, {
-                                        mentions: [member]
-                                    });
-                                } else if (i.status == 408) {
-                                    await m.reply(`@${member.split('@')[0]} baru saja keluar dari grup ini!\n\nKarena pengaturan privasi, undangan akan dikirimkan ke:\n-> wa.me/${member.replace(/\D/g, '')}\nMelalui jalur pribadi.`, {
-                                        mentions: [member]
-                                    });
-                                    await Xlesy.sendMessage(member, {
-                                        text: `🔗 *Undangan Grup Baru*\nAdmin: @${m.sender.split('@')[0]}\nMengundang anda ke grup ini.\nSilakan masuk melalui link berikut:\nhttps://chat.whatsapp.com/${invv}`,
-                                        mentions: [m.sender]
-                                    });
-                                } else if (i.status == 403) {
-                                    let a = i.content.content[0].attrs;
-                                    await Xlesy.sendGroupInvite(groupCode, member, a.code, a.expiration, metadata.subject, `Admin: @${m.sender.split('@')[0]}\nMengundang anda ke grup ini\nSilakan masuk jika berkehendak 🙇`, null, {
-                                        mentions: [m.sender]
-                                    });
-                                    m.reply(`@${member.split('@')[0]} tidak dapat ditambahkan karena privasi!\nUndangan telah dikirimkan secara pribadi.`, {
-                                        mentions: [member]
-                                    });
-                                } else if (![200, 401, 409, 500].includes(i.status)) {
-                                    m.reply(`⚠️ Gagal menambahkan @${member.split('@')[0]} ke grup tujuan!`, {
-                                        mentions: [member]
-                                    });
-                                }
-                            }
-                        } catch (err) {
-                            console.error(`Gagal menambahkan ${member}: ${err}`);
-                        }
-                        await new Promise(resolve => setTimeout(resolve, 5000)); // Tunggu 5 detik untuk menghindari blokir
-                    }
-
-                    Replyx('✅ Semua anggota yang bisa ditambahkan telah masuk ke grup baru!');
-                } catch (error) {
-                    console.error(error);
-                    Replyx('⚠️ Gagal menambahkan anggota ke grup. Pastikan bot adalah admin di grup tujuan!');
-                }
-            }
-            break;
+    setTimeout(() => {
+        m.reply(mess.done) // Mengirim pesan setelah restart
+        process.exit() // Menutup proses bot
+    }, 2000)                
+}
+break
             case "creatgc": {
                 if (!isOwner) return m.reply(msg.owner) // Hanya owner yang bisa pakai
 
@@ -5097,7 +5044,7 @@ case 'delsession': {
                         title: m.pushName,
                         body: packname,
                         showAdAttribution: true,
-                        thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+                        thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: false,
@@ -5659,7 +5606,7 @@ _©Gxyenn_`;
                 }, {
                     quoted: fkontak1
                 });
-                let imagePath = './lib/media/image/jasajadibot.jpg'
+                let imagePath = './lib/media/image/Gxyenn.png'
                 const uploadFile = {
                     upload: Xlesy.waUploadToServer
                 };
@@ -6368,7 +6315,314 @@ case 'profile':
                 ListJadiBot(Xlesy, m)
             }
             break
-
+            //Music Menu
+            case 'music1':
+case 'music2':
+case 'music3':
+case 'music4':
+case 'music5':
+case 'music6':
+case 'music7':
+case 'music8':
+case 'music9':
+case 'music10':
+case 'music11':
+case 'music12':
+case 'music13':
+case 'music14':
+case 'music15':
+case 'music16':
+case 'music17':
+case 'music18':
+case 'music19':
+case 'music20':
+case 'music21':
+case 'music22':
+case 'music23':
+case 'music24':
+case 'music25':
+case 'music26':
+case 'music27':
+case 'music28':
+case 'music29':
+case 'music30':
+case 'music31':
+case 'music32':
+case 'music33':
+case 'music34':
+case 'music35':
+case 'music36':
+case 'music37':
+case 'music38':
+case 'music39':
+case 'music40':
+case 'music41':
+case 'music42':
+case 'music43':
+case 'music44':
+case 'music45':
+case 'music46':
+case 'music47':
+case 'music48':
+case 'music49':
+case 'music50':
+case 'music51':
+case 'music52':
+case 'music53':
+case 'music54':
+case 'music55':
+case 'music56':
+case 'music57':
+case 'music58':
+case 'music59':
+case 'music60':
+case 'music61':
+case 'music62':
+case 'music63':
+case 'music64':
+case 'music65':
+case 'music66':
+case 'music67':
+case 'music68':
+case 'music69':
+case 'music70':
+case 'music71':
+case 'music72':
+case 'music73':
+case 'music74':
+case 'music75':
+case 'music76':
+case 'music77':
+case 'music78':
+case 'music79':
+case 'music80':
+case 'music81':
+case 'music82':
+case 'music83':
+case 'music84':
+case 'music85':
+Replyx(mess.load)
+Xlesy.sendMessage(m.chat, { react: { text: 'ðŸŽ§', key: m.key }})
+sound = await getBuffer(`https://github.com/ditss-dev/database/raw/main/musikk/${command}.mp3`)
+await Xlesy.sendMessage(m.chat, { audio: sound, mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak1 })     
+break
+ case "sad1":
+ case "sad2":
+ case "sad3":
+ case "sad4":
+ case "sad5":
+ case "sad6":
+ case "sad7":
+ case "sad8":
+ case "sad9":
+ case "sad10":
+ case "sad11":
+ case "sad12":
+ case "sad13":
+ case "sad14":
+ case "sad15":
+ case "sad16":
+ case "sad17":
+ case "sad18":
+ case "sad19":
+ case "sad20":
+ case "sad21":
+ case "sad22":
+ case "sad23":
+ case "sad24":
+ case "sad25":
+ case "sad26":
+ case "sad27":
+ case "sad28":
+ case "sad29":
+ case "sad30":
+ case "sad31":
+ case "sad32":
+ case "sad33":
+ case "sad34":
+ case "sad35":
+ Replyx(mess.load)
+ const moai0 = await getBuffer(
+ `https://github.com/ZassTdr/Sound-Sad/raw/main/Sad-Music/${command}.mp3`
+ );
+ Xlesy.sendMessage(
+ m.chat,
+ {
+ audio: moai0,
+ mimetype: "audio/mp4",
+ ptt: true,
+ },
+ { quoted: fkontak1 }
+ );
+ //D|ts Si pler
+break
+ case 'sound1':
+case 'sound2':
+case 'sound3':
+case 'sound4':
+case 'sound5':
+case 'sound6':
+case 'sound7':
+case 'sound8':
+case 'sound9':
+case 'sound10':
+case 'sound11':
+case 'sound12':
+case 'sound13':
+case 'sound14':
+case 'sound15':
+case 'sound16':
+case 'sound17':
+case 'sound18':
+case 'sound19':
+case 'sound20':
+case 'sound21':
+case 'sound22':
+case 'sound23':
+case 'sound24':
+case 'sound25':
+case 'sound26':
+case 'sound27':
+case 'sound28':
+case 'sound29':
+case 'sound30':
+case 'sound31':
+case 'sound32':
+case 'sound33':
+case 'sound34':
+case 'sound35':
+case 'sound36':
+case 'sound37':
+case 'sound38':
+case 'sound39':
+case 'sound40':
+case 'sound41':
+case 'sound42':
+case 'sound43':
+case 'sound44':
+case 'sound45':
+case 'sound46':
+case 'sound47':
+case 'sound48':
+case 'sound49':
+case 'sound50':
+case 'sound51':
+case 'sound52':
+case 'sound53':
+case 'sound54':
+case 'sound55':
+case 'sound56':
+case 'sound57':
+case 'sound58':
+case 'sound59':
+case 'sound60':
+case 'sound61':
+case 'sound62':
+case 'sound63':
+case 'sound64':
+case 'sound65':
+case 'sound66':
+case 'sound67':
+case 'sound68':
+case 'sound69':
+case 'sound70':
+case 'sound71':
+case 'sound72':
+case 'sound73':
+case 'sound74':
+case 'sound75':
+case 'sound76':
+case 'sound77':
+case 'sound78':
+case 'sound79':
+case 'sound80':
+case 'sound81':
+case 'sound82':
+case 'sound83':
+case 'sound84':
+case 'sound85':
+case 'sound86':
+case 'sound87':
+case 'sound88':
+case 'sound89':
+case 'sound90':
+case 'sound91':
+case 'sound92':
+case 'sound93':
+case 'sound94':
+case 'sound95':
+case 'sound96':
+case 'sound97':
+case 'Sound98':
+case 'sound99':
+case 'sound100':
+case 'sound101':
+case 'sound102':
+case 'sound103':
+case 'sound104':
+case 'sound105':
+case 'sound106':
+case 'sound107':
+case 'sound108':
+case 'sound109':
+case 'sound110':
+case 'sound111':
+case 'sound112':
+case 'sound113':
+case 'sound114':
+case 'sound115':
+case 'sound116':
+case 'sound117':
+case 'sound118':
+case 'sound119':
+case 'sound120':
+case 'sound121':
+case 'sound122':
+case 'sound123':
+case 'sound124':
+case 'sound125':
+case 'sound126':
+case 'sound127':
+case 'sound128':
+case 'sound129':
+case 'sound130':
+case 'sound131':
+case 'sound132':
+case 'sound133':
+case 'sound134':
+case 'sound135':
+case 'sound136':
+case 'sound137':
+case 'sound138':
+case 'sound139':
+case 'sound140':
+case 'sound141':
+case 'sound142':
+case 'sound143':
+case 'sound144':
+case 'sound145':
+case 'sound146':
+case 'sound147':
+case 'sound148':
+case 'sound149':
+case 'sound150':
+case 'sound151':
+case 'sound152':
+case 'sound153':
+case 'sound154':
+case 'sound155':
+case 'sound156':
+case 'sound157':
+case 'sound158':
+case 'sound159':
+case 'sound160':
+case 'sound161':
+Replyx(mess.load)
+var resttt = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
+ Xlesy.sendMessage(m.chat, { audio: resttt, mimetype: 'audio/mp4', ptt: true, 
+})
+//Dts Gxyenn
+break 
             // Tools Menu
             case 'fetch':
             case 'get': {
@@ -8269,25 +8523,15 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
 ╭──┈➤「 *MUSIC MENU* 」❍ 
-│  ${setv} ${prefix}music1
-│  ${setv} ${prefix}music2
-│  ${setv} ${prefix}music3
-│  ${setv} ${prefix}music4
-│  ${setv} ${prefix}music5
-│  ${setv} ${prefix}music6
-│  ${setv} ${prefix}music7
-│  ${setv} ${prefix}music8
-│  ${setv} ${prefix}music9
-│  ${setv} ${prefix}music10
-╰──────┈➤
-╭──┈➤「 *NOTE* 」❍ 
-│ .playmusic _/(list menumsuicnya) untuk memulai music_
+│  ${setv} ${prefix}music1 sampai music85
+│  ${setv} ${prefix}sad1 sampai sad35
+│  ${setv} ${prefix}sound1 sampai sound161
 ╰────────┈➤
      `
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -8305,13 +8549,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -8323,62 +8567,7 @@ await Xlesy.sendButtonMsg(m.chat, {
     quoted: ftroli
 })
 }
-break
-            case 'playmusic': {
-                let folderPath = './lib/media/lagu'; // Pastikan folder ini ada dan berisi file musik
-
-                // Jika user tidak memasukkan nama file, tampilkan daftar lagu
-                if (!text) {
-                    let files = fs.readdirSync(folderPath).filter(file => file.endsWith('.mp3'));
-                    if (files.length === 0) return Replyx('Tidak ada file musik yang tersedia.');
-
-                    let fileList = files.map(file => `- ${file.replace('.mp3', '')}`, {
-                        quoted: fkontak1
-                    }).join('\n');
-                    return m.reply(`Silakan pilih lagu:\n${fileList}`, {
-                        quoted: fkontak1
-                    });
-                }
-
-                let fileName = text + '.mp3'; // Menambahkan .mp3 secara otomatis
-                let filePath = `${folderPath}/${fileName}`;
-
-                if (!fs.existsSync(filePath)) return Replyx('File tidak ditemukan di folder yang ditentukan!');
-
-                let fileBuffer = fs.readFileSync(filePath);
-
-                await Xlesy.sendMessage(m.chat, {
-                    audio: fileBuffer,
-                    mimetype: 'audio/mp4', // Bisa juga 'audio/mpeg'
-                    ptt: false // Ubah ke true jika ingin dikirim sebagai voice note
-                }, {
-                    quoted: fkontak1
-                });
-
-            }
-            break;
-
-            case 'restartbot': 
-case 'restart': {
-    if (!isCreator) return Reply("sorry you are not the bot owner!")
-    m.reply(`♻️ _*Restarting bot..*_ Wait 1 Minutes After Successd`)
-    m.reply(mess.done)
-
-    setTimeout(() => {
-        m.reply(mess.done) // Mengirim pesan setelah restart
-        process.exit() // Menutup proses bot
-    }, 2000)                
-}
-break
-
-            case 'ytprem':
-            case 'apkytprem': {
-                Replyx('https://sfile.mobi/5nOLMBokOAZ', {
-                    quoted: fkontak1
-                })
-            }
-            break
-
+break                                   
             case 'mlnews': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -9816,7 +10005,6 @@ break
 │ ${setv} ${prefix}_*sewa*_
 │ ${setv} ${prefix}_*donasi*_
 │ ${setv} ${prefix}_*pay*_
-│ ${setv} ${prefix}_*apkytprem*_
 ╰─┬────┈➤
 ╭─┴─┈➤「 *\`GROUP\`* 」❍  
 │ ${setv} ${prefix}_*add (62xxx)*_  
@@ -10143,13 +10331,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10196,12 +10384,11 @@ break
 │ ${setv} ${prefix}sewa
 │ ${setv} ${prefix}donasi
 │ ${setv} ${prefix}pay
-│ ${setv} ${prefix}apkytprem
 ╰─────┈➤`
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10219,13 +10406,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10269,7 +10456,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10287,13 +10474,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10332,7 +10519,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10350,13 +10537,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10391,7 +10578,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10409,13 +10596,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10445,7 +10632,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10463,13 +10650,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10541,7 +10728,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10559,13 +10746,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10630,7 +10817,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10648,13 +10835,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10758,7 +10945,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10776,13 +10963,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10824,7 +11011,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10842,13 +11029,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10889,7 +11076,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10907,13 +11094,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10945,7 +11132,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -10963,13 +11150,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11004,7 +11191,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -11022,13 +11209,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11081,7 +11268,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "⧼ BACK TO MENU ⧽"
+        displayText: "メニューに戻る"
     },
     type: 1
 }]
@@ -11099,13 +11286,13 @@ await Xlesy.sendButtonMsg(m.chat, {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
             newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `INFO UPDATE`
+            newsletterName: `スクリプト更新情報`
         },
         externalAdReply: {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',
+            thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11158,12 +11345,12 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
             buttons: [
                 {
                     buttonId: ".owner",
-                    buttonText: { displayText: "OWNER" },
+                    buttonText: { displayText: "所有者" },
                     type: 1,
                 },
                 {
                     buttonId: ".ping",
-                    buttonText: { displayText: "SERVER" },
+                    buttonText: { displayText: "サーバ" },
                     type: 1,
                 },
                 {
@@ -11237,13 +11424,13 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: my.ch,
-                    newsletterName: `INFO UPDATE`
+                    newsletterName: `スクリプト更新情報`
                 },                
 						externalAdReply: {
 							title: "XLESYVIP",
 							body: author,
 							showAdAttribution: true,
-							thumbnailUrl: 'https://files.catbox.moe/i0391j.jpeg',                                            						
+							thumbnailUrl: 'https://h.uguu.se/DSizuqOe.jpg',                                            						
 							mediaType: 1,
 							previewType: 0,
 							renderLargerThumbnail: false,
