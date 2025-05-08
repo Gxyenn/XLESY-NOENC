@@ -26,7 +26,21 @@ global.ovo = XlesySet.ovo;
 global.pulsa = XlesySet.pulsa;
 global.qris = XlesySet.qris;
 
-global.fake = {
+global.img = {
+    thumbnailganda: 'https://cloudkuimages.guru/uploads/images/681c7a1643366.jpg',
+    // image pasyment
+    danaimg: 'https://cloudkuimages.guru/uploads/images/681c7cc34ee99.jpg',
+    gopayimg: 'https://cloudkuimages.guru/uploads/files/681c7cfc33f03.jpg',
+    ovoimg: 'https://cloudkuimages.guru/uploads/images/681c7d28ed23f.jpg',
+    qrisimg: './lib/media/image/qris.jpg',
+    // Image need    
+    others: 'https://cloudkuimages.guru/uploads/images/681c7e203b9a7.jpg',
+    // image menu-menu
+    menu: './lib/media/image/Gxyenn.jpg',
+    menu2: './lib/media/image/Gxyenn2.jpg',
+    }
+
+global.fake = {    
 	anonim: 'https://telegra.ph/file/95670d63378f7f4210f03.png',
 	thumbnailUrl: 'https://files.catbox.moe/92vy0p.jpg',
 	thumbnail: fs.readFileSync('./src/media/Xlesy.png'),
@@ -62,7 +76,7 @@ global.mess = {
 	private: '*</> ACCESS DITOLAK*\nUse In Private Chat!',
 	limit: '*</> ACCESS DITOLAK*\nYour Limit Has Been finished!',
 	prem: '*</> ACCESS DITOLAK*\npremium users only!',
-	wait: '**</> ACCESS ACCEPTED*\nWait a moment, Lovers" XLESYVIP ♡.*',
+	wait: '*</> ACCESS ACCEPTED*\nWait a moment, Lovers" XLESYVIP ♡.',
 	error: 'Error!',
 	done: 'SUCCEED!.',
 	load: '*</> ACCESS ACCEPTED*\nLoading!...'

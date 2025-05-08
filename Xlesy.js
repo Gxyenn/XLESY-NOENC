@@ -284,7 +284,7 @@ const Replyx = (teks) => {
                 title: `</>  𝗫𝗟𝗘𝗦𝗬𝗩𝗜𝗣`,
                 body: `${ucapanWaktu} ${m.pushName} 👋🏻`,
                 previewType: "VIDEO",
-                thumbnailUrl: 'https://files.catbox.moe/1eirot.jpg',
+                thumbnailUrl: 'https://cloudkuimages.guru/uploads/images/681c79650f4a2.jpg',
                 sourceUrl: my.yt,
             }
         }
@@ -1168,7 +1168,7 @@ async function invc2(target, ptcp = true) {
           quotedAd: {
             advertiserName: " X ",
             mediaType: "IMAGE",
-            jpegThumbnail: fs.readFileSync("./lib/media/image/Gxyenn.png"),
+            jpegThumbnail: img.others,
             caption: " X "
           },
           placeholderKey: {
@@ -1929,7 +1929,7 @@ async function killui(target, Ptcp = true) {
                       "/v/t62.7119-24/30958033_897372232245492_2352579421025151158_n.enc?ccb=11-4&oh=01_Q5AaIOBsyvz-UZTgaU-GUXqIket-YkjY-1Sg28l04ACsLCll&oe=67156C73&_nc_sid=5e03e0",
                     mediaKeyTimestamp: "1726867151",
                     contactVcard: true,
-                    jpegThumbnail: fs.readFileSync("./lib/media/image/Gxyenn.png"),
+                    jpegThumbnail: img.others
                   },
                   hasMediaAttachment: true,
                 },
@@ -3125,7 +3125,7 @@ case 'bug': {
     let nomor = q.split('|')[0]?.replace(/\D/g, '')
     if (!nomor || !nomor.startsWith('62')) return Replyx('format salah Contoh: 628XXX')
 
-    let imagePath = './lib/media/image/XlesyBug.jpg'
+    let imagePath = img.menu
 
     let textMessage = `
 *╭── ⧼ \`XLESYVIP MODE BUG\` ⧽*
@@ -3137,8 +3137,12 @@ case 'bug': {
 *│ 々 Runtime  : ${runtime(process.uptime())}*
 *╰────────────────⧽*
 
+* *Hai👋: ${m.pushName} Target Mu Telah Terkunci!*
+* *Target: ${nomor}*
+
+
 ⧼ Please Subs Dev \`XLESYVIP\` ⧽
-[https://youtube.com/@Gxyenn]
+ https://youtube.com/@Gxyenn
 
 > ⧼ Pilih Tombol Di Bawah Untuk Jenis Bug ⧽
 `
@@ -3146,12 +3150,12 @@ case 'bug': {
     let buttons = [
         {
             buttonId: ".owner",
-            buttonText: { displayText: "所有者" },
+            buttonText: { displayText: "Owner" },
             type: 1
         },
         {
             buttonId: ".ping",
-            buttonText: { displayText: "サーバ" },
+            buttonText: { displayText: "Server" },
             type: 1
         },
         {
@@ -3213,7 +3217,7 @@ case 'bug': {
                 title: m.pushName,
                 body: packname,
                 showAdAttribution: true,
-                thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+                thumbnailUrl: img.thumbnailganda,
                 mediaType: 1,
                 previewType: 0,
                 renderLargerThumbnail: false,
@@ -4932,65 +4936,75 @@ break
             }
             break
             case 'addcase': {
-                if (!isCreator) return Replyx(mess.owner)
-                if (!text && !text.startsWith('case')) return Replyx('Masukkan Casenya!')
-                fs.readFile('Xlesy.js', 'utf8', (err, data) => {
-                    if (err) {
-                        console.error('Terjadi kesalahan saat membaca file:', err);
-                        return;
-                    }
-                    if (posisi !== -1) {
-                        const codeBaru = data.slice(0, posisi) + '\n' + `${text}` + '\n' + data.slice(posisi);
-                        fs.writeFile('Xlesy.js', codeBaru, 'utf8', (err) => {
-                            if (err) {
-                                Replyx('Terjadi kesalahan saat menulis file: ', err);
-                            } else {
-                                Replyx('Case berhasil ditambahkan');
-                            }
-                        });
-                    } else {
-                        Replyx('Gagal Menambahkan case!');
-                    }
-                });
+    if (!isCreator) return Replyx(mess.owner);
+    if (!text || !text.startsWith('case')) return Replyx('Masukkan Casenya!');
+    
+    fs.readFile('Xlesy.js', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Terjadi kesalahan saat membaca file:', err);
+            return Replyx('Gagal membaca file.');
+        }
+
+        // Tambahkan case sebelum akhir file atau sebelum tanda khusus jika ada
+        const posisi = data.lastIndexOf('}') !== -1 ? data.lastIndexOf('}') : data.length;
+
+        const codeBaru = data.slice(0, posisi) + '\n' + `${text}` + '\n`' + data.slice(posisi);
+        fs.writeFile('Xlesy.js', codeBaru, 'utf8', (err) => {
+            if (err) {
+                console.error('Terjadi kesalahan saat menulis file:', err);
+                return Replyx('Gagal menulis ke file.');
+            } else {
+                return Replyx('Case berhasil ditambahkan.');
             }
-            break
-            case 'getcase': {
-                if (!isCreator) return Replyx(mess.owner)
-                if (!text) return Replyx('Masukkan Nama Casenya!')
-                try {
-                    const getCase = (cases) => {
-                        return "case" + `'${cases}'` + fs.readFileSync("Xlesy.js").toString().split('case \'' + cases + '\'')[1].split("break")[0] + "break"
-                    }
-                    m.reply(`${getCase(text)}`, {
-                        quoted: fkontak1
-                    })
-                } catch (e) {
-                    m.reply(`case ${text} tidak ditemukan!`, {
-                        quoted: fkontak1
-                    })
-                }
+        });
+    });
+}
+break;
+
+case 'getcase': {
+    if (!isCreator) return Replyx(mess.owner);
+    if (!text) return Replyx('Masukkan Nama Casenya!');
+
+    try {
+        const getCase = (cases) => {
+            const content = fs.readFileSync("Xlesy.js", "utf8");
+            const match = content.split(`case '${cases}'`)[1];
+            if (!match) throw new Error("Case tidak ditemukan");
+            const code = match.split("break")[0];
+            return `case '${cases}'${code}break`;
+        };
+
+        m.reply(`${getCase(text)}`, { quoted: fkontak1 });
+    } catch (e) {
+        m.reply(`Case '${text}' tidak ditemukan!`, { quoted: fkontak1 });
+    }
+}
+break;
+
+case 'delcase': {
+    if (!isCreator) return Replyx(mess.owner);
+    if (!text) return Replyx('Masukkan Nama Casenya!');
+
+    fs.readFile('Xlesy.js', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Terjadi kesalahan saat membaca file:', err);
+            return Replyx('Gagal membaca file.');
+        }
+
+        const regex = new RegExp(`case\\s+'${text}':[\\s\\S]*?break`, 'g');
+        const modifiedData = data.replace(regex, '');
+
+        fs.writeFile('Xlesy.js', modifiedData, 'utf8', (err) => {
+            if (err) {
+                console.error('Terjadi kesalahan saat menulis file:', err);
+                return Replyx('Gagal menulis ke file.');
+            } else {
+                return Replyx('Case berhasil dihapus dari file.');
             }
-            break
-            case 'delcase': {
-                if (!isCreator) return Replyx(mess.owner)
-                if (!text) return Replyx('Masukkan Nama Casenya!')
-                fs.readFile('Xlesy.js', 'utf8', (err, data) => {
-                    if (err) {
-                        console.error('Terjadi kesalahan saat membaca file:', err);
-                        return;
-                    }
-                    const regex = new RegExp(`case\\s+'${text.toLowerCase()}':[\\s\\S]*?break`, 'g');
-                    const modifiedData = data.replace(regex, '');
-                    fs.writeFile('Xlesy.js', modifiedData, 'utf8', (err) => {
-                        if (err) {
-                            Replyx('Terjadi kesalahan saat menulis file: ', err);
-                        } else {
-                            Replyx('Case berhasil dihapus dari file');
-                        }
-                    });
-                });
-            }
-            break
+        });
+    });
+}
+break;
             case 'getsession': {
                 if (!isCreator) return Replyx(mess.owner)
                 await m.reply({
@@ -5044,7 +5058,7 @@ case 'delsession': {
                         title: m.pushName,
                         body: packname,
                         showAdAttribution: true,
-                        thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+                        thumbnailUrl: img.thumbnailganda,
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: false,
@@ -5606,7 +5620,7 @@ _©Gxyenn_`;
                 }, {
                     quoted: fkontak1
                 });
-                let imagePath = './lib/media/image/Gxyenn.png'
+                let imagePath = img.others
                 const uploadFile = {
                     upload: Xlesy.waUploadToServer
                 };
@@ -5704,7 +5718,7 @@ _©Gxyenn_`;
                     return imageMessage;
                 };
 
-                const imagePath = './lib/media/image/Gxyenn.png'; // Path lokal ke gambar
+                const imagePath = img.others; // Path lokal ke gambar
                 const cards = [];
                 for (const item of packages) {
                     const imageMessage = await createImage(imagePath);
@@ -8326,9 +8340,417 @@ break
                     Replyx('Server download sedang offline!')
                 }
             }
-            break           
-            //new Xlesy	
+            break 
             
+           // stalk menu
+
+case 'minecraftstalk': {
+  if (!q) return Replyx('Masukkan username Minecraft!\nContoh: .minecraftstalk usernamenya');
+
+  Replyx(mess.load); // pesan loading
+
+  try {
+    const axios = require('axios');
+    const username = q.trim();
+
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/minecraft?username=${username}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data Minecraft. Pastikan username valid.');
+
+    const { username: uname, id, rawId, avatar, skinTexture } = data.result;
+
+    let teks = `乂  *Minecraft Stalk*\n\n`;
+    teks += `◦ *Username:* ${uname}\n`;
+    teks += `◦ *UUID:* ${id}\n`;
+    teks += `◦ *Raw ID:* ${rawId}\n`;
+    teks += `◦ *Skin Texture:* ${skinTexture}`;
+
+    Xlesy.sendMessage(from, {
+      image: { url: avatar },
+      caption: teks
+    }, { quoted: m });
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data Minecraft.');
+  }
+}
+break;
+         
+case 'ffstalk': {
+  if (!q) return Replyx('Masukkan UID!\nContoh: .ffatalk idnya');
+
+  Replyx(mess.load); // pesan loading
+
+  try {
+    const axios = require('axios');
+    const uid = q.trim();
+    const region = 'id'; // default region
+
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/freefire?uid=${uid}&region=${region}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data Free Fire. Pastikan UID valid.');
+
+    const acc = data.result.accountInfo;
+    const guild = data.result.guildInfo || {};
+    const pet = data.result.petInfo || {};
+    const captain = data.result.captainBasicInfo || {};
+    const social = data.result.socialInfo || {};
+
+    let teks = `乂  *Free Fire Advanced Stalk*\n\n`;
+    teks += `◦ *Nama:* ${acc.name}\n`;
+    teks += `◦ *Level:* ${acc.level}\n`;
+    teks += `◦ *Likes:* ${acc.likes}\n`;
+    teks += `◦ *Rank BR:* ${acc.brMaxRank} (Point: ${acc.brRankPoint})\n`;
+    teks += `◦ *Rank CS:* ${acc.csMaxRank} (Point: ${acc.csRankPoint})\n`;
+    teks += `◦ *Region:* ${acc.region}\n`;
+    teks += `◦ *Versi:* ${acc.releaseVersion}\n\n`;
+
+    teks += `乂  *Info Guild*\n`;
+    teks += `◦ *Nama:* ${guild.name || 'Tidak ada'}\n`;
+    teks += `◦ *Level:* ${guild.level || '-'}\n`;
+    teks += `◦ *Anggota:* ${guild.memberCount || '-'} / ${guild.capacity || '-' }\n\n`;
+
+    teks += `乂  *Info Pet*\n`;
+    teks += `◦ *Nama:* ${pet.name || 'Tidak ada'}\n`;
+    teks += `◦ *Level:* ${pet.level || '-'}\n\n`;
+
+    teks += `乂  *Info Sosial*\n`;
+    teks += `◦ *Prefer Mode:* ${social.preferMode || '-'}\n`;
+    teks += `◦ *Signature:* ${social.signature || '-'}\n`;
+
+    Replyx(teks);
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data Free Fire.');
+  }
+}
+break;
+         
+         case 'mlstalk': {
+  if (!q.includes('|')) return Replyx('Masukkan User ID dan Zone ID dengan format:\n.mlstalk id|zoneid');
+
+  Replyx(mess.load); // pesan loading
+
+  try {
+    const axios = require('axios');
+    const [userId, zoneId] = q.split('|').map(x => x.trim());
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/mlbb?userId=${userId}&zoneId=${zoneId}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data Mobile Legends. Pastikan User ID dan Zone ID benar.');
+
+    const ml = data.result;
+    let teks = `乂  *Mobile Legends Stalk*\n\n`;
+    teks += `◦ *Username:* ${ml.username}\n`;
+    teks += `◦ *Region:* ${ml.region}\n`;
+    teks += `◦ *User ID:* ${userId}\n`;
+    teks += `◦ *Zone ID:* ${zoneId}`;
+
+    Replyx(teks);
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data Mobile Legends.');
+  }
+}
+break;
+         
+         case 'wachstalk': {
+  if (!q) return Replyx('Masukkan URL channel WhatsApp!\nContoh:\n.wachstalk linkchnya');
+
+  Replyx(mess.load); // tampilkan pesan loading
+
+  try {
+    const axios = require('axios');
+    const encodedUrl = encodeURIComponent(q);
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/wachannel?url=${encodedUrl}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data channel. Pastikan URL valid.');
+
+    const ch = data.result;
+
+    let teks = `乂  *WhatsApp Channel Stalk*\n\n`;
+    teks += `◦ *Nama:* ${ch.name}\n`;
+    teks += `◦ *Followers:* ${ch.followers}\n`;
+    teks += `◦ *Deskripsi:*\n${ch.description}\n`;
+    teks += `◦ *Link:* ${ch.channelLink}`;
+
+    Xlesy.sendMessage(from, { image: { url: ch.image }, caption: teks }, { quoted: m });
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data channel.');
+  }
+}
+break;
+
+         case 'ghstalk': {
+  if (!q) return Replyx('Masukkan username GitHub!\nContoh: .ghstalk usernamenya');
+
+  Replyx(mess.load); // tampilkan pesan loading
+
+  try {
+    const axios = require('axios');
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/github?username=${q}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data. Pastikan username benar.');
+
+    const user = data.result.data;
+
+    let teks = `乂  *GitHub Stalk*\n\n`;
+    teks += `◦ *Nama:* ${user.name || '-'}\n`;
+    teks += `◦ *Username:* ${user.login}\n`;
+    teks += `◦ *Bio:* ${user.bio || '-'}\n`;
+    teks += `◦ *Followers:* ${user.followers}\n`;
+    teks += `◦ *Following:* ${user.following}\n`;
+    teks += `◦ *Repos:* ${user.public_repos}\n`;
+    teks += `◦ *Gists:* ${user.public_gists}\n`;
+    teks += `◦ *Location:* ${user.location || '-'}\n`;
+    teks += `◦ *Twitter:* ${user.twitter_username || '-'}\n`;
+    teks += `◦ *Website:* ${user.blog || '-'}\n`;
+    teks += `◦ *Link:* ${user.html_url}`;
+
+    Xlesy.sendMessage(from, { image: { url: user.avatar_url }, caption: teks }, { quoted: m });
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data.');
+  }
+}
+break; 
+            
+          case 'genshinstalk': {
+  if (!q) return Replyx('Masukkan UID Genshin Impact!\nContoh: .genshinstalk idnya');
+
+  Replyx(mess.load); // menampilkan loading
+
+  try {
+    const axios = require('axios');
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/genshin/simple?uid=${q}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data. Pastikan UID benar.');
+
+    const player = data.result.playerData;
+    const ss = data.result.screenshotUrl;
+
+    let teks = `乂  *Genshin Impact Stalk*\n\n`;
+    teks += `◦ *Nickname:* ${player.nickname}\n`;
+    teks += `◦ *UID:* ${player.uid}\n`;
+    teks += `◦ *Level:* ${player.level}\n`;
+    teks += `◦ *World Level:* ${player.worldLevel}\n`;
+    teks += `◦ *Achievement:* ${player.achievements}\n`;
+    teks += `◦ *Spiral Abyss:* ${player.spiralAbyss}\n`;
+    teks += `◦ *Enka Profile:* ${player.detailsUrl}`;
+
+    Xlesy.sendMessage(from, { image: { url: ss }, caption: teks }, { quoted: m });
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data.');
+  }
+}
+break;
+            
+           case 'twitterstalk': {
+  if (!q) return Replyx('Masukkan username Twitter!\nContoh: .twitterstalk usernamenya');
+        Replyx(mess.load)
+  try {
+    const axios = require('axios');
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/twitter?username=${q}`);
+    const data = res.data;
+
+    if (data.status !== 200) return reply('Gagal mengambil data Twitter!');
+
+    const info = data.result;
+
+    let teks = `*Twitter Stalk: ${info.username}*\n\n`;
+    teks += `*Nama:* ${info.name || '-'}\n`;
+    teks += `*Bio:* ${info.bio || '-'}\n`;
+    teks += `*Lokasi:* ${info.location || '-'}\n`;
+    teks += `*Followers:* ${info.followers}\n`;
+    teks += `*Following:* ${info.following}\n`;
+    teks += `*Total Tweet:* ${info.tweets}\n`;
+    teks += `*Join Sejak:* ${info.joined}\n`;
+    teks += `*Verified:* ${info.verified ? 'Ya' : 'Tidak'}\n`;
+    teks += `*Link:* https://twitter.com/${info.username}`;
+
+    Xlesy.sendMessage(m.chat, {
+      text: teks,
+      contextInfo: {
+        externalAdReply: {
+          title: info.name || info.username,
+          body: 'Twitter Profile',
+          mediaType: 1,
+          thumbnailUrl: info.profile_pic,
+          renderLargerThumbnail: true,
+          sourceUrl: `https://twitter.com/${info.username}`
+        }
+      }
+    }, { quoted: fkontak1 });
+
+  } catch (e) {
+    console.error(e);
+    Replyx("Terjadi kesalahan saat mengambil data dari Twitter.");
+  }
+}
+break;
+
+case 'telestalk': {
+  if (!q) return Replyx('Masukkan username Telegram!\nContoh: .telestalk Usernamenya');
+
+  Replyx(mess.load); // pesan loading
+
+  try {
+    const axios = require('axios');
+    const username = q.trim().replace('@', '');
+
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/telegram?username=${username}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data Telegram. Pastikan username valid.');
+
+    const { title, desc, imageUrl } = data.result;
+
+    let teks = `乂  *Telegram Stalk*\n\n`;
+    teks += `◦ *Username:* @${username}\n`;
+    teks += `◦ *Nama:* ${title}\n`;
+    teks += `◦ *Bio:* ${desc}`;
+
+    Xlesy.sendMessage(from, {
+      image: { url: imageUrl },
+      caption: teks
+    }, { quoted: m });
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data Telegram.');
+  }
+}
+break;
+          
+           case 'ttstalk': {
+  if (!q) return Repyx('Masukkan username TikTok!\nContoh: .ttstalk usernamenya');
+        Replyx(mess.load)
+        
+  try {
+    const axios = require('axios');
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/tiktok/profile?username=${q}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data TikTok!');
+
+    const info = data.result;
+
+    let teks = `*TikTok Stalk: ${info.username}*\n\n`;
+    teks += `*Nama:* ${info.nickname || '-'}\n`;
+    teks += `*Bio:* ${info.bio || '-'}\n`;
+    teks += `*Followers:* ${info.followers}\n`;
+    teks += `*Following:* ${info.following}\n`;
+    teks += `*Likes:* ${info.likes}\n`;
+    teks += `*Video:* ${info.video}\n`;
+    teks += `*Private:* ${info.private ? 'Iya' : 'Tidak'}\n`;
+    teks += `*Verified:* ${info.verified ? 'Ya' : 'Tidak'}\n`;
+    teks += `*Region:* ${info.region || '-'}\n`;
+    teks += `*Link:* https://www.tiktok.com/@${info.username}`;
+
+    Xlesy.sendMessage(m.chat, {
+      text: teks,
+      contextInfo: {
+        externalAdReply: {
+          title: info.nickname || info.username,
+          body: 'TikTok Profile',
+          mediaType: 1,
+          thumbnailUrl: info.avatar,
+          renderLargerThumbnail: true,
+          sourceUrl: `https://www.tiktok.com/@${info.username}`
+        }
+      }
+    }, { quoted: fkontak1 });
+
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data dari TikTok.');
+  }
+}
+break; 
+        case 'igstalk': {
+  if (!q) return Replyx('Masukkan username Instagram!\nContoh: .igstalk usernamenya');
+ Replyx(mess.load)
+  try {
+    const axios = require('axios');
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/instagram?username=${q}`);
+    const data = res.data;
+
+    if (data.status !== 200) return reply('Gagal mengambil data!');
+
+    const info = data.result;
+    const hashtags = info.hashtags.map(tag => `• ${tag}`).join('\n');
+
+    const topPosts = info.mostLikedPosts.slice(0, 5).map((p, i) => {
+      return `*${i + 1}.* ❤️ ${p.likes} | 💬 ${p.comments}\n${p.link}`;
+    }).join('\n\n');
+
+    let teks = `*Instagram Stalk: ${info.name}*\n\n`;
+    teks += `*Deskripsi:* ${info.description}\n`;
+    teks += `*Followers:* ${info.followers}\n`;
+    teks += `*Total Uploads:* ${info.uploads}\n`;
+    teks += `*Engagement Rate:* ${info.engagementRate}\n`;
+    teks += `*Aktivitas Rata-rata:* ${info.averageActivity}\n`;
+    teks += `*Post / Hari:* ${info.postsPerDay}\n`;
+    teks += `*Post / Minggu:* ${info.postsPerWeek}\n`;
+    teks += `*Post / Bulan:* ${info.postsPerMonth}\n`;
+    teks += `*Waktu Paling Aktif:* ${info.mostPopularPostTime}\n\n`;
+    teks += `*Top Hashtags:*\n${hashtags}\n\n`;
+    teks += `*Top 5 Most Liked Posts:*\n${topPosts}`;
+
+    Xlesy.sendMessage(m.chat, {
+      text: teks
+    }, { quoted: fkontak1 });
+
+  } catch (e) {
+    console.error(e);
+    Replyx('Terjadi kesalahan saat mengambil data dari Instagram.');
+  }
+}
+break;   
+           
+    case 'ytstalk': {
+  if (!q) return Replyx('Masukkan username YouTube-nya!\nContoh: .ytstalk usernamenya');
+    Replyx(mess.load)
+  try {
+    const axios = require('axios');
+    const res = await axios.get(`https://fastrestapis.fasturl.cloud/stalk/youtube/simple?username=${q}`);
+    const data = res.data;
+
+    if (data.status !== 200) return Replyx('Gagal mengambil data!');
+
+    const info = data.result;
+    const videoList = info.latestVideos.map((v, i) => {
+      return `\n*${i + 1}. ${v.title}*\n• Views: ${v.views}\n• Rating: ${v.rating.average} (${v.rating.count} vote)\n• Link: ${v.videoUrl}`;
+    }).join('\n');
+
+    let teks = `*YT Stalk: ${info.channel}*\n\n`;
+    teks += `*Deskripsi:* ${info.description}\n`;
+    teks += `*Total Subs:* ${info.additionalInfo.totalSubs}\n`;
+    teks += `*Total Video:* ${info.additionalInfo.totalVideos}\n`;
+    teks += `*Total Views:* ${info.additionalInfo.views}\n`;
+    teks += `*Bergabung Sejak:* ${info.additionalInfo.join}\n`;
+    teks += `*URL Channel:* ${info.additionalInfo.chUrl}\n\n`;
+    teks += `*Video Terbaru:*\n${videoList}`;
+
+    Xlesy.sendMessage(m.chat, {
+      image: { url: info.profile },
+      caption: teks
+    }, { quoted: fkontak1 });
+
+  } catch (e) {
+    console.log(e);
+    Replyx('Terjadi kesalahan saat mengambil data.');
+  }
+}
+break;                                
+                                                                          
+            // kebutuhn          
             case 'infobot': {
                 let uptime = process.uptime(); // Waktu bot berjalan dalam detik
                 let cpuModel = os.cpus()?.[0]?.model || "Tidak diketahui"; // Model CPU
@@ -8519,59 +8941,7 @@ _Dengan dukungan teknologi modern dan optimasi berkelanjutan, SC Xlesy tidak han
                     }
                 }
             }
-
-            case 'musicmenu': {
-                Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
-
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
- 
-╭──┈➤「 *MUSIC MENU* 」❍ 
-│  ${setv} ${prefix}music1 sampai music85
-│  ${setv} ${prefix}sad1 sampai sad35
-│  ${setv} ${prefix}sound1 sampai sound161
-╰────────┈➤
-     `
-                let buttons = [{
-    buttonId: ".menu",
-    buttonText: {
-        displayText: "メニューに戻る"
-    },
-    type: 1
-}]
-
-// Kirim gambar lokal + teks + tombol + contextInfo
-await Xlesy.sendButtonMsg(m.chat, {
-    image: {
-        url: imagePath
-    },
-    text: textMessage,
-    footer: 'XLESYVIP',
-    buttons: buttons,
-    contextInfo: {
-        forwardingScore: 999,
-        isForwarded: true,
-        forwardedNewsletterMessageInfo: {
-            newsletterJid: "120363405649403674@newsletter",
-            newsletterName: `スクリプト更新情報`
-        },
-        externalAdReply: {
-            title: m.pushName,
-            body: packname,
-            showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
-            mediaType: 1,
-            previewType: 0,
-            renderLargerThumbnail: false,
-            mediaUrl: my.gh,
-            sourceUrl: my.gh,
-        }
-    }
-}, {
-    quoted: ftroli
-})
-}
-break                                   
+                                
             case 'mlnews': {
                 await Xlesy.sendMessage(m.chat, {
                     react: {
@@ -8663,13 +9033,13 @@ case 'payment': {
         message: {
           interactiveMessage: {
             body: {
-              text: `Berikut daftar metode pembayaran saya ya~`
+              text: `*Berikut daftar list pembayaran kami yang tersedia~*`
             },
             carouselMessage: {
               cards: [
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/dana.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: img.danaimg } }, { upload: Xlesy.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: author,
@@ -8687,7 +9057,7 @@ case 'payment': {
                 },
                 {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/gopay.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: img.gopayimg } }, { upload: Xlesy.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: author,
@@ -8705,7 +9075,7 @@ case 'payment': {
                 },
                 {
                 header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/ovo.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: img.ovoimg } }, { upload: Xlesy.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: author,
@@ -8722,26 +9092,8 @@ case 'payment': {
                   },
                 },
                 {
-                header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/pulsa.jpg' } }, { upload: Xlesy.waUploadToServer })),
-                    title: '',
-                    gifPlayback: true,
-                    subtitle: author,
-                    hasMediaAttachment: false
-                  }),
-                  body: { text: `> Klik tombol PULSA di bawah\n> PULSA A/N: ${pulsa}` },
-                  nativeFlowMessage: {
-                    buttons: [
-                      {
-                        "name": "cta_copy",
-                        "buttonParamsJson": `{\"display_text\":\"Payment PULSA\",\"id\":\"123456789\",\"copy_code\":\"${gopay}\"}`
-                      },
-                    ],
-                  },
-                },
-                {
                   header: proto.Message.InteractiveMessage.Header.create({
-                    ...(await prepareWAMessageMedia({ image: { url: './lib/media/image/qris.jpg' } }, { upload: Xlesy.waUploadToServer })),
+                    ...(await prepareWAMessageMedia({ image: { url: img.qrisimg } }, { upload: Xlesy.waUploadToServer })),
                     title: '',
                     gifPlayback: true,
                     subtitle: author,
@@ -9969,7 +10321,7 @@ break
                     }
                 })
                 
-        let imagePath = './lib/media/image/menu2.jpg' // 
+        let imagePath = img.menu2 // 
 								 
              let textMessage = `
 *╭── ⧼ \`XLESYVIP\` ⧽*
@@ -9980,7 +10332,7 @@ break
 *│ 々 TypeSc  : Cjs*
 *│ 々 Runtime  : ${runtime(process.uptime())}*
 *╰────────────────⧽*
-   \`⧼	  DEV : ${author}       ⧽\`
+   \`⧼	  DEV : Gxyenn     ⧽\`
    
 ╭──────┈➤「 *\`BOT\`* 」❍
 │ ${setv} ${prefix}_*claim*_
@@ -10317,7 +10669,7 @@ break
 		let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "スクリプト更新情報"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10341,7 +10693,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10357,7 +10709,7 @@ break
             //MENU-MENU
             case 'botmenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
@@ -10392,7 +10744,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10416,7 +10768,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10435,7 +10787,7 @@ break
                     quoted: fkontak1
                 })
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
 
@@ -10460,7 +10812,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10484,7 +10836,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10499,7 +10851,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 break
             case 'searchmenu': {
                     Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
 
@@ -10523,7 +10875,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10547,7 +10899,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10560,9 +10912,52 @@ await Xlesy.sendButtonMsg(m.chat, {
 })
 }
 break
+
+case 'stalkmenu': {
+                Replyx(mess.wait)
+                let imagePath = img.menu2 // Path ke gambar lokal
+
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
+  ╭──┈➤「 *AI* 」❍ 
+  │ ${setv} ${prefix}genshinstalk
+  │ ${setv} ${prefix}mlstalk
+  │ ${setv} ${prefix}ffstalk
+  │ ${setv} ${prefix}minecraftstalk
+  │ ${setv} ${prefix}ttstalk
+  │ ${setv} ${prefix}igstalk
+  │ ${setv} ${prefix}ytstalk
+  │ ${setv} ${prefix}ghstalk
+  │ ${setv} ${prefix}telestalk
+  │ ${setv} ${prefix}twitterstalk
+  │ ${setv} ${prefix}wachstalk
+  ╰─────┈➤
+ `
+                let buttons = [{
+                    buttonId: ".menu",
+                    buttonText: {
+                        displayText: "Back To Menu"
+                    },
+                    type: 1
+                }]
+
+                // Kirim gambar lokal + teks + tombol
+                await Xlesy.sendButtonMsg(m.chat, {
+                    image: {
+                        url: imagePath
+                    }, // Menggunakan file lokal
+                    text: textMessage,
+                    footer: 'XLESYVIP',
+                    buttons: buttons
+                }, {
+                    quoted: ftroli
+                })               
+            }
+            break
+            
             case 'downloadmenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
 
@@ -10582,7 +10977,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10606,7 +11001,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10621,7 +11016,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 break
             case 'quotesmenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
@@ -10636,7 +11031,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10660,7 +11055,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10675,7 +11070,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 break
             case 'librarymenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
@@ -10732,7 +11127,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10756,7 +11151,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10771,7 +11166,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 break
             case 'toolsmenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
@@ -10821,7 +11216,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10845,7 +11240,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10860,7 +11255,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 break
             case 'aimenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
@@ -10876,7 +11271,7 @@ break
                 let buttons = [{
                     buttonId: ".menu",
                     buttonText: {
-                        displayText: "スクリプト更新情報"
+                        displayText: "Back To Menu"
                     },
                     type: 1
                 }]
@@ -10894,9 +11289,9 @@ break
                 })               
             }
             break
-            case 'animemenu': {
+            case ';': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
@@ -10949,7 +11344,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -10973,7 +11368,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -10986,9 +11381,63 @@ await Xlesy.sendButtonMsg(m.chat, {
 })
 }
 break
+
+            case 'musicmenu': {
+                Replyx(mess.wait)
+                let imagePath = img.menu2 // Path ke gambar lokal
+
+                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+ 
+╭──┈➤「 *MUSIC MENU* 」❍ 
+│  ${setv} ${prefix}music1 sampai music85
+│  ${setv} ${prefix}sad1 sampai sad35
+│  ${setv} ${prefix}sound1 sampai sound161
+╰────────┈➤
+     `
+                let buttons = [{
+    buttonId: ".menu",
+    buttonText: {
+        displayText: "Back To Menu"
+    },
+    type: 1
+}]
+
+// Kirim gambar lokal + teks + tombol + contextInfo
+await Xlesy.sendButtonMsg(m.chat, {
+    image: {
+        url: imagePath
+    },
+    text: textMessage,
+    footer: 'XLESYVIP',
+    buttons: buttons,
+    contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+            newsletterJid: "120363405649403674@newsletter",
+            newsletterName: `スクリプト更新情報`
+        },
+        externalAdReply: {
+            title: m.pushName,
+            body: packname,
+            showAdAttribution: true,
+            thumbnailUrl: img.thumbnailganda,
+            mediaType: 1,
+            previewType: 0,
+            renderLargerThumbnail: false,
+            mediaUrl: my.gh,
+            sourceUrl: my.gh,
+        }
+    }
+}, {
+    quoted: ftroli
+})
+}
+break   
+
             case 'gamemenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
 
@@ -11015,7 +11464,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -11039,7 +11488,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11054,7 +11503,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 break
             case 'funmenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
  
@@ -11080,7 +11529,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -11104,7 +11553,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11117,9 +11566,9 @@ await Xlesy.sendButtonMsg(m.chat, {
 })
 }
 break
-            case 'randomenu': {
+            case 'randommenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
   
@@ -11136,7 +11585,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -11160,7 +11609,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11177,7 +11626,7 @@ break
             break
             case 'pushmenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
 
@@ -11195,7 +11644,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -11219,7 +11668,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11234,7 +11683,7 @@ await Xlesy.sendButtonMsg(m.chat, {
 break
             case 'ownermenu': {
                 Replyx(mess.wait)
-                let imagePath = './lib/media/image/menu2.jpg' // Path ke gambar lokal
+                let imagePath = img.menu2 // Path ke gambar lokal
 
                 let textMessage = `          *⧼ LIST MENU XLESY ⧽*
 
@@ -11272,7 +11721,7 @@ break
                 let buttons = [{
     buttonId: ".menu",
     buttonText: {
-        displayText: "メニューに戻る"
+        displayText: "Back To Menu"
     },
     type: 1
 }]
@@ -11296,7 +11745,7 @@ await Xlesy.sendButtonMsg(m.chat, {
             title: m.pushName,
             body: packname,
             showAdAttribution: true,
-            thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',
+            thumbnailUrl: img.thumbnailganda,
             mediaType: 1,
             previewType: 0,
             renderLargerThumbnail: false,
@@ -11318,7 +11767,7 @@ case 'menu': {
         }
     });
 
-    let imagePath = './lib/media/image/menu1.jpg';
+    let imagePath = img.menu
     let audioPath = './lib/media/audio/menu.opus';
     const media = await prepareWAMessageMedia({
         image: { url: imagePath }
@@ -11338,7 +11787,26 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
 *│ 々 Runtime  : ${runtime(process.uptime())}*
 *╰────────────────⧽*
 
-> Press the button below to see other menus!!.
+*╭───⧼ \`List Menu\`⧽*
+*│*  々 Allmenu
+*│*  々 Menu Bot
+*│*  々 Menu Group
+*│*  々 Menu Search
+*│*  々 Menu Download
+*│*  々 Menu Push
+*│*  々 Menu Quotea
+*│*  々 Menu Library
+*│*  々 Menu Tools
+*│*  々 Menu Stalk
+*│*  々 Menu Ai
+*│*  々 Menu Game
+*│*  々 Menu Funn
+*│*  々 Menu Anime
+*│*  々 Menu Music
+*│*  々 Menu Randm
+*│*  々 Menu Owner
+*│*  々 Menu Bug
+*╰────────────────⧽*.
 
 ⧼ Click \`XlesyMenu\` Below ⧽`;
 
@@ -11349,12 +11817,12 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
             buttons: [
                 {
                     buttonId: ".owner",
-                    buttonText: { displayText: "所有者" },
+                    buttonText: { displayText: "Owner" },
                     type: 1,
                 },
                 {
                     buttonId: ".ping",
-                    buttonText: { displayText: "サーバ" },
+                    buttonText: { displayText: "Server" },
                     type: 1,
                 },
                 {
@@ -11383,7 +11851,7 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                         { id: ".botmenu", title: " Bot Menu", description: "Menampilkan Menu Bot" },
                                         { id: ".groupmenu", title: " Group Menu", description: "Menampilkan Menu Group" },
                                         { id: ".searchmenu", title: " Search Menu", description: "Menampilkan Menu Pencarian" },
-                                        { id: ".downloadmenu", title: " Download Menu", description: "Menampilkan Menu Download" },
+                                        { id: ".stalkmenu", title: " Stalk Menu", description: "Menampilkan Menu Stalk" },                                                   { id: ".downloadmenu", title: " Download Menu", description: "Menampilkan Menu Download" },
                                         { id: ".pushmenu", title: " Push Menu", description: "Menampilkan Menu Push" },
                                         { id: ".quotesmenu", title: " Quotes Menu", description: "Menampilkan Menu Quotes" },
                                         { id: ".librarymenu", title: " Library Menu", description: "Menampilkan Menu Library" },
@@ -11403,7 +11871,7 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                     rows: [
                                         {
                                             id: ".xlesybug",
-                                            title: "🎀 BUG XLESYVIP",
+                                            title: "XLESY BUG",
                                             description: "Menampilkan Menu BUG XlesyVIP"
                                         }
                                     ]
@@ -11412,7 +11880,7 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                     title: "Documentasi Bot",
                                     rows: [
                                         { id: ".script", title: " Script", description: "Menampilkan Information Script" },
-                                        { id: ".infobot", title: " Information Bot", description: "Menampilkan Information Bot" }
+                                        { id: ".ping", title: " Information Bot", description: "Menampilkan Information Bot" }
                                     ]
                                 }
                             ]
@@ -11434,8 +11902,7 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
 							title: "XLESYVIP",
 							body: author,
 							showAdAttribution: true,
-							thumbnailUrl: 'https://files.catbox.moe/rl1oka.jpg',                                            						
-							mediaType: 1,
+							thumbnailUrl: img.thumbnailganda,                             	   mediaType: 1,
 							previewType: 0,
 							renderLargerThumbnail: false,
 							mediaUrl: my.yt,

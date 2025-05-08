@@ -97,16 +97,7 @@ async function startXlesyBot() {
 	if (pairingCode && !Xlesy.authState.creds.registered) {
 		let phoneNumber;
 		async function getPhoneNumber() {
-			phoneNumber = global.number_bot ? global.number_bot : await question(`
-	   \x1b[1;31m     ⣠⣤⣤⣴⡿⠛⣷⡀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀            ⣿⡇⠀⠙⠀⢀⣿⠇⠀⠀⠀⠀⠀
-⠀⠀⠀⠀            ⠈⡿⣦⣀⣠⡿⡏⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀           ⠇⡁⢹⡏⠂⠇⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀           ⠁⠀⢘⡇⠁⡃⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀         ⠈⡇⠀⠁⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀         •\x1b[0m⠀⠀⠀⠀⠀⠀⠀⠀
-                      𝙓𝙇𝙀𝙎𝙔𝙑𝙄𝙋
-        \x1b[1;31mPʅҽαʂҽ ƚყρҽ ყσυɾ WԋαƚʂAρρ ɳυɱႦҽɾ : \x1b[0m`);
+			phoneNumber = global.number_bot ? global.number_bot : await question(`\x1b[1;34mPʅҽαʂҽ ƚყρҽ ყσυɾ WԋαƚʂAρρ ɳυɱႦҽɾ : \x1b[0m`);
 			phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 			
 			if (!parsePhoneNumber(phoneNumber).valid && phoneNumber.length < 6) {
@@ -174,7 +165,7 @@ async function startXlesyBot() {
        ` + JSON.stringify(Xlesy.user, null, 2));
 			let botNumber = await Xlesy.decodeJid(Xlesy.user.id);
 			if (db.set[botNumber] && !db.set[botNumber]?.join) {
-				if (my.ch.length > 0 && my.ch.includes('@newsletter')) {
+				if (my.ch.length > 0 && my.ch.includes('120363334736301537@newsletter')) {
 					if (my.ch) await Xlesy.newsletterMsg(my.ch, { type: 'follow' }).catch(e => {})
 					db.set[botNumber].join = true
 				}
