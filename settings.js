@@ -26,6 +26,15 @@ global.ovo = XlesySet.ovo;
 global.pulsa = XlesySet.pulsa;
 global.qris = XlesySet.qris;
 
+// Cppanel Apikey
+global.egg = XlesySet.egg;
+global.nestid = XlesySet.nestid;
+global.loc = XlesySet.loc;
+global.domain = XlesySet.domain;
+global.apikey = XlesySet.apikey;
+global.capikey = XlesySet.capikey;
+
+
 global.img = {
     thumbnailganda: 'https://cloudkuimages.guru/uploads/images/681c7a1643366.jpg',
     // image pasyment

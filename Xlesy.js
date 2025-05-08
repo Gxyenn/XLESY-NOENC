@@ -180,7 +180,18 @@ function saveSession() {
 // Read Database
 const sewa = JSON.parse(fs.readFileSync('./database/sewa.json'));
 const premium = JSON.parse(fs.readFileSync('./database/premium.json'));
+const filePath = path.join(__dirname, './database/reseller.json');
 
+// Cek apakah file ada dan baca isinya, jika tidak buat array kosong
+let resellerList = fs.existsSync(filePath)
+  ? JSON.parse(fs.readFileSync(filePath))
+  : [];
+
+// Fungsi untuk menyimpan daftar reseller
+const saveReseller = () => {
+  const data = JSON.stringify(resellerList, null, 2);
+  fs.writeFileSync(filePath, data);
+};
 // Database Game
 let suit = db.game.suit = []
 let menfes = db.game.menfes = []
@@ -209,6 +220,7 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
         const botNumber = await Xlesy.decodeJid(Xlesy.user.id)
         const body = (m.type === 'conversation') ? m.message.conversation : (m.type == 'imageMessage') ? m.message.imageMessage.caption : (m.type == 'videoMessage') ? m.message.videoMessage.caption : (m.type == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.type == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.type == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.type == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.type === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : (m.type === 'editedMessage') ? (m.message.editedMessage.message.protocolMessage.editedMessage.extendedTextMessage ? m.message.editedMessage.message.protocolMessage.editedMessage.extendedTextMessage.text : m.message.editedMessage.message.protocolMessage.editedMessage.conversation) : ''
         const budy = (typeof m.text == 'string' ? m.text : '')
+        const isReseller = resellerList.includes(m.sender);
         const isCreator = isOwner = [botNumber, ...owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const prefix = isCreator ? (/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@()#,'"*+÷/\%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@()#,'"*+÷/\%^&.©^]/gi)[0] : /[\uD800-\uDBFF][\uDC00-\uDFFF]/gi.test(body) ? body.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/gi)[0] : listprefix.find(a => body.startsWith(a)) || '') : db.set[botNumber].multiprefix ? (/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@()#,'"*+÷/\%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@()#,'"*+÷/\%^&.©^]/gi)[0] : /[\uD800-\uDBFF][\uDC00-\uDFFF]/gi.test(body) ? body.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]/gi)[0] : listprefix.find(a => body.startsWith(a)) || '¿') : listprefix.find(a => body.startsWith(a)) || '¿'
         const isCmd = body.startsWith(prefix)
@@ -233,7 +245,22 @@ module.exports = Xlesy = async (Xlesy, m, chatUpdate, store, groupCache) => {
         const isLimit = db.users[m.sender] ? (db.users[m.sender].limit > 0) : false
         const isPremium = isCreator || prem.checkPremiumUser(m.sender, premium) || false
         const isNsfw = m.isGroup ? db.groups[m.chat].nsfw : false
-
+        
+        const func = {
+    capital: (text) => text.replace(/\b\w/g, l => l.toUpperCase()),
+    tanggal: (tgl) => {
+        const d = new Date(tgl);
+        return d.toLocaleDateString('id-ID', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+    }
+};
         // Fake
         const textf = m.body; // Mengambil pesan yang dikirim pengirim
 
@@ -3150,12 +3177,12 @@ case 'bug': {
     let buttons = [
         {
             buttonId: ".owner",
-            buttonText: { displayText: "Owner" },
+            buttonText: { displayText: "OWNER" },
             type: 1
         },
         {
             buttonId: ".ping",
-            buttonText: { displayText: "Server" },
+            buttonText: { displayText: "SERVER" },
             type: 1
         },
         {
@@ -4876,6 +4903,44 @@ break
                 })
             }
             break
+              case 'addreseller': {
+  if (!isOwner) return Replyx(mess.owner);
+  if (!q && (!m.mentionedJid || m.mentionedJid.length === 0)) return Replyx('Tag atau masukkan nomor.');
+
+  let nomor;
+  if (m.mentionedJid && m.mentionedJid[0]) {
+    nomor = m.mentionedJid[0].split('@')[0]; // Ambil nomor dari mention
+  } else {
+    nomor = q.replace(/[^0-9]/g, ''); // Hapus semua karakter selain angka
+    if (nomor.startsWith('0')) nomor = '62' + nomor.slice(1); // Ubah 08... jadi 628...
+  }
+
+  const id = nomor + '@s.whatsapp.net';
+  if (resellerList.includes(id)) return Replyx('Sudah jadi reseller.');
+  resellerList.push(id);
+  saveReseller();
+  Replyx(`Berhasil ditambahkan sebagai reseller: ${nomor}`);
+}
+break;
+
+case 'delreseller': {
+  if (!isOwner) return Replyx(mess.owner);
+  if (!q) return Replyx('Tag atau masukkan nomor.');
+  const id = (m.mentionedJid && m.mentionedJid[0]) || (q.includes('@s.whatsapp.net') ? q : q + '@s.whatsapp.net');
+  if (!resellerList.includes(id)) return Replyx('Dia bukan reseller.');
+  resellerList = resellerList.filter(x => x !== id);
+  saveReseller();
+  Replyx('Berhasil dihapus.');
+}
+break;
+
+  case 'listreseller': {
+  if (!resellerList.length) return Replyx('Belum ada reseller.');
+  let teks = '*Daftar Reseller:*\n' + resellerList.map((id, i) => `${i + 1}. @${id.split('@')[0]}`).join('\n');
+  Replyx(teks, { mentions: resellerList });
+}
+break;
+
             case 'upsw': {
                 if (!isCreator) return Replyx(mess.owner)
                 const statusJidList = Object.keys(db.users)
@@ -5149,7 +5214,7 @@ Apabila Anda tertarik untuk mendapatkan script bot yang no ENC, Anda dapat membe
 - Total Menu 18
 - Total Fitur 500+
 - Fitur Fav ( _Brat, Bratvid, Qc, Hd, Ttdl_ )
-- Cpanel 3 Server
+- Cpanel 1 Server
 - System Limit
 - User Banned
 - User Premium
@@ -10396,6 +10461,19 @@ break
 │ ${setv} ${prefix}_*animecari*_  
 │ ${setv} ${prefix}_*mlnews*_  
 ╰─┬────┈➤
+╭─┴─┈➤「 *\`STALK\`* 」❍  
+│ ${setv} ${prefix}genshinstalk
+│ ${setv} ${prefix}mlstalk
+│ ${setv} ${prefix}ffstalk
+│ ${setv} ${prefix}minecraftstalk
+│ ${setv} ${prefix}ttstalk
+│ ${setv} ${prefix}igstalk
+│ ${setv} ${prefix}ytstalk
+│ ${setv} ${prefix}ghstalk
+│ ${setv} ${prefix}telestalk
+│ ${setv} ${prefix}twitterstalk
+│ ${setv} ${prefix}wachstalk
+╰─┬────┈➤
 ╭─┴─┈➤「 *\`DOWNLOAD\`* 」❍  
 │ ${setv} ${prefix}_*ytmp3 (url)*_  
 │ ${setv} ${prefix}_*ytmp4 (url)*_  
@@ -10632,7 +10710,16 @@ break
 │ ${setv} ${prefix}_*cecankorea*_
 │ ${setv} ${prefix}_*cecantahiland*_
 │ ${setv} ${prefix}_*kucing*_
-╰─┬────┈➤  
+╰─┬────┈➤ 
+╭─┴─┈➤「 *\`CPANEL\`* 」❍ 
+│ ${setv} ${prefix}_*cpanel*_
+│ ${setv} ${prefix}_*cadmin*_
+│ ${setv} ${prefix}_*listserver*_
+│ ${setv} ${prefix}_*delserver*_
+│ ${setv} ${prefix}_*clearserver*_
+│ ${setv} ${prefix}_*listadp*_
+│ ${setv} ${prefix}_*deladp*_
+╰─┬────┈➤ 
 ╭─┴─┈➤「 *\`OWNER\`* 」❍  
 │ ${setv} ${prefix}_*bot [set]*_
 │ ${setv} ${prefix}_*done*_
@@ -10654,6 +10741,9 @@ break
 │ ${setv} ${prefix}_*addprem*_
 │ ${setv} ${prefix}_*delprem*_
 │ ${setv} ${prefix}_*listprem*_
+│ ${setv} ${prefix}_*addreseller*_
+│ ${setv} ${prefix}_*delreseller*_
+│ ${setv} ${prefix}_*listreseller*_
 │ ${setv} ${prefix}_*addlimit*_
 │ ${setv} ${prefix}_*adduang*_
 │ ${setv} ${prefix}_*bot --settings*_
@@ -11708,6 +11798,9 @@ break
 │ ${setv} ${prefix}addprem
 │ ${setv} ${prefix}delprem
 │ ${setv} ${prefix}listprem
+│ ${setv} ${prefix}addreseller
+│ ${setv} ${prefix}delreseller
+│ ${setv} ${prefix}listreseller
 │ ${setv} ${prefix}addlimit
 │ ${setv} ${prefix}adduang
 │ ${setv} ${prefix}bot --settings
@@ -11758,6 +11851,855 @@ await Xlesy.sendButtonMsg(m.chat, {
 })
 }
 break
+//==================== CPANEL =================\\
+
+case 'cpanelmenu': {
+    await Xlesy.sendMessage(m.chat, {
+        react: {
+            text: '⏳',
+            key: m.key
+        }
+    });
+
+    let imagePath = img.menu
+    let audioPath = './lib/media/audio/menu.opus';
+    const media = await prepareWAMessageMedia({
+        image: { url: imagePath }
+    }, {
+        upload: Xlesy.waUploadToServer
+    });
+
+    let menunya = `Hey *${m.pushName ? m.pushName : 'Unknown'}!* ${ucapanWaktu}
+Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anything On The Menu.
+
+*╭── ⧼ \`XLESYVIP\` ⧽*
+*│ 々 Creator  : ${author}*
+*│ 々 OwnerNumber : ${owner}*
+*│ 々 BotName : ${botname}*
+*│ 々 VersiOn  : ${require('./package.json').version}*
+*│ 々 TypeSc  : Cjs*
+*│ 々 Runtime  : ${runtime(process.uptime())}*
+*╰────────────────⧽*
+
+*╭───⧼ \`List Menu\`⧽*
+*│*  々 Cpanel
+*│*  々 Menu Liset Server
+*│*  々 Menu Del Server
+*│*  々 Menu Clear Server
+*│*  々 Menu List Adp
+*│*  々 Menu Del Adp
+*│*  々 Menu Cadmin
+*╰────────────────⧽*
+
+Hai👋,${m.pushName} Silahkan Click Button List Di Bawah Untuk Melihat List Cpanel Menu!`;
+
+    const buttons = {
+        buttonsMessage: {
+            contentText: menunya,
+            footerText: `グキエン`,
+            buttons: [
+                {
+                    buttonId: ".owner",
+                    buttonText: { displayText: "OWNER" },
+                    type: 1,
+                },
+                {
+                    buttonId: ".example3",
+                    buttonText: { displayText: "📜 List Menu" },
+                    type: 2,
+                    nativeFlowInfo: {
+                        name: "single_select",
+                        paramsJson: JSON.stringify({
+                            title: "Cpanel Menu",
+                            sections: [
+                                {
+                                    title: "List Menu Cpanel, Reseller Akses",
+                                    highlight_label: "Reseller Akses",
+                                    rows: [
+                                        {
+                                            id: ".cpanel",
+                                            title: "Cpanel",
+                                            description: "Create Panel 1gb - unli"
+                                        },
+                                        { id: `.listserver`, title: "List Server", description: "Menampilkan Semua Server Panel" },
+                                    ]
+                                },                                                    {
+                                    title: "List Menu Cpanel, Owner Akses",
+                                    rows: [
+                                       { id: `.cadmin`, title: "Create Account Admin Panel", description: "Membuat Account Admin Panell" },
+                                      { id: `.delserver`, title: "Del Server Panel", description: "Menghapus Server Panel" },
+                                      { id: `.clearserver`, title: "Clear All Server/User Panel", description: "Menghapus Semua Server Dan user Panel, Kecuali Admin" },
+                                      { id: `.listadp`, title: "List Admin Panel", description: "Menampilkan list Admin Panel" },
+                                      { id: `.deladp`, title: "Del Admin Panel", description: "Menghapus Admin Panel" }
+                                  ]
+                                }
+                            ]
+                        })
+                    }
+                }
+            ],
+            headerType: 4,
+            imageMessage: media.imageMessage,
+            mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
+            contextInfo: {
+                forwardingScore: 999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                    newsletterJid: my.ch,
+                    newsletterName: `スクリプト更新情報`
+                },                
+						externalAdReply: {
+							title: "XLESYVIP",
+							body: author,
+							showAdAttribution: true,
+							thumbnailUrl: img.thumbnailganda,                             	   mediaType: 1,
+							previewType: 0,
+							renderLargerThumbnail: false,
+							mediaUrl: my.yt,
+							sourceUrl: my.yt,
+						}
+        }
+    }
+            
+        }
+    
+
+    const generatedMessage = await generateWAMessageFromContent(
+        m.chat,
+        buttons,
+        {
+            userJid: m.sender,
+            quoted: ftroli
+        }
+    );
+
+    await Xlesy.relayMessage(m.chat, generatedMessage.message, {
+        additionalNodes: [
+            {
+                tag: "biz",
+                attrs: {},
+                content: [
+                    {
+                        tag: "interactive",
+                        attrs: { type: "native_flow", v: "1" },
+                        content: [
+                            {
+                                tag: "native_flow",
+                                attrs: { name: "quick_reply" }
+                            }
+                        ],
+                    }
+                ],
+            }
+        ],
+    });
+
+    setTimeout(async () => {
+        await Xlesy.sendMessage(m.chat, {
+            audio: { url: audioPath },
+            mimetype: 'audio/mpeg',
+            ptt: true
+        }, { quoted: fkontak1 });
+    }, 1000);
+
+    await Xlesy.sendMessage(m.chat, {
+        react: {
+            text: '✅',
+            key: m.key
+        }
+    });
+}
+break;
+
+// cpanel list ram auto 
+case 'cpanel': {
+  if (!isOwner && !isReseller) {
+    return Replyx(`Fitur ini Hanya Bisa di Gunakan Oleh Reseller Panel, Silahkan Chat ${global.owner} Untuk Join Reseller`);
+  }
+
+  if (!args[0]) {
+    return Replyx("Silakan berikan username untuk panel. Contoh: .cpanel <username>");
+  }
+
+  Replyx(mess.load);
+  const username = args[0];
+
+  try {
+    const teks = `
+    *XLESYVIP*
+-- *INFORMATION*        
+* *Creator: Gxyenn*
+* *Owner :* ${owner}
+* *OwnerName :* ${author} 
+  
+*🌠 INFO PENGGUNA*
+○ Pengguna : @${m.sender.split("@")[0]}
+○ Username Panel: ${username}
+`;
+
+    const buttons = [
+      {
+        buttonId: ".owner",
+        buttonText: { displayText: "Admin Panel" },
+        type: 1
+      },
+      {
+        buttonId: `ramlist ${username}`,
+        buttonText: { displayText: "📋 Pilih Paket Panel" },
+        type: 1,
+        nativeFlowInfo: {
+          name: "single_select",
+          paramsJson: JSON.stringify({
+            title: "Select Ram Panel",
+            sections: [
+              {
+                title: "Pilih List Cpanel",
+                rows: [
+                  { id: `.1gb ${username}`, title: "RAM 1GB CPU 40%", description: "Gxyenn To Creator." },
+                  { id: `.2gb ${username}`, title: "RAM 2GB CPU 60%", description: "Gxyenn To Creator." },
+                  { id: `.3gb ${username}`, title: "RAM 3GB CPU 80%", description: "Gxyenn To Creator." },
+                  { id: `.4gb ${username}`, title: "RAM 4GB CPU 100%", description: "Gxyenn To Creator." },
+                  { id: `.5gb ${username}`, title: "RAM 5GB CPU 120%", description: "Gxyenn To Creator." },
+                  { id: `.6gb ${username}`, title: "RAM 6GB CPU 140%", description: "Gxyenn To Creator." },
+                  { id: `.7gb ${username}`, title: "RAM 7GB CPU 160%", description: "Gxyenn To Creator." },
+                  { id: `.8gb ${username}`, title: "RAM 8GB CPU 180%", description: "Gxyenn To Creator." },
+                  { id: `.9gb ${username}`, title: "RAM 9GB CPU 200%", description: "Gxyenn To Creator." },
+                  { id: `.10gb ${username}`, title: "RAM 10GB CPU 220%", description: "Gxyenn To Creator." },
+                  { id: `.unli ${username}`, title: "RAM UNLI CPU UNLI", description: "Gxyenn To Creator." }
+                ]
+              }
+            ]
+          })
+        }
+      }
+    ];
+
+    await Xlesy.sendButtonMsg(m.chat, {
+      image: {
+        url: img.menu2
+      },
+      text: teks,
+      footer: 'グキエン',
+      buttons: buttons,
+      contextInfo: {
+        forwardingScore: 999,
+        isForwarded: true,
+        externalAdReply: {
+          title: m.pushName,
+          body: botname,
+          thumbnailUrl: img.thumbnailganda,
+          mediaType: 1,
+          renderLargerThumbnail: false,
+          sourceUrl: 'https://youtube.com/@Gxyenn'
+        }
+      }
+    }, {
+      quoted: m
+    });
+
+  } catch (error) {
+    console.error("Terjadi kesalahan:", error);
+    Replyx("Maaf, terjadi kesalahan saat memproses permintaan Anda.");
+  }
+}
+break;
+ 
+ // cpanel 1gb - unlimited
+case "1gb": case "2gb": case "3gb": case "4gb": case "5gb": 
+case "6gb": case "7gb": case "8gb": case "9gb": case "10gb": h
+case "unlimited": case "unli": {
+    if (!isOwner && !isReseller) {
+        return Replyx(`Fitur ini Hanya Bisa di Gunakan Oleh Reseller Panel, Silahkan Chat ${global.owner} Untuk Join Reseller`);
+    }
+    if (!text) return Replyx(`${prefix + Command},628xxx`);
+
+    let nomor, usernem;
+    let tek = text.split(",");
+    if (tek.length > 1) {
+        let [users, nom] = tek.map(t => t.trim());
+        if (!users || !nom) return Replyx(`${prefix + Command},628xxx`);
+        nomor = nom.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
+        usernem = users.toLowerCase();
+    } else {
+        usernem = text.toLowerCase();
+        nomor = m.isGroup ? m.sender : m.chat
+    }
+
+    try {
+        var onWa = await Xlesy.onWhatsApp(nomor.split("@")[0]);
+        if (onWa.length < 1) return Replyx("Nomor target tidak terdaftar di WhatsApp!");
+    } catch (err) {
+        return Replyx("Terjadi kesalahan saat mengecek nomor WhatsApp: " + err.message);
+    }
+
+    // Mapping RAM, Disk, dan CPU
+    const resourceMap = {
+        "1gb": { ram: "1000", disk: "1000", cpu: "40" },
+        "2gb": { ram: "2000", disk: "1000", cpu: "60" },
+        "3gb": { ram: "3000", disk: "2000", cpu: "80" },
+        "4gb": { ram: "4000", disk: "2000", cpu: "100" },
+        "5gb": { ram: "5000", disk: "3000", cpu: "120" },
+        "6gb": { ram: "6000", disk: "3000", cpu: "140" },
+        "7gb": { ram: "7000", disk: "4000", cpu: "160" },
+        "8gb": { ram: "8000", disk: "4000", cpu: "180" },
+        "9gb": { ram: "9000", disk: "5000", cpu: "200" },
+        "10gb": { ram: "10000", disk: "5000", cpu: "220" },
+        "unlimited": { ram: "0", disk: "0", cpu: "0" }
+    };
+    
+    let { ram, disk, cpu } = resourceMap[command] || { ram: "0", disk: "0", cpu: "0" };
+
+    let username = usernem.toLowerCase();
+    let email = username + "@gmail.com";
+    let name = func.capital(username) + " Server";
+    let password = username + "001";
+
+    try {
+        let f = await fetch(domain + "/api/application/users", {
+            method: "POST",
+            headers: { "Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + apikey },
+            body: JSON.stringify({ email, username, first_name: name, last_name: "Server", language: "en", password })
+        });
+        let data = await f.json();
+        if (data.errors) return Replyx("Error: " + JSON.stringify(data.errors[0], null, 2));
+        let user = data.attributes;
+
+        let f1 = await fetch(domain + `/api/application/nests/${nestid}/eggs/` + egg, {
+            method: "GET",
+            headers: { "Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + apikey }
+        });
+        let data2 = await f1.json();
+        let startup_cmd = data2.attributes.startup;
+
+        let f2 = await fetch(domain + "/api/application/servers", {
+            method: "POST",
+            headers: { "Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " + apikey },
+            body: JSON.stringify({
+                name,
+                description: func.tanggal(Date.now()),
+                user: user.id,
+                egg: parseInt(egg),
+                docker_image: "ghcr.io/parkervcp/yolks:nodejs_20",
+                startup: startup_cmd,
+                environment: { INST: "npm", USER_UPLOAD: "0", AUTO_UPDATE: "0", CMD_RUN: "npm start" },
+                limits: { memory: ram, swap: 0, disk, io: 500, cpu },
+                feature_limits: { databases: 5, backups: 5, allocations: 5 },
+                deploy: { locations: [parseInt(loc)], dedicated_ip: false, port_range: [] },
+            })
+        });
+        let result = await f2.json();
+        if (result.errors) return Replyx("Error: " + JSON.stringify(result.errors[0], null, 2));
+        
+        let server = result.attributes;
+        var orang = nomor
+        if (m.isGroup) {
+        await Replyx(`Berhasil membuat akun panel ✅\ndata akun sudah di kirim ke ${nomor == m.sender ? "private chat" : nomor.split("@")[0]}`)
+        }        
+        if (nomor !== m.sender && !m.isGroup) {
+        await Replyx(`Berhasil membuat akun panel ✅\ndata akun sudah di kirim ke ${nomor.split("@")[0]}`)
+        }
+        
+        let teks = `
+*BERIKUT DETAIL AKUN PANEL KAMU 📦*
+
+*📡 ID Server (${server.id})* 
+*👤 Username :* ${user.username}
+*🔐 Password :* ${password}
+*🗓️ ${func.tanggal(Date.now())}*
+
+*🌐 Spesifikasi Server*
+* Ram : *${ram == "0" ? "Unlimited" : ram / 1000 + "GB"}*
+* Disk : *${disk == "0" ? "Unlimited" : disk / 1000 + "GB"}*
+* CPU : *${cpu == "0" ? "Unlimited" : cpu + "%"}*
+
+> Admin 6283877636168
+> Kunjungi Store Https://gxyennstore.netlify.app
+
+*Syarat & Ketentuan :*
+* Jangan Share Domain
+* Expired panel 1 bulan
+* Simpan data ini sebaik mungkin
+* Garansi pembelian 15 hari (1x replace)
+* Claim garansi wajib membawa bukti chat pembelian
+`;
+
+const msg = generateWAMessageFromContent(orang, {
+  viewOnceMessage: {
+    message: {
+      interactiveMessage: {
+        body: { text: "\0" },
+        carouselMessage: {
+          cards: [{
+            header: {
+              ...(await prepareWAMessageMedia({
+                image: {
+                  url: "https://cloudkuimages.guru/uploads/images/6815246d53497.jpg" // ganti dengan URL gambar banner panel kamu
+                }
+              }, { upload: Xlesy.waUploadToServer })),
+              title: "\0",
+              gifPlayback: false,
+              subtitle: '\0',
+              hasMediaAttachment: true
+            },
+            body: {
+              text: teks // isi teks akun panel yang kamu buat sebelumnya
+            },
+            footer: {
+              text: "\0"
+            },
+            nativeFlowMessage: {
+              buttons: [
+                {
+                  name: "cta_copy",
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "Copy Username",
+                    id: "copy_username",
+                    copy_code: user.username
+                  })
+                },
+                {
+                  name: "cta_copy",
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "Copy Password",
+                    id: "copy_password",
+                    copy_code: password
+                  })
+                },
+                {
+                  name: "cta_url",
+                  buttonParamsJson: JSON.stringify({
+                    display_text: "Masuk Panel",
+                    url: global.domain,
+                    merchant_url: global.domain
+                  })
+                }
+              ]
+            }
+          }],
+          messageVersion: 1
+        }
+      }
+    }
+  }
+}, { quoted: fkontak1 });
+
+await Xlesy.relayMessage(orang, msg.message, { messageId: msg.key.id });
+    } catch (err) {
+        return Replyx("Terjadi kesalahan: " + err.message);
+    }
+}
+break
+
+// create sccount panel admin
+case "cadmin": {
+    if (!isOwner) return Replyx(msg.owner);
+    if (!text) return Replyx(`${prefix + Command},628xxx`);
+
+    let nomor, usernem;
+    let tek = text.split(",");
+    
+    if (tek.length > 1) {
+        let [users, nom] = tek.map(t => t.trim());
+        if (!users || !nom) return Replyx(`${prefix + Command},628xxx`);
+        usernem = users.toLowerCase();
+        nomor = nom.replace(/\D/g, "") + "@s.whatsapp.net";
+    } else {
+        usernem = text.toLowerCase();
+        nomor = m.isGroup ? m.sender : m.chat;
+    }
+
+    // Validasi nomor terdaftar di WhatsApp
+    const onWa = await Xlesy.onWhatsApp(nomor.split("@")[0]);
+    if (!onWa || onWa.length === 0 || !onWa[0]?.exists) {
+        return Replyx("Nomor target tidak terdaftar di WhatsApp!");
+    }
+
+    const username = usernem;
+    const email = `${username}@gmail.com`;
+    const name = func.capital(username); // Gunakan username, bukan args[0] agar konsisten
+    const password = username + "001";
+
+    const f = await fetch(`${domain}/api/application/users`, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + apikey
+        },
+        body: JSON.stringify({
+            email,
+            username,
+            first_name: name,
+            last_name: "Admin",
+            root_admin: true,
+            language: "en",
+            password
+        })
+    });
+
+    const data = await f.json();
+    if (data.errors) return Replyx(JSON.stringify(data.errors[0], null, 2));
+
+    const user = data.attributes;
+    const orang = nomor;
+
+    // Kirim notifikasi sukses
+    const notice = `Berhasil membuat akun admin panel ✅\ndata akun sudah dikirim ke ${nomor == m.sender ? "private chat" : nomor.split("@")[0]}`;
+    await Replyx(notice);
+
+    const teks = `
+*Berikut Detail Akun Admin Panel 📦*
+
+*📡 ID User (${user.id})* 
+*👤 Username :* ${user.username}
+*🔐 Password :* ${password}
+*🗓️ ${func.tanggal(Date.now())}*
+
+> Kunjungi Store Https://gxyennstore.netlify.app
+
+
+*Syarat & Ketentuan :*
+* Expired akun 1 bulan
+* Simpan data ini sebaik mungkin
+* Jangan asal hapus server!
+* Ketahuan maling sc, auto delete akun no reff!
+    `;
+
+    // Kirim pesan teks biasa
+    await Xlesy.sendMessage(orang, { text: teks }, { quoted: m });
+
+    // Kirim carousel viewOnce
+    const msg = generateWAMessageFromContent(nomor, {
+        viewOnceMessage: {
+            message: {
+                interactiveMessage: {
+                    body: { text: "\0" },
+                    carouselMessage: {
+                        cards: [{
+                            header: {
+                                ...(await prepareWAMessageMedia({
+                                    image: {
+                                        url: "https://cloudkuimages.guru/uploads/images/6815246d53497.jpg"
+                                    }
+                                }, { upload: Xlesy.waUploadToServer })),
+                                title: "\0",
+                                gifPlayback: false,
+                                subtitle: "\0",
+                                hasMediaAttachment: true
+                            },
+                            body: { text: teks },
+                            footer: { text: "\0" },
+                            nativeFlowMessage: {
+                                buttons: [
+                                    {
+                                        name: "cta_copy",
+                                        buttonParamsJson: JSON.stringify({
+                                            display_text: "Copy Username",
+                                            id: "copy_username",
+                                            copy_code: user.username
+                                        })
+                                    },
+                                    {
+                                        name: "cta_copy",
+                                        buttonParamsJson: JSON.stringify({
+                                            display_text: "Copy Password",
+                                            id: "copy_password",
+                                            copy_code: password
+                                        })
+                                    },
+                                    {
+                                        name: "cta_url",
+                                        buttonParamsJson: JSON.stringify({
+                                            display_text: "Masuk Panel",
+                                            url: global.domain,
+                                            merchant_url: global.domain
+                                        })
+                                    }
+                                ]
+                            }
+                        }],
+                        messageVersion: 1
+                    }
+                }
+            }
+        }
+    }, { quoted: fkontak1 });
+
+    await Xlesy.relayMessage(nomor, msg.message, { messageId: msg.key.id });
+}
+break;
+  // adp list dan del
+  case "listadp": {
+if (!isOwner) return Replyx(mess.owner)
+let cek = await fetch(domain + "/api/application/users", {
+"method": "GET",
+"headers": {
+"Accept": "application/json",
+"Content-Type": "application/json",
+"Authorization": "Bearer " + apikey
+}
+})
+let res2 = await cek.json();
+let users = res2.data;
+if (users.length < 1 ) return Replyx("Tidak ada admin panel")
+var teks = ""
+await users.forEach((i) => {
+if (i.attributes.root_admin !== true) return
+teks += `\n 📡 *${i.attributes.id} [ ${i.attributes.first_name} ]*
+ *• Nama :* ${i.attributes.first_name}
+ *• Created :* ${i.attributes.created_at.split("T")[0]}\n`
+})
+await Xlesy.sendMessage(m.chat, {text: teks}, {quoted: m})
+}
+break
+
+case "deladp": {
+if (!isOwner) return Replyx(mess.owner)
+if (!text) return Replyx(`${prefix + command} idnya`)
+let cek = await fetch(domain + "/api/application/users", {
+"method": "GET",
+"headers": {
+"Accept": "application/json",
+"Content-Type": "application/json",
+"Authorization": "Bearer " + apikey
+}
+})
+let res2 = await cek.json();
+let users = res2.data;
+let getid = null
+let idadmin = null
+await users.forEach(async (e) => {
+if (e.attributes.id == args[0] && e.attributes.root_admin == true) {
+getid = e.attributes.username
+idadmin = e.attributes.id
+let delusr = await fetch(domain + `/api/application/users/${idadmin}`, {
+"method": "DELETE",
+"headers": {
+"Accept": "application/json",
+"Content-Type": "application/json",
+"Authorization": "Bearer " + apikey
+}
+})
+let res = delusr.ok ? {
+errors: null
+} : await delusr.json()
+}
+})
+if (idadmin == null) return Replyx("Gagal menghapus akun!\nID user tidak ditemukan")
+await Replyx(`Sukses menghapus akun admin panel *${func.capital(getid)}*`)
+}
+break
+
+// Clear Server User Dan Server
+case "clearserver": {
+  if (!isOwner) return Replyx(mess.owner)
+  await Replyx(`Memproses penghapusan semua user & server panel yang bukan admin`)
+  
+  try {
+    const PTERO_URL = global.domain // Ganti dengan domain panel
+    const API_KEY = global.apikey // Ganti dengan API key admin panel
+
+    const headers = {
+      "Authorization": "Bearer " + API_KEY,
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    };
+
+    // Fungsi ambil semua user
+    async function getUsers() {
+      try {
+        const res = await axios.get(`${PTERO_URL}/api/application/users`, { headers });
+        return res.data.data;
+      } catch (error) {
+        Replyx(JSON.stringify(error.response?.data || error.message, null, 2))
+        return [];
+      }
+    }
+
+    // Fungsi ambil semua server
+    async function getServers() {
+      try {
+        const res = await axios.get(`${PTERO_URL}/api/application/servers`, { headers });
+        return res.data.data;
+      } catch (error) {
+        console.error("Gagal mengambil server:", error.response?.data || error.message);
+        return [];
+      }
+    }
+
+    // Fungsi hapus user
+    async function deleteUser(userID) {
+      try {
+        await axios.delete(`${PTERO_URL}/api/application/users/${userID}`, { headers });
+        console.log(`User ${userID} berhasil dihapus.`);
+      } catch (error) {
+        console.error(`Gagal menghapus user ${userID}:`, error.response?.data || error.message);
+      }
+    }
+
+    // Fungsi hapus server
+    async function deleteServer(serverID) {
+      try {
+        await axios.delete(`${PTERO_URL}/api/application/servers/${serverID}`, { headers });
+        console.log(`Server ${serverID} berhasil dihapus.`);
+      } catch (error) {
+        console.error(`Gagal menghapus server ${serverID}:`, error.response?.data || error.message);
+      }
+    }
+
+    // Fungsi utama hapus semua user/server non-admin
+    async function deleteNonAdminUsersAndServers() {
+      const users = await getUsers();
+      const servers = await getServers();
+      let totalSrv = 0;
+
+      for (const user of users) {
+        if (user.attributes.root_admin) continue;
+
+        const userID = user.attributes.id;
+        const userServers = servers.filter(srv => srv.attributes.user === userID);
+
+        for (const server of userServers) {
+          await deleteServer(server.attributes.id);
+          totalSrv++;
+        }
+
+        await deleteUser(userID);
+      }
+
+      await Replyx(`Berhasil menghapus ${totalSrv} server & user non-admin.`);
+    }
+
+    // Jalankan
+    return deleteNonAdminUsersAndServers();
+
+  } catch (err) {
+    return Replyx(`${JSON.stringify(err, null, 2)}`)
+  }
+}
+break;
+
+// List server dan del server panel
+case "listpanel":
+case "listp":
+case "listserver": {
+    if (!isOwner && !isReseller) return Replyx(`Fitur ini hanya untuk dalam grup *reseller panel*!\nJoin grup *reseller panel* langsung chat ${global.owner}`)
+
+    let f = await fetch(domain + "/api/application/servers", {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + apikey
+        }
+    });
+
+    let res = await f.json();
+    let servers = res.data;
+    if (servers.length < 1) return Replyx("Tidak ada server panel!")
+
+    let messageText = "";
+    for (let server of servers) {
+        let s = server.attributes;
+        let f3 = await fetch(domain + "/api/client/servers/" + s.uuid.split`-`[0] + "/resources", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + capikey
+            }
+        });
+
+        let data = await f3.json();
+        let status = data.attributes ? data.attributes.current_state : s.status;
+        messageText += `\n📡 *${s.id} [ ${s.name} ]*
+*• Ram :* ${s.limits.memory == 0 ? "Unlimited" : s.limits.memory.toString().length > 4 ? s.limits.memory.toString().split("").slice(0,2).join("") + "GB" : s.limits.memory.toString().length < 4 ? s.limits.memory.toString().charAt(1) + "GB" : s.limits.memory.toString().charAt(0) + "GB"}
+*• CPU :* ${s.limits.cpu == 0 ? "Unlimited" : s.limits.cpu.toString() + "%"}
+*• Disk :* ${s.limits.disk == 0 ? "Unlimited" : s.limits.disk.length > 3 ? s.limits.disk.toString().charAt(1) + "GB" : s.limits.disk.toString().charAt(0) + "GB"}
+*• Created :* ${s.created_at.split("T")[0]}\n`;
+    }
+
+    const buttons = [
+        {
+            buttonId: ".clearserver",
+            buttonText: { displayText: "Clear Server" },
+            type: 1
+        }
+    ];
+
+    await Xlesy.sendButtonMsg(m.chat, {
+        text: messageText,
+        footer: "グキエン",
+        buttons: buttons
+    }, {
+        quoted: m
+    });
+}
+break;
+
+case "delpanel": case "delserver": {
+if (!isOwner) return Replyx(mess.owner)
+if (!text) return Replyx(`${prefix + command} Idnya`)
+let f = await fetch(domain + "/api/application/servers", {
+"method": "GET",
+"headers": {
+"Accept": "application/json",
+"Content-Type": "application/json",
+"Authorization": "Bearer " + apikey
+}
+})
+let result = await f.json()
+let servers = result.data
+let sections
+let nameSrv
+for (let server of servers) {
+let s = server.attributes
+if (Number(text) == s.id) {
+sections = s.name.toLowerCase()
+nameSrv = s.name
+let f = await fetch(domain + `/api/application/servers/${s.id}`, {
+"method": "DELETE",
+"headers": {
+"Accept": "application/json",
+"Content-Type": "application/json",
+"Authorization": "Bearer " + apikey,
+}
+})
+let res = f.ok ? {
+errors: null
+} : await f.json()
+}}
+let cek = await fetch(domain + "/api/application/users", {
+"method": "GET",
+"headers": {
+"Accept": "application/json",
+"Content-Type": "application/json",
+"Authorization": "Bearer " + apikey
+}
+})
+let res2 = await cek.json();
+let users = res2.data;
+for (let user of users) {
+let u = user.attributes
+if (u.first_name.toLowerCase() == sections) {
+let delusr = await fetch(domain + `/api/application/users/${u.id}`, {
+"method": "DELETE",
+"headers": {
+"Accept": "application/json",
+"Content-Type": "application/json",
+"Authorization": "Bearer " + apikey
+}
+})
+let res = delusr.ok ? {
+errors: null
+} : await delusr.json()
+}}
+if (sections == undefined) return Replyx("Gagal menghapus server!\nID server tidak ditemukan")
+await Replyx(`Sukses menghapus server panel *${func.capital(nameSrv)}*`)
+}
+break
+
+//=============================================\\
 
 case 'menu': {
     await Xlesy.sendMessage(m.chat, {
@@ -11817,12 +12759,12 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
             buttons: [
                 {
                     buttonId: ".owner",
-                    buttonText: { displayText: "Owner" },
+                    buttonText: { displayText: "OWNER" },
                     type: 1,
                 },
                 {
                     buttonId: ".ping",
-                    buttonText: { displayText: "Server" },
+                    buttonText: { displayText: "SERVER" },
                     type: 1,
                 },
                 {
@@ -11866,13 +12808,24 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
                                     ]
                                 },
                                 {
-                                    title: "List Menu Bug XlesyVIP",
+                                    title: "List Menu XLESY bug",
                                     highlight_label: "Tahap Pengembangan",
                                     rows: [
                                         {
                                             id: ".xlesybug",
                                             title: "XLESY BUG",
                                             description: "Menampilkan Menu BUG XlesyVIP"
+                                        }
+                                    ]
+                                },
+                                {
+                                title: "List Menu Bug Cpanel",
+                                    highlight_label: "Reseller Akses",
+                                    rows: [
+                                        {
+                                            id: ".cpanelmenu",
+                                            title: "Cpanel",
+                                            description: "Menampilkan Menu Cpanel"
                                         }
                                     ]
                                 },

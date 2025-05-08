@@ -210,13 +210,6 @@ async function startXlesyBot() {
 		await GroupParticipantsUpdate(Xlesy, update, store, groupCache);
 	});
 	
-	setInterval(() => {
-		if (Date.now() - lastMessageTime > 30 * 60 * 1000) {
-			console.log('No messages received for 30 minutes, restarting bot...');
-			process.exit(0);
-		}
-	}, 30 * 60 * 1000);
-
 	return Xlesy
 }
 
