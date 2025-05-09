@@ -3178,12 +3178,12 @@ case 'bug': {
     let buttons = [
         {
             buttonId: ".owner",
-            buttonText: { displayText: "OWNER" },
+            buttonText: { displayText: "Owner" },
             type: 1
         },
         {
             buttonId: ".ping",
-            buttonText: { displayText: "SERVER" },
+            buttonText: { displayText: "Server" },
             type: 1
         },
         {
@@ -5196,7 +5196,7 @@ break
 *─────────────────────────*
 > Script XlesyVIP
 > Di buat Oleh: Gxyenn 
-> Link script Enc https://github.com/Gxyenn/XlesyVIPenc
+> Link script Enc https://github.com/Gxyenn/XLESYVIP
 > Jika Ingin Down/Gitclone, Bisa Tekan Link di atas
 > Please Follow My Github Thanks 
 *─────────────────────────
@@ -5743,31 +5743,31 @@ _©Gxyenn_`;
                         title: `✅ *\`Paket Standard\`*`,
                         description: "Price: Rp.8.000/group\nPerpanjang: Rp.3.000\nFree 1 User Premium 3d\nMasa aktif 7 hari",
                         buttonText: "Buy Paket Standard",
-                        buttonUrl: "https://wa.me/6283877636168?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Standar_"
+                        buttonUrl: `https://wa.me/${owner}?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Standar_`
                     },
                     {
                         title: `✅ *\`Paket Reguler\`*`,
                         description: "Price: Rp.15.000/group\nPerpanjang: Rp.5.000\nCustom 1 Command\nFree 3 User Premium 5d\nMasa aktif 30 hari",
                         buttonText: "Buy Paket Reguler",
-                        buttonUrl: "https://wa.me/6283877636168?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Reguler_"
+                        buttonUrl: `https://wa.me/${owner}?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Reguler_`
                     },
                     {
                         title: `✅ *\`Paket Luxury\`*`,
                         description: "Price: Rp.27.000/group\nPerpanjang: Rp.7.000\nCustom 3 Command\nFree 5 User Premium 30d\nMasa aktif 3 bulan",
                         buttonText: "Buy Paket Luxury",
-                        buttonUrl: "https://wa.me/6283877636168?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Luxury_"
+                        buttonUrl: `https://wa.me/${owner}?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Luxury_`
                     },
                     {
                         title: `✅ *\`Paket Supreme\`*`,
                         description: "Price: Rp.32.000/group\nPerpanjang: Rp.10.000\nCustom 5 Command\nFree 7 User Premium 3 Bulan\nMasa aktif 5 bulan",
                         buttonText: "Buy Paket Supreme",
-                        buttonUrl: "https://wa.me/6285810287828?text=%60Assalamualaikum+Wr+Wb%60%0A_Saya+Ingin+Sewa+Bot+Yang+Paket+Premium+Bang_"
+                        buttonUrl: `https://wa.me/${owner}?text=%60Assalamualaikum+Wr+Wb%60%0A_Saya+Ingin+Sewa+Bot+Yang+Paket+Premium+Bang_`
                     },
                     {
                         title: `✅ *\`Paket Visionary\`*`,
                         description: `Price: Rp.50.000/group\nPerpanjang: Rp.13.000\nCustom 7 Command\nFree 10 User Premium 5 Bulan\nMasa aktif 1 Tahun`,
                         buttonText: "Buy Paket Visionary",
-                        buttonUrl: "https://wa.me/6283877636168?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Visionary_"
+                        buttonUrl: `https://wa.me/${owner}?text=_Hallo+Min=Saya+Mau+Sewa+Paket+Visionary_`
                     }
                 ];
 
@@ -11901,7 +11901,7 @@ Hai👋,${m.pushName} Silahkan Click Button List Di Bawah Untuk Melihat List Cpa
             buttons: [
                 {
                     buttonId: ".owner",
-                    buttonText: { displayText: "OWNER" },
+                    buttonText: { displayText: "Owner" },
                     type: 1,
                 },
                 {
@@ -12750,12 +12750,12 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
             buttons: [
                 {
                     buttonId: ".owner",
-                    buttonText: { displayText: "OWNER" },
+                    buttonText: { displayText: "Owner" },
                     type: 1,
                 },
                 {
                     buttonId: ".ping",
-                    buttonText: { displayText: "SERVER" },
+                    buttonText: { displayText: "Server" },
                     type: 1,
                 },
                 {
@@ -12765,7 +12765,7 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
                     nativeFlowInfo: {
                         name: "single_select",
                         paramsJson: JSON.stringify({
-                            title: "XLESYMENU",
+                            title: "XlesyMenu",
                             sections: [
                                 {
                                     title: "List Menu Yang Sering Dipakai",
