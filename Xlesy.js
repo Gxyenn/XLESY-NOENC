@@ -7,6 +7,7 @@ SaveCONTACT Creator
 process.on('uncaughtException', console.error)
 process.on('unhandledRejection', console.error)
 require('./settings');
+require('./cpanel');
 const fs = require('fs');
 const os = require('os');
 const qs = require('qs');
@@ -11379,7 +11380,7 @@ break
                 })               
             }
             break
-            case ';': {
+            case 'animemenu': {
                 Replyx(mess.wait)
                 let imagePath = img.menu2 // Path ke gambar lokal
 
