@@ -12106,24 +12106,24 @@ case 'cpanel': {
 break;
  
  // cpanel 1gb - unlimited
-case "1gb": case "2gb": case "3gb": case "4gb": case "5gb": 
-case "6gb": case "7gb": case "8gb": case "9gb": case "10gb": h
+case "1gb": case "2gb": case "3gb": case "4gb": case "5gb":
+case "6gb": case "7gb": case "8gb": case "9gb": case "10gb":
 case "unlimited": case "unli": {
     if (!isOwner && !isReseller) {
         return Replyx(`Fitur ini Hanya Bisa di Gunakan Oleh Reseller Panel, Silahkan Chat ${global.owner} Untuk Join Reseller`);
     }
-    if (!text) return Replyx(`${prefix + Command},628xxx`);
+    if (!text) return Replyx(`${prefix + command},628xxx`);
 
     let nomor, usernem;
     let tek = text.split(",");
     if (tek.length > 1) {
         let [users, nom] = tek.map(t => t.trim());
-        if (!users || !nom) return Replyx(`${prefix + Command},628xxx`);
+        if (!users || !nom) return Replyx(`${prefix + command},628xxx`);
         nomor = nom.replace(/[^0-9]/g, "") + "@s.whatsapp.net";
         usernem = users.toLowerCase();
     } else {
         usernem = text.toLowerCase();
-        nomor = m.isGroup ? m.sender : m.chat
+        nomor = m.isGroup ? m.sender : m.chat;
     }
 
     try {
@@ -12133,7 +12133,6 @@ case "unlimited": case "unli": {
         return Replyx("Terjadi kesalahan saat mengecek nomor WhatsApp: " + err.message);
     }
 
-    // Mapping RAM, Disk, dan CPU
     const resourceMap = {
         "1gb": { ram: "1000", disk: "1000", cpu: "40" },
         "2gb": { ram: "2000", disk: "1000", cpu: "60" },
@@ -12145,9 +12144,10 @@ case "unlimited": case "unli": {
         "8gb": { ram: "8000", disk: "4000", cpu: "180" },
         "9gb": { ram: "9000", disk: "5000", cpu: "200" },
         "10gb": { ram: "10000", disk: "5000", cpu: "220" },
-        "unlimited": { ram: "0", disk: "0", cpu: "0" }
+        "unlimited": { ram: "0", disk: "0", cpu: "0" },
+        "unli": { ram: "0", disk: "0", cpu: "0" }
     };
-    
+
     let { ram, disk, cpu } = resourceMap[command] || { ram: "0", disk: "0", cpu: "0" };
 
     let username = usernem.toLowerCase();
@@ -12190,16 +12190,12 @@ case "unlimited": case "unli": {
         });
         let result = await f2.json();
         if (result.errors) return Replyx("Error: " + JSON.stringify(result.errors[0], null, 2));
-        
+
         let server = result.attributes;
-        var orang = nomor
-        if (m.isGroup) {
-        await Replyx(`Berhasil membuat akun panel ✅\ndata akun sudah di kirim ke ${nomor == m.sender ? "private chat" : nomor.split("@")[0]}`)
-        }        
-        if (nomor !== m.sender && !m.isGroup) {
-        await Replyx(`Berhasil membuat akun panel ✅\ndata akun sudah di kirim ke ${nomor.split("@")[0]}`)
-        }
-        
+        var orang = nomor;
+        let infoText = `Berhasil membuat akun panel ✅\ndata akun sudah di kirim ke ${m.isGroup ? (nomor == m.sender ? "private chat" : nomor.split("@")[0]) : nomor.split("@")[0]}`;
+        await Replyx(infoText);
+
         let teks = `
 *BERIKUT DETAIL AKUN PANEL KAMU 📦*
 
@@ -12224,72 +12220,66 @@ case "unlimited": case "unli": {
 * Claim garansi wajib membawa bukti chat pembelian
 `;
 
-const msg = generateWAMessageFromContent(orang, {
-  viewOnceMessage: {
-    message: {
-      interactiveMessage: {
-        body: { text: "\0" },
-        carouselMessage: {
-          cards: [{
-            header: {
-              ...(await prepareWAMessageMedia({
-                image: {
-                  url: "https://cloudkuimages.guru/uploads/images/6815246d53497.jpg" // ganti dengan URL gambar banner panel kamu
+        const msg = generateWAMessageFromContent(orang, {
+            viewOnceMessage: {
+                message: {
+                    interactiveMessage: {
+                        body: { text: "\0" },
+                        carouselMessage: {
+                            cards: [{
+                                header: {
+                                    ...(await prepareWAMessageMedia({
+                                        image: { url: "https://cloudkuimages.guru/uploads/images/6815246d53497.jpg" }
+                                    }, { upload: Xlesy.waUploadToServer })),
+                                    title: "\0",
+                                    gifPlayback: false,
+                                    subtitle: '\0',
+                                    hasMediaAttachment: true
+                                },
+                                body: { text: teks },
+                                footer: { text: "\0" },
+                                nativeFlowMessage: {
+                                    buttons: [
+                                        {
+                                            name: "cta_copy",
+                                            buttonParamsJson: JSON.stringify({
+                                                display_text: "Copy Username",
+                                                id: "copy_username",
+                                                copy_code: user.username
+                                            })
+                                        },
+                                        {
+                                            name: "cta_copy",
+                                            buttonParamsJson: JSON.stringify({
+                                                display_text: "Copy Password",
+                                                id: "copy_password",
+                                                copy_code: password
+                                            })
+                                        },
+                                        {
+                                            name: "cta_url",
+                                            buttonParamsJson: JSON.stringify({
+                                                display_text: "Masuk Panel",
+                                                url: global.domain,
+                                                merchant_url: global.domain
+                                            })
+                                        }
+                                    ]
+                                }
+                            }],
+                            messageVersion: 1
+                        }
+                    }
                 }
-              }, { upload: Xlesy.waUploadToServer })),
-              title: "\0",
-              gifPlayback: false,
-              subtitle: '\0',
-              hasMediaAttachment: true
-            },
-            body: {
-              text: teks // isi teks akun panel yang kamu buat sebelumnya
-            },
-            footer: {
-              text: "\0"
-            },
-            nativeFlowMessage: {
-              buttons: [
-                {
-                  name: "cta_copy",
-                  buttonParamsJson: JSON.stringify({
-                    display_text: "Copy Username",
-                    id: "copy_username",
-                    copy_code: user.username
-                  })
-                },
-                {
-                  name: "cta_copy",
-                  buttonParamsJson: JSON.stringify({
-                    display_text: "Copy Password",
-                    id: "copy_password",
-                    copy_code: password
-                  })
-                },
-                {
-                  name: "cta_url",
-                  buttonParamsJson: JSON.stringify({
-                    display_text: "Masuk Panel",
-                    url: global.domain,
-                    merchant_url: global.domain
-                  })
-                }
-              ]
             }
-          }],
-          messageVersion: 1
-        }
-      }
-    }
-  }
-}, { quoted: fkontak1 });
+        }, { quoted: fkontak1 });
 
-await Xlesy.relayMessage(orang, msg.message, { messageId: msg.key.id });
+        await Xlesy.relayMessage(orang, msg.message, { messageId: msg.key.id });
     } catch (err) {
         return Replyx("Terjadi kesalahan: " + err.message);
     }
 }
-break
+break;
 
 // create sccount panel admin
 case "cadmin": {
