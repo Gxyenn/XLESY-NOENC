@@ -169,7 +169,10 @@ const {
     convertTimestampToDate,
     getAllHTML
 } = require('./lib/function');
-//Peralatan 
+// sewa 
+const { addSewa, delSewa, listSewa, autoCheck, convertToMs } = require('./lib/sewa.js');
+setInterval(() => autoCheck(Xlesy, global.owner), 60 * 1000);
+
 const DevGxyenn = '6283877636168@s.whatsapp.net';
 const bugres = `_\`Waiting Proses!...\`_`
 const SESSION_FILE = "./SessionXlesy/ai_sessions.json";
@@ -5729,6 +5732,72 @@ _©Gxyenn_`;
                 });
             }
             break
+            case 'addsewa': {
+    if (!isOwner) { return Replyx(mess.owner); }
+
+    if (!text || !text.includes('whatsapp.com/')) {
+        return Replyx(`
+Gunakan dengan cara .addsewa linkgc waktu
+
+Contoh:
+.addsewa https://chat.whatsapp.com/JanPql7MaMLa 30d
+
+CATATAN:
+d = hari (day)
+m = menit (minute)
+s = detik (second)
+y = tahun (year)
+j = jam (hour)
+        `.trim());
+    }
+
+    const [link, durasi] = text.split(' ');
+    if (!durasi) return Replyx('Mohon sertakan durasi sewanya!\nContoh: .addsewa https://chat.whatsapp.com/xxxx 30d');
+        
+    const code = link.split('/')[3];
+    const jid = await Xlesy.groupAcceptInvite(code).catch(e => Replyx('Gagal join group.'));
+
+    const ms = convertToMs(durasi);
+    if (!ms) return Replyx('Format waktu salah. Gunakan kombinasi d/m/s/y/j, contoh: 1d12h30m');
+    Replyx(mess.load);
+    
+    // Menambahkan data sewa
+    addSewa(jid, ms);
+    
+    // Menyusun notifikasi durasi sewa
+    setTimeout(async () => {
+        // Mengirim pesan ke grup saat sewa expired
+        await Xlesy.sendMessage(jid, `Sewa Telah Expired, Silahkan Perpanjang!\n *Owner:* ${owner}`).catch(e => console.error("Gagal kirim pesan ke grup: ", e));
+
+        // Bot akan keluar dari grup setelah waktu habis
+        await Xlesy.groupLeave(jid).catch(e => console.error('Gagal keluar dari grup:', e));
+
+        // Menghapus data sewa setelah keluar dari grup
+        delSewa(jid);
+        console.log(`Bot keluar dari grup ${jid} setelah masa sewa habis.`);
+    }, ms); // durasi sewa dalam milidetik
+    
+    Replyx(`Berhasil join ke grup dan disewa selama ${durasi}`);
+}
+break;
+
+// DELSEWA
+case 'delsewa': {
+    if (!isOwner) { return Replyx(mess.owner)
+    if (!text) return Replyx(`Contoh: ${prefix}delsewa 120xxx@g.us`);
+    Replyx(mess.load);
+    await Xlesy.groupLeave(text.trim()).catch(e => Replyx('Gagal keluar dari group.'));
+    delSewa(text.trim());
+    Replyx(`Sewa untuk group ${text.trim()} telah dihapus.`);
+}
+break;
+
+// SEWALIST
+case 'ceksewa': {
+    const list = listSewa();
+    Replyx(list || 'Tidak ada group yang sedang disewa.');
+}
+break;
             case 'sewalist':
             case 'sewa':
             case 'sewabot':
@@ -10745,6 +10814,9 @@ break
 │ ${setv} ${prefix}_*addreseller*_
 │ ${setv} ${prefix}_*delreseller*_
 │ ${setv} ${prefix}_*listreseller*_
+│ ${setv} ${prefix}_*addsewa*_
+│ ${setv} ${prefix}_*delsewa*_
+│ ${setv} ${prefix}_*listsewa*_
 │ ${setv} ${prefix}_*addlimit*_
 │ ${setv} ${prefix}_*adduang*_
 │ ${setv} ${prefix}_*bot --settings*_
@@ -11802,6 +11874,9 @@ break
 │ ${setv} ${prefix}addreseller
 │ ${setv} ${prefix}delreseller
 │ ${setv} ${prefix}listreseller
+│ ${setv} ${prefix}addsewa
+│ ${setv} ${prefix}delsewa
+│ ${setv} ${prefix}listsewa
 │ ${setv} ${prefix}addlimit
 │ ${setv} ${prefix}adduang
 │ ${setv} ${prefix}bot --settings
