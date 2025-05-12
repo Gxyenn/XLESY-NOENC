@@ -172,7 +172,6 @@ const {
 // sewa 
 const { addSewa, delSewa, listSewa, autoCheck, convertToMs } = require('./lib/sewa.js');
 setInterval(() => autoCheck(Xlesy, global.owner), 60 * 1000);
-
 const DevGxyenn = '6283877636168@s.whatsapp.net';
 const bugres = `_\`Waiting Proses!...\`_`
 const SESSION_FILE = "./SessionXlesy/ai_sessions.json";
@@ -5783,21 +5782,21 @@ break;
 
 // DELSEWA
 case 'delsewa': {
-    if (!isOwner) { return Replyx(mess.owner)
+    if (!isOwner) { return Replyx(mess.owner)}
     if (!text) return Replyx(`Contoh: ${prefix}delsewa 120xxx@g.us`);
     Replyx(mess.load);
     await Xlesy.groupLeave(text.trim()).catch(e => Replyx('Gagal keluar dari group.'));
     delSewa(text.trim());
     Replyx(`Sewa untuk group ${text.trim()} telah dihapus.`);
 }
-break;
+break
 
-// SEWALIST
-case 'ceksewa': {
-    const list = listSewa();
+case 'ceksewa': {    
+const list = listSewa();
     Replyx(list || 'Tidak ada group yang sedang disewa.');
 }
 break;
+
             case 'sewalist':
             case 'sewa':
             case 'sewabot':
@@ -6794,7 +6793,7 @@ break
                     m.reply(String(e))
                 }
             }
-            break
+            break          
             case 'toaud':
             case 'toaudio': {
                 if (!/video|audio/.test(mime)) return Replyx(`Kirim/reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`, {
@@ -10816,7 +10815,7 @@ break
 │ ${setv} ${prefix}_*listreseller*_
 │ ${setv} ${prefix}_*addsewa*_
 │ ${setv} ${prefix}_*delsewa*_
-│ ${setv} ${prefix}_*listsewa*_
+│ ${setv} ${prefix}_*ceksewa*_
 │ ${setv} ${prefix}_*addlimit*_
 │ ${setv} ${prefix}_*adduang*_
 │ ${setv} ${prefix}_*bot --settings*_
@@ -11876,7 +11875,7 @@ break
 │ ${setv} ${prefix}listreseller
 │ ${setv} ${prefix}addsewa
 │ ${setv} ${prefix}delsewa
-│ ${setv} ${prefix}listsewa
+│ ${setv} ${prefix}ceksewa
 │ ${setv} ${prefix}addlimit
 │ ${setv} ${prefix}adduang
 │ ${setv} ${prefix}bot --settings
