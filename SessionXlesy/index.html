@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bot Aktif</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0f0f0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .widget {
+      animation: fadeInUp 1.5s ease-out;
+      padding: 20px 40px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .animated-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+      animation: colorChange 2s infinite, glow 1s infinite alternate;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes colorChange {
+      0% { color: #ff4b5c; }
+      25% { color: #ffcb05; }
+      50% { color: #32e0c4; }
+      75% { color: #5f27cd; }
+      100% { color: #ff4b5c; }
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #fff; }
+      100% { text-shadow: 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget">
+    <div class="animated-text">BOT KINI TELAH AKTIF TANPA HENTI!</div>
+  </div>
+</body>
+</html>
