@@ -10819,7 +10819,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          XLESYVIP',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -10910,7 +10910,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
 ╭─┴─┈➤「 *BOT MENU* 」❍
 │ ${setv} ${prefix}claim
@@ -10951,7 +10951,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11037,7 +11037,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
 
 ╭────┈➤「 *GROUP MENU* 」❍
 │ ${setv} ${prefix}add (62xxx)
@@ -11068,7 +11068,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11151,9 +11151,9 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
 
-╭─────┈➤「 *SEARCH MENU * 」❍
+╭─────┈➤「 *SEARCH MENU* 」❍
 │ ${setv} ${prefix}ytsearch (query)
 │ ${setv} ${prefix}pixiv (query)
 │ ${setv} ${prefix}pinterest (query)
@@ -11181,7 +11181,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11265,7 +11265,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
   ╭──┈➤「 *AI* 」❍ 
   │ ${setv} ${prefix}genshinstalk
@@ -11281,27 +11281,91 @@ const media = await prepareWAMessageMedia({
   │ ${setv} ${prefix}wachstalk
   ╰─────┈➤
  `
-                let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
-
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })               
+                const messageContent = {
+    viewOnceMessage: {
+        message: {
+            interactiveMessage: {
+                body: {
+                    text: textMessage
+                },
+                footer: {
+                    text: 'グキエン'
+                },
+                header: {
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
+                    hasMediaAttachment: true,
+                    imageMessage: media.imageMessage
+                },
+                nativeFlowMessage: {
+                    buttons: [
+                        {
+                            name: "single_select",
+                            buttonParamsJson: JSON.stringify({
+                                title: "LIST MENU",
+                                sections: [
+                                    {
+                                        title: "List Menu Yang Sering Dipakai",
+                                        rows: [
+                                            { id: ".allmenu", title: "All Menu", description: "Menampilkan Semua Menu" },
+                                            { id: ".botmenu", title: "Bot Menu", description: "Menampilkan Menu Bot" },
+                                            { id: ".groupmenu", title: "Group Menu", description: "Menampilkan Menu Group" },
+                                            { id: ".searchmenu", title: "Search Menu", description: "Menampilkan Menu Pencarian" },
+                                            { id: ".downloadmenu", title: "Download Menu", description: "Menampilkan Menu Download" },
+                                            { id: ".pushmenu", title: "Push Menu", description: "Menampilkan Menu Push" },
+                                            { id: ".quotesmenu", title: "Quotes Menu", description: "Menampilkan Menu Quotes" },
+                                            { id: ".librarymenu", title: "Library Menu", description: "Menampilkan Menu Library" },
+                                            { id: ".toolsmenu", title: "Tools Menu", description: "Menampilkan Menu Alat" },
+                                            { id: ".aimenu", title: "AI Menu", description: "Menampilkan Menu AI" },
+                                            { id: ".gamemenu", title: "Game Menu", description: "Menampilkan Menu Game" },
+                                            { id: ".funmenu", title: "Fun Menu", description: "Menampilkan Menu Hiburan" },
+                                            { id: ".animemenu", title: "Anime Menu", description: "Menampilkan Menu Anime" },
+                                            { id: ".musicmenu", title: "Music Menu", description: "Menampilkan Menu Audio" },
+                                            { id: ".randommenu", title: "Random Menu", description: "Menampilkan Menu Acak" },
+                                            { id: ".ownermenu", title: "Owner Menu", description: "Menampilkan Menu Owner" },
+                                            { id: ".xlesybug", title: "XLESY BUG", description: "Menampilkan Menu BUG XlesyVIP" },
+                                            { id: ".cpanelmenu", title: "Cpanel Menu", description: "Menampilkan Cpanel Menu" }
+                                        ]
+                                    }
+                                ]
+                            })
+                        },
+                        {
+                            name: "quick_reply",
+                            buttonParamsJson: JSON.stringify({
+                                display_text: "BACK MENU",
+                                id: ".menu"
+                            })
+                        }
+                    ]
+                },
+                contextInfo: {
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    externalAdReply: {
+                        title: "XLESYVIP",
+                        body: author,
+                        showAdAttribution: true,
+                        thumbnailUrl: img.thumbnailganda,
+                        mediaType: 1,
+                        previewType: 0,
+                        renderLargerThumbnail: false,
+                        mediaUrl: my.yt,
+                        sourceUrl: my.yt
+                    }
+                }
             }
-            break
+        }
+    }
+};
+
+const generatedMessage = await generateWAMessageFromContent(m.chat, messageContent, {
+    userJid: m.sender,
+    quoted: ftroli
+});
+
+await Xlesy.relayMessage(m.chat, generatedMessage.message, {});
+}
+break
             
             case 'downloadmenu': {
                 Replyx(mess.wait)
@@ -11312,7 +11376,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
 
 ╭───┈➤「 *DOWNLOAD MENU* 」❍
 │ ${setv} ${prefix}ytmp3 (url)
@@ -11338,7 +11402,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11421,7 +11485,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
 ╭──┈➤「 *QUOTES MENU* 」❍
 │ ${setv} ${prefix}motivasi
@@ -11442,7 +11506,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11525,7 +11589,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
 ╭──┈➤「 *LIBRAY MENU* 」❍  
 │ ${setv} ${prefix}cerpen-anak  
@@ -11588,7 +11652,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11671,7 +11735,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
 ╭─┴─┈➤「 *TOOLS* 」❍
 │ ${setv} ${prefix}get (url)
@@ -11727,7 +11791,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11810,7 +11874,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
   ╭──┈➤「 *AI* 」❍ 
   │ ${setv} ${prefix}autoaixlesy  
@@ -11821,27 +11885,91 @@ const media = await prepareWAMessageMedia({
   │ ${setv} ${prefix}aigen
   ╰─────┈➤
  `
-                let buttons = [{
-                    buttonId: ".menu",
-                    buttonText: {
-                        displayText: "Back To Menu"
-                    },
-                    type: 1
-                }]
-
-                // Kirim gambar lokal + teks + tombol
-                await Xlesy.sendButtonMsg(m.chat, {
-                    image: {
-                        url: imagePath
-                    }, // Menggunakan file lokal
-                    text: textMessage,
-                    footer: 'XLESYVIP',
-                    buttons: buttons
-                }, {
-                    quoted: ftroli
-                })               
+                const messageContent = {
+    viewOnceMessage: {
+        message: {
+            interactiveMessage: {
+                body: {
+                    text: textMessage
+                },
+                footer: {
+                    text: 'グキエン'
+                },
+                header: {
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
+                    hasMediaAttachment: true,
+                    imageMessage: media.imageMessage
+                },
+                nativeFlowMessage: {
+                    buttons: [
+                        {
+                            name: "single_select",
+                            buttonParamsJson: JSON.stringify({
+                                title: "LIST MENU",
+                                sections: [
+                                    {
+                                        title: "List Menu Yang Sering Dipakai",
+                                        rows: [
+                                            { id: ".allmenu", title: "All Menu", description: "Menampilkan Semua Menu" },
+                                            { id: ".botmenu", title: "Bot Menu", description: "Menampilkan Menu Bot" },
+                                            { id: ".groupmenu", title: "Group Menu", description: "Menampilkan Menu Group" },
+                                            { id: ".searchmenu", title: "Search Menu", description: "Menampilkan Menu Pencarian" },
+                                            { id: ".downloadmenu", title: "Download Menu", description: "Menampilkan Menu Download" },
+                                            { id: ".pushmenu", title: "Push Menu", description: "Menampilkan Menu Push" },
+                                            { id: ".quotesmenu", title: "Quotes Menu", description: "Menampilkan Menu Quotes" },
+                                            { id: ".librarymenu", title: "Library Menu", description: "Menampilkan Menu Library" },
+                                            { id: ".toolsmenu", title: "Tools Menu", description: "Menampilkan Menu Alat" },
+                                            { id: ".aimenu", title: "AI Menu", description: "Menampilkan Menu AI" },
+                                            { id: ".gamemenu", title: "Game Menu", description: "Menampilkan Menu Game" },
+                                            { id: ".funmenu", title: "Fun Menu", description: "Menampilkan Menu Hiburan" },
+                                            { id: ".animemenu", title: "Anime Menu", description: "Menampilkan Menu Anime" },
+                                            { id: ".musicmenu", title: "Music Menu", description: "Menampilkan Menu Audio" },
+                                            { id: ".randommenu", title: "Random Menu", description: "Menampilkan Menu Acak" },
+                                            { id: ".ownermenu", title: "Owner Menu", description: "Menampilkan Menu Owner" },
+                                            { id: ".xlesybug", title: "XLESY BUG", description: "Menampilkan Menu BUG XlesyVIP" },
+                                            { id: ".cpanelmenu", title: "Cpanel Menu", description: "Menampilkan Cpanel Menu" }
+                                        ]
+                                    }
+                                ]
+                            })
+                        },
+                        {
+                            name: "quick_reply",
+                            buttonParamsJson: JSON.stringify({
+                                display_text: "BACK MENU",
+                                id: ".menu"
+                            })
+                        }
+                    ]
+                },
+                contextInfo: {
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    externalAdReply: {
+                        title: "XLESYVIP",
+                        body: author,
+                        showAdAttribution: true,
+                        thumbnailUrl: img.thumbnailganda,
+                        mediaType: 1,
+                        previewType: 0,
+                        renderLargerThumbnail: false,
+                        mediaUrl: my.yt,
+                        sourceUrl: my.yt
+                    }
+                }
             }
-            break
+        }
+    }
+};
+
+const generatedMessage = await generateWAMessageFromContent(m.chat, messageContent, {
+    userJid: m.sender,
+    quoted: ftroli
+});
+
+await Xlesy.relayMessage(m.chat, generatedMessage.message, {});
+}
+break
             case 'animemenu': {
                 Replyx(mess.wait)
                 let imagePath = img.menu2
@@ -11851,7 +11979,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
 ╭───┈➤「 *ANIME MENU* 」❍  
 │ ${setv} ${prefix}waifu  
@@ -11910,7 +12038,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -11994,7 +12122,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
 ╭──┈➤「 *MUSIC MENU* 」❍ 
 │  ${setv} ${prefix}music1 sampai music85
@@ -12013,7 +12141,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -12097,7 +12225,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
 
 ╭──┈➤「 *GAME* 」❍
 │ ${setv} ${prefix}tictactoe
@@ -12130,7 +12258,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -12213,7 +12341,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
  
 ╭──┈➤「 *FUN* 」❍
 │ ${setv} ${prefix}dadu
@@ -12245,7 +12373,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -12328,7 +12456,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
   
 ╭─┴─┈➤「 *RANDOM MENU* 」❍  
 │ ${setv} ${prefix}coffe  
@@ -12351,7 +12479,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -12436,7 +12564,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
 
 ╭──┈➤「 *PUSH MENU* 」❍
 │ ${setv} ${prefix}pushkontak
@@ -12460,7 +12588,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -12543,7 +12671,7 @@ const media = await prepareWAMessageMedia({
         upload: Xlesy.waUploadToServer
     }); // Path ke gambar lokal
 
-                let textMessage = `          *⧼ LIST MENU XLESY ⧽*
+                let textMessage = `
 
 ╭──┈➤「 *OWNER MENU* 」❍
 │ ${setv} ${prefix}bot [set]
@@ -12593,7 +12721,7 @@ const media = await prepareWAMessageMedia({
                     text: 'グキエン'
                 },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          *⧼ LIST MENU XLESY ⧽*',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
@@ -13564,7 +13692,7 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
                 body: { text: menunya },
                 footer: { text: 'グキエン' },
                 header: {
-                    title: 'XLESYVIP Menu',
+                    title: '          XLESYVIP',
                     hasMediaAttachment: true,
                     imageMessage: media.imageMessage
                 },
