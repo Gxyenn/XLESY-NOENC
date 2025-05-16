@@ -3010,59 +3010,36 @@ async function newsLetter(target) {
         }
 
         // Game
-        const games = {
-            tebaklirik,
-            tekateki,
-            tebaklagu,
-            tebakkata,
-            kuismath,
-            susunkata,
-            tebakkimia,
-            caklontong,
-            tebakangka,
-            tebaknegara,
-            tebakgambar,
-            tebakbendera
-        }
-        for (let gameName in games) {
-            let game = games[gameName];
-            let id = iGame(game, m.chat);
-            if (m.quoted && id == m.quoted.id) {
-                if (gameName == 'kuismath') {
-                    jawaban = game[m.chat + id].jawaban
-                    const difficultyMap = {
-                        'noob': 1,
-                        'easy': 1.5,
-                        'medium': 2.5,
-                        'hard': 4,
-                        'extreme': 5,
-                        'impossible': 6,
-                        'impossible2': 7
-                    };
-                    let randMoney = difficultyMap[kuismath[m.chat + id].mode]
-                    if (!isNaN(budy)) {
-                        if (budy.toLowerCase() == jawaban) {
-                            db.users[m.sender].uang += randMoney * 1000
-                            await m.reply(`Jawaban Benar 🎉\nBonus Uang 💰 *+${randMoney * 1000}*`, {
-                                quoted: fkontak1
-                            })
-                            delete kuismath[m.chat + id]
-                        } else Replyx('*Jawaban Salah!*')
-                    }
-                } else {
-                    jawaban = game[m.chat + id].jawaban
-                    let jawabBenar = /tekateki|tebaklirik|tebaklagu|tebakkata|tebaknegara|tebakbendera/.test(gameName) ? (similarity(budy.toLowerCase(), jawaban) >= almost) : (budy.toLowerCase() == jawaban)
-                    let bonus = gameName == 'caklontong' ? 9999 : gameName == 'tebaklirik' ? 4299 : gameName == 'susunkata' ? 2989 : 3499
-                    if (jawabBenar) {
-                        db.users[m.sender].uang += bonus * 1
-                        await m.reply(`Jawaban Benar 🎉\nBonus Uang 💰 *+${bonus}*`, {
-                            quoted: fkontak1
-                        })
-                        delete game[m.chat + id]
-                    } else Replyx('*Jawaban Salah!*')
-                }
-            }
-        }
+const games = { tebaklirik, tekateki, tebaklagu, tebakkata, kuismath, susunkata, tebakkimia, caklontong, tebakangka, tebaknegara, tebakgambar, tebakbendera }
+		for (let gameName in games) {
+			let game = games[gameName];
+			let id = iGame(game, m.chat);
+			if ((!isCmd || isCreator) && m.quoted && id == m.quoted.id) {
+				if (game[m.chat + id]?.jawaban) {
+					if (gameName == 'kuismath') {
+						jawaban = game[m.chat + id].jawaban
+						const difficultyMap = { 'noob': 1, 'easy': 1.5, 'medium': 2.5, 'hard': 4, 'extreme': 5, 'impossible': 6, 'impossible2': 7 };
+						let randMoney = difficultyMap[kuismath[m.chat + id].mode]
+						if (!isNaN(budy)) {
+							if (budy.toLowerCase() == jawaban) {
+								db.users[m.sender].money += randMoney * 1000
+								await Replyx(`Jawaban Benar 🎉\nBonus Money 💰 *+${randMoney * 1000}*`)
+								delete kuismath[m.chat + id]
+							} else Replyx('*Jawaban Salah!*')
+						}
+					} else {
+						jawaban = game[m.chat + id].jawaban
+						let jawabBenar = /tekateki|tebaklirik|tebaklagu|tebakkata|tebaknegara|tebakbendera/.test(gameName) ? (similarity(budy.toLowerCase(), jawaban) >= almost) : (budy.toLowerCase() == jawaban)
+						let bonus = gameName == 'caklontong' ? 9999 : gameName == 'tebaklirik' ? 4299 : gameName == 'susunkata' ? 2989 : 3499
+						if (jawabBenar) {
+							db.users[m.sender].money += bonus * 1
+							await Replyx(`Jawaban Benar 🎉\nBonus Money 💰 *+${bonus}*`)
+							delete game[m.chat + id]
+						} else Replyx('*Jawaban Salah!*')
+					}
+				}
+			}
+		}
 
         // Family 100
         if (m.chat in family100) {
@@ -10466,7 +10443,6 @@ break
 *│ 々 TypeSc  : Cjs*
 *│ 々 Runtime  : ${runtime(process.uptime())}*
 *╰────────────────⧽*
-   \`⧼	  DEV : Gxyenn     ⧽\`
    
 ╭──────┈➤「 *\`BOT\`* 」❍
 │ ${setv} ${prefix}_*claim*_
@@ -12808,159 +12784,124 @@ Selamat Datang di *\`XLESYVIP\`* A bot Assistant That Is Ready To Help With Anyt
 *│*  々 Menu Ai
 *│*  々 Menu Game
 *│*  々 Menu Funn
-*│*  々 Menu Anime
+*│*  々 Menu Animeh
 *│*  々 Menu Music
 *│*  々 Menu Randm
 *│*  々 Menu Owner
 *│*  々 Menu Bug
-*╰────────────────⧽*.
+*│*  々 Menu Cpanel
+*╰────────────────⧽*`
 
-⧼ Click \`XlesyMenu\` Below ⧽`;
-
-    const buttons = {
-        buttonsMessage: {
-            contentText: menunya,
-            footerText: `グキエン`,
-            buttons: [
-                {
-                    buttonId: ".owner",
-                    buttonText: { displayText: "Owner" },
-                    type: 1,
-                },
-                {
-                    buttonId: ".ping",
-                    buttonText: { displayText: "Server" },
-                    type: 1,
-                },
-                {
-                    buttonId: ".example3",
-                    buttonText: { displayText: "📜 List Menu" },
-                    type: 2,
-                    nativeFlowInfo: {
-                        name: "single_select",
-                        paramsJson: JSON.stringify({
-                            title: "XlesyMenu",
-                            sections: [
-                                {
-                                    title: "List Menu Yang Sering Dipakai",
-                                    highlight_label: "Populer",
-                                    rows: [
+    const messageContent = {
+        viewOnceMessage: {
+            message: {
+                interactiveMessage: {
+                    body: {
+                        text: menunya
+                    },
+                    footer: {
+                        text: 'グキエン'
+                    },
+                    header: {
+                        title: 'XLESYVIP Menu',
+                        hasMediaAttachment: true,
+                        imageMessage: media.imageMessage
+                    },
+                    nativeFlowMessage: {
+                        buttons: [
+                            {
+                                name: "single_select",
+                                buttonParamsJson: JSON.stringify({
+                                    title: "XlesyMenu",
+                                    sections: [
                                         {
-                                            id: ".allmenu",
-                                            title: " All Menu",
-                                            description: "Menampilkan Semua Menu"
+                                            title: "List Menu Yang Sering Dipakai",
+                                            highlight_label: "Populer",
+                                            rows: [
+                                                {
+                                                    id: ".allmenu",
+                                                    title: "All Menu",
+                                                    description: "Menampilkan Semua Menu"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            title: "List Menu Yang Terpisah",
+                                            rows: [
+                                                { id: ".botmenu", title: "Bot Menu", description: "Menampilkan Menu Bot" },
+                                                { id: ".groupmenu", title: "Group Menu", description: "Menampilkan Menu Group" },
+                                                { id: ".searchmenu", title: "Search Menu", description: "Menampilkan Menu Pencarian" },
+                                                { id: ".downloadmenu", title: "Download Menu", description: "Menampilkan Menu Download" },
+                                                { id: ".pushmenu", title: "Push Menu", description: "Menampilkan Menu Push" },
+                                                { id: ".quotesmenu", title: "Quotes Menu", description: "Menampilkan Menu Quotes" },
+                                                { id: ".librarymenu", title: "Library Menu", description: "Menampilkan Menu Library" },
+                                                { id: ".toolsmenu", title: "Tools Menu", description: "Menampilkan Menu Alat" },
+                                                { id: ".aimenu", title: "AI Menu", description: "Menampilkan Menu AI" },
+                                                { id: ".gamemenu", title: "Game Menu", description: "Menampilkan Menu Game" },
+                                                { id: ".funmenu", title: "Fun Menu", description: "Menampilkan Menu Hiburan" },
+                                                { id: ".animemenu", title: "Anime Menu", description: "Menampilkan Menu Anime" },
+                                                { id: ".musicmenu", title: "Music Menu", description: "Menampilkan Menu Audio" },
+                                                { id: ".randommenu", title: "Random Menu", description: "Menampilkan Menu Acak" },
+                                                { id: ".ownermenu", title: "Owner Menu", description: "Menampilkan Menu Owner" }
+                                            ]
+                                        },
+                                        {
+                                            title: "List Menu XLESY bug",
+                                            highlight_label: "Tahap Pengembangan",
+                                            rows: [
+                                                {
+                                                    id: ".xlesybug",
+                                                    title: "XLESY BUG",
+                                                    description: "Menampilkan Menu BUG XlesyVIP"
+                                                }
+                                            ]
                                         }
                                     ]
-                                },
-                                {
-                                    title: "List Menu Yang Terpisah",
-                                    rows: [
-                                        { id: ".botmenu", title: " Bot Menu", description: "Menampilkan Menu Bot" },
-                                        { id: ".groupmenu", title: " Group Menu", description: "Menampilkan Menu Group" },
-                                        { id: ".searchmenu", title: " Search Menu", description: "Menampilkan Menu Pencarian" },
-                                        { id: ".stalkmenu", title: " Stalk Menu", description: "Menampilkan Menu Stalk" },                                                   { id: ".downloadmenu", title: " Download Menu", description: "Menampilkan Menu Download" },
-                                        { id: ".pushmenu", title: " Push Menu", description: "Menampilkan Menu Push" },
-                                        { id: ".quotesmenu", title: " Quotes Menu", description: "Menampilkan Menu Quotes" },
-                                        { id: ".librarymenu", title: " Library Menu", description: "Menampilkan Menu Library" },
-                                        { id: ".toolsmenu", title: " Tools Menu", description: "Menampilkan Menu Alat" },
-                                        { id: ".aimenu", title: " AI Menu", description: "Menampilkan Menu AI" },
-                                        { id: ".gamemenu", title: " Game Menu", description: "Menampilkan Menu Game" },
-                                        { id: ".funmenu", title: " Fun Menu", description: "Menampilkan Menu Hiburan" },
-                                        { id: ".animemenu", title: " Anime Menu", description: "Menampilkan Menu Anime" },
-                                        { id: ".musicmenu", title: " Music Menu", description: "Menampilkan Menu Audio" },
-                                        { id: ".randommenu", title: " Random Menu", description: "Menampilkan Menu Acak" },
-                                        { id: ".ownermenu", title: " Owner Menu", description: "Menampilkan Menu Owner" }
-                                    ]
-                                },
-                                {
-                                    title: "List Menu XLESY bug",
-                                    highlight_label: "Tahap Pengembangan",
-                                    rows: [
-                                        {
-                                            id: ".xlesybug",
-                                            title: "XLESY BUG",
-                                            description: "Menampilkan Menu BUG XlesyVIP"
-                                        }
-                                    ]
-                                },
-                                {
-                                title: "List Menu Bug Cpanel",
-                                    highlight_label: "Reseller Akses",
-                                    rows: [
-                                        {
-                                            id: ".cpanelmenu",
-                                            title: "Cpanel",
-                                            description: "Menampilkan Menu Cpanel"
-                                        }
-                                    ]
-                                },
-                                {
-                                    title: "Documentasi Bot",
-                                    rows: [
-                                        { id: ".script", title: " Script", description: "Menampilkan Information Script" },
-                                        { id: ".ping", title: " Information Bot", description: "Menampilkan Information Bot" }
-                                    ]
-                                }
-                            ]
-                        })
+                                })
+                            },
+                            {
+                                name: "cta_url",
+                                buttonParamsJson: JSON.stringify({
+                                    display_text: "Developer",
+                                    url: "https://www.youtube.com/@Gxyenn",
+                                    merchant_url: "https://www.youtube.com/@Gxyenn"
+                                })
+                            },
+                            {
+                                name: "quick_reply",
+                                buttonParamsJson: JSON.stringify({
+                                    display_text: "Owner",
+                                    id: ".owner"
+                                })
+                            }
+                        ]
+                    },
+                    contextInfo: {
+                        forwardingScore: 999,
+                        isForwarded: true,
+                        externalAdReply: {
+                            title: "XLESYVIP",
+                            body: author,
+                            showAdAttribution: true,
+                            thumbnailUrl: img.thumbnailganda,
+                            mediaType: 1,
+                            previewType: 0,
+                            renderLargerThumbnail: false,
+                            mediaUrl: my.yt,
+                            sourceUrl: my.yt
+                        }
                     }
                 }
-            ],
-            headerType: 4,
-            imageMessage: media.imageMessage,
-            mentionedJid: [m.sender, '0@s.whatsapp.net', owner[0] + '@s.whatsapp.net'],
-            contextInfo: {
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: my.ch,
-                    newsletterName: `スクリプト更新情報`
-                },                
-						externalAdReply: {
-							title: "XLESYVIP",
-							body: author,
-							showAdAttribution: true,
-							thumbnailUrl: img.thumbnailganda,                             	   mediaType: 1,
-							previewType: 0,
-							renderLargerThumbnail: false,
-							mediaUrl: my.yt,
-							sourceUrl: my.yt,
-						}
-        }
-    }
-            
-        }
-    
-
-    const generatedMessage = await generateWAMessageFromContent(
-        m.chat,
-        buttons,
-        {
-            userJid: m.sender,
-            quoted: ftroli
-        }
-    );
-
-    await Xlesy.relayMessage(m.chat, generatedMessage.message, {
-        additionalNodes: [
-            {
-                tag: "biz",
-                attrs: {},
-                content: [
-                    {
-                        tag: "interactive",
-                        attrs: { type: "native_flow", v: "1" },
-                        content: [
-                            {
-                                tag: "native_flow",
-                                attrs: { name: "quick_reply" }
-                            }
-                        ],
-                    }
-                ],
             }
-        ],
+        }
+    };
+
+    const generatedMessage = await generateWAMessageFromContent(m.chat, messageContent, {
+        userJid: m.sender,
+        quoted: ftroli
     });
+
+    await Xlesy.relayMessage(m.chat, generatedMessage.message, {});
 
     setTimeout(async () => {
         await Xlesy.sendMessage(m.chat, {
